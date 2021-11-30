@@ -1,3 +1,6 @@
+from typing import Optional, List
+from binarytree import Node
+
 """
 Given a binary tree root, a node X in the tree is named good if in the path from root to X there are no nodes with a
 value greater than X.
@@ -24,7 +27,6 @@ Input: root = [1]
 Output: 1
 Explanation: Root is considered as good.
 """
-from typing import Optional, List
 
 
 def count_good_nodes_in_binary_tree(root):
@@ -126,13 +128,13 @@ def delete_leaves_given_value(root, target):
 Given a binary tree with the following rules:
 
 root.val == 0
-If treeNode.val == x and treeNode.left != null, then treeNode.left.val == 2 * x + 1
-If treeNode.val == x and treeNode.right != null, then treeNode.right.val == 2 * x + 2
-Now the binary tree is contaminated, which means all treeNode.val have been changed to -1.
+If Node.val == x and Node.left != null, then Node.left.val == 2 * x + 1
+If Node.val == x and Node.right != null, then Node.right.val == 2 * x + 2
+Now the binary tree is contaminated, which means all Node.val have been changed to -1.
 
 Implement the FindElements class:
 
-FindElements(TreeNode* root) Initializes the object with a contaminated binary tree and recovers it.
+FindElements(Node* root) Initializes the object with a contaminated binary tree and recovers it.
 bool find(int target) Returns true if the target value exists in the recovered binary tree.
 
 Example 1:
@@ -175,14 +177,14 @@ findElements.find(5); // return True
 
 
 # Definition for a binary tree node.
-# class TreeNode:
+# class Node:
 #     def __init__(self, val=0, left=None, right=None):
 #         self.val = val
 #         self.left = left
 #         self.right = right
 class FindElements:
 
-    def __init__(self, root: Optional[TreeNode]):
+    def __init__(self, root: Optional[Node]):
         return
 
     def find(self, target: int) -> bool:
@@ -221,7 +223,7 @@ Output: false
 """
 
 
-def validateBinaryTreeNodes(self, n: int, leftChild: List[int], rightChild: List[int]) -> bool:
+def validateBinaryNodes(self, n: int, leftChild: List[int], rightChild: List[int]) -> bool:
     pass
 
 
@@ -239,7 +241,7 @@ Output: 19
 """
 
 
-def deepestLeavesSum(self, root: Optional[TreeNode]) -> int:
+def deepestLeavesSum(self, root: Optional[Node]) -> int:
     pass
 
 
@@ -259,7 +261,7 @@ Output: 0
 """
 
 
-def sumEvenGrandparent(self, root: TreeNode) -> int:
+def sumEvenGrandparent(self, root: Node) -> int:
     pass
 
 
@@ -292,7 +294,7 @@ Explanation: The deepest leaf node in the tree is 2, the lca of one node is itse
 """
 
 
-def lcaDeepestLeaves(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+def lcaDeepestLeaves(self, root: Optional[Node]) -> Optional[Node]:
     pass
 
 
@@ -314,7 +316,7 @@ Output: [[1,2,4]]
 """
 
 
-def delNodes(self, root: TreeNode, to_delete: List[int]) -> List[TreeNode]:
+def delNodes(self, root: Node, to_delete: List[int]) -> List[Node]:
     pass
 
 
@@ -339,7 +341,7 @@ Output: 2
 """
 
 
-def maxLevelSum(self, root: Optional[TreeNode]) -> int:
+def maxLevelSum(self, root: Optional[Node]) -> int:
     pass
 
 
@@ -372,7 +374,7 @@ Output: [7,9,4,10]
 """
 
 
-def bstToGst(self, root: TreeNode) -> TreeNode:
+def bstToGst(self, root: Node) -> Node:
     pass
 
 
@@ -399,7 +401,7 @@ Output: 3
 """
 
 
-def maxAncestorDiff(self, root: Optional[TreeNode]) -> int:
+def maxAncestorDiff(self, root: Optional[Node]) -> int:
     pass
 
 
@@ -427,7 +429,7 @@ Output: [1,null,3]
 """
 
 
-def bstFromPreorder(self, preorder: List[int]) -> Optional[TreeNode]:
+def bstFromPreorder(self, preorder: List[int]) -> Optional[Node]:
     pass
 
 
@@ -454,7 +456,7 @@ Output: false
 """
 
 
-def isCousins(self, root: Optional[TreeNode], x: int, y: int) -> bool:
+def isCousins(self, root: Optional[Node], x: int, y: int) -> bool:
     pass
 
 
@@ -501,7 +503,7 @@ Note that the solution remains the same since 5 and 6 are in the same location a
 """
 
 
-def verticalTraversal(self, root: Optional[TreeNode]) -> List[List[int]]:
+def verticalTraversal(self, root: Optional[Node]) -> List[List[int]]:
     pass
 
 
@@ -521,7 +523,7 @@ Output: false
 """
 
 
-def isUnivalTree(self, root: Optional[TreeNode]) -> bool:
+def isUnivalTree(self, root: Optional[Node]) -> bool:
     pass
 
 
@@ -560,7 +562,7 @@ Output: true
 """
 
 
-def flipEquiv(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
+def flipEquiv(self, root1: Optional[Node], root2: Optional[Node]) -> bool:
     pass
 
 
@@ -581,7 +583,7 @@ Explanation: Nodes 6, 7, and 10 are in the range [6, 10]. 6 + 7 + 10 = 23.
 """
 
 
-def rangeSumBST(self, root: Optional[TreeNode], low: int, high: int) -> int:
+def rangeSumBST(self, root: Optional[Node], low: int, high: int) -> int:
     pass
 
 
@@ -600,7 +602,7 @@ Output: [1,null,5,null,7]
 """
 
 
-def increasingBST(self, root: TreeNode) -> TreeNode:
+def increasingBST(self, root: Node) -> Node:
     pass
 
 
@@ -637,7 +639,7 @@ Output: false
 """
 
 
-def leafSimilar(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
+def leafSimilar(self, root1: Optional[Node], root2: Optional[Node]) -> bool:
     pass
 
 
@@ -659,7 +661,7 @@ Output: []
 """
 
 
-def distanceK(self, root: TreeNode, target: TreeNode, k: int) -> List[int]:
+def distanceK(self, root: Node, target: Node, k: int) -> List[int]:
     pass
 
 
@@ -687,7 +689,7 @@ Output: [1,1,0,1,1,null,1]
 """
 
 
-def pruneTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+def pruneTree(self, root: Optional[Node]) -> Optional[Node]:
     pass
 
 
@@ -706,7 +708,7 @@ Output: 1
 """
 
 
-def minDiffInBST(self, root: Optional[TreeNode]) -> int:
+def minDiffInBST(self, root: Optional[Node]) -> int:
     pass
 
 
@@ -770,7 +772,7 @@ Output: [4,2,7,1,3,5]
 """
 
 
-def insertIntoBST(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
+def insertIntoBST(self, root: Optional[Node], val: int) -> Optional[Node]:
     return
 
 
@@ -791,7 +793,7 @@ Output: []
 """
 
 
-def searchBST(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
+def searchBST(self, root: Optional[Node], val: int) -> Optional[Node]:
     pass
 
 
@@ -904,7 +906,7 @@ Explanation: The smallest value is 2, but there isn't any second smallest value.
 """
 
 
-def findSecondMinimumValue(self, root: Optional[TreeNode]) -> int:
+def findSecondMinimumValue(self, root: Optional[Node]) -> int:
     pass
 
 
@@ -939,7 +941,7 @@ Output: [2]
 """
 
 
-def trimBST(self, root: Optional[TreeNode], low: int, high: int) -> Optional[TreeNode]:
+def trimBST(self, root: Optional[Node], low: int, high: int) -> Optional[Node]:
     pass
 
 
@@ -974,7 +976,7 @@ Output: [3,null,2,null,1]
 """
 
 
-def constructMaximumBinaryTree(self, nums: List[int]) -> Optional[TreeNode]:
+def constructMaximumBinaryTree(self, nums: List[int]) -> Optional[Node]:
     pass
 
 
@@ -1005,7 +1007,7 @@ Output: true
 """
 
 
-def findTarget(self, root: Optional[TreeNode], k: int) -> bool:
+def findTarget(self, root: Optional[Node], k: int) -> bool:
     pass
 
 
@@ -1027,7 +1029,7 @@ Output: [3.00000,14.50000,11.00000]
 """
 
 
-def averageOfLevels(self, root: Optional[TreeNode]) -> List[float]:
+def averageOfLevels(self, root: Optional[Node]) -> List[float]:
     pass
 
 
@@ -1054,7 +1056,7 @@ Output: [2,2]
 """
 
 
-def mergeTrees(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> Optional[TreeNode]:
+def mergeTrees(self, root1: Optional[Node], root2: Optional[Node]) -> Optional[Node]:
     pass
 
 
@@ -1075,7 +1077,7 @@ except we cannot omit the first parenthesis pair to break the one-to-one mapping
 the output. """
 
 
-def tree2str(self, root: Optional[TreeNode]) -> str:
+def tree2str(self, root: Optional[Node]) -> str:
     pass
 
 
@@ -1099,7 +1101,7 @@ Output: 1
 """
 
 
-def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
+def diameterOfBinaryTree(self, root: Optional[Node]) -> int:
     pass
 
 
@@ -1132,7 +1134,7 @@ Output: [7,9,4,10]
 """
 
 
-def convertBST(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+def convertBST(self, root: Optional[Node]) -> Optional[Node]:
     pass
 
 
@@ -1151,7 +1153,7 @@ Output: 1
 """
 
 
-def getMinimumDifference(self, root: Optional[TreeNode]) -> int:
+def getMinimumDifference(self, root: Optional[Node]) -> int:
     pass
 
 
@@ -1178,7 +1180,7 @@ Output: []
 
 
 # Definition for a binary tree node.
-# class TreeNode:
+# class Node:
 #     def __init__(self, x):
 #         self.val = x
 #         self.left = None
@@ -1186,11 +1188,11 @@ Output: []
 
 class Codec:
 
-    def serialize(self, root: TreeNode) -> str:
+    def serialize(self, root: Node) -> str:
         """Encodes a tree to a single string.
         """
 
-    def deserialize(self, data: str) -> TreeNode:
+    def deserialize(self, data: str) -> Node:
         """Decodes your encoded data to tree.
         """
 
@@ -1219,7 +1221,7 @@ Output: 0
 """
 
 
-def sumOfLeftLeaves(self, root: Optional[TreeNode]) -> int:
+def sumOfLeftLeaves(self, root: Optional[Node]) -> int:
     pass
 
 
@@ -1239,7 +1241,7 @@ Output: ["1"]
 """
 
 
-def binaryTreePaths(self, root: Optional[TreeNode]) -> List[str]:
+def binaryTreePaths(self, root: Optional[Node]) -> List[str]:
     pass
 
 
@@ -1267,7 +1269,7 @@ Output: 1
 """
 
 
-def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+def lowestCommonAncestor(self, root: 'Node', p: 'Node', q: 'Node') -> 'Node':
     pass
 
 
@@ -1287,7 +1289,7 @@ Output: 3
 """
 
 
-def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
+def kthSmallest(self, root: Optional[Node], k: int) -> int:
     pass
 
 
@@ -1309,7 +1311,7 @@ Output: []
 """
 
 
-def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+def invertTree(self, root: Optional[Node]) -> Optional[Node]:
     pass
 
 
@@ -1332,14 +1334,14 @@ Output: []
 """
 
 
-def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
+def rightSideView(self, root: Optional[Node]) -> List[int]:
     pass
 
 
 """
 Implement the BSTIterator class that represents an iterator over the in-order traversal of a binary search tree (BST):
 
-BSTIterator(TreeNode root) Initializes an object of the BSTIterator class. The root of the BST is given as part of 
+BSTIterator(Node root) Initializes an object of the BSTIterator class. The root of the BST is given as part of 
 the constructor. The pointer should be initialized to a non-existent number smaller than any element in the BST. 
 boolean hasNext() Returns true if there exists a number in the traversal to the right of the pointer, 
 otherwise returns false. int next() Moves the pointer to the right, then returns the number at the pointer. Notice 
@@ -1372,14 +1374,14 @@ bSTIterator.hasNext(); // return False
 
 
 # Definition for a binary tree node.
-# class TreeNode:
+# class Node:
 #     def __init__(self, val=0, left=None, right=None):
 #         self.val = val
 #         self.left = left
 #         self.right = right
 class BSTIterator:
 
-    def __init__(self, root: Optional[TreeNode]):
+    def __init__(self, root: Optional[Node]):
         pass
 
     def next(self) -> int:
@@ -1421,7 +1423,7 @@ Output: [1,2]
 """
 
 
-def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+def preorderTraversal(self, root: Optional[Node]) -> List[int]:
     pass
 
 
@@ -1501,7 +1503,7 @@ Explanation: Since the tree is empty, there are no root-to-leaf paths.
 """
 
 
-def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
+def hasPathSum(self, root: Optional[Node], targetSum: int) -> bool:
     pass
 
 
@@ -1523,7 +1525,7 @@ Output: 5
 """
 
 
-def minDepth(self, root: Optional[TreeNode]) -> int:
+def minDepth(self, root: Optional[Node]) -> int:
     pass
 
 
@@ -1549,7 +1551,7 @@ Output: true
 """
 
 
-def isBalanced(self, root: Optional[TreeNode]) -> bool:
+def isBalanced(self, root: Optional[Node]) -> bool:
     pass
 
 
@@ -1572,7 +1574,7 @@ Output: []
 """
 
 
-def levelOrderBottom(self, root: Optional[TreeNode]) -> List[List[int]]:
+def levelOrderBottom(self, root: Optional[Node]) -> List[List[int]]:
     pass
 
 
@@ -1601,7 +1603,7 @@ Output: 1
 """
 
 
-def maxDepth2(self, root: Optional[TreeNode]) -> int:
+def maxDepth2(self, root: Optional[Node]) -> int:
     pass
 
 
@@ -1624,7 +1626,7 @@ Output: []
 """
 
 
-def zigzagLevelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+def zigzagLevelOrder(self, root: Optional[Node]) -> List[List[int]]:
     pass
 
 
@@ -1646,7 +1648,7 @@ Output: []
 """
 
 
-def levelOrder2(self, root: Optional[TreeNode]) -> List[List[int]]:
+def levelOrder2(self, root: Optional[Node]) -> List[List[int]]:
     pass
 
 
@@ -1664,7 +1666,7 @@ Output: false
 """
 
 
-def isSymmetric(self, root: Optional[TreeNode]) -> bool:
+def isSymmetric(self, root: Optional[Node]) -> bool:
     pass
 
 
@@ -1688,7 +1690,7 @@ Output: false
 """
 
 
-def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
+def isSameTree(self, p: Optional[Node], q: Optional[Node]) -> bool:
     pass
 
 
@@ -1714,7 +1716,7 @@ Explanation: The root node's value is 5 but its right child's value is 4.
 """
 
 
-def isValidBST(self, root: Optional[TreeNode]) -> bool:
+def isValidBST(self, root: Optional[Node]) -> bool:
     pass
 
 
@@ -1746,5 +1748,5 @@ Output: [1,2]
 """
 
 
-def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+def inorderTraversal(self, root: Optional[Node]) -> List[int]:
     pass
