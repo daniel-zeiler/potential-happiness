@@ -26,7 +26,7 @@ Output: 0
 """
 
 
-def lengthOfLongestSubstring(self, s: str) -> int:
+def lengthOfLongestSubstring(s: str) -> int:
     pass
 
 

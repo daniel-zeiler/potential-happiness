@@ -22,7 +22,7 @@ Output: ["a","b","c"]
 """
 
 
-def letterCombinations(self, digits: str) -> List[str]:
+def letter_combinations(self, digits: str) -> List[str]:
     pass
 
 
@@ -40,7 +40,7 @@ Output: ["()"]
 """
 
 
-def generateParenthesis(self, n: int) -> List[str]:
+def generate_parentheses(n: int) -> List[str]:
     pass
 
 
@@ -62,7 +62,7 @@ Output: [[1]]
 """
 
 
-def permute(self, nums: List[int]) -> List[List[int]]:
+def permute(nums: List[int]) -> List[List[int]]:
     pass
 
 
@@ -118,20 +118,32 @@ vertically neighboring. The same letter cell may not be used more than once.
 
 Example 1:
 
-Input: board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "ABCCED"
+Input: board = [
+    ["A","B","C","E"],
+    ["S","F","C","S"],
+    ["A","D","E","E"]
+    ], word = "ABCCED"
 Output: true
 Example 2:
 
-Input: board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "SEE"
+Input: board = [
+    ["A","B","C","E"],
+    ["S","F","C","S"],
+    ["A","D","E","E"]
+    ], word = "SEE"
 Output: true
 Example 3:
 
-Input: board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "ABCB"
+Input: board = [
+    ["A","B","C","E"],
+    ["S","F","C","S"],
+    ["A","D","E","E"]
+], word = "ABCB"
 Output: false
 """
 
 
-def exist(self, board: List[List[str]], word: str) -> bool:
+def exist(board: List[List[str]], word: str) -> bool:
     pass
 
 
@@ -303,5 +315,5 @@ Path to get the maximum gold, 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7.
 """
 
 
-def getMaximumGold(self, grid: List[List[int]]) -> int:
+def get_maximum_gold(grid: List[List[int]]) -> int:
     pass
