@@ -223,7 +223,7 @@ Output: false
 """
 
 
-def validateBinaryNodes(self, n: int, leftChild: List[int], rightChild: List[int]) -> bool:
+def validate_binary_nodes(n: int, leftChild: List[int], rightChild: List[int]) -> bool:
     pass
 
 
@@ -241,7 +241,7 @@ Output: 19
 """
 
 
-def deepestLeavesSum(self, root: Optional[Node]) -> int:
+def deepest_leaves_sum(root: Optional[Node]) -> int:
     pass
 
 

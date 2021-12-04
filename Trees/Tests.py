@@ -3,7 +3,19 @@ import unittest
 import Trees.Solutions as trees
 
 
-class SolutionsTest(unittest.TestCase):
+class CustomAssertion:
+    def assert_compare_trees(self, node_1: binarytree.Node, node_2: binarytree.Node):
+        if node_1 and node_2:
+            if node_1.value == node_2.value:
+                self.assert_compare_trees(node_1.left, node_2.left)
+                self.assert_compare_trees(node_1.right, node_2.right)
+            else:
+                raise AssertionError('Trees are not Equal')
+        elif node_1 and not node_2 or node_2 and not node_1:
+            raise AssertionError('Trees are not Equal')
+
+
+class SolutionsTest(unittest.TestCase, CustomAssertion):
 
     def test_count_good_nodes_in_binary_tree(self):
         input = binarytree.build([3, 1, 4, 3, None, 1, 5])
@@ -47,6 +59,56 @@ class SolutionsTest(unittest.TestCase):
         informTime = [0, 0, 162, 914]
         output = 1076
         self.assertEqual(trees.time_needed_inform_all_employees(n, headID, manager, informTime), output)
+
+    def test_delete_leaves_given_value(self):
+        root = binarytree.build2([1, 2, 3, 2, None, 2, 4])
+        target = 2
+        output = binarytree.build2([1, None, 3, None, 4])
+        self.assert_compare_trees(trees.delete_leaves_given_value(root, target), output)
+        root = binarytree.build2([1, 3, 3, 3, 2])
+        target = 3
+        output = binarytree.build2([1, 3, None, None, 2])
+        self.assert_compare_trees(trees.delete_leaves_given_value(root, target), output)
+        root = binarytree.build2([1, 1, 1])
+        target = 1
+        output = binarytree.build2([])
+        self.assert_compare_trees(trees.delete_leaves_given_value(root, target), output)
+        root = binarytree.build2([1, 2, 3])
+        target = 1
+        output = binarytree.build([1, 2, 3])
+        self.assert_compare_trees(trees.delete_leaves_given_value(root, target), output)
+
+    def test_validate_binary_nodes(self):
+        n = 4
+        leftChild = [1, -1, 3, -1]
+        rightChild = [2, -1, -1, -1]
+        output = True
+        self.assertEqual(trees.validate_binary_nodes(n, leftChild, rightChild), output)
+        n = 4
+        leftChild = [1, -1, 3, -1]
+        rightChild = [2, 3, -1, -1]
+        output = False
+        self.assertEqual(trees.validate_binary_nodes(n, leftChild, rightChild), output)
+        n = 2
+        leftChild = [1, 0]
+        rightChild = [-1, -1]
+        output = False
+        self.assertEqual(trees.validate_binary_nodes(n, leftChild, rightChild), output)
+        n = 6
+        leftChild = [1, -1, -1, 4, -1, -1]
+        rightChild = [2, -1, -1, 5, -1, -1]
+        output = False
+        self.assertEqual(trees.validate_binary_nodes(n, leftChild, rightChild), output)
+
+    # def test_deepest_leaves_sum(self):
+    #     self.assertEqual(
+    #         trees.deepest_leaves_sum(binarytree.build2([1, 2, 3, 4, 5, None, 6, 7, None, None, None, None, 8])), 15)
+    #     self.assertEqual(
+    #         trees.deepest_leaves_sum(binarytree.build2([6, 7, 8, 2, 7, 1, 3, 9, None, 1, 4, None, None, None, 5])), 19)
+
+    def test_sum_even_grandparents(self):
+        root = binarytree.build2([6, 7, 8, 2, 7, 1, 3, 9, None, 1, 4, None, None, None, 5])
+        self.assertEqual(trees.sum_even_grandparents(root), 18)
 
 
 if __name__ == '__main__':

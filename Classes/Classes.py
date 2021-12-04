@@ -21,3 +21,8 @@ class DoubleLinkedList:
 class Trie:
     def __init__(self):
         return
+
+
+class LRUCache:
+    def __init__(self):
+        return
