@@ -294,7 +294,7 @@ Explanation: The deepest leaf node in the tree is 2, the lca of one node is itse
 """
 
 
-def lcaDeepestLeaves(self, root: Optional[Node]) -> Optional[Node]:
+def lca_deepest_leaves(root: Optional[Node]) -> Optional[Node]:
     pass
 
 
@@ -316,7 +316,7 @@ Output: [[1,2,4]]
 """
 
 
-def delNodes(self, root: Node, to_delete: List[int]) -> List[Node]:
+def del_nodes(root: Node, to_delete: List[int]) -> List[Node]:
     pass
 
 
@@ -341,7 +341,7 @@ Output: 2
 """
 
 
-def maxLevelSum(self, root: Optional[Node]) -> int:
+def max_level_sum(root: Optional[Node]) -> int:
     pass
 
 
@@ -456,7 +456,7 @@ Output: false
 """
 
 
-def isCousins(self, root: Optional[Node], x: int, y: int) -> bool:
+def isCousins(root: Optional[Node], x: int, y: int) -> bool:
     pass
 
 

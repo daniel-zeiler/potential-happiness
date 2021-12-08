@@ -110,6 +110,25 @@ class SolutionsTest(unittest.TestCase, CustomAssertion):
         root = binarytree.build2([6, 7, 8, 2, 7, 1, 3, 9, None, 1, 4, None, None, None, 5])
         self.assertEqual(trees.sum_even_grandparents(root), 18)
 
+    def test_lca_deepest_leaves(self):
+        input = binarytree.build2([3, 5, 1, 6, 2, 0, 8, None, None, 7, 4])
+        output = binarytree.build2([2, 7, 4])
+        self.assert_compare_trees(trees.lca_deepest_leaves(input), output)
+        input = binarytree.build2([1])
+        output = binarytree.build2([1])
+        self.assert_compare_trees(trees.lca_deepest_leaves(input), output)
+        input = binarytree.build2([0, 1, 3, None, 2])
+        output = binarytree.build2([2])
+        self.assert_compare_trees(trees.lca_deepest_leaves(input), output)
+
+    def test_max_level_sum(self):
+        root = binarytree.build2([1, 7, 0, 7, -8, None, None])
+        output = 2
+        self.assertEqual(trees.max_level_sum(root), output)
+        root = binarytree.build2([989, None, 10250, 98693, -89388, None, None, None, -32127])
+        output = 2
+        self.assertEqual(trees.max_level_sum(root), output)
+
 
 if __name__ == '__main__':
     unittest.main()

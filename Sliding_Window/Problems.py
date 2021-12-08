@@ -26,7 +26,7 @@ Output: 0
 """
 
 
-def lengthOfLongestSubstring(s: str) -> int:
+def length_of_longest_substring(s: str) -> int:
     pass
 
 
@@ -58,7 +58,7 @@ Since the largest window of s only has one 'a', return empty string.
 """
 
 
-def minWindow(self, s: str, t: str) -> str:
+def min_window(s: str, t: str) -> str:
     pass
 
 

@@ -90,3 +90,54 @@ def sum_even_grandparents(root):
         return value
 
     return traverse(root, False, False)
+
+
+def lca_deepest_leaves(root: Optional[Node]) -> Optional[Node]:
+    def traverse(node, level):
+        if node:
+            if not node.left and not node.right:
+                return node, level
+            left_lca, left_level = traverse(node.left, level + 1)
+            right_lca, right_level = traverse(node.right, level + 1)
+
+            if left_lca and not right_lca:
+                return left_lca, left_level
+            if right_lca and not left_lca:
+                return right_lca, right_level
+            if left_level == right_level:
+                return node, left_level
+            elif left_level > right_level:
+                return left_lca, left_level
+            else:
+                return right_lca, right_level
+        else:
+            return None, None
+
+    return traverse(root, 0)[0]
+
+
+def max_level_sum(root: Optional[Node]) -> int:
+    levels = []
+    queue = collections.deque([[root, 1]])
+
+    current_max_level = 0
+    current_max = float('-inf')
+
+    while queue:
+        node, level = queue.popleft()
+        if level > len(levels):
+            levels.append(node.value)
+        else:
+            levels[level - 1] += node.value
+
+        if node.left:
+            queue.append([node.left, level + 1])
+        if node.right:
+            queue.append([node.right, level + 1])
+
+    for i, level in enumerate(levels):
+        if level > current_max:
+            current_max = level
+            current_max_level = i + 1
+
+    return current_max_level
