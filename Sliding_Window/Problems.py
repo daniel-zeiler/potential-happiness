@@ -81,7 +81,7 @@ Bolded numbers were flipped from 0 to 1. The longest subarray is underlined.
 """
 
 
-def longestOnes(self, nums: List[int], k: int) -> int:
+def longest_ones(nums: List[int], k: int) -> int:
     pass
 
 
@@ -113,7 +113,7 @@ Output: 1
 """
 
 
-def maxSatisfied(self, customers: List[int], grumpy: List[int], minutes: int) -> int:
+def max_satisfied(customers: List[int], grumpy: List[int], minutes: int) -> int:
     pass
 
 

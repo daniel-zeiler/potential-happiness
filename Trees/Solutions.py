@@ -141,3 +141,131 @@ def max_level_sum(root: Optional[Node]) -> int:
             current_max_level = i + 1
 
     return current_max_level
+
+
+def max_ancestor_diff(root: Optional[Node]) -> int:
+    def traverse(root, maximum, minimum):
+        values = [abs(root.val - maximum), abs(root.val - minimum)]
+        new_max = max(maximum, root.val)
+        new_min = min(minimum, root.val)
+        if root.left:
+            values.append(traverse(root.left, new_max, new_min))
+        if root.right:
+            values.append(traverse(root.right, new_max, new_min))
+        return max(values)
+
+    return traverse(root, root.val, root.val)
+
+
+def is_cousins(root: Optional[Node], x: int, y: int) -> bool:
+    def traverse(root, level):
+        if root:
+            if root.left and root.left.val in [x, y] and root.right and root.right.val in [x, y]:
+                return False, level
+
+            if root.val in [x, y]:
+                return True, level
+
+            left_val, left_level = traverse(root.left, level + 1)
+            right_val, right_level = traverse(root.right, level + 1)
+
+            if left_val and right_val:
+                if left_level == right_level:
+                    return True, right_level
+                return False, right_level
+
+            if left_val:
+                return left_val, left_level
+
+            return right_val, right_level
+        return False, level
+
+    return traverse(root, 0)[0]
+
+
+def is_unival_tree(root: Optional[Node]) -> bool:
+    def traverse(root, val):
+        if root:
+            if root.val != val:
+                return False
+            return traverse(root.left, val) and traverse(root.right, val)
+        return True
+
+    return traverse(root, root.val)
+
+
+def flip_equiv(root1: Optional[Node], root2: Optional[Node]) -> bool:
+    def traverse(root1, root2):
+        if (not root1 and root2) or (root1 and not root2):
+            return False
+        elif not root1 and not root2:
+            return True
+        elif root1.val != root2.val:
+            return False
+        else:
+            return (traverse(root1.left, root2.left) and traverse(root1.right, root2.right)) or (
+                    traverse(root1.left, root2.right) and traverse(root1.right, root2.left))
+
+    return traverse(root1, root2)
+
+
+def range_sum_bst(root: Optional[Node], low: int, high: int) -> int:
+    sum = 0
+    if root:
+        sum += range_sum_bst(root.left, low, high)
+        sum += range_sum_bst(root.right, low, high)
+        if low <= root.val <= high:
+            sum += root.val
+    return sum
+
+
+def leaf_similar(root1: Optional[Node], root2: Optional[Node]) -> bool:
+    def get_leaf_sequence(root):
+        sequence = []
+        if root:
+            if root.left is None and root.right is None:
+                sequence.append(root.val)
+            sequence.extend(get_leaf_sequence(root.left))
+            sequence.extend(get_leaf_sequence(root.right))
+        return sequence
+
+    leaf_sequence_one = get_leaf_sequence(root1)
+    leaf_sequence_two = get_leaf_sequence(root2)
+    for leaf_one, leaf_two in zip(leaf_sequence_one, leaf_sequence_two):
+        if leaf_one != leaf_two:
+            return False
+    return True
+
+
+def distance_k(root: Node, target: Node, k: int) -> List[int]:
+    result = []
+
+    def traverse(root) -> (bool, int):
+        if root:
+            if root.val == target.val:
+                pass_down(root.left, k - 1)
+                pass_down(root.right, k - 1)
+                return True, k - 1
+            else:
+                on_left, distance_left = traverse(root.left)
+                on_right, distance_right = traverse(root.right)
+                if on_left and distance_left == 0 or on_right and distance_right == 0:
+                    result.append(root.val)
+                elif on_left:
+                    pass_down(root.right, distance_left - 1)
+                    return on_left, distance_left - 1
+                elif on_right:
+                    pass_down(root.left, distance_right - 1)
+                    return on_right, distance_right - 1
+        return False, -1
+
+    def pass_down(root, k):
+        if root:
+            if k == 0:
+                result.append(root.val)
+            else:
+                pass_down(root.left, k - 1)
+                pass_down(root.right, k - 1)
+
+    traverse(root)
+    return result

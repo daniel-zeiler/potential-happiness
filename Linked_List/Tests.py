@@ -50,3 +50,39 @@ class SolutionsTest(unittest.TestCase, CustomAssertion):
         l2 = list_builder([9, 9, 9, 9])
         output = list_builder([8, 9, 9, 9, 0, 0, 0, 1])
         self.assert_compare_lists(linked_list.add_two_numbers(l1, l2), output)
+
+    def test_remove_nth_from_end(self):
+        head = list_builder([1, 2, 3, 4, 5])
+        n = 2
+        output = list_builder([1, 2, 3, 5])
+        self.assert_compare_lists(linked_list.remove_nth_from_end(head, n), output)
+        head = list_builder([1])
+        n = 1
+        output = list_builder([])
+        self.assert_compare_lists(linked_list.remove_nth_from_end(head, n), output)
+        head = list_builder([1, 2])
+        n = 1
+        output = list_builder([1])
+        self.assert_compare_lists(linked_list.remove_nth_from_end(head, n), output)
+
+    def test_merge_two_lists(self):
+        list1 = list_builder([1, 2, 4])
+        list2 = list_builder([1, 3, 4])
+        output = list_builder([1, 1, 2, 3, 4, 4])
+        self.assert_compare_lists(linked_list.merge_two_lists(list1, list2), output)
+        list1 = list_builder([])
+        list2 = list_builder([])
+        output = list_builder([])
+        self.assert_compare_lists(linked_list.merge_two_lists(list1, list2), output)
+        list1 = list_builder([])
+        list2 = list_builder([0])
+        output = list_builder([0])
+        self.assert_compare_lists(linked_list.merge_two_lists(list1, list2), output)
+
+    def test_delete_duplicates(self):
+        head = list_builder([1, 1, 2])
+        output = list_builder([1, 2])
+        self.assert_compare_lists(linked_list.delete_duplicates(head), output)
+        head = list_builder([1, 1, 2, 3, 3])
+        output = list_builder([1, 2, 3])
+        self.assert_compare_lists(linked_list.delete_duplicates(head), output)

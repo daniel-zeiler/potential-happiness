@@ -55,7 +55,7 @@ Output: [1]
 """
 
 
-def removeNthFromEnd(head: Optional[ListNode], n: int) -> Optional[ListNode]:
+def remove_nth_from_end(head: Optional[ListNode], n: int) -> Optional[ListNode]:
     pass
 
 
@@ -84,7 +84,7 @@ Output: [0]
 """
 
 
-def mergeTwoLists(list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+def merge_two_lists(list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
     pass
 
 
@@ -106,7 +106,7 @@ Output: [1,2,3]
 """
 
 
-def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
+def delete_duplicates(head: Optional[ListNode]) -> Optional[ListNode]:
     pass
 
 

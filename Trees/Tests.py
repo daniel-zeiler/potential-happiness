@@ -1,6 +1,7 @@
 import binarytree
 import unittest
 import Trees.Solutions as trees
+from binarytree import Node
 
 
 class CustomAssertion:
@@ -128,6 +129,107 @@ class SolutionsTest(unittest.TestCase, CustomAssertion):
         root = binarytree.build2([989, None, 10250, 98693, -89388, None, None, None, -32127])
         output = 2
         self.assertEqual(trees.max_level_sum(root), output)
+
+    def test_max_ancestor_diff(self):
+        root = binarytree.build2([8, 3, 10, 1, 6, None, 14, None, None, 4, 7, 13])
+        output = 7
+        self.assertEqual(trees.max_ancestor_diff(root), output)
+        root = binarytree.build2([1, None, 2, None, 0, 3])
+        output = 3
+        self.assertEqual(trees.max_ancestor_diff(root), output)
+
+    def test_is_cousins(self):
+        root = binarytree.build2([1, 2, 3, 4])
+        x = 4
+        y = 3
+        output = False
+        self.assertEqual(trees.is_cousins(root, x, y), output)
+        root = binarytree.build2([1, 2, 3, None, 4, None, 5])
+        x = 5
+        y = 4
+        output = True
+        self.assertEqual(trees.is_cousins(root, x, y), output)
+        root = binarytree.build2([1, 2, 3, None, 4])
+        x = 2
+        y = 3
+        output = False
+        self.assertEqual(trees.is_cousins(root, x, y), output)
+
+    def test_unival_tree(self):
+        root = binarytree.build2([1, 1, 1, 1, 1, None, 1])
+        output = True
+        self.assertEqual(trees.is_unival_tree(root), output)
+        root = binarytree.build2([2, 2, 2, 5, 2])
+        output = False
+        self.assertEqual(trees.is_unival_tree(root), output)
+
+    def test_flip_equiv(self):
+        root1 = binarytree.build2([1, 2, 3, 4, 5, 6, None, None, None, 7, 8])
+        root2 = binarytree.build2([1, 3, 2, None, 6, 4, 5, None, None, None, None, 8, 7])
+        output = True
+        self.assertEqual(trees.flip_equiv(root1, root2), output)
+        root1 = binarytree.build2([])
+        root2 = binarytree.build2([])
+        output = True
+        self.assertEqual(trees.flip_equiv(root1, root2), output)
+        root1 = binarytree.build2([])
+        root2 = binarytree.build2([1])
+        output = False
+        self.assertEqual(trees.flip_equiv(root1, root2), output)
+        root1 = binarytree.build2([0, None, 1])
+        root2 = binarytree.build2([])
+        output = False
+        self.assertEqual(trees.flip_equiv(root1, root2), output)
+        root1 = binarytree.build2([0, None, 1])
+        root2 = binarytree.build2([0, 1])
+        output = True
+        self.assertEqual(trees.flip_equiv(root1, root2), output)
+
+    def test_range_sum_bst(self):
+        root = binarytree.build2([10, 5, 15, 3, 7, None, 18])
+        low = 7
+        high = 15
+        output = 32
+        self.assertEqual(output, trees.range_sum_bst(root, low, high))
+        root = binarytree.build2([10, 5, 15, 3, 7, 13, 18, 1, None, 6])
+        low = 6
+        high = 10
+        output = 23
+        self.assertEqual(output, trees.range_sum_bst(root, low, high))
+
+    def test_leaf_similar(self):
+        root1 = binarytree.build2([3, 5, 1, 6, 2, 9, 8, None, None, 7, 4])
+        root2 = binarytree.build2([3, 5, 1, 6, 7, 4, 2, None, None, None, None, None, None, 9, 8])
+        output = True
+        self.assertEqual(output, trees.leaf_similar(root1, root2))
+        root1 = binarytree.build2([1])
+        root2 = binarytree.build2([1])
+        output = True
+        self.assertEqual(output, trees.leaf_similar(root1, root2))
+        root1 = binarytree.build2([1])
+        root2 = binarytree.build2([2])
+        output = False
+        self.assertEqual(output, trees.leaf_similar(root1, root2))
+        root1 = binarytree.build2([1, 2])
+        root2 = binarytree.build2([2, 2])
+        output = True
+        self.assertEqual(output, trees.leaf_similar(root1, root2))
+        root1 = binarytree.build2([1, 2, 3])
+        root2 = binarytree.build2([1, 3, 2])
+        output = False
+        self.assertEqual(output, trees.leaf_similar(root1, root2))
+
+    def test_distance_k(self):
+        root = binarytree.build2([3, 5, 1, 6, 2, 0, 8, None, None, 7, 4])
+        target = Node(5)
+        k = 2
+        output = [7, 4, 1]
+        self.assertListEqual(output, trees.distance_k(root, target, k))
+        root = binarytree.build2([1])
+        target = Node(1)
+        k = 3
+        output = []
+        self.assertListEqual(output, trees.distance_k(root, target, k))
 
 
 if __name__ == '__main__':

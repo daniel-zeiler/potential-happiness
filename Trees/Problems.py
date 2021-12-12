@@ -401,7 +401,7 @@ Output: 3
 """
 
 
-def maxAncestorDiff(self, root: Optional[Node]) -> int:
+def max_ancestor_diff(root: Optional[Node]) -> int:
     pass
 
 
@@ -456,7 +456,7 @@ Output: false
 """
 
 
-def isCousins(root: Optional[Node], x: int, y: int) -> bool:
+def is_cousins(root: Optional[Node], x: int, y: int) -> bool:
     pass
 
 
@@ -523,7 +523,7 @@ Output: false
 """
 
 
-def isUnivalTree(self, root: Optional[Node]) -> bool:
+def is_unival_tree(root: Optional[Node]) -> bool:
     pass
 
 
@@ -562,7 +562,7 @@ Output: true
 """
 
 
-def flipEquiv(self, root1: Optional[Node], root2: Optional[Node]) -> bool:
+def flip_equiv(root1: Optional[Node], root2: Optional[Node]) -> bool:
     pass
 
 
@@ -583,7 +583,7 @@ Explanation: Nodes 6, 7, and 10 are in the range [6, 10]. 6 + 7 + 10 = 23.
 """
 
 
-def rangeSumBST(self, root: Optional[Node], low: int, high: int) -> int:
+def range_sum_bst(root: Optional[Node], low: int, high: int) -> int:
     pass
 
 
@@ -639,7 +639,7 @@ Output: false
 """
 
 
-def leafSimilar(self, root1: Optional[Node], root2: Optional[Node]) -> bool:
+def leaf_similar(root1: Optional[Node], root2: Optional[Node]) -> bool:
     pass
 
 
@@ -661,7 +661,7 @@ Output: []
 """
 
 
-def distanceK(self, root: Node, target: Node, k: int) -> List[int]:
+def distance_k(root: Node, target: Node, k: int) -> List[int]:
     pass
 
 
