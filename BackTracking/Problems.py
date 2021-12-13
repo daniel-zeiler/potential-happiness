@@ -106,7 +106,7 @@ Output: [[],[0]]
 """
 
 
-def subsets(self, nums: List[int]) -> List[List[int]]:
+def subsets(nums: List[int]) -> List[List[int]]:
     pass
 
 
@@ -171,7 +171,7 @@ Output: ["0"]
 """
 
 
-def letterCasePermutation(self, s: str) -> List[str]:
+def letter_case_permutations(s: str) -> List[str]:
     pass
 
 
@@ -206,7 +206,7 @@ Output: [[0,1,2,3],[0,3]]
 """
 
 
-def allPathsSourceTarget(self, graph: List[List[int]]) -> List[List[int]]:
+def all_paths_source_to_target(graph: List[List[int]]) -> List[List[int]]:
     pass
 
 
@@ -231,7 +231,7 @@ Output: 1
 """
 
 
-def numTilePossibilities(self, tiles: str) -> int:
+def num_tile_possibilities(tiles: str) -> int:
     pass
 
 

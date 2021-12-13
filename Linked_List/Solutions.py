@@ -98,4 +98,15 @@ def merge_two_lists(list1: Optional[ListNode], list2: Optional[ListNode]) -> Opt
 def delete_duplicates(head: Optional[ListNode]) -> Optional[ListNode]:
     dummy_head = ListNode(None)
     dummy_head.next = head
-    
+    pointer_begin = dummy_head
+    while head:
+        if pointer_begin.val == head.val:
+            pointer_begin.next = head.next
+        else:
+            pointer_begin = pointer_begin.next
+        head = head.next
+    return dummy_head.next
+
+
+def remove_elements(head: Optional[ListNode], val: int) -> Optional[ListNode]:
+    pass

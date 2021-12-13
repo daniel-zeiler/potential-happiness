@@ -262,7 +262,7 @@ Output: []
 """
 
 
-def removeElements(self, head: Optional[ListNode], val: int) -> Optional[ListNode]:
+def remove_elements(head: Optional[ListNode], val: int) -> Optional[ListNode]:
     pass
 
 

@@ -115,3 +115,55 @@ def get_maximum_gold(grid: List[List[int]]) -> int:
                 maximum_gold = max(determine_maximum(x, y), maximum_gold)
 
     return maximum_gold
+
+
+def num_tile_possibilities(tiles: str) -> int:
+    tiles = sorted(tiles)
+
+    def backtracking_function(tiles, temp):
+        count = 0
+        if temp:
+            count += 1
+        for i, tile in enumerate(tiles):
+            if i and tiles[i - 1] == tiles[i]:
+                continue
+            count += backtracking_function(tiles[:i] + tiles[i + 1:], temp + tile)
+        return count
+
+    return backtracking_function(tiles, '')
+
+
+def all_paths_source_to_target(graph: List[List[int]]) -> List[List[int]]:
+    result = []
+
+    def traverse(location, path_so_far):
+        if location == len(graph) - 1:
+            result.append(path_so_far)
+        else:
+            for adjacent in graph[location]:
+                if adjacent not in path_so_far:
+                    traverse(adjacent, path_so_far + [adjacent])
+
+    traverse(0, [0])
+    return result
+
+
+def letter_case_permutations(s: str) -> List[str]:
+    numbers = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "0"}
+
+    def permute(remaining, so_far):
+        result = []
+        if not remaining:
+            return [so_far]
+        if remaining[0] not in numbers:
+            result.extend(permute(remaining[1:], so_far + remaining[0].lower()))
+            result.extend(permute(remaining[1:], so_far + remaining[0].upper()))
+        else:
+            result.extend(permute(remaining[1:], so_far + remaining[0]))
+        return result
+
+    return permute(s, '')
+
+
+def subsets(nums: List[int]) -> List[List[int]]:
+    pass

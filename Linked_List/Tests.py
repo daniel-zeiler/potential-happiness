@@ -22,9 +22,11 @@ def list_builder(a_list: list) -> ListNode:
 
 
 def print_list(head: ListNode):
+    result = []
     while head:
-        print(head.val)
+        result.append(head.val)
         head = head.next
+    print(result)
 
 
 class CustomAssertion:
