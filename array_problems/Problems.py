@@ -84,7 +84,12 @@ changing the city's skyline from any cardinal direction.
 Example 1:
 
 
-Input: grid = [[3,0,8,4],[2,4,5,7],[9,2,6,3],[0,3,1,0]]
+Input: grid = [
+  [3,0,8,4],
+  [2,4,5,7],
+  [9,2,6,3],
+  [0,3,1,0]
+]
 Output: 35
 Explanation: The building heights are shown in the center of the above image.
 The skylines when viewed from each cardinal direction are drawn in red.
@@ -101,8 +106,27 @@ Explanation: Increasing the height of any building will result in the skyline ch
 """
 
 
-def maxIncreaseKeepingSkyline(self, grid: List[List[int]]) -> int:
-  pass
+def maxIncreaseKeepingSkyline(grid: List[List[int]]) -> int:
+  max_heights_per_index_location = [
+    [
+      float('-inf') for _ in range(len(grid[1]))
+    ] for _ in range(len(grid[0]))
+  ]
+  for x in range(len(grid)):
+    for y in range(len(grid[1])):
+      if x == 0 and y == 0:
+        max_heights_per_index_location[x][y] = grid[x][y]
+      elif x == 0:
+        max_heights_per_index_location[x][y] = max(grid[x][y],
+          max_heights_per_index_location[x][y - 1])
+      elif y == 0:
+        max_heights_per_index_location[x][y] = max(grid[x][y],
+          max_heights_per_index_location[x - 1][y])
+      else:
+        max_heights_per_index_location[x][y] = max(grid[x][y],
+          max_heights_per_index_location[x - 1][y], max_heights_per_index_location[x][y - 1])
+
+  print(max_heights_per_index_location)
 
 
 """
@@ -130,7 +154,7 @@ Only 1771 contains an even number of digits.
 """
 
 
-def findNumbers(self, nums: List[int]) -> int:
+def findNumbers(nums: List[int]) -> int:
   pass
 
 
@@ -247,7 +271,7 @@ Output: [0]
 """
 
 
-def sortArrayByParity(self, nums: List[int]) -> List[int]:
+def sortArrayByParity(nums: List[int]) -> List[int]:
   pass
 
 
@@ -317,7 +341,7 @@ Total number of squares = 6 + 1 = 7.
 """
 
 
-def countSquares(self, matrix: List[List[int]]) -> int:
+def countSquares(matrix: List[List[int]]) -> int:
   pass
 
 
@@ -344,7 +368,7 @@ Output: 0
 """
 
 
-def countBattleships(self, board: List[List[str]]) -> int:
+def countBattleships(board: List[List[str]]) -> int:
   pass
 
 
@@ -408,7 +432,7 @@ Output: [[1]]
 """
 
 
-def permute(self, nums: List[int]) -> List[List[int]]:
+def permute(nums: List[int]) -> List[List[int]]:
   pass
 
 
@@ -637,19 +661,26 @@ position (row, col) will be (row + 1, col - 1), (row + 1, col), or (row + 1, col
 Example 1:
 
 
-Input: matrix = [[2,1,3],[6,5,4],[7,8,9]]
+Input: matrix = [
+  [2,1,3],
+  [6,5,4],
+  [7,8,9]
+]
 Output: 13
 Explanation: There are two falling paths with a minimum sum as shown.
 Example 2:
 
 
-Input: matrix = [[-19,57],[-40,-5]]
+Input: matrix = [
+  [-19, 57],
+  [-40, -5]
+]
 Output: -59
 Explanation: The falling path with a minimum sum is shown.
 """
 
 
-def minFallingPathSum(self, matrix: List[List[int]]) -> int:
+def minFallingPathSum(matrix: List[List[int]]) -> int:
   pass
 
 
@@ -689,7 +720,7 @@ Path to get the maximum gold, 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7.
 """
 
 
-def getMaximumGold(self, grid: List[List[int]]) -> int:
+def getMaximumGold(grid: List[List[int]]) -> int:
   pass
 
 
@@ -751,7 +782,7 @@ Explanation: 1 cannot be popped before 2.
 """
 
 
-def validateStackSequences(self, pushed: List[int], popped: List[int]) -> bool:
+def validateStackSequences(pushed: List[int], popped: List[int]) -> bool:
   pass
 
 
@@ -784,7 +815,7 @@ Output: [[3,1],[4,2]]
 """
 
 
-def rotate(self, matrix: List[List[int]]) -> None:
+def rotate(matrix: List[List[int]]) -> None:
   """
   Do not return anything, modify matrix in-place instead.
   """
@@ -838,9 +869,18 @@ Return the board when no more squares will be revealed.
 Example 1:
 
 
-Input: board = [["E","E","E","E","E"],["E","E","M","E","E"],["E","E","E","E","E"],["E","E","E",
-"E","E"]], click = [3,0]
-Output: [["B","1","E","1","B"],["B","1","M","1","B"],["B","1","1","1","B"],["B","B","B","B","B"]]
+Input: board = [
+  ["E","E","E","E","E"],
+  ["E","E","M","E","E"],
+  ["E","E","E","E","E"],
+  ["E","E","E","E","E"]
+], click = [3,0]
+Output: [
+  ["B","1","E","1","B"],
+  ["B","1","M","1","B"],
+  ["B","1","1","1","B"],
+  ["B","B","B","B","B"]
+  ]
 Example 2:
 
 
@@ -850,7 +890,7 @@ Output: [["B","1","E","1","B"],["B","1","X","1","B"],["B","1","1","1","B"],["B",
 """
 
 
-def updateBoard(self, board: List[List[str]], click: List[int]) -> List[List[str]]:
+def updateBoard(board: List[List[str]], click: List[int]) -> List[List[str]]:
   pass
 
 
@@ -885,7 +925,7 @@ Output: 1
 """
 
 
-def lastStoneWeight(self, stones: List[int]) -> int:
+def lastStoneWeight(stones: List[int]) -> int:
   pass
 
 
@@ -921,7 +961,7 @@ Explanation: There is no way to reach at index 1 with value 0.
 """
 
 
-def canReach(self, arr: List[int], start: int) -> bool:
+def canReach(arr: List[int], start: int) -> bool:
   pass
 
 
@@ -966,7 +1006,7 @@ Bolded numbers were flipped from 0 to 1. The longest subarray is underlined.
 """
 
 
-def longestOnes(self, nums: List[int], k: int) -> int:
+def longestOnes(nums: List[int], k: int) -> int:
   pass
 
 
@@ -1063,7 +1103,12 @@ any number of moves.
 Example 1:
 
 
-Input: grid = [[0,0,0,0],[1,0,1,0],[0,1,1,0],[0,0,0,0]]
+Input: grid = [
+  [0,0,0,0],
+  [1,0,1,0],
+  [0,1,1,0],
+  [0,0,0,0]
+]
 Output: 3
 Explanation: There are three 1s that are enclosed by 0s, and one 1 that is not enclosed because 
 its on the boundary.
@@ -1076,7 +1121,7 @@ Explanation: All 1s are either on the boundary or can reach the boundary.
 """
 
 
-def numEnclaves(self, grid: List[List[int]]) -> int:
+def numEnclaves(grid: List[List[int]]) -> int:
   pass
 
 
@@ -1099,7 +1144,7 @@ Output: [0]
 """
 
 
-def moveZeroes(self, nums: List[int]) -> None:
+def moveZeroes(nums: List[int]) -> None:
   """
   Do not return anything, modify nums in-place instead.
   """
@@ -1151,7 +1196,7 @@ Output: 12
 """
 
 
-def minPathSum(self, grid: List[List[int]]) -> int:
+def minPathSum(grid: List[List[int]]) -> int:
   pass
 
 
@@ -2064,14 +2109,16 @@ def merge_2(self, intervals: List[List[int]]) -> List[List[int]]:
 
 
 """
-Given an m x n binary matrix filled with 0's and 1's, find the largest square containing only 1's and return its area.
+Given an m x n binary matrix filled with 0's and 1's, find the largest square containing only 1's 
+and return its area.
 
  
 
 Example 1:
 
 
-Input: matrix = [["1","0","1","0","0"],["1","0","1","1","1"],["1","1","1","1","1"],["1","0","0","1","0"]]
+Input: matrix = [["1","0","1","0","0"],["1","0","1","1","1"],["1","1","1","1","1"],["1","0","0",
+"1","0"]]
 Output: 4
 Example 2:
 
@@ -2084,12 +2131,15 @@ Input: matrix = [["0"]]
 Output: 0
 """
 
+
 def maximalSquare(self, matrix: List[List[str]]) -> int:
   pass
 
 
 """
-You are given a large integer represented as an integer array digits, where each digits[i] is the ith digit of the integer. The digits are ordered from most significant to least significant in left-to-right order. The large integer does not contain any leading 0's.
+You are given a large integer represented as an integer array digits, where each digits[i] is the 
+ith digit of the integer. The digits are ordered from most significant to least significant in 
+left-to-right order. The large integer does not contain any leading 0's.
 
 Increment the large integer by one and return the resulting array of digits.
 
@@ -2125,17 +2175,21 @@ Incrementing by one gives 9 + 1 = 10.
 Thus, the result should be [1,0].
 """
 
+
 def plusOne(self, digits: List[int]) -> List[int]:
   pass
 
 
 """
-Given an n x n binary matrix grid, return the length of the shortest clear path in the matrix. If there is no clear path, return -1.
+Given an n x n binary matrix grid, return the length of the shortest clear path in the matrix. If 
+there is no clear path, return -1.
 
-A clear path in a binary matrix is a path from the top-left cell (i.e., (0, 0)) to the bottom-right cell (i.e., (n - 1, n - 1)) such that:
+A clear path in a binary matrix is a path from the top-left cell (i.e., (0, 0)) to the 
+bottom-right cell (i.e., (n - 1, n - 1)) such that:
 
 All the visited cells of the path are 0.
-All the adjacent cells of the path are 8-directionally connected (i.e., they are different and they share an edge or a corner).
+All the adjacent cells of the path are 8-directionally connected (i.e., they are different and 
+they share an edge or a corner).
 The length of a clear path is the number of visited cells of this path.
 
  
@@ -2156,6 +2210,7 @@ Input: grid = [[1,0,0],[1,1,0],[1,1,0]]
 Output: -1
 """
 
+
 def shortestPathBinaryMatrix(self, grid: List[List[int]]) -> int:
   pass
 
@@ -2163,7 +2218,8 @@ def shortestPathBinaryMatrix(self, grid: List[List[int]]) -> int:
 """
 Given an m x n grid of characters board and a string word, return true if word exists in the grid.
 
-The word can be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once.
+The word can be constructed from letters of sequentially adjacent cells, where adjacent cells are 
+horizontally or vertically neighboring. The same letter cell may not be used more than once.
 
  
 
@@ -2184,12 +2240,14 @@ Input: board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "
 Output: false
 """
 
+
 def exist(self, board: List[List[str]], word: str) -> bool:
   pass
 
 
 """
-You are given an integer array nums. You are initially positioned at the array's first index, and each element in the array represents your maximum jump length at that position.
+You are given an integer array nums. You are initially positioned at the array's first index, 
+and each element in the array represents your maximum jump length at that position.
 
 Return true if you can reach the last index, or false otherwise.
 
@@ -2204,8 +2262,10 @@ Example 2:
 
 Input: nums = [3,2,1,0,4]
 Output: false
-Explanation: You will always arrive at index 3 no matter what. Its maximum jump length is 0, which makes it impossible to reach the last index.
+Explanation: You will always arrive at index 3 no matter what. Its maximum jump length is 0, 
+which makes it impossible to reach the last index.
 """
+
 
 def canJump(self, nums: List[int]) -> bool:
   pass
