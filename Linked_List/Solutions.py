@@ -1,10 +1,13 @@
+import collections
 from typing import Optional
 
 
 class ListNode:
-    def __init__(self, val=0, next=None):
+    def __init__(self, val=0, key=None, next=None, prev=None):
         self.val = val
         self.next = next
+        self.prev = prev
+        self.key = key
 
 
 def add_two_numbers(l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
@@ -110,3 +113,59 @@ def delete_duplicates(head: Optional[ListNode]) -> Optional[ListNode]:
 
 def remove_elements(head: Optional[ListNode], val: int) -> Optional[ListNode]:
     pass
+
+
+class LRUCache:
+
+    def __init__(self, capacity: int):
+        self.head = ListNode(None)
+        self.tail = ListNode(None)
+        self.key_map = collections.defaultdict(ListNode)
+        self.capacity = capacity
+        self.head.next = self.tail
+        self.tail.prev = self.head
+
+    def remove_node(self, node):
+        prev = node.prev
+        new = node.next
+
+        prev.next = new
+        new.prev = prev
+
+    def move_to_head(self, node):
+        self.remove_node(node)
+        self.add_node(node)
+
+    def add_node(self, node):
+        node.prev = self.head
+        node.next = self.head.next
+
+        self.head.next.prev = node
+        self.head.next = node
+
+    def remove_from_tail(self):
+        res = self.tail.prev
+        self.remove_node(res)
+        return res
+
+    def get(self, key: int) -> int:
+        if key not in self.key_map:
+            return -1
+        else:
+            node = self.key_map[key]
+            self.move_to_head(node)
+        return node.val
+
+    def put(self, key: int, value: int) -> None:
+        if key in self.key_map:
+            node = self.key_map[key]
+            self.move_to_head(node)
+            node.val = value
+        else:
+            node = ListNode(key=key, val=value)
+            self.key_map[key] = node
+            if len(self.key_map) > self.capacity:
+                del self.key_map[self.tail.prev.key]
+                self.remove_from_tail()
+
+            self.add_node(node)

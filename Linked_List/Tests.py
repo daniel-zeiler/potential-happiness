@@ -88,3 +88,15 @@ class SolutionsTest(unittest.TestCase, CustomAssertion):
         head = list_builder([1, 1, 2, 3, 3])
         output = list_builder([1, 2, 3])
         self.assert_compare_lists(linked_list.delete_duplicates(head), output)
+
+    def test_LRU_cache(self):
+        lru_cache = linked_list.LRUCache(2)
+        lru_cache.put(1, 1)
+        lru_cache.put(2, 2)
+        self.assertEqual(1, lru_cache.get(1))
+        lru_cache.put(3, 3)
+        self.assertEqual(-1, lru_cache.get(2))
+        lru_cache.put(4, 4)
+        self.assertEqual(-1, lru_cache.get(1))
+        self.assertEqual(3, lru_cache.get(3))
+        self.assertEqual(4, lru_cache.get(4))
