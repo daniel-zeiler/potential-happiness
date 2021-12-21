@@ -1,3 +1,4 @@
+from itertools import product
 from typing import List
 
 """
@@ -24,7 +25,7 @@ Output: 23
 """
 
 
-def maxSubArray(self, nums: List[int]) -> int:
+def maxSubArray(nums: List[int]) -> int:
     pass
 
 
@@ -46,7 +47,7 @@ jump length is 0, which makes it impossible to reach the last index.
 """
 
 
-def canJump(self, nums: List[int]) -> bool:
+def canJump(nums: List[int]) -> bool:
     pass
 
 
@@ -82,7 +83,7 @@ Output: 6
 """
 
 
-def uniquePaths(self, m: int, n: int) -> int:
+def uniquePaths(m: int, n: int) -> int:
     pass
 
 
@@ -104,7 +105,7 @@ Output: 12
 """
 
 
-def minPathSum(self, grid: List[List[int]]) -> int:
+def minPathSum(grid: List[List[int]]) -> int:
     pass
 
 
@@ -181,7 +182,7 @@ Explanation: In this case, no transactions are done and the max profit = 0.
 """
 
 
-def maxProfit(self, prices: List[int]) -> int:
+def maxProfit(prices: List[int]) -> int:
     pass
 
 
@@ -208,7 +209,7 @@ Total amount you can rob = 2 + 9 + 1 = 12.
 """
 
 
-def rob(self, nums: List[int]) -> int:
+def rob(nums: List[int]) -> int:
     pass
 
 
@@ -217,7 +218,12 @@ Given an m x n binary matrix filled with 0's and 1's, find the largest square co
 
 Example 1:
 
-Input: matrix = [["1","0","1","0","0"],["1","0","1","1","1"],["1","1","1","1","1"],["1","0","0","1","0"]]
+Input: matrix = [
+    ["1","0","1","0","0"],
+    ["1","0","1","1","1"],
+    ["1","1","1","1","1"],
+    ["1","0","0","1","0"]
+]
 Output: 4
 Example 2:
 
@@ -256,7 +262,7 @@ Output: 1
 """
 
 
-def lengthOfLIS(self, nums: List[int]) -> int:
+def lengthOfLIS(nums: List[int]) -> int:
     pass
 
 
@@ -278,9 +284,8 @@ Output: false
 """
 
 
-def isSubsequence(self, s: str, t: str) -> bool:
+def isSubsequence(s: str, t: str) -> bool:
     pass
-
 
 """
 You are given an integer array cost where cost[i] is the cost of ith step on a staircase. Once you pay the cost, 

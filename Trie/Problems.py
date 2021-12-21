@@ -35,17 +35,17 @@ from typing import List
 
 class Trie:
 
-  def __init__(self):
-    pass
+    def __init__(self):
+        pass
 
-  def insert(self, word: str) -> None:
-    pass
+    def insert(self, word: str) -> None:
+        pass
 
-  def search(self, word: str) -> bool:
-    pass
+    def search(self, word: str) -> bool:
+        pass
 
-  def startsWith(self, prefix: str) -> bool:
-    pass
+    def starts_with (self, prefix: str) -> bool:
+        pass
 
 
 """
@@ -82,14 +82,14 @@ wordDictionary.search("b.."); // return True
 
 class WordDictionary:
 
-  def __init__(self):
-    pass
+    def __init__(self):
+        pass
 
-  def addWord(self, word: str) -> None:
-    pass
+    def addWord(self, word: str) -> None:
+        pass
 
-  def search(self, word: str) -> bool:
-    pass
+    def search(self, word: str) -> bool:
+        pass
 
 
 # Your WordDictionary object will be instantiated and called as such:
@@ -122,8 +122,8 @@ Output: "a a b c"
 """
 
 
-def replaceWords(self, dictionary: List[str], sentence: str) -> str:
-  pass
+def replaceWords(dictionary: List[str], sentence: str) -> str:
+    pass
 
 
 """
@@ -161,14 +161,14 @@ magicDictionary.search("leetcoded"); // return False
 
 class MagicDictionary:
 
-  def __init__(self):
-    pass
+    def __init__(self):
+        pass
 
-  def buildDict(self, dictionary: List[str]) -> None:
-    pass
+    def buildDict(self, dictionary: List[str]) -> None:
+        pass
 
-  def search(self, searchWord: str) -> bool:
-    pass
+    def search(self, searchWord: str) -> bool:
+        pass
 
 
 # Your MagicDictionary object will be instantiated and called as such:
@@ -209,14 +209,14 @@ mapSum.sum("ap");           // return 5 (apple + app = 3 + 2 = 5)
 
 class MapSum:
 
-  def __init__(self):
-    pass
+    def __init__(self):
+        pass
 
-  def insert(self, key: str, val: int) -> None:
-    pass
+    def insert(self, key: str, val: int) -> None:
+        pass
 
-  def sum(self, prefix: str) -> int:
-    pass
+    def sum(self, prefix: str) -> int:
+        pass
 
 
 # Your MapSum object will be instantiated and called as such:
@@ -249,7 +249,7 @@ occurrence being 4, 3, 2 and 1 respectively.
 
 
 def topKFrequent(self, words: List[str], k: int) -> List[str]:
-  pass
+    pass
 
 
 """
@@ -276,7 +276,7 @@ Explanation: Both "apply" and "apple" can be built from other words in the dicti
 
 
 def longestWord(self, words: List[str]) -> str:
-  pass
+    pass
 
 
 """
@@ -311,4 +311,4 @@ Explanation: "FooBarTest" can be generated like this "Fo" + "o" + "Ba" + "r" + "
 
 
 def camelMatch(self, queries: List[str], pattern: str) -> List[bool]:
-  pass
+    pass
