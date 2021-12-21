@@ -31,3 +31,18 @@ class SolutionsTest(unittest.TestCase):
         sentence = "aadsfasf absbs bbab cadsfafs"
         output = "a a b c"
         self.assertEqual(output, trie.replaceWords(dictionary, sentence))
+
+    def test_magic_dictionary(self):
+        magic_dictionary = trie.MagicDictionary()
+        magic_dictionary.buildDict(["hello", "leetcode"])
+        self.assertEqual(False, magic_dictionary.search("hello"))
+        self.assertEqual(True, magic_dictionary.search("hhllo"))
+        self.assertEqual(False, magic_dictionary.search("hell"))
+        self.assertEqual(False, magic_dictionary.search("leetcoded"))
+
+    def test_map_sum(self):
+        map_sum = trie.MapSum()
+        map_sum.insert("apple", 3)
+        self.assertEqual(3, map_sum.sum("ap"))
+        map_sum.insert("app", 2)
+        self.assertEqual(5, map_sum.sum("ap"))

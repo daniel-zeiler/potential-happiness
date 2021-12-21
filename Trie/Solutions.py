@@ -129,10 +129,73 @@ def replaceWords(dictionary: List[str], sentence: str) -> str:
 class MagicDictionary:
 
     def __init__(self):
-        pass
+        self.head = TrieNode()
 
     def buildDict(self, dictionary: List[str]) -> None:
-        pass
+        def build_character(remaining, node):
+            if not remaining:
+                node.word = True
+            else:
+                if remaining[0] not in node.children:
+                    node.children[remaining[0]] = TrieNode()
+                node = node.children[remaining[0]]
+                build_character(remaining[1:], node)
+
+        for word in dictionary:
+            build_character(word, self.head)
 
     def search(self, searchWord: str) -> bool:
-        pass
+        def search_remaining(forgiven_one, remaining_word, node):
+            if not remaining_word:
+                return node.word is not None and not forgiven_one
+            if remaining_word[0] not in node.children:
+                if forgiven_one:
+                    for child_key in node.children:
+                        if search_remaining(False, remaining_word[1:], node.children[child_key]):
+                            return True
+                return False
+            else:
+                return search_remaining(forgiven_one, remaining_word[1:], node.children[remaining_word[0]])
+
+        return search_remaining(True, searchWord, self.head)
+
+
+class MapSumTrieNode:
+    def __init__(self, value=0):
+        self.children = collections.defaultdict(TrieNode)
+        self.value = value
+
+
+class MapSum:
+
+    def __init__(self):
+        self.head = MapSumTrieNode()
+
+    def insert(self, key: str, val: int) -> None:
+        def insert_remaining(remaining_key, node):
+            if not remaining_key:
+                node.value = val
+            else:
+                if remaining_key[0] not in node.children:
+                    node.children[remaining_key[0]] = MapSumTrieNode()
+                node = node.children[remaining_key[0]]
+                insert_remaining(remaining_key[1:], node)
+
+        insert_remaining(key, self.head)
+
+    def sum(self, prefix: str) -> int:
+        def sum_prefix(remaining_prefix, node):
+            if not remaining_prefix:
+                return sum_gather(node)
+            elif remaining_prefix[0] not in node.children:
+                return 0
+            else:
+                return sum_prefix(remaining_prefix[1:], node.children[remaining_prefix[0]])
+
+        def sum_gather(node):
+            value = node.value
+            for child_key in node.children:
+                value += sum_gather(node.children[child_key])
+            return value
+
+        return sum_prefix(prefix, self.head)
