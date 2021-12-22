@@ -260,3 +260,19 @@ class SolutionsTest(unittest.TestCase):
         nums2 = [9, 4, 9, 8, 4]
         output = [4, 9]
         self.assertEqual(output, array_problems.intersect(nums1, nums2))
+
+    def test_sort_array(self):
+        nums = [5, 2, 3, 1]
+        output = [1, 2, 3, 5]
+        self.assertListEqual(output, array_problems.sortArray(nums))
+        nums = [5, 1, 1, 2, 0, 0]
+        output = [0, 0, 1, 1, 2, 5]
+        self.assertListEqual(output, array_problems.sortArray(nums))
+
+    def test_majority_elements(self):
+        nums = [2, 2, 1, 1, 1, 2, 2]
+        output = 2
+        self.assertEqual(output, array_problems.majorityElement(nums))
+        nums = [3, 2, 3]
+        output = 3
+        self.assertEqual(output, array_problems.majorityElement(nums))

@@ -559,3 +559,48 @@ def intersect(nums1: List[int], nums2: List[int]) -> List[int]:
         else:
             pointer_2 += 1
     return result
+
+
+def sortArray(nums: List[int]) -> List[int]:
+    def merge_sort(nums):
+        if len(nums) > 1:
+            mid_point = len(nums) // 2
+
+            left = nums[:mid_point]
+            right = nums[mid_point:]
+
+            merge_sort(left)
+            merge_sort(right)
+
+            i = j = k = 0
+
+            while i < len(left) and j < len(right):
+                if left[i] < right[j]:
+                    nums[k] = left[i]
+                    i += 1
+                else:
+                    nums[k] = right[j]
+                    j += 1
+                k += 1
+            while i < len(left):
+                nums[k] = left[i]
+                i += 1
+                k += 1
+            while j < len(right):
+                nums[k] = right[j]
+                j += 1
+                k += 1
+
+    merge_sort(nums)
+    return nums
+
+
+def majorityElement(nums: List[int]) -> int:
+    pointer_a, pointer_b = 0, 0
+    while pointer_b < len(nums):
+        if nums[pointer_b] < nums[pointer_a]:
+            nums[pointer_b], nums[pointer_a] = nums[pointer_a], nums[pointer_b]
+            pointer_a += 1
+        else:
+            pointer_b += 1
+    return nums[len(nums) // 2]

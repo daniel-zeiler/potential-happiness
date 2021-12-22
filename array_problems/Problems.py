@@ -1,3 +1,4 @@
+import math
 from typing import List
 
 """
@@ -981,7 +982,7 @@ Output: [0,0,1,1,2,5]
 """
 
 
-def sortArray(self, nums: List[int]) -> List[int]:
+def sortArray(nums: List[int]) -> List[int]:
     pass
 
 
