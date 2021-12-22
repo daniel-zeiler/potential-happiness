@@ -27,6 +27,8 @@ Output: 2
 """
 from typing import List, Optional
 
+from Linked_List.Problems import ListNode
+
 
 def maxArea(self, height: List[int]) -> int:
     pass
