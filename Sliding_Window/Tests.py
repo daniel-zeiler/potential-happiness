@@ -52,3 +52,7 @@ class SolutionsTest(unittest.TestCase):
         minutes = 1
         output = 1
         self.assertEqual(sliding_window.max_satisfied(customers, grumpy, minutes), output)
+
+
+if __name__ == '__main__':
+    unittest.main()

@@ -46,3 +46,7 @@ class SolutionsTest(unittest.TestCase):
         self.assertEqual(3, map_sum.sum("ap"))
         map_sum.insert("app", 2)
         self.assertEqual(5, map_sum.sum("ap"))
+
+
+if __name__ == '__main__':
+    unittest.main()

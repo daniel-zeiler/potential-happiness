@@ -81,3 +81,7 @@ class SolutionsTest(unittest.TestCase):
         nums = [7, 7, 7, 7, 7, 7, 7]
         output = 1
         self.assertEqual(output, dynamic_programming.lengthOfLIS(nums))
+
+
+if __name__ == '__main__':
+    unittest.main()

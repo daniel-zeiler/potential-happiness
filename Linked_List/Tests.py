@@ -100,3 +100,7 @@ class SolutionsTest(unittest.TestCase, CustomAssertion):
         self.assertEqual(-1, lru_cache.get(1))
         self.assertEqual(3, lru_cache.get(3))
         self.assertEqual(4, lru_cache.get(4))
+
+
+if __name__ == '__main__':
+    unittest.main()

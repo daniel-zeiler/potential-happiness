@@ -224,3 +224,5 @@ class SolutionsTest(unittest.TestCase):
         tokens = ["10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"]
         output = 22
         self.assertEqual(output, stack.evalRPN(tokens))
+if __name__ == '__main__':
+    unittest.main()

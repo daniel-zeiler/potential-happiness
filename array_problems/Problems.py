@@ -2083,7 +2083,7 @@ Total amount you can rob = 2 + 9 + 1 = 12.
 """
 
 
-def rob(self, nums: List[int]) -> int:
+def rob(nums: List[int]) -> int:
   pass
 
 
@@ -2106,7 +2106,7 @@ Explanation: Intervals [1,4] and [4,5] are considered overlapping.
 """
 
 
-def merge_2(self, intervals: List[List[int]]) -> List[List[int]]:
+def merge_2(intervals: List[List[int]]) -> List[List[int]]:
   pass
 
 
@@ -2134,7 +2134,7 @@ Output: 0
 """
 
 
-def maximalSquare(self, matrix: List[List[str]]) -> int:
+def maximalSquare(matrix: List[List[str]]) -> int:
   pass
 
 
@@ -2178,7 +2178,7 @@ Thus, the result should be [1,0].
 """
 
 
-def plusOne(self, digits: List[int]) -> List[int]:
+def plusOne(digits: List[int]) -> List[int]:
   pass
 
 
@@ -2204,7 +2204,11 @@ Output: 2
 Example 2:
 
 
-Input: grid = [[0,0,0],[1,1,0],[1,1,0]]
+Input: grid = [
+  [0,0,0],
+  [1,1,0],
+  [1,1,0]
+  ]
 Output: 4
 Example 3:
 
@@ -2213,7 +2217,7 @@ Output: -1
 """
 
 
-def shortestPathBinaryMatrix(self, grid: List[List[int]]) -> int:
+def shortestPathBinaryMatrix(grid: List[List[int]]) -> int:
   pass
 
 
@@ -2243,7 +2247,7 @@ Output: false
 """
 
 
-def exist(self, board: List[List[str]], word: str) -> bool:
+def exist(board: List[List[str]], word: str) -> bool:
   pass
 
 
@@ -2269,5 +2273,5 @@ which makes it impossible to reach the last index.
 """
 
 
-def canJump(self, nums: List[int]) -> bool:
+def canJump(nums: List[int]) -> bool:
   pass

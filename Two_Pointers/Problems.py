@@ -1,5 +1,11 @@
+from typing import List, Optional
+
+from Linked_List.Problems import ListNode
+
 """
-Given n non-negative integers a1, a2, ..., an , where each represents a point at coordinate (i, ai). n vertical lines are drawn such that the two endpoints of the line i is at (i, ai) and (i, 0). Find two lines, which, together with the x-axis forms a container, such that the container contains the most water.
+Given n non-negative integers a1, a2, ..., an , where each represents a point at coordinate (i, ai). n vertical 
+lines are drawn such that the two endpoints of the line i is at (i, ai) and (i, 0). Find two lines, which, 
+together with the x-axis forms a container, such that the container contains the most water. 
 
 Notice that you may not slant the container.
 
@@ -8,10 +14,8 @@ Notice that you may not slant the container.
 Example 1:
 
 
-Input: height = [1,8,6,2,5,4,8,3,7]
-Output: 49
-Explanation: The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. In this case, the max area of water (blue section) the container can contain is 49.
-Example 2:
+Input: height = [1,8,6,2,5,4,8,3,7] Output: 49 Explanation: The above vertical lines are represented by array [1,8,6,
+2,5,4,8,3,7]. In this case, the max area of water (blue section) the container can contain is 49. Example 2: 
 
 Input: height = [1,1]
 Output: 1
@@ -25,12 +29,9 @@ Input: height = [1,2,1]
 Output: 2
 
 """
-from typing import List, Optional
-
-from Linked_List.Problems import ListNode
 
 
-def maxArea(self, height: List[int]) -> int:
+def maxArea(height: List[int]) -> int:
     pass
 
 
@@ -55,7 +56,7 @@ Output: [1]
 """
 
 
-def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
+def removeNthFromEnd(head: Optional[ListNode], n: int) -> Optional[ListNode]:
     pass
 
 
@@ -739,4 +740,26 @@ Explanation: In this case does not exist N and M, such that N = 2 * M.
 
 
 def checkIfExist(self, arr: List[int]) -> bool:
+    pass
+
+
+"""
+Given an array of integers arr and two integers k and threshold, return the number of sub-arrays of size k and average greater than or equal to threshold.
+
+ 
+
+Example 1:
+
+Input: arr = [2,2,2,2,5,5,5,8], k = 3, threshold = 4
+Output: 3
+Explanation: Sub-arrays [2,5,5],[5,5,5] and [5,5,8] have averages 4, 5 and 6 respectively. All other sub-arrays of size 3 have averages less than 4 (the threshold).
+Example 2:
+
+Input: arr = [11,13,17,23,29,31,7,5,2,3], k = 3, threshold = 5
+Output: 6
+Explanation: The first 6 sub-arrays of size 3 have averages greater than 5. Note that averages are not integers.
+"""
+
+
+def numOfSubarrays(self, arr: List[int], k: int, threshold: int) -> int:
     pass
