@@ -1520,7 +1520,7 @@ Output: [1,2]
 """
 
 
-def preorderTraversal(self, root: Optional[Node]) -> List[int]:
+def preorderTraversal(root: Optional[Node]) -> List[int]:
     pass
 
 
@@ -1548,7 +1548,7 @@ Output: []
 """
 
 
-def connect(self, root: 'Node') -> 'Node':
+def connect(root: 'Node') -> 'Node':
     pass
 
 
@@ -1610,7 +1610,7 @@ Explanation: Since the tree is empty, there are no root-to-leaf paths.
 """
 
 
-def hasPathSum(self, root: Optional[Node], targetSum: int) -> bool:
+def hasPathSum(root: Optional[Node], targetSum: int) -> bool:
     pass
 
 
@@ -1633,7 +1633,7 @@ Output: 5
 """
 
 
-def minDepth(self, root: Optional[Node]) -> int:
+def minDepth(root: Optional[Node]) -> int:
     pass
 
 
@@ -1659,7 +1659,7 @@ Output: true
 """
 
 
-def isBalanced(self, root: Optional[Node]) -> bool:
+def isBalanced(root: Optional[Node]) -> bool:
     pass
 
 
@@ -1683,7 +1683,7 @@ Output: []
 """
 
 
-def levelOrderBottom(self, root: Optional[Node]) -> List[List[int]]:
+def levelOrderBottom(root: Optional[Node]) -> List[List[int]]:
     pass
 
 
@@ -1713,7 +1713,7 @@ Output: 1
 """
 
 
-def maxDepth2(self, root: Optional[Node]) -> int:
+def maxDepth2(root: Optional[Node]) -> int:
     pass
 
 
@@ -1737,7 +1737,7 @@ Output: []
 """
 
 
-def zigzagLevelOrder(self, root: Optional[Node]) -> List[List[int]]:
+def zigzagLevelOrder(root: Optional[Node]) -> List[List[int]]:
     pass
 
 
@@ -1779,7 +1779,7 @@ Output: false
 """
 
 
-def isSymmetric(self, root: Optional[Node]) -> bool:
+def isSymmetric(root: Optional[Node]) -> bool:
     pass
 
 
@@ -1804,7 +1804,7 @@ Output: false
 """
 
 
-def isSameTree(self, p: Optional[Node], q: Optional[Node]) -> bool:
+def isSameTree(p: Optional[Node], q: Optional[Node]) -> bool:
     pass
 
 
@@ -1830,7 +1830,7 @@ Explanation: The root node's value is 5 but its right child's value is 4.
 """
 
 
-def isValidBST(self, root: Optional[Node]) -> bool:
+def isValidBST(root: Optional[Node]) -> bool:
     pass
 
 
