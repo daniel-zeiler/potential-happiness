@@ -101,7 +101,7 @@ It does not matter what you leave beyond the returned k (hence they are undersco
 """
 
 
-def removeDuplicates(self, nums: List[int]) -> int:
+def removeDuplicates(nums: List[int]) -> int:
     pass
 
 
@@ -150,7 +150,7 @@ It does not matter what you leave beyond the returned k (hence they are undersco
 """
 
 
-def removeElement(self, nums: List[int], val: int) -> int:
+def removeElement(nums: List[int], val: int) -> int:
     pass
 
 
@@ -182,7 +182,7 @@ Output: [1]
 """
 
 
-def sortColors(self, nums: List[int]) -> None:
+def sortColors(nums: List[int]) -> None:
     """
     Do not return anything, modify nums in-place instead.
     """
@@ -215,7 +215,7 @@ Since an empty string reads the same forward and backward, it is a palindrome.
 """
 
 
-def isPalindrome(self, s: str) -> bool:
+def isPalindrome(s: str) -> bool:
     pass
 
 
@@ -328,7 +328,7 @@ Constraints:
 """
 
 
-def moveZeroes(self, nums: List[int]) -> None:
+def moveZeroes(nums: List[int]) -> None:
     """
     Do not return anything, modify nums in-place instead.
     """
@@ -353,7 +353,7 @@ Output: ["h","a","n","n","a","H"]
 """
 
 
-def reverseString(self, s: List[str]) -> None:
+def reverseString(s: List[str]) -> None:
     """
     Do not return anything, modify s in-place instead.
     """
@@ -377,28 +377,7 @@ Explanation: [4,9] is also accepted.
 """
 
 
-def intersection(self, nums1: List[int], nums2: List[int]) -> List[int]:
-    pass
-
-
-"""
-Given two integer arrays nums1 and nums2, return an array of their intersection. Each element in the result must appear as many times as it shows in both arrays and you may return the result in any order.
-
- 
-
-Example 1:
-
-Input: nums1 = [1,2,2,1], nums2 = [2,2]
-Output: [2,2]
-Example 2:
-
-Input: nums1 = [4,9,5], nums2 = [9,4,9,8,4]
-Output: [4,9]
-Explanation: [9,4] is also accepted.
-"""
-
-
-def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
+def intersection(nums1: List[int], nums2: List[int]) -> List[int]:
     pass
 
 
