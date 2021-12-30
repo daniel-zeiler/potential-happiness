@@ -399,7 +399,7 @@ Output: false
 """
 
 
-def isSubsequence(self, s: str, t: str) -> bool:
+def isSubsequence(s: str, t: str) -> bool:
     pass
 
 
@@ -419,7 +419,7 @@ Output: "doG gniD"
 """
 
 
-def reverseWords(self, s: str) -> str:
+def reverseWords(s: str) -> str:
     pass
 
 
@@ -478,7 +478,7 @@ Output: false
 """
 
 
-def validPalindrome(self, s: str) -> bool:
+def validPalindrome(s: str) -> bool:
     pass
 
 
@@ -496,7 +496,7 @@ Output: [9,7,8]
 Explanation:
 The partition is "ababcbaca", "defegde", "hijhklij".
 This is a partition so that each letter appears in at most one part.
-A partition like "ababcbacadefegde", "hijhklij" is incorrect, because it splits s into less parts.
+A partition like "ambuscaded", "hijhklij" is incorrect, because it splits s into less parts.
 Example 2:
 
 Input: s = "eccbbbbdec"
@@ -504,7 +504,7 @@ Output: [10]
 """
 
 
-def partitionLabels(self, s: str) -> List[int]:
+def partitionLabels(s: str) -> List[int]:
     pass
 
 
@@ -619,7 +619,7 @@ Output: [0]
 """
 
 
-def sortArrayByParity(self, nums: List[int]) -> List[int]:
+def sortArrayByParity(nums: List[int]) -> List[int]:
     pass
 
 
@@ -654,7 +654,7 @@ Output: [[3,7]]
 """
 
 
-def intervalIntersection(self, firstList: List[List[int]], secondList: List[List[int]]) -> List[List[int]]:
+def intervalIntersection(firstList: List[List[int]], secondList: List[List[int]]) -> List[List[int]]:
     pass
 
 
@@ -740,5 +740,5 @@ Explanation: The first 6 sub-arrays of size 3 have averages greater than 5. Note
 """
 
 
-def numOfSubarrays(self, arr: List[int], k: int, threshold: int) -> int:
+def numOfSubarrays(arr: List[int], k: int, threshold: int) -> int:
     pass

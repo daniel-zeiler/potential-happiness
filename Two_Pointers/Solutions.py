@@ -1,3 +1,4 @@
+import collections
 from typing import List, Optional
 
 from Linked_List.Problems import ListNode
@@ -130,4 +131,139 @@ def reverseString(s: List[str]) -> None:
 
 
 def intersection(nums1: List[int], nums2: List[int]) -> List[int]:
-    pass
+    result = []
+    nums1 = sorted(nums1)
+    nums2 = sorted(nums2)
+    pointer_1 = 0
+    pointer_2 = 0
+    while pointer_1 < len(nums1) and pointer_2 < len(nums2):
+        if nums1[pointer_1] == nums2[pointer_2]:
+            if not result or result[-1] != nums1[pointer_1]:
+                result.append(nums1[pointer_1])
+        if nums1[pointer_1] <= nums2[pointer_2]:
+            pointer_1 += 1
+        else:
+            pointer_2 += 1
+
+    return result
+
+
+def isSubsequence(s: str, t: str) -> bool:
+    s_pointer = 0
+    t_pointer = 0
+    while t_pointer < len(t):
+        if s[s_pointer] == t[t_pointer]:
+            s_pointer += 1
+        if s_pointer == len(s):
+            return True
+        t_pointer += 1
+    return False
+
+
+def reverseWords(s: str) -> str:
+    s = list(s)
+    word_pointer = 0
+    for read_pointer, character in enumerate(s):
+        if character == ' ':
+            s[word_pointer:read_pointer] = s[word_pointer:read_pointer][::-1]
+            word_pointer = read_pointer + 1
+    s[word_pointer:len(s)] = s[word_pointer:len(s)][::-1]
+    return ''.join(s)
+
+
+def validPalindrome(s: str) -> bool:
+    def check_palindrome(start_pointer, end_pointer):
+        while start_pointer <= end_pointer:
+            if s[start_pointer] != s[end_pointer]:
+                return False
+            start_pointer += 1
+            end_pointer -= 1
+        return True
+
+    start_pointer = 0
+    end_pointer = len(s) - 1
+    while start_pointer <= end_pointer:
+        if s[start_pointer] != s[end_pointer]:
+            return check_palindrome(start_pointer + 1, end_pointer) or check_palindrome(start_pointer,
+                                                                                        end_pointer - 1)
+        start_pointer += 1
+        end_pointer -= 1
+    return True
+
+
+def partitionLabels(s: str) -> List[int]:
+    letter_map = collections.defaultdict(list)
+    for index, letter in enumerate(s):
+        if letter not in letter_map:
+            letter_map[letter] = [index, index]
+        else:
+            letter_map[letter][1] = index
+
+    label_ranges = sorted(letter_map.values(), key=lambda x: x[0])
+    partitions = []
+
+    for index, label_range in enumerate(label_ranges):
+        if not partitions:
+            partitions.append(label_range)
+        else:
+            if label_range[0] <= partitions[-1][1]:
+                partitions[-1][1] = max(label_range[1], partitions[-1][-1])
+            else:
+                partitions.append(label_range)
+
+    return [x[1] - x[0] + 1 for x in partitions]
+
+
+def sortArrayByParity(nums: List[int]) -> List[int]:
+    even_pointer = 0
+    for read_pointer, num in enumerate(nums):
+        if num % 2 == 0:
+            nums[even_pointer], nums[read_pointer] = nums[read_pointer], nums[even_pointer]
+            even_pointer += 1
+    return nums
+
+
+def intervalIntersection(firstList: List[List[int]], secondList: List[List[int]]) -> List[List[int]]:
+    firstList.sort(key=lambda x: x[0])
+    secondList.sort(key=lambda x: x[0])
+    first_pointer = 0
+    second_pointer = 0
+
+    intersection = []
+
+    while first_pointer < len(firstList) and second_pointer < len(secondList):
+
+        if secondList[second_pointer][0] <= firstList[first_pointer][0] <= secondList[second_pointer][1]:
+            intersection.append(
+                [firstList[first_pointer][0], min(firstList[first_pointer][1], secondList[second_pointer][1])])
+        if firstList[first_pointer][0] <= secondList[second_pointer][0] <= firstList[first_pointer][1]:
+            intersection.append(
+                [secondList[second_pointer][0], min(firstList[first_pointer][1], secondList[second_pointer][1])])
+        if firstList[first_pointer][0] < secondList[second_pointer][0]:
+            first_pointer += 1
+        else:
+            second_pointer += 1
+
+    return intersection
+
+
+def numOfSubarraysTwo(arr: List[int], k: int, threshold: int) -> int:
+    result = 0
+    if not arr or k > len(arr):
+        return result
+
+    sum_in_sub_array = sum(arr[:k])
+    if sum_in_sub_array / k >= threshold:
+        result += 1
+
+    pointer_a, pointer_b = 0, k
+
+    while pointer_b < len(arr):
+        sum_in_sub_array += -arr[pointer_a] + arr[pointer_b]
+        if sum_in_sub_array / k >= threshold:
+            result += 1
+
+        pointer_b += 1
+        pointer_a += 1
+
+    return result

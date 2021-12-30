@@ -104,7 +104,79 @@ class SolutionsTest(unittest.TestCase, linked_list.CustomAssertion):
         self.assertListEqual(output, s)
 
     def test_intersection(self):
-        pass
+        nums1 = [1, 2, 2, 1]
+        nums2 = [2, 2]
+        output = [2]
+        self.assertListEqual(output, two_pointer.intersection(nums1, nums2))
+        nums1 = [4, 9, 5]
+        nums2 = [9, 4, 9, 8, 4]
+        output = [4, 9]
+        self.assertListEqual(output, two_pointer.intersection(nums1, nums2))
+
+    def test_is_subsequence(self):
+        s = "abc"
+        t = "ahbgdc"
+        output = True
+        self.assertEqual(output, two_pointer.isSubsequence(s, t))
+        s = "axc"
+        t = "ahbgdc"
+        output = False
+        self.assertEqual(output, two_pointer.isSubsequence(s, t))
+
+    def test_reverse(self):
+        s = "Let's take LeetCode contest"
+        output = "s'teL ekat edoCteeL tsetnoc"
+        self.assertEqual(output, two_pointer.reverseWords(s))
+        s = "God Ding"
+        output = "doG gniD"
+        self.assertEqual(output, two_pointer.reverseWords(s))
+
+    def test_valid_palindrome(self):
+        s = "aba"
+        self.assertEqual(True, two_pointer.validPalindrome(s))
+        s = "abca"
+        self.assertEqual(True, two_pointer.validPalindrome(s))
+        s = "abc"
+        self.assertEqual(False, two_pointer.validPalindrome(s))
+
+    def test_partition_labels(self):
+        s = "ababcbacadefegdehijhklij"
+        output = [9, 7, 8]
+        self.assertListEqual(output, two_pointer.partitionLabels(s))
+        s = "eccbbbbdec"
+        output = [10]
+        self.assertListEqual(output, two_pointer.partitionLabels(s))
+
+    def test_sort_array_by_parity(self):
+        nums = [3, 1, 2, 4]
+        output = [2, 4, 3, 1]
+        self.assertListEqual(output, two_pointer.sortArrayByParity(nums))
+
+    def test_interval_intersection(self):
+        firstList = [[0, 2], [5, 10], [13, 23], [24, 25]]
+        secondList = [[1, 5], [8, 12], [15, 24], [25, 26]]
+        output = [[1, 2], [5, 5], [8, 10], [15, 23], [24, 24], [25, 25]]
+        self.assertListEqual(output, two_pointer.intervalIntersection(firstList, secondList))
+        firstList = [[1, 3], [5, 9]]
+        secondList = []
+        output = []
+        self.assertListEqual(output, two_pointer.intervalIntersection(firstList, secondList))
+        firstList = []
+        secondList = [[4, 8], [10, 12]]
+        output = []
+        self.assertListEqual(output, two_pointer.intervalIntersection(firstList, secondList))
+        firstList = [[1, 7]]
+        secondList = [[3, 10]]
+        output = [[3, 7]]
+        self.assertListEqual(output, two_pointer.intervalIntersection(firstList, secondList))
+
+    def test_num_of_sub_arrays(self):
+        arr = [2, 2, 2, 2, 5, 5, 5, 8]
+        k = 3
+        threshold = 4
+        output = 3
+        self.assertEqual(output, two_pointer.numOfSubarraysTwo(arr, k, threshold))
+        self.assertEqual(output, two_pointer.numOfSubarrays(arr, k, threshold))
 
 
 if __name__ == '__main__':
