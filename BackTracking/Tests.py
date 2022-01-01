@@ -106,10 +106,10 @@ class SolutionsTest(unittest.TestCase):
     def test_subsets(self):
         nums = [1, 2, 3]
         output = [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
-        self.assertListEqual(output, backtracking.subsets(nums))
+        self.assertCountEqual(output, backtracking.subsets(nums))
         nums = [0]
         output = [[], [0]]
-        self.assertListEqual(output, backtracking.subsets(nums))
+        self.assertCountEqual(output, backtracking.subsets(nums))
 
 
 if __name__ == '__main__':

@@ -315,5 +315,5 @@ Path to get the maximum gold, 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7.
 """
 
 
-def get_maximum_gold(grid: List[List[int]]) -> int:
+def f(grid: List[List[int]]) -> int:
     pass

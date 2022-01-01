@@ -51,3 +51,27 @@ def keys_and_rooms(rooms: List[List[int]]) -> bool:
                 if adjacent not in visited:
                     queue.append(adjacent)
     return len(visited) == len(rooms)
+
+
+def redundant_connections(edges):
+    parents = [i for i in range(len(edges) + 1)]
+
+    def find(x):
+        parent_x = parents[x]
+        if parent_x == x:
+            return x
+        return find(parent_x)
+
+    def union(x, y):
+        parent_x = find(x)
+        parent_y = find(y)
+        if parent_x == parent_y:
+            return False
+        parents[parent_x] = parent_y
+        return True
+
+    result = []
+    for origin, destination in edges:
+        if not union(origin, destination):
+            result.append([origin, destination])
+    return result[-1]

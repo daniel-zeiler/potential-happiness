@@ -50,6 +50,14 @@ class SolutionsTest(unittest.TestCase):
         output = False
         self.assertEqual(output, graph.keys_and_rooms(rooms))
 
+    def test_redundant_connections(self):
+        edges = [[1, 2], [1, 3], [2, 3]]
+        output = [2, 3]
+        self.assertListEqual(output, graph.redundant_connections(edges))
+        edges = [[1, 2], [2, 3], [3, 4], [1, 4], [1, 5]]
+        output = [1, 4]
+        self.assertListEqual(output, graph.redundant_connections(edges))
+
 
 if __name__ == '__main__':
     unittest.main()

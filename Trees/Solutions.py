@@ -745,3 +745,34 @@ def inorderTraversal(root: Optional[Node]) -> List[int]:
         result.append(root.val)
         result.extend(inorderTraversal(root.right))
     return result
+
+
+def pathSum(root: Optional[Node], targetSum: int) -> List[List[int]]:
+    result = []
+
+    def traverse(node, path_so_far, target_remaining):
+        if node:
+            if not node.left and not node.right and target_remaining - node.val == 0:
+                result.append(path_so_far + [node.val])
+            else:
+                traverse(node.left, path_so_far + [node.val], target_remaining - node.val)
+                traverse(node.right, path_so_far + [node.val], target_remaining - node.val)
+
+    traverse(root, [], targetSum)
+    return result
+
+
+def sumRootToLeaf(root: Optional[Node]) -> int:
+    result = 0
+
+    def traverse(node, value_so_far):
+        if node:
+            if not node.left and not node.right:
+                nonlocal result
+                result += int(value_so_far + str(node.val), 2)
+            else:
+                traverse(node.left, value_so_far + str(node.val))
+                traverse(node.right, value_so_far + str(node.val))
+
+    traverse(root, '')
+    return result

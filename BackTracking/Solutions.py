@@ -166,4 +166,13 @@ def letter_case_permutations(s: str) -> List[str]:
 
 
 def subsets(nums: List[int]) -> List[List[int]]:
-    pass
+    result = []
+
+    def traverse(nums_remaining, nums_so_far):
+        result.append(nums_so_far)
+        if nums_remaining:
+            for i, num in enumerate(nums_remaining):
+                traverse(nums_remaining[i + 1:], nums_so_far + [num])
+
+    traverse(nums, [])
+    return result

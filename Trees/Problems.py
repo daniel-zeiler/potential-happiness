@@ -1864,3 +1864,61 @@ Output: [1,2]
 
 def inorderTraversal(self, root: Optional[Node]) -> List[int]:
     pass
+
+
+"""
+Given the root of a binary tree and an integer targetSum, return all root-to-leaf paths where the sum of the node values in the path equals targetSum. Each path should be returned as a list of the node values, not node references.
+
+A root-to-leaf path is a path starting from the root and ending at any leaf node. A leaf is a node with no children.
+
+ 
+
+Example 1:
+
+
+Input: root = [5,4,8,11,null,13,4,7,2,null,null,5,1], targetSum = 22
+Output: [[5,4,11,2],[5,8,4,5]]
+Explanation: There are two paths whose sum equals targetSum:
+5 + 4 + 11 + 2 = 22
+5 + 8 + 4 + 5 = 22
+Example 2:
+
+
+Input: root = [1,2,3], targetSum = 5
+Output: []
+Example 3:
+
+Input: root = [1,2], targetSum = 0
+Output: []
+"""
+
+
+def pathSum(root: Optional[Node], targetSum: int) -> List[List[int]]:
+    pass
+
+
+"""
+You are given the root of a binary tree where each node has a value 0 or 1. Each root-to-leaf path represents a binary number starting with the most significant bit.
+
+For example, if the path is 0 -> 1 -> 1 -> 0 -> 1, then this could represent 01101 in binary, which is 13.
+For all leaves in the tree, consider the numbers represented by the path from the root to that leaf. Return the sum of these numbers.
+
+The test cases are generated so that the answer fits in a 32-bits integer.
+
+ 
+
+Example 1:
+
+
+Input: root = [1,0,1,0,1,0,1]
+Output: 22
+Explanation: (100) + (101) + (110) + (111) = 4 + 5 + 6 + 7 = 22
+Example 2:
+
+Input: root = [0]
+Output: 0
+"""
+
+
+def sumRootToLeaf(root: Optional[Node]) -> int:
+    pass
