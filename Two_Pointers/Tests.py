@@ -2,46 +2,53 @@ import unittest
 from typing import List
 
 import Two_Pointers.Solutions as two_pointer
+import Two_Pointers.Solutions_Two as two_pointer_two
 import Linked_List.Tests as linked_list
 
+def print_list(head: linked_list.ListNode):
+    result = []
+    while head:
+        result.append(head.val)
+        head = head.next
+    print(result)
 
 class SolutionsTest(unittest.TestCase, linked_list.CustomAssertion):
     def test_max_area(self):
         height = [1, 8, 6, 2, 5, 4, 8, 3, 7]
         output = 49
-        self.assertEqual(output, two_pointer.maxArea(height))
+        self.assertEqual(output, two_pointer_two.maxArea(height))
         height = [1, 1]
         output = 1
-        self.assertEqual(output, two_pointer.maxArea(height))
+        self.assertEqual(output, two_pointer_two.maxArea(height))
         height = [4, 3, 2, 1, 4]
         output = 16
-        self.assertEqual(output, two_pointer.maxArea(height))
+        self.assertEqual(output, two_pointer_two.maxArea(height))
         height = [1, 2, 1]
         output = 2
-        self.assertEqual(output, two_pointer.maxArea(height))
+        self.assertEqual(output, two_pointer_two.maxArea(height))
 
     def test_remove_nth_from_end(self):
         input = linked_list.list_builder([1, 2, 3, 4, 5])
         n = 2
         output = linked_list.list_builder([1, 2, 3, 5])
-        self.assert_compare_lists(output, two_pointer.removeNthFromEnd(input, n))
+        self.assert_compare_lists(output, two_pointer_two.removeNthFromEnd(input, n))
         input = linked_list.list_builder([1, 2])
         n = 1
         output = linked_list.list_builder([1])
-        self.assert_compare_lists(output, two_pointer.removeNthFromEnd(input, n))
+        self.assert_compare_lists(output, two_pointer_two.removeNthFromEnd(input, n))
         input = linked_list.list_builder([1])
         n = 1
         output = linked_list.list_builder([])
-        self.assert_compare_lists(output, two_pointer.removeNthFromEnd(input, n))
+        self.assert_compare_lists(output, two_pointer_two.removeNthFromEnd(input, n))
 
     def test_remove_duplicates(self):
         nums = [1, 1, 2]
         output = 2
-        self.assertEqual(output, two_pointer.removeDuplicates(nums))
+        self.assertEqual(output, two_pointer_two.removeDuplicates(nums))
         self.assertListEqual([1, 2], nums[:2])
         nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
         output = 5
-        self.assertEqual(output, two_pointer.removeDuplicates(nums))
+        self.assertEqual(output, two_pointer_two.removeDuplicates(nums))
         self.assertListEqual([0, 1, 2, 3, 4], nums[:5])
 
     def test_remove_elements(self):

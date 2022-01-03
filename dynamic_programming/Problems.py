@@ -287,6 +287,7 @@ Output: false
 def isSubsequence(s: str, t: str) -> bool:
     pass
 
+
 """
 You are given an integer array cost where cost[i] is the cost of ith step on a staircase. Once you pay the cost, 
 you can either climb one or two steps. 
@@ -317,7 +318,7 @@ The total cost is 6.
 """
 
 
-def minCostClimbingStairs(self, cost: List[int]) -> int:
+def minCostClimbingStairs(cost: List[int]) -> int:
     pass
 
 
@@ -341,7 +342,7 @@ Explanation: The falling path with a minimum sum is shown.
 """
 
 
-def minFallingPathSum(self, matrix: List[List[int]]) -> int:
+def minFallingPathSum(matrix: List[List[int]]) -> int:
     pass
 
 
@@ -367,7 +368,7 @@ Output: 1389537
 """
 
 
-def tribonacci(self, n: int) -> int:
+def tribonacci(n: int) -> int:
     pass
 
 
@@ -399,7 +400,7 @@ Explanation: There is no such common subsequence, so the result is 0.
 """
 
 
-def longestCommonSubsequence(self, text1: str, text2: str) -> int:
+def longestCommonSubsequence(text1: str, text2: str) -> int:
     pass
 
 
@@ -436,5 +437,34 @@ Total number of squares = 6 + 1 = 7.
 """
 
 
-def countSquares(self, matrix: List[List[int]]) -> int:
+def countSquares(matrix: List[List[int]]) -> int:
+    pass
+
+
+"""
+Given a string s and a dictionary of strings wordDict, return true if s can be segmented into a space-separated sequence of one or more dictionary words.
+
+Note that the same word in the dictionary may be reused multiple times in the segmentation.
+
+ 
+
+Example 1:
+
+Input: s = "leetcode", wordDict = ["leet","code"]
+Output: true
+Explanation: Return true because "leetcode" can be segmented as "leet code".
+Example 2:
+
+Input: s = "applepenapple", wordDict = ["apple","pen"]
+Output: true
+Explanation: Return true because "applepenapple" can be segmented as "apple pen apple".
+Note that you are allowed to reuse a dictionary word.
+Example 3:
+
+Input: s = "catsandog", wordDict = ["cats","dog","sand","and","cat"]
+Output: false
+"""
+
+
+def wordBreak(s: str, wordDict: List[str]) -> bool:
     pass

@@ -2259,3 +2259,28 @@ which makes it impossible to reach the last index.
 
 def canJump(nums: List[int]) -> bool:
     pass
+
+
+"""
+Find the first and last occurence of K in the sorted list nums.
+
+Example 1:
+Input: nums = [1,1,1,1,1,2,2,3,4,5,5,5,5,6], k = 1
+Output: [0,4]
+
+Example 2:
+Input: nums = [1,1,1,1,1,2,2,3,4,5,5,5,5,6], k = 5
+Output: [9,12]
+
+Example 2:
+Input: nums = [1,1,1,1,1,2,2,3,4,5,5,5,5,6], k = 4
+Output: [8,8]
+
+Example 2:
+Input: nums = [1,1,1,1,1,2,2,3,4,5,5,5,5,6,11], k = 10
+Output: []
+"""
+
+
+def first_and_last_of_k(nums: List[int]) -> List[int]:
+    pass

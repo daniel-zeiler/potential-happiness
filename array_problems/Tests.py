@@ -571,6 +571,18 @@ class SolutionsTest(unittest.TestCase):
         output = False
         self.assertEqual(output, array_problems.canJump(nums))
 
+    def test_first_and_last_k(self):
+        nums = [1, 1, 1, 1, 1, 2, 2, 3, 4, 5, 5, 5, 5, 6]
+        k = 1
+        self.assertListEqual([0, 4], array_problems.first_and_last_of_k(nums, k))
+        nums = [1, 1, 1, 1, 1, 2, 2, 3, 4, 5, 5, 5, 5, 6, 11]
+        k = 10
+        array_problems.first_and_last_of_k(nums, k)
+        self.assertListEqual([-1, -1], array_problems.first_and_last_of_k(nums, k))
+        nums = [1, 1, 1, 1, 1, 2, 2, 3, 4, 5, 5, 5, 5, 6]
+        k = 3
+        self.assertListEqual([7, 7], array_problems.first_and_last_of_k(nums, k))
+
 
 if __name__ == '__main__':
     unittest.main()

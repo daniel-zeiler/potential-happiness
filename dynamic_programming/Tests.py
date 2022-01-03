@@ -82,6 +82,71 @@ class SolutionsTest(unittest.TestCase):
         output = 1
         self.assertEqual(output, dynamic_programming.lengthOfLIS(nums))
 
+    def test_is_subsequence(self):
+        s = "abc"
+        t = "ahbgdc"
+        output = True
+        self.assertEqual(output, dynamic_programming.isSubsequence(s, t))
+
+        s = "axc"
+        t = "ahbgdc"
+        output = False
+        self.assertEqual(output, dynamic_programming.isSubsequence(s, t))
+
+    def test_min_cost_climbing_stiars(self):
+        cost = [1, 100, 1, 1, 1, 100, 1, 1, 100, 1]
+        output = 6
+        self.assertEqual(output, dynamic_programming.minCostClimbingStairs(cost))
+        cost = [10, 15, 20]
+        output = 15
+        self.assertEqual(output, dynamic_programming.minCostClimbingStairs(cost))
+
+    def test_min_path_falling(self):
+        matrix = [[2, 1, 3], [6, 5, 4], [7, 8, 9]]
+        output = 13
+        self.assertEqual(output, dynamic_programming.minFallingPathSum(matrix))
+        matrix = [[-19, 57], [-40, -5]]
+        output = -59
+        self.assertEqual(output, dynamic_programming.minFallingPathSum(matrix))
+
+    def test_tribonacci(self):
+        n = 4
+        output = 4
+        self.assertEqual(output, dynamic_programming.tribonacci(n))
+        n = 25
+        output = 1389537
+        self.assertEqual(output, dynamic_programming.tribonacci(n))
+
+    def test_longest_common_subsequence(self):
+        text1 = "abcde"
+        text2 = "ace"
+        output = 3
+        self.assertEqual(output, dynamic_programming.longestCommonSubsequence(text1, text2))
+        text1 = "abc"
+        text2 = "abc"
+        output = 3
+        self.assertEqual(output, dynamic_programming.longestCommonSubsequence(text1, text2))
+        text1 = "abc"
+        text2 = "def"
+        output = 0
+        self.assertEqual(output, dynamic_programming.longestCommonSubsequence(text1, text2))
+
+    def test_count_squares(self):
+        matrix = [
+            [0, 1, 1, 1],
+            [1, 1, 1, 1],
+            [0, 1, 1, 1]
+        ]
+        output = 15
+        self.assertEqual(output, dynamic_programming.countSquares(matrix))
+        matrix = [
+            [1, 0, 1],
+            [1, 1, 0],
+            [1, 1, 0]
+        ]
+        output = 7
+        self.assertEqual(output, dynamic_programming.countSquares(matrix))
+
 
 if __name__ == '__main__':
     unittest.main()

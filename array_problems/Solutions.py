@@ -895,3 +895,48 @@ def canJump(nums: List[int]) -> bool:
             if 0 <= i + j < len(nums):
                 result[i + j] += 1
     return result[-1] != 0
+
+
+def first_and_last_of_k(nums: List[int], k) -> List[int]:
+    def binary_search(low, high):
+        if low > high:
+            return -1
+        mid_point = int((high + low) / 2)
+        value = nums[mid_point]
+        if value == k:
+            return mid_point
+        elif value > k:
+            return binary_search(low, mid_point - 1)
+        else:
+            return binary_search(mid_point + 1, high)
+
+    occurance = binary_search(0, len(nums) - 1)
+    result = [occurance, occurance]
+    if occurance == -1:
+        return result
+
+    def bisect_left(low, high):
+        if low > high:
+            return
+        mid_point = int((high + low) / 2)
+        value = nums[mid_point]
+        if value == k:
+            result[0] = mid_point
+            bisect_left(low, mid_point - 1)
+        else:
+            bisect_left(mid_point + 1, high)
+
+    def bisect_right(low, high):
+        if low > high:
+            return
+        mid_point = int((high + low) / 2)
+        value = nums[mid_point]
+        if value == k:
+            result[1] = mid_point
+            bisect_right(mid_point + 1, high)
+        else:
+            bisect_right(low, mid_point - 1)
+
+    bisect_left(0, occurance)
+    bisect_right(occurance, len(nums) - 1)
+    return result
