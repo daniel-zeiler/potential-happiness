@@ -94,14 +94,18 @@ def maximalSquare(matrix: List[List[str]]) -> int:
 
 
 def lengthOfLIS(nums: List[int]) -> int:
-    result = [1 for _ in range(len(nums))]
-    for i, num in enumerate(nums):
-        if i:
-            if num > nums[i - 1]:
-                result[i] += result[i - 1]
-            else:
-                result[i] = result[i - 1]
-    return result[-1]
+    if not nums:
+        return 0
+
+    n = len(nums)
+    dp = [1] * n
+
+    for i in range(1, n):
+        for j in range(i):
+            if nums[i] > nums[j]:
+                dp[i] = max(dp[i], 1 + dp[j])
+
+    return max(dp)
 
 
 def isSubsequence(s: str, t: str) -> bool:
