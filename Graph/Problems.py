@@ -214,7 +214,8 @@ def maximal_network_rank(n, roads):
     pass
 
 
-"""There is a directed graph of n nodes with each node labeled from 0 to n - 1. The graph is represented by a 
+"""
+There is a directed graph of n nodes with each node labeled from 0 to n - 1. The graph is represented by a 
 0-indexed 2D integer array graph where graph[i] is an integer array of nodes adjacent to node i, meaning there is an 
 edge from node i to each node in graph[i]. 
 

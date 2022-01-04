@@ -1,0 +1,34 @@
+Maxar
+    Analysis Ready Data Platform
+        Serverless application backed by a custom data store.
+        Earth divided into successive quadtrees.  Each node containing metadata about that region
+        This allowed our analysts and ML engineers to share a common interface to better serve our
+        end users.
+
+    Automated ML Infrastructure Deployment for continuous delivery
+        We also created a way for analysts to automate the deployment of machine learning infrastructure
+        on top of our analysis ready data platform.  This allowed for the continous delivery of data
+        products to our end-users, significantly cut down on developer overhead, and standardized
+        practices with which we created and delivered our products.
+
+        For example, an analyst would delineate a bounding box within the ARD platform and designate
+        which models to execute and we would take care of the rest so everytime new imagery arrives
+        within this region, infra will be in place to batch-process and classify the imagery.
+
+    DARPA contract
+        I also worked on a Darpa (or Defense Advanced Research Project Association) project. This
+        was essentially a way for our users to have a common interface for a number of different
+        models and data sources.
+
+Reality Analytics
+    Machine Learning Training, Validation, Deployment Application
+
+    4th employee at AI startup
+
+Twitter
+    Looker
+        Business Intelligence Tool used by Analysts to better understand business operations and make
+        impactful decisions.  Custom infrastructure to integrate this tool within Twitter and interface
+        with Twitter specific datasources.
+
+        Kubernetes.

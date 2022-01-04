@@ -58,6 +58,36 @@ class SolutionsTest(unittest.TestCase):
         output = [1, 4]
         self.assertListEqual(output, graph.redundant_connections(edges))
 
+    def test_maximal_network_rank(self):
+        n = 4
+        roads = [[0, 1], [0, 3], [1, 2], [1, 3]]
+        output = 4
+        self.assertEqual(output, graph.maximal_network_rank(n, roads))
+        n = 5
+        roads = [[0, 1], [0, 3], [1, 2], [1, 3], [2, 3], [2, 4]]
+        output = 5
+        self.assertEqual(output, graph.maximal_network_rank(n, roads))
+        n = 8
+        roads = [[0, 1], [1, 2], [2, 3], [2, 4], [5, 6], [5, 7]]
+        output = 5
+        self.assertEqual(output, graph.maximal_network_rank(n, roads))
+
+    def test_find_eventual_safe(self):
+        input = [[1, 2], [2, 3], [5], [0], [5], [], []]
+        output = [2, 4, 5, 6]
+        self.assertListEqual(output, graph.find_eventual_safe_nodes(input))
+        input = [[1, 2, 3, 4], [1, 2], [3, 4], [0, 4], []]
+        output = [4]
+        self.assertListEqual(output, graph.find_eventual_safe_nodes(input))
+
+    def test_is_graph_bipartite(self):
+        input = [[1, 2, 3], [0, 2], [0, 1, 3], [0, 2]]
+        output = False
+        self.assertEqual(output, graph.is_graph_bipartite(input))
+        input = [[1, 3], [0, 2], [1, 3], [0, 2]]
+        output = True
+        self.assertEqual(output, graph.is_graph_bipartite(input))
+
 
 if __name__ == '__main__':
     unittest.main()

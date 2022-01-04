@@ -583,6 +583,14 @@ class SolutionsTest(unittest.TestCase):
         k = 3
         self.assertListEqual([7, 7], array_problems.first_and_last_of_k(nums, k))
 
+    def test_toeplitze_matrix(self):
+        matrix = [[1, 2, 3, 4], [5, 1, 2, 3], [9, 5, 1, 2]]
+        output = True
+        self.assertEqual(output, array_problems.isToeplitzMatrix(matrix))
+        matrix = [[1, 2], [2, 2]]
+        output = False
+        self.assertEqual(output, array_problems.isToeplitzMatrix(matrix))
+
 
 if __name__ == '__main__':
     unittest.main()

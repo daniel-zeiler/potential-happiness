@@ -940,3 +940,12 @@ def first_and_last_of_k(nums: List[int], k) -> List[int]:
     bisect_left(0, occurance)
     bisect_right(occurance, len(nums) - 1)
     return result
+
+
+def isToeplitzMatrix(matrix: List[List[int]]) -> bool:
+    for x, row in enumerate(matrix):
+        for y, value in enumerate(row):
+            if x != 0 and y != 0:
+                if value != matrix[x - 1][y - 1]:
+                    return False
+    return True

@@ -75,3 +75,62 @@ def redundant_connections(edges):
         if not union(origin, destination):
             result.append([origin, destination])
     return result[-1]
+
+
+def maximal_network_rank(n, roads):
+    def get_graph(edges):
+        graph = collections.defaultdict(set)
+        for origin, destination in edges:
+            graph[origin].add(destination)
+            graph[destination].add(origin)
+        return graph
+
+    graph = get_graph(roads)
+    result = 0
+    for i in range(n):
+        for j in range(i + 1, n):
+            network_rank_i = len(graph[i])
+            network_rank_j = len(graph[j])
+            network_rank_pair = network_rank_j + network_rank_i
+            if i in graph[j]:
+                network_rank_pair -= 1
+            result = max(result, network_rank_pair)
+    return result
+
+
+def find_eventual_safe_nodes(graph):
+    result = []
+
+    def is_safe(index, neighbors, visited):
+        if index in visited:
+            return False
+        visited.add(index)
+        for neighbor in neighbors:
+            if not is_safe(neighbor, graph[neighbor], visited):
+                return False
+        return True
+
+    for index, adjacent in enumerate(graph):
+        if is_safe(index, adjacent, set()):
+            result.append(index)
+    return result
+
+
+def is_graph_bipartite(graph):
+    color = {}
+
+    def traverse(origin):
+        for adjacent in graph[origin]:
+            if adjacent in color and color[adjacent] == color[origin]:
+                return False
+            elif adjacent not in color:
+                color[adjacent] = not color[origin]
+                traverse(adjacent)
+        return True
+
+    for origin in range(len(graph)):
+        if origin not in color:
+            color[origin] = True
+            if not traverse(origin):
+                return False
+    return True
