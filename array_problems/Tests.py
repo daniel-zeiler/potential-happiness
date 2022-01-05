@@ -234,11 +234,11 @@ class SolutionsTest(unittest.TestCase):
         nums = [0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1]
         k = 3
         output = 10
-        self.assertEqual(output, array_problems.longestOnes(nums, k))
+        self.assertEqual(output, array_problems_two.longestOnes(nums, k))
         nums = [1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0]
         k = 2
         output = 6
-        self.assertEqual(output, array_problems.longestOnes(nums, k))
+        self.assertEqual(output, array_problems_two.longestOnes(nums, k))
 
     def test_num_enclaves(self):
         grid = [
@@ -327,28 +327,28 @@ class SolutionsTest(unittest.TestCase):
     def test_max_consecutive(self):
         nums = [1, 1, 0, 1, 1, 1]
         output = 3
-        self.assertEqual(output, array_problems.findMaxConsecutiveOnes(nums))
+        self.assertEqual(output, array_problems_two.findMaxConsecutiveOnes(nums))
         nums = [1, 0, 1, 1, 0, 1]
         output = 2
-        self.assertEqual(output, array_problems.findMaxConsecutiveOnes(nums))
+        self.assertEqual(output, array_problems_two.findMaxConsecutiveOnes(nums))
 
     def test_intersects(self):
         nums1 = [1, 2, 2, 1]
         nums2 = [2, 2]
         output = [2, 2]
-        self.assertEqual(output, array_problems.intersect(nums1, nums2))
+        self.assertEqual(output, array_problems_two.intersect(nums1, nums2))
         nums1 = [4, 9, 5]
         nums2 = [9, 4, 9, 8, 4]
         output = [4, 9]
-        self.assertEqual(output, array_problems.intersect(nums1, nums2))
+        self.assertEqual(output, array_problems_two.intersect(nums1, nums2))
 
     def test_sort_array(self):
         nums = [5, 2, 3, 1]
         output = [1, 2, 3, 5]
-        self.assertListEqual(output, array_problems.sortArray(nums))
+        self.assertListEqual(output, array_problems_two.sortArray(nums))
         nums = [5, 1, 1, 2, 0, 0]
         output = [0, 0, 1, 1, 2, 5]
-        self.assertListEqual(output, array_problems.sortArray(nums))
+        self.assertListEqual(output, array_problems_two.sortArray(nums))
 
     def test_majority_elements(self):
         nums = [2, 2, 1, 1, 1, 2, 2]
