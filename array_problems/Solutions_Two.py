@@ -567,3 +567,112 @@ def intersect(nums1: List[int], nums2: List[int]) -> List[int]:
       nums_two_pointer += 1
 
   return result
+
+
+def sortColors(nums: List[int]) -> None:
+  zero_pointer = 0
+
+  for i, num in enumerate(nums):
+    if num == 0:
+      nums[zero_pointer], nums[i] = nums[i], nums[zero_pointer]
+      zero_pointer += 1
+
+  one_pointer = zero_pointer
+
+  for i in range(zero_pointer, len(nums)):
+    if nums[i] == 1:
+      nums[one_pointer], nums[i] = nums[i], nums[one_pointer]
+      one_pointer += 1
+
+
+def maxProfit(prices: List[int]) -> int:
+  min_so_far = float('inf')
+  result = [0 for _ in range(len(prices))]
+  for i, price in enumerate(prices):
+    if i:
+      result[i] = max(result[i - 1], price - min_so_far)
+    min_so_far = min(min_so_far, price)
+  return result[-1]
+
+
+def numIslands(grid: List[List[str]]) -> int:
+  def yield_directions(x, y):
+    directions = [[-1, 0], [1, 0], [0, 1], [0, -1]]
+    for x_direction, y_direction in directions:
+      x_target = x + x_direction
+      y_target = y + y_direction
+      if 0 <= x_target < len(grid) and 0 <= y_target < len(grid[0]):
+        if grid[x_target][y_target] == '1':
+          yield x_target, y_target
+
+  def traverse(x, y):
+    grid[x][y] = '0'
+    for x, y in yield_directions(x, y):
+      traverse(x, y)
+
+  result = 0
+  for x, row in enumerate(grid):
+    for y, value in enumerate(row):
+      if value == '1':
+        result += 1
+        traverse(x, y)
+  return result
+
+
+def orangesRotting(grid: List[List[int]]) -> int:
+  number_of_oranges = 0
+  rotten_oranges = collections.deque([])
+  for x, row in enumerate(grid):
+    for y, value in enumerate(row):
+      if value == 2:
+        rotten_oranges.append([0, [x, y]])
+      if value == 1:
+        number_of_oranges += 1
+  directions = [[-1, 0], [1, 0], [0, 1], [0, -1]]
+
+  while rotten_oranges:
+    time, [x, y] = rotten_oranges.popleft()
+
+    if grid[x][y] == 1:
+      number_of_oranges -= 1
+      grid[x][y] = 2
+
+    if number_of_oranges == 0:
+      return time
+
+    for x_direction, y_direction in directions:
+      x_target = x + x_direction
+      y_target = y + y_direction
+      if 0 <= x_target < len(grid) and 0 <= y_target < len(grid[0]):
+        if grid[x_target][y_target] == 1:
+          rotten_oranges.append([time + 1, [x_target, y_target]])
+
+  return -1
+
+
+def findJudge(n: int, trust: List[List[int]]) -> int:
+  in_degree = set()
+  out_degree = {i for i in range(n)}
+
+  for origin, destination in trust:
+    if origin in out_degree:
+      out_degree.remove(origin)
+    if destination not in in_degree:
+      in_degree.add(destination)
+
+  if len(in_degree) == 1 and list(in_degree)[0] not in out_degree:
+    return list(in_degree)[0]
+
+  return -1
+
+
+def maxSubArray(nums: List[int]) -> int:
+  result = [float('-inf') for _ in range(len(nums))]
+  max_subarray = 0
+  for i, num in enumerate(nums):
+    if i == 0:
+      result[i] = num
+    else:
+      result[i] = max(num, result[i - 1] + num)
+    max_subarray = max(max_subarray, result[i])
+  return max_subarray

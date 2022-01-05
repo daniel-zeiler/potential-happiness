@@ -397,16 +397,16 @@ class SolutionsTest(unittest.TestCase):
     def test_sort_colors(self):
         nums = [2, 0, 2, 1, 1, 0]
         output = [0, 0, 1, 1, 2, 2]
-        array_problems.sortColors(nums)
+        array_problems_two.sortColors(nums)
         self.assertListEqual(output, nums)
 
     def test_max_profits(self):
         prices = [7, 1, 5, 3, 6, 4]
         output = 5
-        self.assertEqual(output, array_problems.maxProfit(prices))
+        self.assertEqual(output, array_problems_two.maxProfit(prices))
         prices = [7, 6, 4, 3, 1]
         output = 0
-        self.assertEqual(output, array_problems.maxProfit(prices))
+        self.assertEqual(output, array_problems_two.maxProfit(prices))
 
     def test_number_of_islands(self):
         input = [
@@ -416,7 +416,7 @@ class SolutionsTest(unittest.TestCase):
             ["0", "0", "0", "0", "0"]
         ]
         output = 1
-        self.assertEqual(output, array_problems.numIslands(input))
+        self.assertEqual(output, array_problems_two.numIslands(input))
         input = [
             ["1", "1", "0", "0", "0"],
             ["1", "1", "0", "0", "0"],
@@ -424,18 +424,18 @@ class SolutionsTest(unittest.TestCase):
             ["0", "0", "0", "1", "1"]
         ]
         output = 3
-        self.assertEqual(output, array_problems.numIslands(input))
+        self.assertEqual(output, array_problems_two.numIslands(input))
 
     def test_rotting_oranges(self):
         grid = [[2, 1, 1], [1, 1, 0], [0, 1, 1]]
         output = 4
-        self.assertEqual(output, array_problems.orangesRotting(grid))
+        self.assertEqual(output, array_problems_two.orangesRotting(grid))
         grid = [[2, 1, 1], [0, 1, 1], [1, 0, 1]]
         output = -1
-        self.assertEqual(output, array_problems.orangesRotting(grid))
+        self.assertEqual(output, array_problems_two.orangesRotting(grid))
         grid = [[0, 2]]
         output = 0
-        self.assertEqual(output, array_problems.orangesRotting(grid))
+        self.assertEqual(output, array_problems_two.orangesRotting(grid))
 
     def test_remove_elements(self):
         nums = [0, 1, 2, 2, 3, 0, 4, 2]
@@ -451,26 +451,26 @@ class SolutionsTest(unittest.TestCase):
         n = 2
         trust = [[1, 2]]
         output = 2
-        self.assertEqual(output, array_problems.findJudge(n, trust))
+        self.assertEqual(output, array_problems_two.findJudge(n, trust))
         n = 3
         trust = [[1, 3], [2, 3]]
         output = 3
-        self.assertEqual(output, array_problems.findJudge(n, trust))
+        self.assertEqual(output, array_problems_two.findJudge(n, trust))
         n = 3
         trust = [[1, 3], [2, 3], [3, 1]]
         output = -1
-        self.assertEqual(output, array_problems.findJudge(n, trust))
+        self.assertEqual(output, array_problems_two.findJudge(n, trust))
 
     def test_max_sub_array(self):
         nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
         output = 6
-        self.assertEqual(output, array_problems.maxSubArray(nums))
+        self.assertEqual(output, array_problems_two.maxSubArray(nums))
         nums = [1]
         output = 1
-        self.assertEqual(output, array_problems.maxSubArray(nums))
+        self.assertEqual(output, array_problems_two.maxSubArray(nums))
         nums = [5, 4, -1, 7, 8]
         output = 23
-        self.assertEqual(output, array_problems.maxSubArray(nums))
+        self.assertEqual(output, array_problems_two.maxSubArray(nums))
 
     def test_expressive_words(self):
         # s = "heeellooo"

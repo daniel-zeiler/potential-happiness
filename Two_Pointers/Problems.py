@@ -2,9 +2,12 @@ from typing import List, Optional
 
 from Linked_List.Problems import ListNode
 
+
 """
-Given n non-negative integers a1, a2, ..., an , where each represents a point at coordinate (i, ai). n vertical 
-lines are drawn such that the two endpoints of the line i is at (i, ai) and (i, 0). Find two lines, which, 
+Given n non-negative integers a1, a2, ..., an , where each represents a point at coordinate (i, 
+ai). n vertical 
+lines are drawn such that the two endpoints of the line i is at (i, ai) and (i, 0). Find two 
+lines, which, 
 together with the x-axis forms a container, such that the container contains the most water. 
 
 Notice that you may not slant the container.
@@ -14,8 +17,10 @@ Notice that you may not slant the container.
 Example 1:
 
 
-Input: height = [1,8,6,2,5,4,8,3,7] Output: 49 Explanation: The above vertical lines are represented by array [1,8,6,
-2,5,4,8,3,7]. In this case, the max area of water (blue section) the container can contain is 49. Example 2: 
+Input: height = [1,8,6,2,5,4,8,3,7] Output: 49 Explanation: The above vertical lines are 
+represented by array [1,8,6,
+2,5,4,8,3,7]. In this case, the max area of water (blue section) the container can contain is 49. 
+Example 2: 
 
 Input: height = [1,1]
 Output: 1
@@ -32,7 +37,7 @@ Output: 2
 
 
 def maxArea(height: List[int]) -> int:
-    pass
+  pass
 
 
 """
@@ -57,17 +62,23 @@ Output: [1]
 
 
 def removeNthFromEnd(head: Optional[ListNode], n: int) -> Optional[ListNode]:
-    pass
+  pass
 
 
 """
-Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once. The relative order of the elements should be kept the same.
+Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such 
+that each unique element appears only once. The relative order of the elements should be kept the 
+same.
 
-Since it is impossible to change the length of the array in some languages, you must instead have the result be placed in the first part of the array nums. More formally, if there are k elements after removing the duplicates, then the first k elements of nums should hold the final result. It does not matter what you leave beyond the first k elements.
+Since it is impossible to change the length of the array in some languages, you must instead have 
+the result be placed in the first part of the array nums. More formally, if there are k elements 
+after removing the duplicates, then the first k elements of nums should hold the final result. It 
+does not matter what you leave beyond the first k elements.
 
 Return k after placing the final result in the first k slots of nums.
 
-Do not allocate extra space for another array. You must do this by modifying the input array in-place with O(1) extra memory.
+Do not allocate extra space for another array. You must do this by modifying the input array 
+in-place with O(1) extra memory.
 
 Custom Judge:
 
@@ -90,29 +101,36 @@ Example 1:
 
 Input: nums = [1,1,2]
 Output: 2, nums = [1,2,_]
-Explanation: Your function should return k = 2, with the first two elements of nums being 1 and 2 respectively.
+Explanation: Your function should return k = 2, with the first two elements of nums being 1 and 2 
+respectively.
 It does not matter what you leave beyond the returned k (hence they are underscores).
 Example 2:
 
 Input: nums = [0,0,1,1,1,2,2,3,3,4]
 Output: 5, nums = [0,1,2,3,4,_,_,_,_,_]
-Explanation: Your function should return k = 5, with the first five elements of nums being 0, 1, 2, 3, and 4 respectively.
+Explanation: Your function should return k = 5, with the first five elements of nums being 0, 1, 
+2, 3, and 4 respectively.
 It does not matter what you leave beyond the returned k (hence they are underscores).
 """
 
 
 def removeDuplicates(nums: List[int]) -> int:
-    pass
+  pass
 
 
 """
-Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. The relative order of the elements may be changed.
+Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. 
+The relative order of the elements may be changed.
 
-Since it is impossible to change the length of the array in some languages, you must instead have the result be placed in the first part of the array nums. More formally, if there are k elements after removing the duplicates, then the first k elements of nums should hold the final result. It does not matter what you leave beyond the first k elements.
+Since it is impossible to change the length of the array in some languages, you must instead have 
+the result be placed in the first part of the array nums. More formally, if there are k elements 
+after removing the duplicates, then the first k elements of nums should hold the final result. It 
+does not matter what you leave beyond the first k elements.
 
 Return k after placing the final result in the first k slots of nums.
 
-Do not allocate extra space for another array. You must do this by modifying the input array in-place with O(1) extra memory.
+Do not allocate extra space for another array. You must do this by modifying the input array 
+in-place with O(1) extra memory.
 
 Custom Judge:
 
@@ -144,18 +162,20 @@ Example 2:
 
 Input: nums = [0,1,2,2,3,0,4,2], val = 2
 Output: 5, nums = [0,1,4,0,3,_,_,_]
-Explanation: Your function should return k = 5, with the first five elements of nums containing 0, 0, 1, 3, and 4.
+Explanation: Your function should return k = 5, with the first five elements of nums containing 
+0, 0, 1, 3, and 4.
 Note that the five elements can be returned in any order.
 It does not matter what you leave beyond the returned k (hence they are underscores).
 """
 
 
 def removeElement(nums: List[int], val: int) -> int:
-    pass
+  pass
 
 
 """
-Given an array nums with n objects colored red, white, or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white, and blue.
+Given an array nums with n objects colored red, white, or blue, sort them in-place so that 
+objects of the same color are adjacent, with the colors in the order red, white, and blue.
 
 We will use the integers 0, 1, and 2 to represent the color red, white, and blue, respectively.
 
@@ -183,14 +203,16 @@ Output: [1]
 
 
 def sortColors(nums: List[int]) -> None:
-    """
-    Do not return anything, modify nums in-place instead.
-    """
-    pass
+  """
+  Do not return anything, modify nums in-place instead.
+  """
+  pass
 
 
 """
-A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric characters include letters and numbers.
+A phrase is a palindrome if, after converting all uppercase letters into lowercase letters and 
+removing all non-alphanumeric characters, it reads the same forward and backward. Alphanumeric 
+characters include letters and numbers.
 
 Given a string s, return true if it is a palindrome, or false otherwise.
 
@@ -216,13 +238,15 @@ Since an empty string reads the same forward and backward, it is a palindrome.
 
 
 def isPalindrome(s: str) -> bool:
-    pass
+  pass
 
 
 """
 Given head, the head of a linked list, determine if the linked list has a cycle in it.
 
-There is a cycle in a linked list if there is some node in the list that can be reached again by continuously following the next pointer. Internally, pos is used to denote the index of the node that tail's next pointer is connected to. Note that pos is not passed as a parameter.
+There is a cycle in a linked list if there is some node in the list that can be reached again by 
+continuously following the next pointer. Internally, pos is used to denote the index of the node 
+that tail's next pointer is connected to. Note that pos is not passed as a parameter.
 
 Return true if there is a cycle in the linked list. Otherwise, return false.
 
@@ -233,7 +257,8 @@ Example 1:
 
 Input: head = [3,2,0,-4], pos = 1
 Output: true
-Explanation: There is a cycle in the linked list, where the tail connects to the 1st node (0-indexed).
+Explanation: There is a cycle in the linked list, where the tail connects to the 1st node (
+0-indexed).
 Example 2:
 
 
@@ -250,11 +275,12 @@ Explanation: There is no cycle in the linked list.
 
 
 def hasCycle(self, head: Optional[ListNode]) -> bool:
-    pass
+  pass
 
 
 """
-Given the heads of two singly linked-lists headA and headB, return the node at which the two lists intersect. If the two linked lists have no intersection at all, return null.
+Given the heads of two singly linked-lists headA and headB, return the node at which the two 
+lists intersect. If the two linked lists have no intersection at all, return null.
 
 For example, the following two linked lists begin to intersect at node c1:
 
@@ -267,12 +293,17 @@ Custom Judge:
 
 The inputs to the judge are given as follows (your program is not given these inputs):
 
-intersectVal - The value of the node where the intersection occurs. This is 0 if there is no intersected node.
+intersectVal - The value of the node where the intersection occurs. This is 0 if there is no 
+intersected node.
 listA - The first linked list.
 listB - The second linked list.
-skipA - The number of nodes to skip ahead in listA (starting from the head) to get to the intersected node.
-skipB - The number of nodes to skip ahead in listB (starting from the head) to get to the intersected node.
-The judge will then create the linked structure based on these inputs and pass the two heads, headA and headB to your program. If you correctly return the intersected node, then your solution will be accepted.
+skipA - The number of nodes to skip ahead in listA (starting from the head) to get to the 
+intersected node.
+skipB - The number of nodes to skip ahead in listB (starting from the head) to get to the 
+intersected node.
+The judge will then create the linked structure based on these inputs and pass the two heads, 
+headA and headB to your program. If you correctly return the intersected node, then your solution 
+will be accepted.
 
  
 
@@ -281,31 +312,38 @@ Example 1:
 
 Input: intersectVal = 8, listA = [4,1,8,4,5], listB = [5,6,1,8,4,5], skipA = 2, skipB = 3
 Output: Intersected at '8'
-Explanation: The intersected node's value is 8 (note that this must not be 0 if the two lists intersect).
-From the head of A, it reads as [4,1,8,4,5]. From the head of B, it reads as [5,6,1,8,4,5]. There are 2 nodes before the intersected node in A; There are 3 nodes before the intersected node in B.
+Explanation: The intersected node's value is 8 (note that this must not be 0 if the two lists 
+intersect).
+From the head of A, it reads as [4,1,8,4,5]. From the head of B, it reads as [5,6,1,8,4,5]. There 
+are 2 nodes before the intersected node in A; There are 3 nodes before the intersected node in B.
 Example 2:
 
 
 Input: intersectVal = 2, listA = [1,9,1,2,4], listB = [3,2,4], skipA = 3, skipB = 1
 Output: Intersected at '2'
-Explanation: The intersected node's value is 2 (note that this must not be 0 if the two lists intersect).
-From the head of A, it reads as [1,9,1,2,4]. From the head of B, it reads as [3,2,4]. There are 3 nodes before the intersected node in A; There are 1 node before the intersected node in B.
+Explanation: The intersected node's value is 2 (note that this must not be 0 if the two lists 
+intersect).
+From the head of A, it reads as [1,9,1,2,4]. From the head of B, it reads as [3,2,4]. There are 3 
+nodes before the intersected node in A; There are 1 node before the intersected node in B.
 Example 3:
 
 
 Input: intersectVal = 0, listA = [2,6,4], listB = [1,5], skipA = 3, skipB = 2
 Output: No intersection
-Explanation: From the head of A, it reads as [2,6,4]. From the head of B, it reads as [1,5]. Since the two lists do not intersect, intersectVal must be 0, while skipA and skipB can be arbitrary values.
+Explanation: From the head of A, it reads as [2,6,4]. From the head of B, it reads as [1,
+5]. Since the two lists do not intersect, intersectVal must be 0, while skipA and skipB can be 
+arbitrary values.
 Explanation: The two lists do not intersect, so return null.
 """
 
 
 def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> ListNode:
-    pass
+  pass
 
 
 """
-Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.
+Given an integer array nums, move all 0's to the end of it while maintaining the relative order 
+of the non-zero elements.
 
 Note that you must do this in-place without making a copy of the array.
 
@@ -329,10 +367,10 @@ Constraints:
 
 
 def moveZeroes(nums: List[int]) -> None:
-    """
-    Do not return anything, modify nums in-place instead.
-    """
-    pass
+  """
+  Do not return anything, modify nums in-place instead.
+  """
+  pass
 
 
 """
@@ -354,14 +392,15 @@ Output: ["h","a","n","n","a","H"]
 
 
 def reverseString(s: List[str]) -> None:
-    """
-    Do not return anything, modify s in-place instead.
-    """
-    pass
+  """
+  Do not return anything, modify s in-place instead.
+  """
+  pass
 
 
 """
-Given two integer arrays nums1 and nums2, return an array of their intersection. Each element in the result must be unique and you may return the result in any order.
+Given two integer arrays nums1 and nums2, return an array of their intersection. Each element in 
+the result must be unique and you may return the result in any order.
 
  
 
@@ -378,13 +417,15 @@ Explanation: [4,9] is also accepted.
 
 
 def intersection(nums1: List[int], nums2: List[int]) -> List[int]:
-    pass
+  pass
 
 
 """
 Given two strings s and t, return true if s is a subsequence of t, or false otherwise.
 
-A subsequence of a string is a new string that is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (i.e., "ace" is a subsequence of "abcde" while "aec" is not).
+A subsequence of a string is a new string that is formed from the original string by deleting 
+some (can be none) of the characters without disturbing the relative positions of the remaining 
+characters. (i.e., "ace" is a subsequence of "abcde" while "aec" is not).
 
  
 
@@ -400,11 +441,12 @@ Output: false
 
 
 def isSubsequence(s: str, t: str) -> bool:
-    pass
+  pass
 
 
 """
-Given a string s, reverse the order of characters in each word within a sentence while still preserving whitespace and initial word order.
+Given a string s, reverse the order of characters in each word within a sentence while still 
+preserving whitespace and initial word order.
 
  
 
@@ -420,11 +462,12 @@ Output: "doG gniD"
 
 
 def reverseWords(s: str) -> str:
-    pass
+  pass
 
 
 """
-Given the root of a Binary Search Tree and a target number k, return true if there exist two elements in the BST such that their sum is equal to the given target.
+Given the root of a Binary Search Tree and a target number k, return true if there exist two 
+elements in the BST such that their sum is equal to the given target.
 
  
 
@@ -454,11 +497,12 @@ Output: true
 
 
 def findTarget(self, root: Optional[TreeNode], k: int) -> bool:
-    pass
+  pass
 
 
 """
-Given a string s, return true if the s can be palindrome after deleting at most one character from it.
+Given a string s, return true if the s can be palindrome after deleting at most one character 
+from it.
 
  
 
@@ -479,11 +523,12 @@ Output: false
 
 
 def validPalindrome(s: str) -> bool:
-    pass
+  pass
 
 
 """
-You are given a string s. We want to partition the string into as many parts as possible so that each letter appears in at most one part.
+You are given a string s. We want to partition the string into as many parts as possible so that 
+each letter appears in at most one part.
 
 Return a list of integers representing the size of these parts.
 
@@ -505,7 +550,7 @@ Output: [10]
 
 
 def partitionLabels(s: str) -> List[int]:
-    pass
+  pass
 
 
 """
@@ -513,11 +558,19 @@ Sometimes people repeat letters to represent extra feeling. For example:
 
 "hello" -> "heeellooo"
 "hi" -> "hiiii"
-In these strings like "heeellooo", we have groups of adjacent letters that are all the same: "h", "eee", "ll", "ooo".
+In these strings like "heeellooo", we have groups of adjacent letters that are all the same: "h", 
+"eee", "ll", "ooo".
 
-You are given a string s and an array of query strings words. A query word is stretchy if it can be made to be equal to s by any number of applications of the following extension operation: choose a group consisting of characters c, and add some number of characters c to the group so that the size of the group is three or more.
+You are given a string s and an array of query strings words. A query word is stretchy if it can 
+be made to be equal to s by any number of applications of the following extension operation: 
+choose a group consisting of characters c, and add some number of characters c to the group so 
+that the size of the group is three or more.
 
-For example, starting with "hello", we could do an extension on the group "o" to get "hellooo", but we cannot get "helloo" since the group "oo" has a size less than three. Also, we could do another extension like "ll" -> "lllll" to get "helllllooo". If s = "helllllooo", then the query word "hello" would be stretchy because of these two extension operations: query = "hello" -> "hellooo" -> "helllllooo" = s.
+For example, starting with "hello", we could do an extension on the group "o" to get "hellooo", 
+but we cannot get "helloo" since the group "oo" has a size less than three. Also, we could do 
+another extension like "ll" -> "lllll" to get "helllllooo". If s = "helllllooo", then the query 
+word "hello" would be stretchy because of these two extension operations: query = "hello" -> 
+"hellooo" -> "helllllooo" = s.
 Return the number of query strings that are stretchy.
 
  
@@ -537,11 +590,12 @@ Output: 3
 
 
 def expressiveWords(self, s: str, words: List[str]) -> int:
-    pass
+  pass
 
 
 """
-Given two strings s and t, return true if they are equal when both are typed into empty text editors. '#' means a backspace character.
+Given two strings s and t, return true if they are equal when both are typed into empty text 
+editors. '#' means a backspace character.
 
 Note that after backspacing an empty text, the text will continue empty.
 
@@ -571,7 +625,7 @@ Explanation: s becomes "c" while t becomes "b".
 
 
 def backspaceCompare(self, s: str, t: str) -> bool:
-    pass
+  pass
 
 
 """
@@ -597,11 +651,12 @@ Explanation: Since the list has two middle nodes with values 3 and 4, we return 
 
 
 def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
-    pass
+  pass
 
 
 """
-Given an integer array nums, move all the even integers at the beginning of the array followed by all the odd integers.
+Given an integer array nums, move all the even integers at the beginning of the array followed by 
+all the odd integers.
 
 Return any array that satisfies this condition.
 
@@ -620,17 +675,20 @@ Output: [0]
 
 
 def sortArrayByParity(nums: List[int]) -> List[int]:
-    pass
+  pass
 
 
 """
-You are given two lists of closed intervals, firstList and secondList, where firstList[i] = [starti, endi] and secondList[j] = [startj, endj]. Each list of intervals is pairwise disjoint and in sorted order.
+You are given two lists of closed intervals, firstList and secondList, where firstList[i] = [
+starti, endi] and secondList[j] = [startj, endj]. Each list of intervals is pairwise disjoint and 
+in sorted order.
 
 Return the intersection of these two interval lists.
 
 A closed interval [a, b] (with a <= b) denotes the set of real numbers x with a <= x <= b.
 
-The intersection of two closed intervals is a set of real numbers that are either empty or represented as a closed interval. For example, the intersection of [1, 3] and [2, 4] is [2, 3].
+The intersection of two closed intervals is a set of real numbers that are either empty or 
+represented as a closed interval. For example, the intersection of [1, 3] and [2, 4] is [2, 3].
 
  
 
@@ -654,14 +712,18 @@ Output: [[3,7]]
 """
 
 
-def intervalIntersection(firstList: List[List[int]], secondList: List[List[int]]) -> List[List[int]]:
-    pass
+def intervalIntersection(firstList: List[List[int]], secondList: List[List[int]]) -> List[
+  List[int]]:
+  pass
 
 
 """
-Given an array of strings queries and a string pattern, return a boolean array answer where answer[i] is true if queries[i] matches pattern, and false otherwise.
+Given an array of strings queries and a string pattern, return a boolean array answer where 
+answer[i] is true if queries[i] matches pattern, and false otherwise.
 
-A query word queries[i] matches pattern if you can insert lowercase English letters pattern so that it equals the query. You may insert each character at any position and you may not insert any characters.
+A query word queries[i] matches pattern if you can insert lowercase English letters pattern so 
+that it equals the query. You may insert each character at any position and you may not insert 
+any characters.
 
  
 
@@ -687,11 +749,12 @@ Explanation: "FooBarTest" can be generated like this "Fo" + "o" + "Ba" + "r" + "
 
 
 def camelMatch(self, queries: List[str], pattern: str) -> List[bool]:
-    pass
+  pass
 
 
 """
-Given an array arr of integers, check if there exists two integers N and M such that N is the double of M ( i.e. N = 2 * M).
+Given an array arr of integers, check if there exists two integers N and M such that N is the 
+double of M ( i.e. N = 2 * M).
 
 More formally check if there exists two indices i and j such that :
 
@@ -719,11 +782,12 @@ Explanation: In this case does not exist N and M, such that N = 2 * M.
 
 
 def checkIfExist(self, arr: List[int]) -> bool:
-    pass
+  pass
 
 
 """
-Given an array of integers arr and two integers k and threshold, return the number of sub-arrays of size k and average greater than or equal to threshold.
+Given an array of integers arr and two integers k and threshold, return the number of sub-arrays 
+of size k and average greater than or equal to threshold.
 
  
 
@@ -731,14 +795,49 @@ Example 1:
 
 Input: arr = [2,2,2,2,5,5,5,8], k = 3, threshold = 4
 Output: 3
-Explanation: Sub-arrays [2,5,5],[5,5,5] and [5,5,8] have averages 4, 5 and 6 respectively. All other sub-arrays of size 3 have averages less than 4 (the threshold).
+Explanation: Sub-arrays [2,5,5],[5,5,5] and [5,5,8] have averages 4, 5 and 6 respectively. All 
+other sub-arrays of size 3 have averages less than 4 (the threshold).
 Example 2:
 
 Input: arr = [11,13,17,23,29,31,7,5,2,3], k = 3, threshold = 5
 Output: 6
-Explanation: The first 6 sub-arrays of size 3 have averages greater than 5. Note that averages are not integers.
+Explanation: The first 6 sub-arrays of size 3 have averages greater than 5. Note that averages 
+are not integers.
 """
 
 
 def numOfSubarrays(arr: List[int], k: int, threshold: int) -> int:
-    pass
+  pass
+
+
+"""
+Implement next permutation, which rearranges numbers into the lexicographically next greater 
+permutation of numbers.
+
+If such an arrangement is impossible, it must rearrange it to the lowest possible order (i.e., 
+sorted in ascending order).
+
+The replacement must be in place and use only constant extra memory.
+
+ 
+
+Example 1:
+
+Input: nums = [1,2,3]
+Output: [1,3,2]
+Example 2:
+
+Input: nums = [3,2,1]
+Output: [1,2,3]
+Example 3:
+
+Input: nums = [1,1,5]
+Output: [1,5,1]
+"""
+
+
+def nextPermutation(self, nums: List[int]) -> None:
+  """
+  Do not return anything, modify nums in-place instead.
+  """
+  pass
