@@ -591,6 +591,20 @@ class SolutionsTest(unittest.TestCase):
         output = False
         self.assertEqual(output, array_problems.isToeplitzMatrix(matrix))
 
+    def test_is_alien_sorted(self):
+        words = ["hello", "leetcode"]
+        order = "hlabcdefgijkmnopqrstuvwxyz"
+        output = True
+        self.assertEqual(output, array_problems.isAlienSorted(words, order))
+        words = ["word", "world", "row"]
+        order = "worldabcefghijkmnpqstuvxyz"
+        output = False
+        self.assertEqual(output, array_problems.isAlienSorted(words, order))
+        words = ["apple", "app"]
+        order = "abcdefghijklmnopqrstuvwxyz"
+        output = False
+        self.assertEqual(output, array_problems.isAlienSorted(words, order))
+
 
 if __name__ == '__main__':
     unittest.main()

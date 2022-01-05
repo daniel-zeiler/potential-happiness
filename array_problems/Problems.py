@@ -1691,7 +1691,7 @@ the blank character which is less than any other character (More info).
 """
 
 
-def isAlienSorted(self, words: List[str], order: str) -> bool:
+def isAlienSorted(words: List[str], order: str) -> bool:
     pass
 
 

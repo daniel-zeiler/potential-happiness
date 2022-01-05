@@ -949,3 +949,21 @@ def isToeplitzMatrix(matrix: List[List[int]]) -> bool:
                 if value != matrix[x - 1][y - 1]:
                     return False
     return True
+
+
+def isAlienSorted(words: List[str], order: str) -> bool:
+    order_dict = {char: i for i, char in enumerate(order)}
+
+    def compare_words(word_one, word_two):
+        for char_one, char_two in zip(word_one, word_two):
+            if char_one != char_two:
+                if order_dict[char_one] > order_dict[char_two]:
+                    return False
+                else:
+                    return True
+        return len(word_one) <= len(word_two)
+
+    for i in range(1, len(words)):
+        if not compare_words(words[i - 1], words[i]):
+            return False
+    return True
