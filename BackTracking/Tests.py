@@ -111,6 +111,12 @@ class SolutionsTest(unittest.TestCase):
         output = [[], [0]]
         self.assertCountEqual(output, backtracking.subsets(nums))
 
+    def test_combination_sum(self):
+        candidates = [2, 3, 6, 7]
+        target = 7
+        output = [[2, 2, 3], [7]]
+        self.assertListEqual(output, backtracking.combinationSum(candidates, target))
+
 
 if __name__ == '__main__':
     unittest.main()

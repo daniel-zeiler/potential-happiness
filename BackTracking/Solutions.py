@@ -176,3 +176,19 @@ def subsets(nums: List[int]) -> List[List[int]]:
 
     traverse(nums, [])
     return result
+
+
+def combinationSum(candidates: List[int], target: int) -> List[List[int]]:
+    result = []
+    candidates.sort()
+
+    def other_function(nums, target, index, path):
+        if target == 0:
+            result.append(path)
+        elif target > 0:
+            for i in range(index, len(nums)):
+                other_function(nums, target - nums[i], i, path + [nums[i]])
+
+    other_function(candidates, target, 0, [])
+
+    return result
