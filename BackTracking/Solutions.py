@@ -192,3 +192,36 @@ def combinationSum(candidates: List[int], target: int) -> List[List[int]]:
     other_function(candidates, target, 0, [])
 
     return result
+
+
+def findWords(board: List[List[str]], words: List[str]) -> List[str]:
+    result = []
+
+    def yield_valid_directions(x, y, character):
+        directions = [[-1, 0], [1, 0], [0, 1], [0, -1]]
+        for x_direction, y_direction in directions:
+            x_target = x + x_direction
+            y_target = y + y_direction
+            if 0 <= x_target < len(board) and 0 <= y_target < len(board[0]) and board[x_target][y_target] == character:
+                yield x_target, y_target
+
+    def traverse(x, y, word_remaining):
+        if not word_remaining:
+            return True
+        board[x][y], temp = None, board[x][y]
+        found = False
+        for x_direction, y_direction in yield_valid_directions(x, y, word_remaining[0]):
+            if traverse(x_direction, y_direction, word_remaining[1:]):
+                found = True
+        board[x][y] = temp
+        return found
+
+    for x, row in enumerate(board):
+        for y, value in enumerate(row):
+            for word in words:
+                if word[0] == value:
+                    if traverse(x, y, word[1:]):
+                        result.append(word)
+    return result
+
+

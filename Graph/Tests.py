@@ -1,4 +1,7 @@
 import unittest
+
+import output as output
+
 import Graph.Solutions as graph
 
 
@@ -87,6 +90,68 @@ class SolutionsTest(unittest.TestCase):
         input = [[1, 3], [0, 2], [1, 3], [0, 2]]
         output = True
         self.assertEqual(output, graph.is_graph_bipartite(input))
+
+    def test_flower_planting(self):
+        n = 3
+        paths = [[1, 2], [2, 3], [3, 1]]
+        output = [1, 2, 3]
+        self.assertListEqual(output, graph.flower_planting_no_adjacent(n, paths))
+
+        n = 4
+        paths = [[1, 2], [3, 4]]
+        output = [1, 2, 1, 2]
+        self.assertListEqual(output, graph.flower_planting_no_adjacent(n, paths))
+
+        n = 4
+        paths = [[1, 2], [2, 3], [3, 4], [4, 1], [1, 3], [2, 4]]
+        output = [1, 2, 3, 4]
+        self.assertListEqual(output, graph.flower_planting_no_adjacent(n, paths))
+
+    def test_network_delay(self):
+        times = [[2, 1, 1], [2, 3, 1], [3, 4, 1]]
+        n = 4
+        k = 2
+        output = 2
+        self.assertEqual(output, graph.network_delay_time(times, n, k))
+        times = [[1, 2, 1]]
+        n = 2
+        k = 1
+        output = 1
+        self.assertEqual(output, graph.network_delay_time(times, n, k))
+        times = [[1, 2, 1]]
+        n = 2
+        k = 2
+        output = -1
+        self.assertEqual(output, graph.network_delay_time(times, n, k))
+
+    def test_possible_bipartition(self):
+        n = 4
+        dislikes = [[1, 2], [1, 3], [2, 4]]
+        output = True
+        self.assertEqual(output, graph.possible_bipartition(n, dislikes))
+        n = 3
+        dislikes = [[1, 2], [1, 3], [2, 3]]
+        output = False
+        self.assertEqual(output, graph.possible_bipartition(n, dislikes))
+        n = 5
+        dislikes = [[1, 2], [2, 3], [3, 4], [4, 5], [1, 5]]
+        output = False
+        self.assertEqual(output, graph.possible_bipartition(n, dislikes))
+
+    def test_coarse_schedule(self):
+        numCourses = 2
+        prerequisites = [[1, 0]]
+        output = [0, 1]
+        self.assertListEqual(output, graph.course_schedule_two(numCourses, prerequisites))
+        numCourses = 4
+        prerequisites = [[1, 0], [2, 0], [3, 1], [3, 2]]
+        output = [0, 2, 1, 3]
+        self.assertListEqual(output, graph.course_schedule_two(numCourses, prerequisites))
+        numCourses = 1
+        prerequisites = []
+        output = [0]
+        self.assertListEqual(output, graph.course_schedule_two(numCourses, prerequisites))
+
 
 
 if __name__ == '__main__':

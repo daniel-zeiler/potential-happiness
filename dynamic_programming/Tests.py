@@ -3,6 +3,18 @@ import dynamic_programming.Solutions as dynamic_programming
 
 
 class SolutionsTest(unittest.TestCase):
+
+    def test_fib(self):
+        n = 2
+        output = 1
+        self.assertEqual(output, dynamic_programming.fib(n))
+        n = 3
+        output = 2
+        self.assertEqual(output, dynamic_programming.fib(n))
+        n = 4
+        output = 3
+        self.assertEqual(output, dynamic_programming.fib(n))
+
     def test_max_subarray(self):
         nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
         output = 6
@@ -146,6 +158,51 @@ class SolutionsTest(unittest.TestCase):
         ]
         output = 7
         self.assertEqual(output, dynamic_programming.countSquares(matrix))
+
+    def test_jump(self):
+        nums = [2, 3, 1, 1, 4]
+        output = 2
+        self.assertEqual(output, dynamic_programming.jump(nums))
+        nums = [2, 3, 0, 1, 4]
+        output = 2
+        self.assertEqual(output, dynamic_programming.jump(nums))
+
+    def test_max_circular_subarray(self):
+        nums = [1, -2, 3, -2]
+        output = 3
+        self.assertEqual(output, dynamic_programming.maxSubarraySumCircular(nums))
+
+    def test_max_product(self):
+        nums = [2, 3, -2, 4]
+        output = 6
+        self.assertEqual(output, dynamic_programming.maxProduct(nums))
+        nums = [-2, 0, -1]
+        output = 0
+        self.assertEqual(output, dynamic_programming.maxProduct(nums))
+
+    def test_get_max_len(self):
+        nums = [-1, -2, -3, 0, 1]
+        output = 2
+        self.assertEqual(output, dynamic_programming.getMaxLen(nums))
+        nums = [0, 1, -2, -3, -4]
+        output = 3
+        self.assertEqual(output, dynamic_programming.getMaxLen(nums))
+        nums = [1, -2, -3, 4]
+        output = 4
+        self.assertEqual(output, dynamic_programming.getMaxLen(nums))
+
+    def test_word_break(self):
+        s = "leetcode"
+        wordDict = ["leet", "code"]
+        output = True
+        self.assertEqual(output, dynamic_programming.wordBreak(s, wordDict))
+        s = "applepenapple"
+        wordDict = ["apple", "pen"]
+        self.assertEqual(output, dynamic_programming.wordBreak(s, wordDict))
+        s = "catsandog"
+        wordDict = ["cats", "dog", "sand", "and", "cat"]
+        output=False
+        self.assertEqual(output, dynamic_programming.wordBreak(s, wordDict))
 
 
 if __name__ == '__main__':

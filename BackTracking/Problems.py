@@ -371,5 +371,5 @@ Output: []
 """
 
 
-def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
+def findWords(board: List[List[str]], words: List[str]) -> List[str]:
     pass

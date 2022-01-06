@@ -2,6 +2,30 @@ import collections
 from typing import List
 
 
+def fib(n: int) -> int:
+    result = collections.deque([])
+    for i in range(n + 1):
+        if i == 0:
+            result.append(0)
+        elif i == 1:
+            result.append(1)
+        else:
+            result.append(result.popleft() + result[0])
+    return result.pop()
+
+
+def climbStairs(n: int) -> int:
+    result = [0 for _ in range(n)]
+    for i in range(n):
+        if i == 0:
+            result[i] = 1
+        elif i == 1:
+            result[i] = 2
+        else:
+            result[i] = result[i - 1] + result[i - 2]
+    return result[-1]
+
+
 def maxSubArray(nums: List[int]) -> int:
     result = [float('-inf') for _ in range(len(nums))]
     max_sub_array = float('-inf')
@@ -67,12 +91,18 @@ def maxProfit(prices: List[int]) -> int:
 
 
 def rob(nums: List[int]) -> int:
+    if len(nums) == 1:
+        return nums[0]
+    if not nums:
+        return 0
     result = [0 for _ in range(len(nums))]
     for i, num in enumerate(nums):
         if i == 0 or i == 1:
             result[i] = num
+        elif i == 2:
+            result[i] = result[0] + num
         else:
-            result[i] = result[i - 2] + num
+            result[i] = max(result[i - 3], result[i - 2]) + num
     return max(result[-1], result[-2])
 
 
@@ -192,3 +222,78 @@ def countSquares(matrix: List[List[int]]) -> int:
                 squares[x][y] = 0
             result += squares[x][y]
     return result
+
+
+def jump(nums: List[int]) -> int:
+    result = [float('inf') for _ in range(len(nums))]
+    for i, num in enumerate(nums):
+        if i == 0:
+            for j in range(num):
+                result[i + j + 1] = 1
+            result[0] = 1
+        else:
+            if result[i] == float('inf'):
+                return -1
+            for j in range(num):
+                if i + j + 1 < len(nums):
+                    result[i + j + 1] = min(result[i + j + 1], result[i] + 1)
+    return result[-1]
+
+
+def maxSubarraySumCircular(nums: List[int]) -> int:
+    result = [0 for _ in range(len(nums))]
+    for i, num in enumerate(nums):
+        if i == 0:
+            result[i] = num
+        else:
+            result[i] = max(num, result[i - 1] + num)
+
+
+def maxProduct(nums: List[int]) -> int:
+    result = [0 for _ in range(len(nums))]
+    max_product = float('-inf')
+    for i, num in enumerate(nums):
+        if i:
+            result[i] = max(num, result[i - 1] * num)
+        else:
+            result[i] = num
+        max_product = max(max_product, result[i])
+    return max_product
+
+
+def getMaxLen(nums: List[int]) -> int:
+    result = [0 for _ in range(len(nums))]
+    last_negative = -1
+    max_len = 0
+    for i, num in enumerate(nums):
+        if num == 0:
+            result[i] = 0
+            last_negative = -1
+        elif num < 0:
+            if last_negative == -1:
+                result[i] = 0
+            else:
+                result[i] = result[last_negative - 1] + 2
+            last_negative = i
+        else:
+            result[i] = result[i - 1] + 1
+        max_len = max(max_len, result[i])
+    return max_len
+
+
+def wordBreak(s: str, wordDict: List[str]) -> bool:
+    words = set(wordDict)
+    result = [False for _ in range(len(s))]
+    pointer_a = 0
+
+    while pointer_a < len(s):
+        for pointer_b in range(pointer_a, len(s)):
+            if s[pointer_a:pointer_b + 1] in words:
+                result[pointer_b] = True
+
+        pointer_a += 1
+
+        while pointer_a < len(s) and not result[pointer_a - 1]:
+            pointer_a += 1
+
+    return result[-1]

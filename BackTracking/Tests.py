@@ -117,6 +117,21 @@ class SolutionsTest(unittest.TestCase):
         output = [[2, 2, 3], [7]]
         self.assertListEqual(output, backtracking.combinationSum(candidates, target))
 
+    def test_find_words(self):
+        board = [
+            ["o", "a", "a", "n"],
+            ["e", "t", "a", "e"],
+            ["i", "h", "k", "r"],
+            ["i", "f", "l", "v"]
+        ]
+        words = ["oath", "pea", "eat", "rain"]
+        output = ["eat", "oath"]
+        self.assertCountEqual(output, backtracking.findWords(board, words))
+        board = [["a", "b"], ["c", "d"]]
+        words = ["abcb"]
+        output = []
+        self.assertCountEqual(output, backtracking.findWords(board, words))
+
 
 if __name__ == '__main__':
     unittest.main()

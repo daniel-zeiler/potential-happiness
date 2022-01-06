@@ -2,6 +2,37 @@ from itertools import product
 from typing import List
 
 """
+The Fibonacci numbers, commonly denoted F(n) form a sequence, called the Fibonacci sequence, such that each number is the sum of the two preceding ones, starting from 0 and 1. That is,
+
+F(0) = 0, F(1) = 1
+F(n) = F(n - 1) + F(n - 2), for n > 1.
+Given n, calculate F(n).
+
+ 
+
+Example 1:
+
+Input: n = 2
+Output: 1
+Explanation: F(2) = F(1) + F(0) = 1 + 0 = 1.
+Example 2:
+
+Input: n = 3
+Output: 2
+Explanation: F(3) = F(2) + F(1) = 1 + 1 = 2.
+Example 3:
+
+Input: n = 4
+Output: 3
+Explanation: F(4) = F(3) + F(2) = 2 + 1 = 3.
+"""
+
+
+def fib(n: int) -> int:
+    pass
+
+
+"""
 Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest 
 sum and return its sum. 
 
@@ -132,7 +163,7 @@ Explanation: There are three ways to climb to the top.
 """
 
 
-def climbStairs(self, n: int) -> int:
+def climbStairs(n: int) -> int:
     pass
 
 
@@ -442,6 +473,269 @@ def countSquares(matrix: List[List[int]]) -> int:
 
 
 """
+Given an array of non-negative integers nums, you are initially positioned at the first index of the array.
+
+Each element in the array represents your maximum jump length at that position.
+
+Your goal is to reach the last index in the minimum number of jumps.
+
+You can assume that you can always reach the last index.
+
+ 
+
+Example 1:
+
+Input: nums = [2,3,1,1,4]
+Output: 2
+Explanation: The minimum number of jumps to reach the last index is 2. Jump 1 step from index 0 to 1, then 3 steps to the last index.
+Example 2:
+
+Input: nums = [2,3,0,1,4]
+Output: 2
+"""
+
+
+def jump(nums: List[int]) -> int:
+    pass
+
+
+"""
+You are given an integer array nums. You want to maximize the number of points you get by performing the following operation any number of times:
+
+Pick any nums[i] and delete it to earn nums[i] points. Afterwards, you must delete every element equal to nums[i] - 1 and every element equal to nums[i] + 1.
+Return the maximum number of points you can earn by applying the above operation some number of times.
+
+ 
+
+Example 1:
+
+Input: nums = [3,4,2]
+Output: 6
+Explanation: You can perform the following operations:
+- Delete 4 to earn 4 points. Consequently, 3 is also deleted. nums = [2].
+- Delete 2 to earn 2 points. nums = [].
+You earn a total of 6 points.
+Example 2:
+
+Input: nums = [2,2,3,3,3,4]
+Output: 9
+Explanation: You can perform the following operations:
+- Delete a 3 to earn 3 points. All 2's and 4's are also deleted. nums = [3,3].
+- Delete a 3 again to earn 3 points. nums = [3].
+- Delete a 3 once more to earn 3 points. nums = [].
+You earn a total of 9 points.
+"""
+
+
+def deleteAndEarn(self, nums: List[int]) -> int:
+    pass
+
+
+"""
+Given a circular integer array nums of length n, return the maximum possible sum of a non-empty subarray of nums.
+
+A circular array means the end of the array connects to the beginning of the array. Formally, the next element of nums[i] is nums[(i + 1) % n] and the previous element of nums[i] is nums[(i - 1 + n) % n].
+
+A subarray may only include each element of the fixed buffer nums at most once. Formally, for a subarray nums[i], nums[i + 1], ..., nums[j], there does not exist i <= k1, k2 <= j with k1 % n == k2 % n.
+
+ 
+
+Example 1:
+
+Input: nums = [1,-2,3,-2]
+Output: 3
+Explanation: Subarray [3] has maximum sum 3.
+Example 2:
+
+Input: nums = [5,-3,5]
+Output: 10
+Explanation: Subarray [5,5] has maximum sum 5 + 5 = 10.
+Example 3:
+
+Input: nums = [-3,-2,-3]
+Output: -2
+Explanation: Subarray [-2] has maximum sum -2.
+"""
+
+
+def maxSubarraySumCircular(self, nums: List[int]) -> int:
+    pass
+
+
+"""
+Given an integer array nums, find a contiguous non-empty subarray within the array that has the largest product, and return the product.
+
+The test cases are generated so that the answer will fit in a 32-bit integer.
+
+A subarray is a contiguous subsequence of the array.
+
+ 
+
+Example 1:
+
+Input: nums = [2,3,-2,4]
+Output: 6
+Explanation: [2,3] has the largest product 6.
+Example 2:
+
+Input: nums = [-2,0,-1]
+Output: 0
+Explanation: The result cannot be 2, because [-2,-1] is not a subarray.
+"""
+
+
+def maxProduct(nums: List[int]) -> int:
+    pass
+
+
+"""
+Given an array of integers nums, find the maximum length of a subarray where the product of all its elements is positive.
+
+A subarray of an array is a consecutive sequence of zero or more values taken out of that array.
+
+Return the maximum length of a subarray with positive product.
+
+ 
+
+Example 1:
+
+Input: nums = [1,-2,-3,4]
+Output: 4
+Explanation: The array nums already has a positive product of 24.
+Example 2:
+
+Input: nums = [0,1,-2,-3,-4]
+Output: 3
+Explanation: The longest subarray with positive product is [1,-2,-3] which has a product of 6.
+Notice that we cannot include 0 in the subarray since that'll make the product 0 which is not positive.
+Example 3:
+
+Input: nums = [-1,-2,-3,0,1]
+Output: 2
+Explanation: The longest subarray with positive product is [-1,-2] or [-2,-3].
+"""
+
+
+def getMaxLen(nums: List[int]) -> int:
+    pass
+
+
+"""
+You are given an integer array values where values[i] represents the value of the ith sightseeing spot. Two sightseeing spots i and j have a distance j - i between them.
+
+The score of a pair (i < j) of sightseeing spots is values[i] + values[j] + i - j: the sum of the values of the sightseeing spots, minus the distance between them.
+
+Return the maximum score of a pair of sightseeing spots.
+
+ 
+
+Example 1:
+
+Input: values = [8,1,5,2,6]
+Output: 11
+Explanation: i = 0, j = 2, values[i] + values[j] + i - j = 8 + 5 + 0 - 2 = 11
+Example 2:
+
+Input: values = [1,2]
+Output: 2
+"""
+
+
+def maxScoreSightseeingPair(self, values: List[int]) -> int:
+    pass
+
+
+"""
+You are given an integer array prices where prices[i] is the price of a given stock on the ith day.
+
+On each day, you may decide to buy and/or sell the stock. You can only hold at most one share of the stock at any time. However, you can buy it then immediately sell it on the same day.
+
+Find and return the maximum profit you can achieve.
+
+ 
+
+Example 1:
+
+Input: prices = [7,1,5,3,6,4]
+Output: 7
+Explanation: Buy on day 2 (price = 1) and sell on day 3 (price = 5), profit = 5-1 = 4.
+Then buy on day 4 (price = 3) and sell on day 5 (price = 6), profit = 6-3 = 3.
+Total profit is 4 + 3 = 7.
+Example 2:
+
+Input: prices = [1,2,3,4,5]
+Output: 4
+Explanation: Buy on day 1 (price = 1) and sell on day 5 (price = 5), profit = 5-1 = 4.
+Total profit is 4.
+Example 3:
+
+Input: prices = [7,6,4,3,1]
+Output: 0
+Explanation: There is no way to make a positive profit, so we never buy the stock to achieve the maximum profit of 0.
+"""
+
+
+def maxProfitTwo(self, prices: List[int]) -> int:
+    pass
+
+
+"""
+You are given an array prices where prices[i] is the price of a given stock on the ith day.
+
+Find the maximum profit you can achieve. You may complete as many transactions as you like (i.e., buy one and sell one share of the stock multiple times) with the following restrictions:
+
+After you sell your stock, you cannot buy stock on the next day (i.e., cooldown one day).
+Note: You may not engage in multiple transactions simultaneously (i.e., you must sell the stock before you buy again).
+
+ 
+
+Example 1:
+
+Input: prices = [1,2,3,0,2]
+Output: 3
+Explanation: transactions = [buy, sell, cooldown, buy, sell]
+Example 2:
+
+Input: prices = [1]
+Output: 0
+"""
+
+
+def maxProfitThree(self, prices: List[int]) -> int:
+    pass
+
+
+"""
+You are given an array prices where prices[i] is the price of a given stock on the ith day, and an integer fee representing a transaction fee.
+
+Find the maximum profit you can achieve. You may complete as many transactions as you like, but you need to pay the transaction fee for each transaction.
+
+Note: You may not engage in multiple transactions simultaneously (i.e., you must sell the stock before you buy again).
+
+ 
+
+Example 1:
+
+Input: prices = [1,3,2,8,4,9], fee = 2
+Output: 8
+Explanation: The maximum profit can be achieved by:
+- Buying at prices[0] = 1
+- Selling at prices[3] = 8
+- Buying at prices[4] = 4
+- Selling at prices[5] = 9
+The total profit is ((8 - 1) - 2) + ((9 - 4) - 2) = 8.
+Example 2:
+
+Input: prices = [1,3,7,5,10,3], fee = 3
+Output: 6
+"""
+
+
+def maxProfitFour(self, prices: List[int], fee: int) -> int:
+    pass
+
+
+"""
 Given a string s and a dictionary of strings wordDict, return true if s can be segmented into a space-separated sequence of one or more dictionary words.
 
 Note that the same word in the dictionary may be reused multiple times in the segmentation.
@@ -463,8 +757,74 @@ Example 3:
 
 Input: s = "catsandog", wordDict = ["cats","dog","sand","and","cat"]
 Output: false
+ 
 """
 
 
 def wordBreak(s: str, wordDict: List[str]) -> bool:
+    pass
+
+
+"""
+You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed. All houses at this place are arranged in a circle. That means the first house is the neighbor of the last one. Meanwhile, adjacent houses have a security system connected, and it will automatically contact the police if two adjacent houses were broken into on the same night.
+
+Given an integer array nums representing the amount of money of each house, return the maximum amount of money you can rob tonight without alerting the police.
+
+
+
+Example 1:
+
+Input: nums = [2,3,2]
+Output: 3
+Explanation: You cannot rob house 1 (money = 2) and then rob house 3 (money = 2), because they are adjacent houses.
+Example 2:
+
+Input: nums = [1,2,3,1]
+Output: 4
+Explanation: Rob house 1 (money = 1) and then rob house 3 (money = 3).
+Total amount you can rob = 1 + 3 = 4.
+Example 3:
+
+Input: nums = [1,2,3]
+Output: 3
+"""
+
+
+def rob2(self, nums: List[int]) -> int:
+    pass
+
+
+"""
+You are given an integer array coins representing coins of different denominations and an integer amount representing a total amount of money.
+
+Return the number of combinations that make up that amount. If that amount of money cannot be made up by any combination of the coins, return 0.
+
+You may assume that you have an infinite number of each kind of coin.
+
+The answer is guaranteed to fit into a signed 32-bit integer.
+
+
+
+Example 1:
+
+Input: amount = 5, coins = [1,2,5]
+Output: 4
+Explanation: there are four ways to make up the amount:
+5=5
+5=2+2+1
+5=2+1+1+1
+5=1+1+1+1+1
+Example 2:
+
+Input: amount = 3, coins = [2]
+Output: 0
+Explanation: the amount of 3 cannot be made up just with coins of 2.
+Example 3:
+
+Input: amount = 10, coins = [10]
+Output: 1
+"""
+
+
+def change(amount: int, coins: List[int]) -> int:
     pass
