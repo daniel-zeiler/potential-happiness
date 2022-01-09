@@ -132,6 +132,31 @@ class SolutionsTest(unittest.TestCase):
         output = []
         self.assertCountEqual(output, backtracking.findWords(board, words))
 
+    def test_combination_sum_three(self):
+        k = 3
+        n = 9
+        output = [[1, 2, 6], [1, 3, 5], [2, 3, 4]]
+        self.assertListEqual(output, backtracking.combinationSum3(k, n))
+
+    def test_combine(self):
+        n = 4
+        k = 2
+        output = [
+            [2, 4],
+            [3, 4],
+            [2, 3],
+            [1, 2],
+            [1, 3],
+            [1, 4],
+        ]
+        self.assertCountEqual(output, backtracking.combine(n, k))
+        n = 1
+        k = 1
+        output = [
+            [1]
+        ]
+        self.assertCountEqual(output, backtracking.combine(n, k))
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -267,3 +267,15 @@ def numOfSubarraysTwo(arr: List[int], k: int, threshold: int) -> int:
         pointer_a += 1
 
     return result
+
+
+def minPairSum(nums: List[int]) -> int:
+    nums.sort()
+    pointer_a = 0
+    pointer_b = len(nums) - 1
+    max_pair_sum = 0
+    while pointer_b > pointer_a:
+        max_pair_sum = max(max_pair_sum, nums[pointer_b] + nums[pointer_a])
+        pointer_a += 1
+        pointer_b -= 1
+    return max_pair_sum

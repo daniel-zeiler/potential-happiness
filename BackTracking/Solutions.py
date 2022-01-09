@@ -1,6 +1,8 @@
 import collections
 from typing import List
 
+import compatibility as compatibility
+
 
 def letter_combinations(digits: str) -> List[str]:
     map = {
@@ -225,3 +227,37 @@ def findWords(board: List[List[str]], words: List[str]) -> List[str]:
     return result
 
 
+def combinationSum3(k: int, n: int) -> List[List[int]]:
+    possible_values = [i for i in range(1, 10)]
+    result = []
+
+    def backtracking_function(path_so_far, remainder_n, remaining_possible_values):
+        if remainder_n < 0:
+            return
+        if len(path_so_far) == k:
+            if remainder_n == 0:
+                result.append(path_so_far)
+        else:
+            for i, value in enumerate(remaining_possible_values):
+                backtracking_function(path_so_far + [value], remainder_n - value, remaining_possible_values[i + 1:])
+
+    for i, value in enumerate(possible_values):
+        backtracking_function([value], n - value, possible_values[i + 1:])
+
+    return result
+
+
+def combine(n: int, k: int) -> List[List[int]]:
+    result = []
+
+    def backtracking_function(result_so_far, remaining_values):
+        if len(result_so_far) == k:
+            result.append(result_so_far)
+        else:
+            for i, value in enumerate(remaining_values):
+                backtracking_function(result_so_far + [value], remaining_values[i + 1:])
+
+    values = [i for i in range(1, n + 1)]
+    for i, value in enumerate(values):
+        backtracking_function([value], values[i + 1:])
+    return result

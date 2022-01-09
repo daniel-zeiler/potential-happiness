@@ -5,12 +5,14 @@ import Two_Pointers.Solutions as two_pointer
 import Two_Pointers.Solutions_Two as two_pointer_two
 import Linked_List.Tests as linked_list
 
+
 def print_list(head: linked_list.ListNode):
     result = []
     while head:
         result.append(head.val)
         head = head.next
     print(result)
+
 
 class SolutionsTest(unittest.TestCase, linked_list.CustomAssertion):
     def test_max_area(self):
@@ -184,6 +186,14 @@ class SolutionsTest(unittest.TestCase, linked_list.CustomAssertion):
         output = 3
         self.assertEqual(output, two_pointer.numOfSubarraysTwo(arr, k, threshold))
         self.assertEqual(output, two_pointer.numOfSubarrays(arr, k, threshold))
+
+    def test_min_pair_sum(self):
+        nums = [3, 5, 2, 3]
+        output = 7
+        self.assertEqual(output, two_pointer.minPairSum(nums))
+        nums = [3, 5, 4, 2, 4, 6]
+        output = 8
+        self.assertEqual(output, two_pointer.minPairSum(nums))
 
 
 if __name__ == '__main__':

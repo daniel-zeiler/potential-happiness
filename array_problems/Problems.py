@@ -1,6 +1,5 @@
 from typing import List
 
-
 """
 Given an array of intervals where intervals[i] = [starti, endi], merge all overlapping intervals, 
 and return an array of the non-overlapping intervals that cover all the intervals in the input.
@@ -22,7 +21,7 @@ Explanation: Intervals [1,4] and [4,5] are considered overlapping.
 
 
 def merge(intervals: List[List[int]]) -> List[List[int]]:
-  pass
+    pass
 
 
 """
@@ -59,7 +58,7 @@ Output: 9 (Island on the right)
 
 
 def largest_parameter(input):
-  pass
+    pass
 
 
 """
@@ -107,7 +106,7 @@ Explanation: Increasing the height of any building will result in the skyline ch
 
 
 def maxIncreaseKeepingSkyline(grid: List[List[int]]) -> int:
-  pass
+    pass
 
 
 """
@@ -136,7 +135,7 @@ Only 1771 contains an even number of digits.
 
 
 def findNumbers(nums: List[int]) -> int:
-  pass
+    pass
 
 
 """
@@ -184,17 +183,17 @@ customStack.pop();                            // return -1 --> Stack is empty re
 
 class CustomStack:
 
-  def __init__(self, maxSize: int):
-    pass
+    def __init__(self, maxSize: int):
+        pass
 
-  def push(self, x: int) -> None:
-    pass
+    def push(self, x: int) -> None:
+        pass
 
-  def pop(self) -> int:
-    pass
+    def pop(self) -> int:
+        pass
 
-  def increment(self, k: int, val: int) -> None:
-    pass
+    def increment(self, k: int, val: int) -> None:
+        pass
 
 
 # Your CustomStack object will be instantiated and called as such:
@@ -229,7 +228,7 @@ Explanation: The optimal pairing is (2, 1), (2, 5), (6, 6). min(2, 1) + min(2, 5
 
 
 def arrayPairSum(self, nums: List[int]) -> int:
-  pass
+    pass
 
 
 """
@@ -253,7 +252,7 @@ Output: [0]
 
 
 def sortArrayByParity(nums: List[int]) -> List[int]:
-  pass
+    pass
 
 
 """
@@ -284,7 +283,7 @@ Explanation: There are no elements to the right of index 0.
 
 
 def replaceElements(self, arr: List[int]) -> List[int]:
-  pass
+    pass
 
 
 """
@@ -323,7 +322,7 @@ Total number of squares = 6 + 1 = 7.
 
 
 def countSquares(matrix: List[List[int]]) -> int:
-  pass
+    pass
 
 
 """
@@ -350,7 +349,7 @@ Output: 0
 
 
 def countBattleships(board: List[List[str]]) -> int:
-  pass
+    pass
 
 
 """
@@ -388,8 +387,8 @@ Output: [[3,7]]
 
 
 def intervalIntersection(firstList: List[List[int]], secondList: List[List[int]]) -> List[
-  List[int]]:
-  pass
+    List[int]]:
+    pass
 
 
 """
@@ -414,7 +413,7 @@ Output: [[1]]
 
 
 def permute(nums: List[int]) -> List[List[int]]:
-  pass
+    pass
 
 
 """
@@ -436,7 +435,7 @@ Output: [[],[0]]
 
 
 def subsets(nums: List[int]) -> List[List[int]]:
-  pass
+    pass
 
 
 """
@@ -490,7 +489,7 @@ Output: 1
 
 
 def calPoints(ops: List[str]) -> int:
-  pass
+    pass
 
 
 """
@@ -530,7 +529,7 @@ Output: 4
 
 
 def islandPerimeter(grid: List[List[int]]) -> int:
-  pass
+    pass
 
 
 """
@@ -560,7 +559,7 @@ Output: 0
 
 
 def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
-  pass
+    pass
 
 
 """
@@ -587,7 +586,7 @@ Output: 1
 
 
 def singleNumber(self, nums: List[int]) -> int:
-  pass
+    pass
 
 
 """
@@ -611,7 +610,7 @@ Output: [22,28,8,6,17,44]
 
 
 def relativeSortArray(arr1: List[int], arr2: List[int]) -> List[int]:
-  pass
+    pass
 
 
 """
@@ -633,7 +632,7 @@ Explanation: [4,9] is also accepted.
 
 
 def intersection(nums1: List[int], nums2: List[int]) -> List[int]:
-  pass
+    pass
 
 
 """
@@ -668,7 +667,7 @@ Explanation: The falling path with a minimum sum is shown.
 
 
 def minFallingPathSum(matrix: List[List[int]]) -> int:
-  pass
+    pass
 
 
 """
@@ -708,7 +707,7 @@ Path to get the maximum gold, 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7.
 
 
 def getMaximumGold(grid: List[List[int]]) -> int:
-  pass
+    pass
 
 
 """
@@ -742,7 +741,7 @@ Explanation: The answer [[-2,4],[3,3]] would also be accepted.
 
 
 def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
-  pass
+    pass
 
 
 """
@@ -770,7 +769,7 @@ Explanation: 1 cannot be popped before 2.
 
 
 def validateStackSequences(pushed: List[int], popped: List[int]) -> bool:
-  pass
+    pass
 
 
 """
@@ -803,9 +802,9 @@ Output: [[3,1],[4,2]]
 
 
 def rotate(matrix: List[List[int]]) -> None:
-  """
-  Do not return anything, modify matrix in-place instead.
-  """
+    """
+    Do not return anything, modify matrix in-place instead.
+    """
 
 
 """
@@ -826,7 +825,7 @@ Output: [1]
 
 
 def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-  pass
+    pass
 
 
 """
@@ -878,7 +877,7 @@ Output: [["B","1","E","1","B"],["B","1","X","1","B"],["B","1","1","1","B"],["B",
 
 
 def updateBoard(board: List[List[str]], click: List[int]) -> List[List[str]]:
-  pass
+    pass
 
 
 """
@@ -913,7 +912,7 @@ Output: 1
 
 
 def lastStoneWeight(stones: List[int]) -> int:
-  pass
+    pass
 
 
 """
@@ -949,7 +948,7 @@ Explanation: There is no way to reach at index 1 with value 0.
 
 
 def canReach(arr: List[int], start: int) -> bool:
-  pass
+    pass
 
 
 """
@@ -969,7 +968,7 @@ Output: [0,0,1,1,2,5]
 
 
 def sortArray(nums: List[int]) -> List[int]:
-  pass
+    pass
 
 
 """
@@ -994,7 +993,7 @@ Bolded numbers were flipped from 0 to 1. The longest subarray is underlined.
 
 
 def longestOnes(nums: List[int], k: int) -> int:
-  pass
+    pass
 
 
 """
@@ -1017,7 +1016,7 @@ Output: 2
 
 
 def majorityElement(self, nums: List[int]) -> int:
-  pass
+    pass
 
 
 """
@@ -1070,9 +1069,9 @@ live cells reach the border). How would you address these problems?
 
 
 def gameOfLife(board: List[List[int]]) -> None:
-  """
-  Do not return anything, modify board in-place instead.
-  """
+    """
+    Do not return anything, modify board in-place instead.
+    """
 
 
 """
@@ -1109,7 +1108,7 @@ Explanation: All 1s are either on the boundary or can reach the boundary.
 
 
 def numEnclaves(grid: List[List[int]]) -> int:
-  pass
+    pass
 
 
 """
@@ -1132,9 +1131,9 @@ Output: [0]
 
 
 def moveZeroes(nums: List[int]) -> None:
-  """
-  Do not return anything, modify nums in-place instead.
-  """
+    """
+    Do not return anything, modify nums in-place instead.
+    """
 
 
 """
@@ -1159,7 +1158,7 @@ Output: true
 
 
 def containsDuplicate(nums: List[int]) -> bool:
-  pass
+    pass
 
 
 """
@@ -1184,7 +1183,7 @@ Output: 12
 
 
 def minPathSum(grid: List[List[int]]) -> int:
-  pass
+    pass
 
 
 """
@@ -1213,7 +1212,7 @@ Output: false
 
 
 def isMonotonic(nums: List[int]) -> bool:
-  pass
+    pass
 
 
 """
@@ -1250,7 +1249,7 @@ Output: [[2,2,2],[2,2,2]]
 
 
 def floodFill(image: List[List[int]], sr: int, sc: int, newColor: int) -> List[List[int]]:
-  pass
+    pass
 
 
 """
@@ -1298,32 +1297,32 @@ myCircularDeque.getFront();     // return 4
 
 class MyCircularDeque:
 
-  def __init__(self, k: int):
-    pass
+    def __init__(self, k: int):
+        pass
 
-  def insertFront(self, value: int) -> bool:
-    pass
+    def insertFront(self, value: int) -> bool:
+        pass
 
-  def insertLast(self, value: int) -> bool:
-    pass
+    def insertLast(self, value: int) -> bool:
+        pass
 
-  def deleteFront(self) -> bool:
-    pass
+    def deleteFront(self) -> bool:
+        pass
 
-  def deleteLast(self) -> bool:
-    pass
+    def deleteLast(self) -> bool:
+        pass
 
-  def getFront(self) -> int:
-    pass
+    def getFront(self) -> int:
+        pass
 
-  def getRear(self) -> int:
-    pass
+    def getRear(self) -> int:
+        pass
 
-  def isEmpty(self) -> bool:
-    pass
+    def isEmpty(self) -> bool:
+        pass
 
-  def isFull(self) -> bool:
-    pass
+    def isFull(self) -> bool:
+        pass
 
 
 # Your MyCircularDeque object will be instantiated and called as such:
@@ -1371,7 +1370,7 @@ The total cost is 6.
 
 
 def minCostClimbingStairs(cost: List[int]) -> int:
-  pass
+    pass
 
 
 """
@@ -1407,7 +1406,7 @@ Output: 1
 
 
 def maxSatisfied(customers: List[int], grumpy: List[int], minutes: int) -> int:
-  pass
+    pass
 
 
 """
@@ -1434,7 +1433,7 @@ Output: [1,1]
 
 
 def getRow(self, rowIndex: int) -> List[int]:
-  pass
+    pass
 
 
 """
@@ -1471,7 +1470,7 @@ Output: ["g1 act car","a8 act zoo","ab1 off key dog","a1 9 2 3 1","zo4 4 7"]
 
 
 def reorderLogFiles(logs: List[str]) -> List[str]:
-  pass
+    pass
 
 
 """
@@ -1493,7 +1492,7 @@ Output: 2
 
 
 def findMaxConsecutiveOnes(nums: List[int]) -> int:
-  pass
+    pass
 
 
 """
@@ -1530,7 +1529,7 @@ all elements into the memory at once?
 
 
 def intersect(nums1: List[int], nums2: List[int]) -> List[int]:
-  pass
+    pass
 
 
 """
@@ -1561,7 +1560,7 @@ Output: 1
 
 
 def maxArea(self, height: List[int]) -> int:
-  pass
+    pass
 
 
 """
@@ -1594,9 +1593,9 @@ Output: [1]
 
 
 def sortColors(nums: List[int]) -> None:
-  """
-  Do not return anything, modify nums in-place instead.
-  """
+    """
+    Do not return anything, modify nums in-place instead.
+    """
 
 
 """
@@ -1625,7 +1624,7 @@ Explanation: In this case, no transactions are done and the max profit = 0.
 
 
 def maxProfit(prices: List[int]) -> int:
-  pass
+    pass
 
 
 """
@@ -1659,7 +1658,7 @@ Output: 3
 
 
 def numIslands(grid: List[List[str]]) -> int:
-  pass
+    pass
 
 
 """
@@ -1693,7 +1692,7 @@ the blank character which is less than any other character (More info).
 
 
 def isAlienSorted(words: List[str], order: str) -> bool:
-  pass
+    pass
 
 
 """
@@ -1729,7 +1728,7 @@ Explanation: Since there are already no fresh oranges at minute 0, the answer is
 
 
 def orangesRotting(grid: List[List[int]]) -> int:
-  pass
+    pass
 
 
 """
@@ -1771,17 +1770,17 @@ return 2.
 
 class RandomizedSet:
 
-  def __init__(self):
-    pass
+    def __init__(self):
+        pass
 
-  def insert(self, val: int) -> bool:
-    pass
+    def insert(self, val: int) -> bool:
+        pass
 
-  def remove(self, val: int) -> bool:
-    pass
+    def remove(self, val: int) -> bool:
+        pass
 
-  def getRandom(self) -> int:
-    pass
+    def getRandom(self) -> int:
+        pass
 
 
 # Your RandomizedSet object will be instantiated and called as such:
@@ -1843,7 +1842,7 @@ It does not matter what you leave beyond the returned k (hence they are undersco
 
 
 def removeElement(nums: List[int], val: int) -> int:
-  pass
+    pass
 
 
 """
@@ -1879,7 +1878,7 @@ Output: -1
 
 
 def findJudge(n: int, trust: List[List[int]]) -> int:
-  pass
+    pass
 
 
 """
@@ -1917,7 +1916,7 @@ divide and conquer approach, which is more subtle.
 
 
 def maxSubArray(nums: List[int]) -> int:
-  pass
+    pass
 
 
 """
@@ -1970,7 +1969,7 @@ It does not matter what you leave beyond the returned k (hence they are undersco
 
 
 def removeDuplicates(self, nums: List[int]) -> int:
-  pass
+    pass
 
 
 """
@@ -1999,7 +1998,7 @@ Output: 1
 
 
 def lengthOfLIS(self, nums: List[int]) -> int:
-  pass
+    pass
 
 
 """
@@ -2039,7 +2038,7 @@ Output: 3
 
 
 def expressiveWords(s: str, words: List[str]) -> int:
-  pass
+    pass
 
 
 """
@@ -2069,7 +2068,7 @@ Total amount you can rob = 2 + 9 + 1 = 12.
 
 
 def rob(nums: List[int]) -> int:
-  pass
+    pass
 
 
 """
@@ -2092,7 +2091,7 @@ Explanation: Intervals [1,4] and [4,5] are considered overlapping.
 
 
 def merge_2(intervals: List[List[int]]) -> List[List[int]]:
-  pass
+    pass
 
 
 """
@@ -2120,7 +2119,7 @@ Output: 0
 
 
 def maximalSquare(matrix: List[List[str]]) -> int:
-  pass
+    pass
 
 
 """
@@ -2164,7 +2163,7 @@ Thus, the result should be [1,0].
 
 
 def plusOne(digits: List[int]) -> List[int]:
-  pass
+    pass
 
 
 """
@@ -2203,7 +2202,7 @@ Output: -1
 
 
 def shortestPathBinaryMatrix(grid: List[List[int]]) -> int:
-  pass
+    pass
 
 
 """
@@ -2233,7 +2232,7 @@ Output: false
 
 
 def exist(board: List[List[str]], word: str) -> bool:
-  pass
+    pass
 
 
 """
@@ -2259,7 +2258,7 @@ which makes it impossible to reach the last index.
 
 
 def canJump(nums: List[int]) -> bool:
-  pass
+    pass
 
 
 """
@@ -2284,7 +2283,7 @@ Output: []
 
 
 def first_and_last_of_k(nums: List[int]) -> List[int]:
-  pass
+    pass
 
 
 """
@@ -2314,7 +2313,7 @@ The diagonal "[1, 2]" has different elements.
 
 
 def isToeplitzMatrix(matrix: List[List[int]]) -> bool:
-  pass
+    pass
 
 
 """
@@ -2331,7 +2330,7 @@ output = [3,8,4,6,5]
 
 
 def plus_one_large_number(input: List[List[int]]) -> List[int]:
-  pass
+    pass
 
 
 """
@@ -2347,4 +2346,61 @@ number_of_lockers = 3
 
 
 def closest_lockers(x, y, lockers, number_of_lockers):
-  pass
+    pass
+
+
+"""
+Given an array of meeting time intervals consisting of start and end times[[s1,e1],[s2,e2],...](si< ei), determine if a person could attend all meetings.
+
+Example 1:
+
+Input:
+[[0,30],[5,10],[15,20]]
+Output: false
+Example 2:
+
+Input:[[7,10],[2,4]]
+
+Output:true
+"""
+
+
+def canAttendMeetings(intervals: List[List[int]]) -> bool:
+    pass
+
+
+"""
+Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],…] (si < ei), find the minimum number of conference rooms required.
+
+For example, Given [[0, 30],[5, 10],[15, 20]], return 2.
+"""
+
+
+def numberMeetingRooms(intervals: List[List[int]]) -> int:
+    pass
+
+
+"""Given a list of intervals calendar and a number of available conference rooms. For each query, return true if the 
+meeting can be added to the calendar successfully without causing a conflict, otherwise false. A conference room can 
+only hold one meeting at a time. 
+
+Example 1:
+
+Input: calendar = [[1, 2], [4, 5], [8, 10]], rooms = 1, queries = [[2, 3], [3, 4]]
+Output: [true, true]
+Example 2:
+
+Input: calendar = [[1, 2], [4, 5], [8, 10]], rooms = 1, queries = [[4, 5], [5, 6]]
+Output: [false, true]
+Example 3:
+
+Input:
+calendar = [[1, 3], [4, 6], [6, 8], [9, 11], [6, 9], [1, 3], [4, 10]]
+rooms = 3
+queries = [[1, 9], [2, 6], [7, 9], [3, 5], [3, 9], [2, 4], [7, 10], [5, 9], [3, 10], [9, 10]]
+Output: [false, true, false, true, false, true, false, false, false, true]
+"""
+
+
+def meeting_room_conflicts(calendar: List[List[int]], rooms: int, queries: list[List[int]]) -> List[bool]:
+    pass

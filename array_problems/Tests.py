@@ -605,6 +605,26 @@ class SolutionsTest(unittest.TestCase):
         output = False
         self.assertEqual(output, array_problems.isAlienSorted(words, order))
 
+    def test_can_attend_meetings(self):
+        input = [[0, 30], [5, 10], [15, 20]]
+        output = False
+        self.assertEqual(output, array_problems.canAttendMeetings(input))
+        input = [[7, 10], [2, 4]]
+        output = True
+        self.assertEqual(output, array_problems.canAttendMeetings(input))
+
+    def test_num_meeting_rooms(self):
+        input = [[0, 30], [5, 10], [15, 20]]
+        output = 2
+        self.assertEqual(output, array_problems.numberMeetingRooms(input))
+
+    def test_meeting_room_conflicts(self):
+        calendar = [[1, 3], [4, 6], [6, 8], [9, 11], [6, 9], [1, 3], [4, 10]]
+        rooms = 3
+        queries = [[1, 9], [2, 6], [7, 9], [3, 5], [3, 9], [2, 4], [7, 10], [5, 9], [3, 10], [9, 10]]
+        output = [False, True, False, True, False, True, False, False, False, True]
+        self.assertListEqual(output, array_problems.meeting_room_conflicts(calendar, rooms, queries))
+
 
 if __name__ == '__main__':
     unittest.main()

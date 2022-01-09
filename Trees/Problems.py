@@ -455,7 +455,7 @@ Output: [1,null,3]
 """
 
 
-def bstFromPreorder(self, preorder: List[int]) -> Optional[Node]:
+def bstFromPreorder(preorder: List[int]) -> Optional[Node]:
     pass
 
 
@@ -536,7 +536,7 @@ ordered by their values.
 """
 
 
-def verticalTraversal(self, root: Optional[Node]) -> List[List[int]]:
+def verticalTraversal(root: Optional[Node]) -> List[List[int]]:
     pass
 
 
@@ -640,7 +640,7 @@ Output: [1,null,5,null,7]
 """
 
 
-def increasingBST(self, root: Node) -> Node:
+def increasingBST(root: Node) -> Node:
     pass
 
 

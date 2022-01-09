@@ -2,7 +2,6 @@ from typing import List, Optional
 
 from Linked_List.Problems import ListNode
 
-
 """
 Given n non-negative integers a1, a2, ..., an , where each represents a point at coordinate (i, 
 ai). n vertical 
@@ -37,7 +36,7 @@ Output: 2
 
 
 def maxArea(height: List[int]) -> int:
-  pass
+    pass
 
 
 """
@@ -62,7 +61,7 @@ Output: [1]
 
 
 def removeNthFromEnd(head: Optional[ListNode], n: int) -> Optional[ListNode]:
-  pass
+    pass
 
 
 """
@@ -115,7 +114,7 @@ It does not matter what you leave beyond the returned k (hence they are undersco
 
 
 def removeDuplicates(nums: List[int]) -> int:
-  pass
+    pass
 
 
 """
@@ -170,7 +169,7 @@ It does not matter what you leave beyond the returned k (hence they are undersco
 
 
 def removeElement(nums: List[int], val: int) -> int:
-  pass
+    pass
 
 
 """
@@ -203,10 +202,10 @@ Output: [1]
 
 
 def sortColors(nums: List[int]) -> None:
-  """
-  Do not return anything, modify nums in-place instead.
-  """
-  pass
+    """
+    Do not return anything, modify nums in-place instead.
+    """
+    pass
 
 
 """
@@ -238,7 +237,7 @@ Since an empty string reads the same forward and backward, it is a palindrome.
 
 
 def isPalindrome(s: str) -> bool:
-  pass
+    pass
 
 
 """
@@ -275,7 +274,7 @@ Explanation: There is no cycle in the linked list.
 
 
 def hasCycle(self, head: Optional[ListNode]) -> bool:
-  pass
+    pass
 
 
 """
@@ -338,7 +337,7 @@ Explanation: The two lists do not intersect, so return null.
 
 
 def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> ListNode:
-  pass
+    pass
 
 
 """
@@ -367,10 +366,10 @@ Constraints:
 
 
 def moveZeroes(nums: List[int]) -> None:
-  """
-  Do not return anything, modify nums in-place instead.
-  """
-  pass
+    """
+    Do not return anything, modify nums in-place instead.
+    """
+    pass
 
 
 """
@@ -392,10 +391,10 @@ Output: ["h","a","n","n","a","H"]
 
 
 def reverseString(s: List[str]) -> None:
-  """
-  Do not return anything, modify s in-place instead.
-  """
-  pass
+    """
+    Do not return anything, modify s in-place instead.
+    """
+    pass
 
 
 """
@@ -417,7 +416,7 @@ Explanation: [4,9] is also accepted.
 
 
 def intersection(nums1: List[int], nums2: List[int]) -> List[int]:
-  pass
+    pass
 
 
 """
@@ -441,7 +440,7 @@ Output: false
 
 
 def isSubsequence(s: str, t: str) -> bool:
-  pass
+    pass
 
 
 """
@@ -462,7 +461,7 @@ Output: "doG gniD"
 
 
 def reverseWords(s: str) -> str:
-  pass
+    pass
 
 
 """
@@ -497,7 +496,7 @@ Output: true
 
 
 def findTarget(self, root: Optional[TreeNode], k: int) -> bool:
-  pass
+    pass
 
 
 """
@@ -523,7 +522,7 @@ Output: false
 
 
 def validPalindrome(s: str) -> bool:
-  pass
+    pass
 
 
 """
@@ -550,7 +549,7 @@ Output: [10]
 
 
 def partitionLabels(s: str) -> List[int]:
-  pass
+    pass
 
 
 """
@@ -590,7 +589,7 @@ Output: 3
 
 
 def expressiveWords(self, s: str, words: List[str]) -> int:
-  pass
+    pass
 
 
 """
@@ -625,7 +624,7 @@ Explanation: s becomes "c" while t becomes "b".
 
 
 def backspaceCompare(self, s: str, t: str) -> bool:
-  pass
+    pass
 
 
 """
@@ -651,7 +650,7 @@ Explanation: Since the list has two middle nodes with values 3 and 4, we return 
 
 
 def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
-  pass
+    pass
 
 
 """
@@ -675,7 +674,7 @@ Output: [0]
 
 
 def sortArrayByParity(nums: List[int]) -> List[int]:
-  pass
+    pass
 
 
 """
@@ -713,8 +712,8 @@ Output: [[3,7]]
 
 
 def intervalIntersection(firstList: List[List[int]], secondList: List[List[int]]) -> List[
-  List[int]]:
-  pass
+    List[int]]:
+    pass
 
 
 """
@@ -749,7 +748,7 @@ Explanation: "FooBarTest" can be generated like this "Fo" + "o" + "Ba" + "r" + "
 
 
 def camelMatch(self, queries: List[str], pattern: str) -> List[bool]:
-  pass
+    pass
 
 
 """
@@ -782,7 +781,7 @@ Explanation: In this case does not exist N and M, such that N = 2 * M.
 
 
 def checkIfExist(self, arr: List[int]) -> bool:
-  pass
+    pass
 
 
 """
@@ -807,7 +806,7 @@ are not integers.
 
 
 def numOfSubarrays(arr: List[int], k: int, threshold: int) -> int:
-  pass
+    pass
 
 
 """
@@ -837,7 +836,38 @@ Output: [1,5,1]
 
 
 def nextPermutation(self, nums: List[int]) -> None:
-  """
-  Do not return anything, modify nums in-place instead.
-  """
-  pass
+    """
+    Do not return anything, modify nums in-place instead.
+    """
+    pass
+
+
+"""
+The pair sum of a pair (a,b) is equal to a + b. The maximum pair sum is the largest pair sum in a list of pairs.
+
+For example, if we have pairs (1,5), (2,3), and (4,4), the maximum pair sum would be max(1+5, 2+3, 4+4) = max(6, 5, 8) = 8.
+Given an array nums of even length n, pair up the elements of nums into n / 2 pairs such that:
+
+Each element of nums is in exactly one pair, and
+The maximum pair sum is minimized.
+Return the minimized maximum pair sum after optimally pairing up the elements.
+
+ 
+
+Example 1:
+
+Input: nums = [3,5,2,3]
+Output: 7
+Explanation: The elements can be paired up into pairs (3,3) and (5,2).
+The maximum pair sum is max(3+3, 5+2) = max(6, 7) = 7.
+Example 2:
+
+Input: nums = [3,5,4,2,4,6]
+Output: 8
+Explanation: The elements can be paired up into pairs (3,5), (4,4), and (6,2).
+The maximum pair sum is max(3+5, 4+4, 6+2) = max(8, 8, 8) = 8.
+"""
+
+
+def minPairSum(nums: List[int]) -> int:
+    pass
