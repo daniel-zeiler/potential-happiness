@@ -625,6 +625,14 @@ class SolutionsTest(unittest.TestCase):
         output = [False, True, False, True, False, True, False, False, False, True]
         self.assertListEqual(output, array_problems.meeting_room_conflicts(calendar, rooms, queries))
 
+    def test_pacific_atlantic(self):
+        heights = [[1, 2, 2, 3, 5], [3, 2, 3, 4, 4], [2, 4, 5, 3, 1], [6, 7, 1, 4, 5], [5, 1, 1, 2, 4]]
+        output = [[0, 4], [1, 3], [1, 4], [2, 2], [3, 0], [3, 1], [4, 0]]
+        self.assertCountEqual(output, array_problems.pacificAtlantic(heights))
+        heights = [[2, 1], [1, 2]]
+        output = [[0, 0], [0, 1], [1, 0], [1, 1]]
+        self.assertCountEqual(output, array_problems.pacificAtlantic(heights))
+
 
 if __name__ == '__main__':
     unittest.main()

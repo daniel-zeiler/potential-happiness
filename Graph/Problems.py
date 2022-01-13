@@ -423,3 +423,105 @@ Output: false
 
 def validate_binary_tree(n, left_child, right_child):
     pass
+
+
+"""
+You are given an array of variable pairs equations and an array of real numbers values, where equations[i] = [Ai, Bi] and values[i] represent the equation Ai / Bi = values[i]. Each Ai or Bi is a string that represents a single variable.
+
+You are also given some queries, where queries[j] = [Cj, Dj] represents the jth query where you must find the answer for Cj / Dj = ?.
+
+Return the answers to all queries. If a single answer cannot be determined, return -1.0.
+
+Note: The input is always valid. You may assume that evaluating the queries will not result in division by zero and that there is no contradiction.
+
+ 
+
+Example 1:
+
+Input: equations = [["a","b"],["b","c"]], values = [2.0,3.0], queries = [["a","c"],["b","a"],["a","e"],["a","a"],["x","x"]]
+Output: [6.00000,0.50000,-1.00000,1.00000,-1.00000]
+Explanation: 
+Given: a / b = 2.0, b / c = 3.0
+queries are: a / c = ?, b / a = ?, a / e = ?, a / a = ?, x / x = ?
+return: [6.0, 0.5, -1.0, 1.0, -1.0 ]
+Example 2:
+
+Input: equations = [["a","b"],["b","c"],["bc","cd"]], values = [1.5,2.5,5.0], queries = [["a","c"],["c","b"],["bc","cd"],["cd","bc"]]
+Output: [3.75000,0.40000,5.00000,0.20000]
+Example 3:
+
+Input: equations = [["a","b"]], values = [0.5], queries = [["a","b"],["b","a"],["a","c"],["x","y"]]
+Output: [0.50000,2.00000,-1.00000,-1.00000]
+"""
+
+
+def calcEquation(self, equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]:
+    pass
+
+
+"""
+You are given an array routes representing bus routes where routes[i] is a bus route that the ith bus repeats forever.
+
+For example, if routes[0] = [1, 5, 7], this means that the 0th bus travels in the sequence 1 -> 5 -> 7 -> 1 -> 5 -> 7 -> 1 -> ... forever.
+You will start at the bus stop source (You are not on any bus initially), and you want to go to the bus stop target. You can travel between bus stops by buses only.
+
+Return the least number of buses you must take to travel from source to target. Return -1 if it is not possible.
+
+ 
+
+Example 1:
+
+Input: routes = [[1,2,7],[3,6,7]], source = 1, target = 6
+Output: 2
+Explanation: The best strategy is take the first bus to the bus stop 7, then take the second bus to the bus stop 6.
+Example 2:
+
+Input: routes = [[7,12],[4,5,15],[6],[15,19],[9,12,13]], source = 15, target = 12
+Output: -1
+"""
+
+
+def numBusesToDestination(self, routes: List[List[int]], source: int, target: int) -> int:
+    pass
+
+
+"""
+You have a data structure of employee information, including the employee's unique ID, importance value, and direct subordinates' IDs.
+
+You are given an array of employees employees where:
+
+employees[i].id is the ID of the ith employee.
+employees[i].importance is the importance value of the ith employee.
+employees[i].subordinates is a list of the IDs of the direct subordinates of the ith employee.
+Given an integer id that represents an employee's ID, return the total importance value of this employee and all their direct and indirect subordinates.
+
+ 
+
+Example 1:
+
+
+Input: employees = [[1,5,[2,3]],[2,3,[]],[3,3,[]]], id = 1
+Output: 11
+Explanation: Employee 1 has an importance value of 5 and has two direct subordinates: employee 2 and employee 3.
+They both have an importance value of 3.
+Thus, the total importance value of employee 1 is 5 + 3 + 3 = 11.
+Example 2:
+
+
+Input: employees = [[1,2,[5]],[5,-3,[]]], id = 5
+Output: -3
+Explanation: Employee 5 has an importance value of -3 and has no direct subordinates.
+Thus, the total importance value of employee 5 is -3.
+"""
+
+
+# Definition for Employee.
+class Employee:
+    def __init__(self, id: int, importance: int, subordinates: List[int]):
+        self.id = id
+        self.importance = importance
+        self.subordinates = subordinates
+
+
+def getImportance(employees: List['Employee'], id: int) -> int:
+    pass

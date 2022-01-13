@@ -509,10 +509,8 @@ class Codec:
 def sumOfLeftLeaves(root: Optional[Node]) -> int:
     def traverse(root, left_side):
         if root:
-            if not root.left and not root.right:
-                if left_side:
-                    return root.val
-                return 0
+            if not root.left and not root.right and left_side:
+                return root.val
             return traverse(root.left, True) + traverse(root.right, False)
         return 0
 
@@ -776,3 +774,25 @@ def sumRootToLeaf(root: Optional[Node]) -> int:
 
     traverse(root, '')
     return result
+
+
+def countUnivalSubtrees(root: Optional[Node]) -> int:
+    result = 0
+
+    def traverse(node):
+        nonlocal result
+        is_univalued = True
+        if node:
+            if node.left is not None:
+                is_univalued = traverse(node.left) and node.left.val == node.val and is_univalued
+            if node.right is not None:
+                is_univalued = traverse(node.right) and node.right.val == node.val and is_univalued
+            if is_univalued:
+                result += 1
+        return is_univalued
+
+    traverse(root)
+    return result
+
+
+input = binarytree.build2([5, 1, 5, 5, 5, None, 5])

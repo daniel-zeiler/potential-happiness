@@ -35,7 +35,7 @@ Example 4:
 Input: s = "1"
 Output: 0
 """
-from typing import List
+from typing import List, Optional
 
 
 def maxDepth(s: str) -> int:
@@ -737,7 +737,8 @@ Valid operators are +, -, *, and /. Each operand may be an integer or another ex
 
 Note that division between two integers should truncate toward zero.
 
-It is guaranteed that the given RPN expression is always valid. That means the expression would always evaluate to a result, and there will not be any division by zero operation.
+It is guaranteed that the given RPN expression is always valid. That means the expression would always evaluate to a 
+result, and there will not be any division by zero operation. 
 
  
 
@@ -766,4 +767,312 @@ Explanation: ((10 * (6 / ((9 + 3) * -11))) + 17) + 5
 
 
 def evalRPN(tokens: List[str]) -> int:
+    pass
+
+
+"""Given the array prices where prices[i] is the price of the ith item in a shop. There is a special discount for 
+items in the shop, if you buy the ith item, then you will receive a discount equivalent to prices[j] where j is the 
+minimum index such that j > i and prices[j] <= prices[i], otherwise, you will not receive any discount at all. 
+
+Return an array where the ith element is the final price you will pay for the ith item of the shop considering the 
+special discount. 
+
+ 
+
+Example 1:
+
+Input: prices = [8,4,6,2,3]
+Output: [4,2,4,2,3]
+Explanation: 
+For item 0 with price[0]=8 you will receive a discount equivalent to prices[1]=4, therefore, the final price you will pay is 8 - 4 = 4. 
+For item 1 with price[1]=4 you will receive a discount equivalent to prices[3]=2, therefore, the final price you will pay is 4 - 2 = 2. 
+For item 2 with price[2]=6 you will receive a discount equivalent to prices[3]=2, therefore, the final price you will pay is 6 - 2 = 4. 
+For items 3 and 4 you will not receive any discount at all.
+Example 2:
+
+Input: prices = [1,2,3,4,5]
+Output: [1,2,3,4,5]
+Explanation: In this case, for all items, you will not receive any discount at all.
+Example 3:
+
+Input: prices = [10,1,1,6]
+Output: [9,0,1,6]
+"""
+
+
+def finalPrices(prices: List[int]) -> List[int]:
+    pass
+
+
+"""
+The next greater element of some element x in an array is the first greater element that is to the right of x in 
+the same array. 
+
+You are given two distinct 0-indexed integer arrays nums1 and nums2, where nums1 is a subset of nums2.
+
+For each 0 <= i < nums1.length, find the index j such that nums1[i] == nums2[j] and determine the next greater 
+element of nums2[j] in nums2. If there is no next greater element, then the answer for this query is -1. 
+
+Return an array ans of length nums1.length such that ans[i] is the next greater element as described above.
+
+ 
+
+Example 1:
+
+Input: nums1 = [4,1,2], nums2 = [1,3,4,2]
+Output: [-1,3,-1]
+Explanation: The next greater element for each value of nums1 is as follows:
+- 4 is underlined in nums2 = [1,3,4,2]. There is no next greater element, so the answer is -1.
+- 1 is underlined in nums2 = [1,3,4,2]. The next greater element is 3.
+- 2 is underlined in nums2 = [1,3,4,2]. There is no next greater element, so the answer is -1.
+Example 2:
+
+Input: nums1 = [2,4], nums2 = [1,2,3,4]
+Output: [3,-1]
+Explanation: The next greater element for each value of nums1 is as follows:
+- 2 is underlined in nums2 = [1,2,3,4]. The next greater element is 3.
+- 4 is underlined in nums2 = [1,2,3,4]. There is no next greater element, so the answer is -1.
+"""
+
+
+def nextGreaterElement(nums1: List[int], nums2: List[int]) -> List[int]:
+    pass
+
+
+"""
+Given an array arr of positive integers, consider all binary trees such that:
+
+Each node has either 0 or 2 children;
+The values of arr correspond to the values of each leaf in an in-order traversal of the tree.
+The value of each non-leaf node is equal to the product of the largest leaf value in its left and right subtree, respectively.
+Among all possible binary trees considered, return the smallest possible sum of the values of each non-leaf node. It is guaranteed this sum fits into a 32-bit integer.
+
+A node is a leaf if and only if it has zero children.
+
+ 
+
+Example 1:
+
+
+Input: arr = [6,2,4]
+Output: 32
+Explanation: There are two possible trees shown.
+The first has a non-leaf node sum 36, and the second has non-leaf node sum 32.
+Example 2:
+
+
+Input: arr = [4,11]
+Output: 44
+"""
+
+
+def mctFromLeafValues(self, arr: List[int]) -> int:
+    pass
+
+
+"""
+Given an array of integers temperatures represents the daily temperatures, return an array answer such that 
+answer[i] is the number of days you have to wait after the ith day to get a warmer temperature. If there is no future 
+day for which this is possible, keep answer[i] == 0 instead. 
+
+ 
+
+Example 1:
+
+Input: temperatures = [73,74,75,71,69,72,76,73]
+Output: [1,1,4,2,1,1,0,0]
+Example 2:
+
+Input: temperatures = [30,40,50,60]
+Output: [1,1,1,0]
+Example 3:
+
+Input: temperatures = [30,60,90]
+Output: [1,1,0]
+ 
+
+Constraints:
+
+1 <= temperatures.length <= 105
+30 <= temperatures[i] <= 100
+"""
+
+
+def dailyTemperatures(temperatures: List[int]) -> List[int]:
+    pass
+
+
+"""Design an algorithm that collects daily price quotes for some stock and returns the span of that stock's price for 
+the current day. 
+
+The span of the stock's price today is defined as the maximum number of consecutive days (starting from today and 
+going backward) for which the stock price was less than or equal to today's price. 
+
+For example, if the price of a stock over the next 7 days were [100,80,60,70,60,75,85], then the stock spans would be [1,1,1,2,1,4,6].
+Implement the StockSpanner class:
+
+StockSpanner() Initializes the object of the class.
+int next(int price) Returns the span of the stock's price given that today's price is price.
+ 
+
+Example 1:
+
+Input
+["StockSpanner", "next", "next", "next", "next", "next", "next", "next"]
+[[], [100], [80], [60], [70], [60], [75], [85]]
+Output
+[null, 1, 1, 1, 2, 1, 4, 6]
+
+Explanation
+StockSpanner stockSpanner = new StockSpanner();
+stockSpanner.next(100); // return 1
+stockSpanner.next(80);  // return 1
+stockSpanner.next(60);  // return 1
+stockSpanner.next(70);  // return 2
+stockSpanner.next(60);  // return 1
+stockSpanner.next(75);  // return 4, because the last 4 prices (including today's price of 75) were less than or equal to today's price.
+stockSpanner.next(85);  // return 6
+"""
+
+
+class StockSpanner:
+
+    def __init__(self):
+        pass
+
+    def next(self, price: int) -> int:
+        pass
+
+
+# Your StockSpanner object will be instantiated and called as such:
+# obj = StockSpanner()
+# param_1 = obj.next(price)
+
+
+"""Given a circular integer array nums (i.e., the next element of nums[nums.length - 1] is nums[0]), return the next 
+greater number for every element in nums. 
+
+The next greater number of a number x is the first greater number to its traversing-order next in the array, 
+which means you could search circularly to find its next greater number. If it doesn't exist, return -1 for this 
+number. 
+
+ 
+
+Example 1:
+
+Input: nums = [1,2,1]
+Output: [2,-1,2]
+Explanation: The first 1's next greater number is 2; 
+The number 2 can't find next greater number. 
+The second 1's next greater number needs to search circularly, which is also 2.
+Example 2:
+
+Input: nums = [1,2,3,4,3]
+Output: [2,3,4,-1,4]
+ 
+"""
+
+
+def nextGreaterElements(self, nums: List[int]) -> List[int]:
+    pass
+
+
+"""
+Given an integer array nums, you need to find one continuous subarray that if you only sort this subarray in 
+ascending order, then the whole array will be sorted in ascending order. 
+
+Return the shortest such subarray and output its length.
+
+ 
+
+Example 1:
+
+Input: nums = [2,6,4,8,10,9,15]
+Output: 5
+Explanation: You need to sort [6, 4, 8, 10, 9] in ascending order to make the whole array sorted in ascending order.
+Example 2:
+
+Input: nums = [1,2,3,4]
+Output: 0
+Example 3:
+
+Input: nums = [1]
+Output: 0
+ 
+
+Constraints:
+
+1 <= nums.length <= 104
+-105 <= nums[i] <= 105
+ 
+
+Follow up: Can you solve it in O(n) time complexity?
+"""
+
+
+def findUnsortedSubarray(self, nums: List[int]) -> int:
+    pass
+
+
+"""
+Given a string s which represents an expression, evaluate this expression and return its value. 
+
+The integer division should truncate toward zero.
+
+You may assume that the given expression is always valid. All intermediate results will be in the range of [-231, 231 - 1].
+
+Note: You are not allowed to use any built-in function which evaluates strings as mathematical expressions, such as eval().
+
+ 
+
+Example 1:
+
+Input: s = "3+2*2"
+Output: 7
+Example 2:
+
+Input: s = " 3/2 "
+Output: 1
+Example 3:
+
+Input: s = " 3+5 / 2 "
+Output: 5
+"""
+
+
+def calculate(self, s: str) -> int:
+    pass
+
+
+"""
+You are given the head of a linked list with n nodes.
+
+For each node in the list, find the value of the next greater node. That is, for each node, find the value of the first node that is next to it and has a strictly larger value than it.
+
+Return an integer array answer where answer[i] is the value of the next greater node of the ith node (1-indexed). If the ith node does not have a next greater node, set answer[i] = 0.
+
+ 
+
+Example 1:
+
+
+Input: head = [2,1,5]
+Output: [5,5,0]
+Example 2:
+
+
+Input: head = [2,7,4,3,5]
+Output: [7,0,5,5,0]
+"""
+
+
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+
+# hint, this is probably easier as an iterative traversal rather than
+# recursive
+def nextLargerNodes(head: Optional[ListNode]) -> List[int]:
     pass

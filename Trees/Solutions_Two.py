@@ -396,3 +396,242 @@ def insertIntoBST(root: Optional[Node], val: int) -> Optional[Node]:
         return node
 
     return traverse(root)
+
+
+def searchBST(root: Optional[Node], val: int) -> Optional[Node]:
+    if root:
+        if root.value == val:
+            return root
+        if root.val > val:
+            return searchBST(root.left, val)
+        else:
+            return searchBST(root.right, val)
+
+
+def postorder(root: 'Node') -> List[int]:
+    result = []
+    if root:
+        result.extend(postorder(root.left))
+        result.extend(postorder(root.right))
+        result.append(root.val)
+    return result
+
+
+def trimBST(root: Optional[Node], low: int, high: int) -> Optional[Node]:
+    def traverse(node):
+        if node:
+            node.left = traverse(node.left)
+            node.right = traverse(node.right)
+            if node.value < low or node.value > high:
+                if node.left:
+                    return node.left
+                elif node.right:
+                    return node.right
+                return None
+        return node
+
+    return traverse(root)
+
+
+def constructMaximumBinaryTree(nums: List[int]) -> Optional[Node]:
+    def get_max(list_remaining):
+        maximum_value = float('-inf')
+        index = -1
+        for i, value in enumerate(list_remaining):
+            if value > maximum_value:
+                maximum_value = value
+                index = i
+        return index
+
+    def traverse(list_remaining):
+        if not list_remaining:
+            return None
+        max_index = get_max(list_remaining)
+        node = Node(list_remaining[max_index])
+        node.left = traverse(list_remaining[:max_index])
+        node.right = traverse(list_remaining[max_index + 1:])
+        return node
+
+    return traverse(nums)
+
+
+def findTarget(root: Optional[Node], k: int) -> bool:
+    compliment_set = set()
+
+    def traverse(node):
+        if node:
+            if node.value in compliment_set:
+                return True
+            elif k - node.value not in compliment_set:
+                compliment_set.add(k - node.value)
+            return traverse(node.left) or traverse(node.right)
+        return False
+
+    return traverse(root)
+
+
+def averageOfLevels(root: Optional[Node]) -> List[float]:
+    levels = []
+    queue = collections.deque([[root, 0]])
+    while queue:
+        node, level = queue.popleft()
+        if len(levels) == level:
+            levels.append([1, node.value])
+        else:
+            levels[level][0] += 1
+            levels[level][1] += node.value
+
+        if node.left:
+            queue.append([node.left, level + 1])
+
+        if node.right:
+            queue.append([node.right, level + 1])
+
+    for i, [num_at_level, sum_at_level] in enumerate(levels):
+        levels[i] = sum_at_level / num_at_level
+    return levels
+
+
+def mergeTrees(root1: Optional[Node], root2: Optional[Node]) -> Optional[Node]:
+    if root1 and root2:
+        root1.left = mergeTrees(root1.left, root2.left)
+        root1.right = mergeTrees(root1.right, root2.right)
+        root1.val += root2.val
+        return root1
+    return root1 or root2 or None
+
+
+def tree2str(root: Optional[Node]) -> str:
+    result = ''
+    if root:
+        result += str(root.value)
+        if root.left and root.right:
+            result += '(' + tree2str(root.left) + ')' + '(' + tree2str(root.right) + ')'
+        elif root.left:
+            result += '(' + tree2str(root.left) + ')'
+        elif root.right:
+            result += '()(' + tree2str(root.right) + ')'
+    return result
+
+
+def diameterOfBinaryTree(root: Optional[Node]) -> int:
+    max_path_length = 0
+
+    def traverse(node):
+        if node:
+            max_level_left = traverse(node.left)
+            max_level_right = traverse(node.right)
+            nonlocal max_path_length
+            max_path_length = max(max_level_left + max_level_right, max_path_length)
+            return max(max_level_left, max_level_right) + 1
+        return 0
+
+    traverse(root)
+    return max_path_length
+
+
+def convertBST(root: Optional[Node]) -> Optional[Node]:
+    sum_so_far = 0
+
+    def traverse(node):
+        if node:
+            nonlocal sum_so_far
+            traverse(node.right)
+            node.value += sum_so_far
+            sum_so_far = node.value
+            traverse(node.left)
+        return node
+
+    return traverse(root)
+
+
+def getMinimumDifference(root: Optional[Node]) -> int:
+    def traverse(node, low, high):
+        if node:
+            left = traverse(node.left, low, node.value)
+            right = traverse(node.right, node.value, high)
+            return min(abs(high - node.val), abs(low - node.val), left, right)
+        return float('inf')
+
+    return traverse(root, float('inf'), float('inf'))
+
+
+class Codec:
+
+    def serialize(self, root: Node) -> str:
+
+        def traverse(node):
+            result = []
+            if node:
+                result.append(str(node.value))
+                result.extend(traverse(node.left))
+                result.extend(traverse(node.right))
+            else:
+                result.append(str(None))
+            return result
+
+        return ','.join(traverse(root))
+
+    def deserialize(self, data: str) -> Node:
+        data = data.split(',')
+        data = collections.deque(data)
+
+        def traverse():
+            if len(data) != 0:
+                if data[0] == 'None':
+                    data.popleft()
+                    return None
+                node = Node(int(data.popleft()))
+                node.left = traverse()
+                node.right = traverse()
+                return node
+            return None
+
+        return traverse()
+
+
+def sumOfLeftLeaves(root: Optional[Node]) -> int:
+    sum_of_left_leaves = 0
+
+    def traverse(node):
+        if node:
+            if not node.left and not node.right:
+                return node.value
+
+            nonlocal sum_of_left_leaves
+            sum_of_left_leaves += traverse(node.left)
+            traverse(node.right)
+        return 0
+
+    traverse(root)
+    return sum_of_left_leaves
+
+
+def binaryTreePaths(root: Optional[Node]) -> List[str]:
+    result = []
+
+    def traverse(node, path_so_far):
+        if node:
+            path_so_far += str(node.value)
+            if not node.left and not node.right:
+                result.append(path_so_far)
+            else:
+                traverse(node.left, path_so_far + '->')
+                traverse(node.right, path_so_far + '->')
+
+    traverse(root, '')
+    return result
+
+
+def lowestCommonAncestor(root: 'Node', p: 'Node', q: 'Node') -> 'Node':
+    def traverse(node):
+        if node:
+            if node == p or node == q:
+                return node
+            left = traverse(node.left)
+            right = traverse(node.right)
+            if left and right:
+                return node
+            return left or right
+
+    return traverse(root)

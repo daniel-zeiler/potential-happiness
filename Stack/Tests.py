@@ -214,17 +214,40 @@ class SolutionsTest(unittest.TestCase):
         s = "abc3[cd]xyz"
         output = "abccdcdcdxyz"
         self.assertEqual(output, stack_two.decodeString(s))
+        s = "100[lol]"
+        self.assertEqual(100 * 'lol', stack_two.decodeString(s))
 
     def test_eval_rpn(self):
-        tokens = ["2", "1", "+", "3", "*"]
-        output = 9
-        self.assertEqual(output, stack.evalRPN(tokens))
-        tokens = ["4", "13", "5", "/", "+"]
-        output = 6
-        self.assertEqual(output, stack.evalRPN(tokens))
+        # tokens = ["2", "1", "+", "3", "*"]
+        # output = 9
+        # self.assertEqual(output, stack_two.evalRPN(tokens))
+        # tokens = ["4", "13", "5", "/", "+"]
+        # output = 6
+        # self.assertEqual(output, stack_two.evalRPN(tokens))
         tokens = ["10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"]
         output = 22
-        self.assertEqual(output, stack.evalRPN(tokens))
+        self.assertEqual(output, stack_two.evalRPN(tokens))
+
+    def test_prices(self):
+        prices = [8, 4, 6, 2, 3]
+        output = [4, 2, 4, 2, 3]
+        self.assertListEqual(output, stack_two.finalPrices(prices))
+        prices = [1, 2, 3, 4, 5]
+        output = [1, 2, 3, 4, 5]
+        self.assertListEqual(output, stack_two.finalPrices(prices))
+        prices = [10, 1, 1, 6]
+        output = [9, 0, 1, 6]
+        self.assertListEqual(output, stack_two.finalPrices(prices))
+
+    def test_next_greater(self):
+        nums1 = [4, 1, 2]
+        nums2 = [1, 3, 4, 2]
+        output = [-1, 3, -1]
+        self.assertListEqual(output, stack_two.nextGreaterElement(nums1, nums2))
+        nums1 = [2, 4]
+        nums2 = [1, 2, 3, 4]
+        output = [3, -1]
+        self.assertListEqual(output, stack_two.nextGreaterElement(nums1, nums2))
 
 
 if __name__ == '__main__':

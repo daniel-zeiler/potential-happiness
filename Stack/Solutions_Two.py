@@ -208,10 +208,108 @@ def decodeString(s: str) -> str:
         stack.append(character)
         if stack[-1] == ']':
             stack.pop()
+
             decode = ''
             while stack[-1] != '[':
                 decode = stack.pop() + decode
+
             stack.pop()
-            decode = int(stack.pop()) * decode
+
+            number = ''
+            while stack and stack[-1].isnumeric():
+                number += stack.pop()
+
+            decode = int(number[::-1]) * decode
             stack.extend(list(decode))
+
     return ''.join(stack)
+
+
+def isanumber(a):
+    try:
+        float(repr(a))
+        bool_a = True
+    except:
+        bool_a = False
+
+    return bool_a
+
+
+def evalRPN(tokens: List[str]) -> int:
+    stack = []
+    for i, token in enumerate(tokens):
+        if token.lstrip('-').isnumeric():
+            stack.append(int(token))
+        else:
+            first_pop = stack.pop()
+            second_pop = stack.pop()
+            if token == '/':
+                stack.append(int(second_pop / first_pop))
+            elif token == '+':
+                stack.append(second_pop + first_pop)
+            elif token == '*':
+                stack.append(second_pop * first_pop)
+            elif token == '-':
+                stack.append(second_pop - first_pop)
+    return stack[-1]
+
+
+def finalPrices(prices: List[int]) -> List[int]:
+    result = [price for price in prices]
+    stack = []
+    for i, price in enumerate(prices):
+        if not stack:
+            stack.append(i)
+        else:
+            while stack and prices[stack[-1]] >= price:
+                index = stack.pop()
+                result[index] = prices[index] - price
+            stack.append(i)
+    return result
+
+
+def nextGreaterElement(nums1: List[int], nums2: List[int]) -> List[int]:
+    result_map = {}
+    stack = []
+    for i, number in enumerate(nums2):
+        while stack and nums2[stack[-1]] < number:
+            index = stack.pop()
+            result_map[nums2[index]] = number
+        stack.append(i)
+    for i, num in enumerate(nums1):
+        if num in result_map:
+            nums1[i] = result_map[num]
+        else:
+            nums1[i] = -1
+
+    return nums1
+
+
+def dailyTemperatures(temperatures: List[int]) -> List[int]:
+    result = [0 for _ in range(len(temperatures))]
+    stack = []
+    for index, temperature in enumerate(temperatures):
+        while stack and temperatures[stack[-1]] < temperature:
+            stack_index = stack.pop()
+            result[stack_index] = index - stack_index
+        stack.append(index)
+    return result
+
+
+def nextGreaterElements(nums: List[int]) -> List[int]:
+    stack = []
+    result = [-1 for _ in range(len(nums))]
+    for i, num in enumerate(nums):
+        while stack and nums[stack[-1]] < num:
+            index = stack.pop()
+            result[index] = num
+        stack.append(i)
+
+    for i, num in enumerate(nums):
+        while stack and nums[stack[-1]] < num:
+            index = stack.pop()
+            result[index] = num
+        if not stack:
+            return result
+
+    return result

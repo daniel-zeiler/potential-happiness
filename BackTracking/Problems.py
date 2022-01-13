@@ -315,16 +315,18 @@ Path to get the maximum gold, 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7.
 """
 
 
-def f(grid: List[List[int]]) -> int:
+def get_maximum_gold(grid: List[List[int]]) -> int:
     pass
 
 
-"""
-Given an array of distinct integers candidates and a target integer target, return a list of all unique combinations of candidates where the chosen numbers sum to target. You may return the combinations in any order.
+"""Given an array of distinct integers candidates and a target integer target, return a list of all unique 
+combinations of candidates where the chosen numbers sum to target. You may return the combinations in any order. 
 
-The same number may be chosen from candidates an unlimited number of times. Two combinations are unique if the frequency of at least one of the chosen numbers is different.
+The same number may be chosen from candidates an unlimited number of times. Two combinations are unique if the 
+frequency of at least one of the chosen numbers is different. 
 
-It is guaranteed that the number of unique combinations that sum up to target is less than 150 combinations for the given input.
+It is guaranteed that the number of unique combinations that sum up to target is less than 150 combinations for the 
+given input. 
 
  
 
@@ -354,19 +356,30 @@ def combinationSum(candidates: List[int], target: int) -> List[List[int]]:
 """
 Given an m x n board of characters and a list of strings words, return all words on the board.
 
-Each word must be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once in a word.
+Each word must be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or 
+vertically neighboring. The same letter cell may not be used more than once in a word. 
 
  
 
 Example 1:
 
 
-Input: board = [["o","a","a","n"],["e","t","a","e"],["i","h","k","r"],["i","f","l","v"]], words = ["oath","pea","eat","rain"]
+Input: board = [
+    ["o","a","a","n"],
+    ["e","t","a","e"],
+    ["i","h","k","r"],
+    ["i","f","l","v"]
+],
+words = ["oath","pea","eat","rain"]
 Output: ["eat","oath"]
 Example 2:
 
 
-Input: board = [["a","b"],["c","d"]], words = ["abcb"]
+Input: board = [
+    ["a","b"],
+    ["c","d"]
+], 
+words = ["abcb"]
 Output: []
 """
 
@@ -378,9 +391,8 @@ def findWords(board: List[List[str]], words: List[str]) -> List[str]:
 """
 Find all valid combinations of k numbers that sum up to n such that the following conditions are true:
 
-Only numbers 1 through 9 are used.
-Each number is used at most once.
-Return a list of all possible valid combinations. The list must not contain the same combination twice, and the combinations may be returned in any order.
+Only numbers 1 through 9 are used. Each number is used at most once. Return a list of all possible valid 
+combinations. The list must not contain the same combination twice, and the combinations may be returned in any order. 
 
  
 
@@ -402,11 +414,8 @@ Explanation:
 There are no other valid combinations.
 Example 3:
 
-Input: k = 4, n = 1
-Output: []
-Explanation: There are no valid combinations.
-Using 4 different numbers in the range [1,9], the smallest sum we can get is 1+2+3+4 = 10 and since 10 > 1, there are no valid combination.
-"""
+Input: k = 4, n = 1 Output: [] Explanation: There are no valid combinations. Using 4 different numbers in the range [
+1,9], the smallest sum we can get is 1+2+3+4 = 10 and since 10 > 1, there are no valid combination. """
 
 
 def combinationSum3(k: int, n: int) -> List[List[int]]:

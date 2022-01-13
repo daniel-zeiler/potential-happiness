@@ -1,4 +1,3 @@
-import collections
 from typing import List
 
 
@@ -17,32 +16,6 @@ def length_of_longest_substring(s: str) -> int:
 
     return length_of_longest
 
-
-# def min_window(s: str, t: str) -> str:
-#     target_dict = collections.defaultdict(int)
-#     start_pointer = 0
-#     end_pointer = 0
-#     min_window_length = float('inf')
-#     min_window = ""
-#     t = set(t)
-#     while start_pointer <= len(s) and end_pointer <= len(s):
-#         if len(target_dict) == len(t):
-#             if s[start_pointer] in t:
-#                 target_dict[s[start_pointer]] -= 1
-#             if target_dict[s[start_pointer]] == 0:
-#                 del (target_dict[s[start_pointer]])
-#             start_pointer += 1
-#         else:
-#             if end_pointer == len(s):
-#                 return min_window
-#             if s[end_pointer] in t:
-#                 target_dict[s[end_pointer]] += 1
-#             end_pointer += 1
-#         if len(target_dict) == len(t):
-#             if end_pointer - start_pointer < min_window_length:
-#                 min_window_length = end_pointer - start_pointer
-#                 min_window = s[start_pointer:end_pointer]
-#     return min_window
 
 def longest_ones(nums: List[int], k: int) -> int:
     start_pointer = 0

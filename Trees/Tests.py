@@ -317,11 +317,21 @@ class SolutionsTest(unittest.TestCase, CustomAssertion):
         root = binarytree.build2([4, 2, 7, 1, 3])
         val = 2
         output = binarytree.build2([2, 1, 3])
-        self.assert_compare_trees(output, trees.searchBST(root, val))
+        self.assert_compare_trees(output, trees_two.searchBST(root, val))
         root = binarytree.build2([4, 2, 7, 1, 3])
         val = 5
         output = binarytree.build2([])
-        self.assert_compare_trees(output, trees.searchBST(root, val))
+        self.assert_compare_trees(output, trees_two.searchBST(root, val))
+
+    def test_postorder(self):
+        root = binarytree.build2([1, None, 3, 2, 4, None, 5, 6])
+        output = [5, 2, 6, 4, 3, 1]
+        self.assertListEqual(output, trees_two.postorder(root))
+        root = binarytree.build2(
+            [1, None, 2, 3, 4, 5, None, None, 6, 7, None, 8, None, 9, 10, None, None, 11, None, 12, None, 13, None,
+             None, 14])
+        output = [13, 11, 9, 14, 12, 10, 7, 5, 3, 8, 6, 4, 2, 1]
+        self.assertListEqual(output, trees_two.postorder(root))
 
     def test_second_minimum_value(self):
         root = binarytree.build2([2, 2, 5, None, None, 5, 7])
@@ -336,152 +346,152 @@ class SolutionsTest(unittest.TestCase, CustomAssertion):
         low = 1
         high = 2
         output = binarytree.build2([1, None, 2])
-        self.assert_compare_trees(output, trees.trimBST(root, low, high))
+        self.assert_compare_trees(output, trees_two.trimBST(root, low, high))
         root = binarytree.build2([3, 0, 4, None, 2, None, None, 1])
         low = 1
         high = 3
         output = binarytree.build2([3, 2, None, 1])
-        self.assert_compare_trees(output, trees.trimBST(root, low, high))
+        self.assert_compare_trees(output, trees_two.trimBST(root, low, high))
         root = binarytree.build2([1])
         low = 1
         high = 2
         output = binarytree.build2([1])
-        self.assert_compare_trees(output, trees.trimBST(root, low, high))
+        self.assert_compare_trees(output, trees_two.trimBST(root, low, high))
         root = binarytree.build2([1, None, 2])
         low = 1
         high = 3
         output = binarytree.build2([1, None, 2])
-        self.assert_compare_trees(output, trees.trimBST(root, low, high))
+        self.assert_compare_trees(output, trees_two.trimBST(root, low, high))
         root = binarytree.build2([1, None, 2])
         low = 2
         high = 4
         output = binarytree.build2([2])
-        self.assert_compare_trees(output, trees.trimBST(root, low, high))
+        self.assert_compare_trees(output, trees_two.trimBST(root, low, high))
 
     def test_construct_maximum_binary_tree(self):
         nums = [3, 2, 1, 6, 0, 5]
         output = binarytree.build2([6, 3, 5, None, 2, 0, None, None, 1])
-        self.assert_compare_trees(output, trees.constructMaximumBinaryTree(nums))
+        self.assert_compare_trees(output, trees_two.constructMaximumBinaryTree(nums))
         nums = [3, 2, 1]
         output = binarytree.build2([3, None, 2, None, 1])
-        self.assert_compare_trees(output, trees.constructMaximumBinaryTree(nums))
+        self.assert_compare_trees(output, trees_two.constructMaximumBinaryTree(nums))
 
     def test_find_target(self):
         root = binarytree.build2([5, 3, 6, 2, 4, None, 7])
         k = 9
         output = True
-        self.assertEqual(output, trees.findTarget(root, k))
+        self.assertEqual(output, trees_two.findTarget(root, k))
         root = binarytree.build2([5, 3, 6, 2, 4, None, 7])
         k = 28
         output = False
-        self.assertEqual(output, trees.findTarget(root, k))
+        self.assertEqual(output, trees_two.findTarget(root, k))
         root = binarytree.build2([2, 1, 3])
         k = 4
         output = True
-        self.assertEqual(output, trees.findTarget(root, k))
+        self.assertEqual(output, trees_two.findTarget(root, k))
         root = binarytree.build2([2, 1, 3])
         k = 1
         output = False
-        self.assertEqual(output, trees.findTarget(root, k))
+        self.assertEqual(output, trees_two.findTarget(root, k))
         root = binarytree.build2([2, 1, 3])
         k = 3
         output = True
-        self.assertEqual(output, trees.findTarget(root, k))
+        self.assertEqual(output, trees_two.findTarget(root, k))
 
     def test_average_levels(self):
         root = binarytree.build2([3, 9, 20, None, None, 15, 7])
         output = [3, 14.5, 11]
-        self.assertEqual(output, trees.averageOfLevels(root))
+        self.assertEqual(output, trees_two.averageOfLevels(root))
         root = binarytree.build2([3, 9, 20, 15, 7])
         output = [3, 14.5, 11]
-        self.assertEqual(output, trees.averageOfLevels(root))
+        self.assertEqual(output, trees_two.averageOfLevels(root))
 
     def test_merge_trees(self):
         root1 = binarytree.build2([1, 3, 2, 5])
         root2 = binarytree.build2([2, 1, 3, None, 4, None, 7])
         output = binarytree.build2([3, 4, 5, 5, 4, None, 7])
-        self.assert_compare_trees(output, trees.mergeTrees(root1, root2))
+        self.assert_compare_trees(output, trees_two.mergeTrees(root1, root2))
         root1 = binarytree.build2([1])
         root2 = binarytree.build2([1, 2])
         output = binarytree.build2([2, 2])
-        self.assert_compare_trees(output, trees.mergeTrees(root1, root2))
+        self.assert_compare_trees(output, trees_two.mergeTrees(root1, root2))
 
     def test_tree_to_str(self):
         input = binarytree.build2([1, 2, 3, 4])
         output = "1(2(4))(3)"
-        self.assertEqual(output, trees.tree2str(input))
+        self.assertEqual(output, trees_two.tree2str(input))
         input = binarytree.build2([1, 2, 3, None, 4])
         output = "1(2()(4))(3)"
-        self.assertEqual(output, trees.tree2str(input))
+        self.assertEqual(output, trees_two.tree2str(input))
 
     def test_diameter_of_binary_tree(self):
         root = binarytree.build2([1, 2, 3, 4, 5])
         output = 3
-        self.assertEqual(output, trees.diameterOfBinaryTree(root))
+        self.assertEqual(output, trees_two.diameterOfBinaryTree(root))
         root = binarytree.build2([1, 2])
         output = 1
-        self.assertEqual(output, trees.diameterOfBinaryTree(root))
+        self.assertEqual(output, trees_two.diameterOfBinaryTree(root))
 
     def test_convert_bst(self):
         root = binarytree.build2([4, 1, 6, 0, 2, 5, 7, None, None, None, 3, None, None, None, 8])
         output = binarytree.build2([30, 36, 21, 36, 35, 26, 15, None, None, None, 33, None, None, None, 8])
-        self.assert_compare_trees(output, trees.convertBST(root))
+        self.assert_compare_trees(output, trees_two.convertBST(root))
         root = binarytree.build2([0, None, 1])
         output = binarytree.build2([1, None, 1])
-        self.assert_compare_trees(output, trees.convertBST(root))
+        self.assert_compare_trees(output, trees_two.convertBST(root))
         root = binarytree.build2([1, 0, 2])
         output = binarytree.build2([3, 3, 2])
-        self.assert_compare_trees(output, trees.convertBST(root))
+        self.assert_compare_trees(output, trees_two.convertBST(root))
         root = binarytree.build2([3, 2, 4, 1])
         output = binarytree.build2([7, 9, 4, 10])
-        self.assert_compare_trees(output, trees.convertBST(root))
+        self.assert_compare_trees(output, trees_two.convertBST(root))
 
     def test_get_minimum_difference(self):
         root = binarytree.build2([4, 2, 6, 1, 3])
         output = 1
-        self.assertEqual(output, trees.getMinimumDifference(root))
+        self.assertEqual(output, trees_two.getMinimumDifference(root))
         root = binarytree.build2([1, 0, 48, None, None, 12, 49])
         output = 1
-        self.assertEqual(output, trees.getMinimumDifference(root))
+        self.assertEqual(output, trees_two.getMinimumDifference(root))
 
     def test_searialize_desearlize(self):
         root = binarytree.build2([4, 1, 6, 0, 2, 5, 7, None, None, None, 3, None, None, None, 8])
         output = binarytree.build2([4, 1, 6, 0, 2, 5, 7, None, None, None, 3, None, None, None, 8])
-        codec = trees.Codec()
+        codec = trees_two.Codec()
         self.assert_compare_trees(output, codec.deserialize(codec.serialize(root)))
 
     def test_sum_of_left_leaves(self):
         root = binarytree.build2([3, 9, 20, None, None, 15, 7])
         output = 24
-        self.assertEqual(output, trees.sumOfLeftLeaves(root))
+        self.assertEqual(output, trees_two.sumOfLeftLeaves(root))
         root = binarytree.build2([1])
         output = 0
-        self.assertEqual(output, trees.sumOfLeftLeaves(root))
+        self.assertEqual(output, trees_two.sumOfLeftLeaves(root))
 
     def test_binary_tree_paths(self):
         root = binarytree.build2([1, 2, 3, None, 5])
         output = ["1->2->5", "1->3"]
-        self.assertListEqual(output, trees.binaryTreePaths(root))
+        self.assertListEqual(output, trees_two.binaryTreePaths(root))
         root = binarytree.build2([1])
         output = ["1"]
-        self.assertListEqual(output, trees.binaryTreePaths(root))
+        self.assertListEqual(output, trees_two.binaryTreePaths(root))
 
     def test_lowest_common_ancestor(self):
         root = binarytree.build2([3, 5, 1, 6, 2, 0, 8, None, None, 7, 4])
         p = root.left
         q = root.right
         output = root
-        self.assert_compare_trees(output, trees.lowestCommonAncestor(root, p, q))
+        self.assert_compare_trees(output, trees_two.lowestCommonAncestor(root, p, q))
         root = binarytree.build2([3, 5, 1, 6, 2, 0, 8, None, None, 7, 4])
         p = root.left
         q = root.left.right.right
         output = root.left
-        self.assert_compare_trees(output, trees.lowestCommonAncestor(root, p, q))
+        self.assert_compare_trees(output, trees_two.lowestCommonAncestor(root, p, q))
         root = binarytree.build2([1, 2])
         p = root
         q = root.left
         output = root
-        self.assert_compare_trees(output, trees.lowestCommonAncestor(root, p, q))
+        self.assert_compare_trees(output, trees_two.lowestCommonAncestor(root, p, q))
 
     def test_invert_tree(self):
         root = binarytree.build2([4, 2, 7, 1, 3, 6, 9])

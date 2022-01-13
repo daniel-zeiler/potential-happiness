@@ -306,3 +306,58 @@ def evalRPN(tokens: List[str]) -> int:
         else:
             stack.append(int(token))
     return stack[-1]
+
+
+def dailyTemperatures(temperatures: List[int]) -> List[int]:
+    stack = []
+    output = [0 for _ in range(len(temperatures))]
+    for i, temp in enumerate(temperatures):
+        if not stack:
+            stack.append(i)
+        else:
+            if temp <= temperatures[stack[-1]]:
+                stack.append(i)
+            else:
+                while stack and temperatures[stack[-1]] < temp:
+                    index = stack.pop()
+                    output[index] = i - index
+                stack.append(i)
+    return output
+
+
+def finalPrices(prices: List[int]) -> List[int]:
+    stack = []
+    output = [price for price in prices]
+    for i, price in enumerate(prices):
+        if not stack:
+            stack.append(i)
+        elif price > prices[stack[-1]]:
+            stack.append(i)
+        else:
+            while stack and price <= prices[stack[-1]]:
+                index = stack.pop()
+                output[index] = prices[index] - price
+            stack.append(i)
+    return output
+
+
+def nextGreaterElement(nums1: List[int], nums2: List[int]) -> List[int]:
+    temp_dict = collections.defaultdict(int)
+    stack = []
+
+    for i, num in enumerate(nums2):
+        if not stack or num < nums2[stack[-1]]:
+            stack.append(i)
+        else:
+            while stack and num > nums2[stack[-1]]:
+                index = stack.pop()
+                temp_dict[nums2[index]] = num
+            stack.append(i)
+
+    for i, num in enumerate(nums1):
+        if num in temp_dict:
+            nums1[i] = temp_dict[num]
+        else:
+            nums1[i] = -1
+
+    return nums1

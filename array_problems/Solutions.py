@@ -1035,3 +1035,43 @@ def meeting_room_conflicts(calendar: List[List[int]], rooms: int, queries: list[
         if not added:
             result.append(False)
     return result
+
+
+def pacificAtlantic(heights: List[List[int]]) -> List[List[int]]:
+    result_set = []
+
+    def check_directions(x, y):
+        directions = [[0, 1], [0, -1], [1, 0], [-1, 0]]
+        pacific = False
+        atlantic = False
+        result = []
+        for x_direction, y_direction in directions:
+            x_target = x + x_direction
+            y_target = y + y_direction
+            if x_target < 0 or y_target < 0:
+                pacific = True
+            elif x_target >= len(heights) or y_target >= len(heights[0]):
+                atlantic = True
+            elif heights[x_target][y_target] <= heights[x][y]:
+                result.append([x_target, y_target])
+        return pacific, atlantic, result
+
+    def traverse(x, y):
+        pacific, atlantic, directions = check_directions(x, y)
+        heights[x][y], temp = float('inf'), heights[x][y]
+        for x_direction, y_direction in directions:
+            possible_pacific, possible_atlantic = traverse(x_direction, y_direction)
+            if possible_pacific:
+                pacific = True
+            if possible_atlantic:
+                atlantic = True
+
+        heights[x][y] = temp
+        return pacific, atlantic
+
+    for x, row in enumerate(heights):
+        for y, value in enumerate(row):
+            pacific, atlantic = traverse(x, y)
+            if pacific and atlantic:
+                result_set.append([x, y])
+    return list(result_set)

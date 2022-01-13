@@ -2350,7 +2350,8 @@ def closest_lockers(x, y, lockers, number_of_lockers):
 
 
 """
-Given an array of meeting time intervals consisting of start and end times[[s1,e1],[s2,e2],...](si< ei), determine if a person could attend all meetings.
+Given an array of meeting time intervals consisting of start and end times[[s1,e1],[s2,e2],...](si< ei), 
+determine if a person could attend all meetings. 
 
 Example 1:
 
@@ -2370,7 +2371,8 @@ def canAttendMeetings(intervals: List[List[int]]) -> bool:
 
 
 """
-Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],…] (si < ei), find the minimum number of conference rooms required.
+Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],…] (si < ei), 
+find the minimum number of conference rooms required. 
 
 For example, Given [[0, 30],[5, 10],[15, 20]], return 2.
 """
@@ -2403,4 +2405,205 @@ Output: [false, true, false, true, false, true, false, false, false, true]
 
 
 def meeting_room_conflicts(calendar: List[List[int]], rooms: int, queries: list[List[int]]) -> List[bool]:
+    pass
+
+
+"""
+There is an m x n rectangular island that borders both the Pacific Ocean and Atlantic Ocean. The Pacific Ocean 
+touches the island's left and top edges, and the Atlantic Ocean touches the island's right and bottom edges. 
+
+The island is partitioned into a grid of square cells. You are given an m x n integer matrix heights where heights[
+r][c] represents the height above sea level of the cell at coordinate (r, c). 
+
+The island receives a lot of rain, and the rain water can flow to neighboring cells directly north, south, east, 
+and west if the neighboring cell's height is less than or equal to the current cell's height. Water can flow from any 
+cell adjacent to an ocean into the ocean. 
+
+Return a 2D list of grid coordinates result where result[i] = [ri, ci] denotes that rain water can flow from cell (
+ri, ci) to both the Pacific and Atlantic oceans. 
+
+ 
+
+Example 1:
+
+
+Input: heights = [[1,2,2,3,5],[3,2,3,4,4],[2,4,5,3,1],[6,7,1,4,5],[5,1,1,2,4]]
+Output: [[0,4],[1,3],[1,4],[2,2],[3,0],[3,1],[4,0]]
+Example 2:
+
+Input: heights = [[2,1],[1,2]]
+Output: [[0,0],[0,1],[1,0],[1,1]]
+"""
+
+
+def pacificAtlantic(heights: List[List[int]]) -> List[List[int]]:
+    pass
+
+
+"""
+You are given a 0-indexed array of positive integers w where w[i] describes the weight of the ith index.
+
+You need to implement the function pickIndex(), which randomly picks an index in the range [0, w.length - 1] (
+inclusive) and returns it. The probability of picking an index i is w[i] / sum(w). 
+
+For example, if w = [1, 3], the probability of picking index 0 is 1 / (1 + 3) = 0.25 (i.e., 25%), and the probability 
+of picking index 1 is 3 / (1 + 3) = 0.75 (i.e., 75%). 
+
+
+Example 1:
+
+Input
+["Solution","pickIndex"]
+[[[1]],[]]
+Output
+[null,0]
+
+Explanation
+Solution solution = new Solution([1]);
+solution.pickIndex(); // return 0. The only option is to return 0 since there is only one element in w.
+Example 2:
+
+Input
+["Solution","pickIndex","pickIndex","pickIndex","pickIndex","pickIndex"]
+[[[1,3]],[],[],[],[],[]]
+Output
+[null,1,1,1,1,0]
+
+Explanation
+Solution solution = new Solution([1, 3]);
+solution.pickIndex(); // return 1. It is returning the second element (index = 1) that has a probability of 3/4.
+solution.pickIndex(); // return 1
+solution.pickIndex(); // return 1
+solution.pickIndex(); // return 1
+solution.pickIndex(); // return 0. It is returning the first element (index = 0) that has a probability of 1/4.
+
+Since this is a randomization problem, multiple answers are allowed.
+All of the following outputs can be considered correct:
+[null,1,1,1,1,0]
+[null,1,1,1,1,1]
+[null,1,1,1,0,0]
+[null,1,1,1,0,1]
+[null,1,0,1,0,0]
+......
+and so on.
+"""
+
+
+class Solution:
+
+    def __init__(self, w: List[int]):
+        pass
+
+    def pickIndex(self) -> int:
+        pass
+
+
+# Your Solution object will be instantiated and called as such:
+# obj = Solution(w)
+# param_1 = obj.pickIndex()
+
+
+"""" 
+Given an array of strings words and a width maxWidth, format the text such that each line has exactly maxWidth 
+characters and is fully (left and right) justified. 
+
+You should pack your words in a greedy approach; that is, pack as many words as you can in each line. Pad extra 
+spaces ' ' when necessary so that each line has exactly maxWidth characters. 
+
+Extra spaces between words should be distributed as evenly as possible. If the number of spaces on a line does not 
+divide evenly between words, the empty slots on the left will be assigned more spaces than the slots on the right. 
+
+For the last line of text, it should be left-justified and no extra space is inserted between words.
+
+Note:
+
+A word is defined as a character sequence consisting of non-space characters only.
+Each word's length is guaranteed to be greater than 0 and not exceed maxWidth.
+The input array words contains at least one word.
+ 
+
+Example 1:
+
+Input: words = ["This", "is", "an", "example", "of", "text", "justification."], maxWidth = 16
+Output:
+[
+   "This    is    an",
+   "example  of text",
+   "justification.  "
+]
+Example 2:
+
+Input: words = ["What","must","be","acknowledgment","shall","be"], maxWidth = 16 Output: [ "What   must   be", 
+"acknowledgment  ", "shall be        " ] Explanation: Note that the last line is "shall be    " instead of "shall     
+be", because the last line must be left-justified instead of fully-justified. Note that the second line is also 
+left-justified becase it contains only one word. Example 3: 
+
+Input: words = ["Science","is","what","we","understand","well","enough","to","explain","to","a","computer.","Art",
+"is","everything","else","we","do"], maxWidth = 20 Output: [ "Science  is  what we", "understand      well", 
+"enough to explain to", "a  computer.  Art is", "everything  else  we", "do                  " ] """
+
+
+def fullJustify(self, words: List[str], maxWidth: int) -> List[str]:
+    pass
+
+
+"""
+On a single-threaded CPU, we execute a program containing n functions. Each function has a unique ID between 0 and n-1.
+
+Function calls are stored in a call stack: when a function call starts, its ID is pushed onto the stack, and when a 
+function call ends, its ID is popped off the stack. The function whose ID is at the top of the stack is the current 
+function being executed. Each time a function starts or ends, we write a log with the ID, whether it started or 
+ended, and the timestamp. 
+
+You are given a list logs, where logs[i] represents the ith log message formatted as a string "{function_id}:{"start" 
+| "end"}:{timestamp}". For example, "0:start:3" means a function call with function ID 0 started at the beginning of 
+timestamp 3, and "1:end:2" means a function call with function ID 1 ended at the end of timestamp 2. Note that a 
+function can be called multiple times, possibly recursively. 
+
+A function's exclusive time is the sum of execution times for all function calls in the program. For example, 
+if a function is called twice, one call executing for 2 time units and another call executing for 1 time unit, 
+the exclusive time is 2 + 1 = 3. 
+
+Return the exclusive time of each function in an array, where the value at the ith index represents the exclusive 
+time for the function with ID i. 
+
+ 
+
+Example 1:
+
+
+Input: n = 2, logs = ["0:start:0","1:start:2","1:end:5","0:end:6"]
+Output: [3,4]
+Explanation:
+Function 0 starts at the beginning of time 0, then it executes 2 for units of time and reaches the end of time 1.
+Function 1 starts at the beginning of time 2, executes for 4 units of time, and ends at the end of time 5.
+Function 0 resumes execution at the beginning of time 6 and executes for 1 unit of time.
+So function 0 spends 2 + 1 = 3 units of total time executing, and function 1 spends 4 units of total time executing.
+Example 2:
+
+Input: n = 1, logs = ["0:start:0","0:start:2","0:end:5","0:start:6","0:end:6","0:end:7"]
+Output: [8]
+Explanation:
+Function 0 starts at the beginning of time 0, executes for 2 units of time, and recursively calls itself.
+Function 0 (recursive call) starts at the beginning of time 2 and executes for 4 units of time.
+Function 0 (initial call) resumes execution then immediately calls itself again.
+Function 0 (2nd recursive call) starts at the beginning of time 6 and executes for 1 unit of time.
+Function 0 (initial call) resumes execution at the beginning of time 7 and executes for 1 unit of time.
+So function 0 spends 2 + 4 + 1 + 1 = 8 units of total time executing.
+Example 3:
+
+Input: n = 2, logs = ["0:start:0","0:start:2","0:end:5","1:start:6","1:end:6","0:end:7"]
+Output: [7,1]
+Explanation:
+Function 0 starts at the beginning of time 0, executes for 2 units of time, and recursively calls itself.
+Function 0 (recursive call) starts at the beginning of time 2 and executes for 4 units of time.
+Function 0 (initial call) resumes execution then immediately calls function 1.
+Function 1 starts at the beginning of time 6, executes 1 unit of time, and ends at the end of time 6.
+Function 0 resumes execution at the beginning of time 6 and executes for 2 units of time.
+So function 0 spends 2 + 4 + 1 = 7 units of total time executing, and function 1 spends 1 unit of total time executing.
+
+"""
+
+
+def exclusiveTime(n: int, logs: List[str]) -> List[int]:
     pass

@@ -1,3 +1,4 @@
+import collections
 from typing import List
 
 """
@@ -56,6 +57,10 @@ Output: ""
 Explanation: Both 'a's from t must be included in the window.
 Since the largest window of s only has one 'a', return empty string.
 """
+
+
+def compare_counts(character_count_s, character_count_t):
+    pass
 
 
 def min_window(s: str, t: str) -> str:
@@ -151,5 +156,27 @@ Output: 1
 """
 
 
-def maxVowels(self, s: str, k: int) -> int:
+def maxVowels(s: str, k: int) -> int:
+    pass
+
+
+"""Given a string s and an integer k, return the length of the longest substring of s that contains at most k 
+distinct characters. 
+
+ 
+
+Example 1:
+
+Input: s = "eceba", k = 2
+Output: 3
+Explanation: The substring is "ece" with length 3.
+Example 2:
+
+Input: s = "aa", k = 1
+Output: 2
+Explanation: The substring is "aa" with length 2.
+"""
+
+
+def lengthOfLongestSubstringKDistinct(self, s: str, k: int) -> int:
     pass
