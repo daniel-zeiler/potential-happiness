@@ -313,3 +313,21 @@ def nextGreaterElements(nums: List[int]) -> List[int]:
             return result
 
     return result
+
+def exclusiveTime(n: int, logs: List[str]) -> List[int]:
+    res = [0] * n
+    stack = []
+    for log in logs:
+        ID, op, time = log.split(':')
+        ID = int(ID)
+        time = int(time)
+        if op == 'start':
+            if stack:
+                res[stack[-1][0]] += time - stack[-1][1]
+            stack.append([ID, time])
+        else:
+            prev = stack.pop()
+            res[ID] += time - prev[1] + 1
+            if stack:
+                stack[-1][1] = time + 1
+    return res

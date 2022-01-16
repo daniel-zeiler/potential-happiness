@@ -199,3 +199,74 @@ class MapSum:
             return value
 
         return sum_prefix(prefix, self.head)
+
+
+class BoldTagTrieNode:
+    def __init__(self, word=None):
+        self.word = word
+        self.children = collections.defaultdict(BoldTagTrieNode)
+
+
+class BoldTagTrie:
+    def __init__(self):
+        self.head = BoldTagTrieNode()
+        self.pointer = self.head
+
+    def insert(self, word):
+        def recursive_insert(node, word_remaining):
+            if not word_remaining:
+                node.word = word
+            elif word_remaining[0] in node.children:
+                recursive_insert(node.children[word_remaining[0]], word_remaining[1:])
+            else:
+                temp_node = BoldTagTrieNode()
+                node.children[word_remaining[0]] = temp_node
+                recursive_insert(node.children[word_remaining[0]], word_remaining[1:])
+
+        recursive_insert(self.head, word)
+
+    def slow_search(self, letter):
+        if letter in self.pointer.children:
+            self.pointer = self.pointer.children[letter]
+            return True
+        return False
+
+    def reset_pointer(self):
+        self.pointer = self.head
+
+
+def addBoldTag(s: str, words: List[str]) -> str:
+    trie = BoldTagTrie()
+    for word in words:
+        trie.insert(word)
+
+    painting = [False for _ in range(len(s))]
+
+    for i in range(len(s)):
+        for j in range(i, len(s)):
+            if not trie.slow_search(s[j]):
+                trie.reset_pointer()
+                break
+            if trie.pointer.word:
+                painting[i:j + 1] = [True] * (j - i + 1)
+    open = False
+    result = ''
+
+    for i, character in enumerate(s):
+        if not open and painting[i] == True:
+            result += '<b>'
+            open = True
+        elif open and painting[i] == False:
+            result += '</b>'
+            open = False
+        result += character
+
+    if open:
+        result += '</b>'
+
+    return result
+
+
+s = "abcxyz123"
+words = ["abc", "123"]
+addBoldTag(s, words)

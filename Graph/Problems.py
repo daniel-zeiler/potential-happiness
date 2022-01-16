@@ -1,3 +1,4 @@
+import collections
 from typing import List
 
 """
@@ -426,13 +427,17 @@ def validate_binary_tree(n, left_child, right_child):
 
 
 """
-You are given an array of variable pairs equations and an array of real numbers values, where equations[i] = [Ai, Bi] and values[i] represent the equation Ai / Bi = values[i]. Each Ai or Bi is a string that represents a single variable.
+You are given an array of variable pairs equations and an array of real numbers values, where equations[i] = [Ai, 
+Bi] and values[i] represent the equation Ai / Bi = values[i]. Each Ai or Bi is a string that represents a single 
+variable. 
 
-You are also given some queries, where queries[j] = [Cj, Dj] represents the jth query where you must find the answer for Cj / Dj = ?.
+You are also given some queries, where queries[j] = [Cj, Dj] represents the jth query where you must find the answer 
+for Cj / Dj = ?. 
 
 Return the answers to all queries. If a single answer cannot be determined, return -1.0.
 
-Note: The input is always valid. You may assume that evaluating the queries will not result in division by zero and that there is no contradiction.
+Note: The input is always valid. You may assume that evaluating the queries will not result in division by zero and 
+that there is no contradiction. 
 
  
 
@@ -455,15 +460,16 @@ Output: [0.50000,2.00000,-1.00000,-1.00000]
 """
 
 
-def calcEquation(self, equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]:
+def calcEquation(equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]:
     pass
 
 
 """
 You are given an array routes representing bus routes where routes[i] is a bus route that the ith bus repeats forever.
 
-For example, if routes[0] = [1, 5, 7], this means that the 0th bus travels in the sequence 1 -> 5 -> 7 -> 1 -> 5 -> 7 -> 1 -> ... forever.
-You will start at the bus stop source (You are not on any bus initially), and you want to go to the bus stop target. You can travel between bus stops by buses only.
+For example, if routes[0] = [1, 5, 7], this means that the 0th bus travels in the sequence 1 -> 5 -> 7 -> 1 -> 5 -> 7 
+-> 1 -> ... forever. You will start at the bus stop source (You are not on any bus initially), and you want to go to 
+the bus stop target. You can travel between bus stops by buses only. 
 
 Return the least number of buses you must take to travel from source to target. Return -1 if it is not possible.
 
@@ -485,8 +491,8 @@ def numBusesToDestination(self, routes: List[List[int]], source: int, target: in
     pass
 
 
-"""
-You have a data structure of employee information, including the employee's unique ID, importance value, and direct subordinates' IDs.
+"""You have a data structure of employee information, including the employee's unique ID, importance value, 
+and direct subordinates' IDs. 
 
 You are given an array of employees employees where:
 
@@ -524,4 +530,142 @@ class Employee:
 
 
 def getImportance(employees: List['Employee'], id: int) -> int:
+    pass
+
+
+"""Suppose you are at a party with n people (labeled from 0 to n - 1), and among them, there may exist one celebrity. 
+The definition of a celebrity is that all the other n - 1 people know him/her, but he/she does not know any of them. 
+
+Now you want to find out who the celebrity is or verify that there is not one. The only thing you are allowed to do 
+is to ask questions like: "Hi, A. Do you know B?" to get information about whether A knows B. You need to find out 
+the celebrity (or verify there is not one) by asking as few questions as possible (in the asymptotic sense). 
+
+You are given a helper function bool knows(a, b) which tells you whether A knows B. Implement a function int 
+findCelebrity(n). There will be exactly one celebrity if he/she is in the party. Return the celebrity's label if 
+there is a celebrity in the party. If there is no celebrity, return -1. 
+
+ 
+
+Example 1:
+
+
+Input: graph = [[1,1,0],[0,1,0],[1,1,1]] Output: 1 Explanation: There are three persons labeled with 0, 
+1 and 2. graph[i][j] = 1 means person i knows person j, otherwise graph[i ][j] = 0 means person i does not know 
+person j. The celebrity is the person labeled as 1 because both 0 and 2 know him but 1 does not know anybody. Example 
+2: 
+
+
+Input: graph = [[1,0,1],[1,1,0],[0,1,1]]
+Output: -1
+Explanation: There is no celebrity.
+ 
+
+Constraints:
+
+n == graph.length
+n == graph[i].length
+2 <= n <= 100
+graph[i][j] is 0 or 1.
+graph[i][i] == 1
+"""
+
+
+# The knows API is already defined for you.
+# return a bool, whether a knows b
+# def knows(a: int, b: int) -> bool:
+
+def findCelebrity(self, n: int) -> int:
+    pass
+
+
+"""
+Strings s1 and s2 are k-similar (for some non-negative integer k) if we can swap the positions of two letters in s1 exactly k times so that the resulting string equals s2.
+
+Given two anagrams s1 and s2, return the smallest k for which s1 and s2 are k-similar.
+
+ 
+
+Example 1:
+
+Input: s1 = "ab", s2 = "ba"
+Output: 1
+Example 2:
+
+Input: s1 = "abc", s2 = "bca"
+Output: 2
+"""
+
+
+def kSimilarity(s1: str, s2: str) -> int:
+    pass
+
+
+"""
+A transformation sequence from word beginWord to word endWord using a dictionary wordList is a sequence of words beginWord -> s1 -> s2 -> ... -> sk such that:
+
+Every adjacent pair of words differs by a single letter.
+Every si for 1 <= i <= k is in wordList. Note that beginWord does not need to be in wordList.
+sk == endWord
+Given two words, beginWord and endWord, and a dictionary wordList, return the number of words in the shortest transformation sequence from beginWord to endWord, or 0 if no such sequence exists.
+
+ 
+
+Example 1:
+
+Input: beginWord = "hit", endWord = "cog", wordList = ["hot","dot","dog","lot","log","cog"]
+Output: 5
+Explanation: One shortest transformation sequence is "hit" -> "hot" -> "dot" -> "dog" -> cog", which is 5 words long.
+Example 2:
+
+Input: beginWord = "hit", endWord = "cog", wordList = ["hot","dot","dog","lot","log"]
+Output: 0
+Explanation: The endWord "cog" is not in wordList, therefore there is no valid transformation sequence.
+"""
+
+
+def ladderLength(beginWord: str, endWord: str, wordList: List[str]) -> int:
+    pass
+
+
+"""
+There are a total of numCourses courses you have to take, labeled from 0 to numCourses - 1. You are given an array prerequisites where prerequisites[i] = [ai, bi] indicates that you must take course bi first if you want to take course ai.
+
+For example, the pair [0, 1], indicates that to take course 0 you have to first take course 1.
+Return true if you can finish all courses. Otherwise, return false.
+
+ 
+
+Example 1:
+
+Input: numCourses = 2, prerequisites = [[1,0]]
+Output: true
+Explanation: There are a total of 2 courses to take. 
+To take course 1 you should have finished course 0. So it is possible.
+Example 2:
+
+Input: numCourses = 2, prerequisites = [[1,0],[0,1]] Output: false Explanation: There are a total of 2 courses to 
+take. To take course 1 you should have finished course 0, and to take course 0 you should also have finished course 
+1. So it is impossible. 
+
+
+Example 3:
+100
+[[1,0],[2,0],[2,1],[3,1],[3,2],[4,2],[4,3],[5,3],[5,4],[6,4],[6,5],[7,5],[7,6],[8,6],[8,7],[9,7],[9,8],[10,8],[10,9],
+[11,9],[11,10],[12,10],[12,11],[13,11],[13,12],[14,12],[14,13],[15,13],[15,14],[16,14],[16,15],[17,15],[17,16],[18,16],
+[18,17],[19,17],[19,18],[20,18],[20,19],[21,19],[21,20],[22,20],[22,21],[23,21],[23,22],[24,22],[24,23],[25,23],[25,24],
+[26,24],[26,25],[27,25],[27,26],[28,26],[28,27],[29,27],[29,28],[30,28],[30,29],[31,29],[31,30],[32,30],[32,31],[33,31],
+[33,32],[34,32],[34,33],[35,33],[35,34],[36,34],[36,35],[37,35],[37,36],[38,36],[38,37],[39,37],[39,38],[40,38],[40,39],
+[41,39],[41,40],[42,40],[42,41],[43,41],[43,42],[44,42],[44,43],[45,43],[45,44],[46,44],[46,45],[47,45],[47,46],[48,46],
+[48,47],[49,47],[49,48],[50,48],[50,49],[51,49],[51,50],[52,50],[52,51],[53,51],[53,52],[54,52],[54,53],[55,53],[55,54],
+[56,54],[56,55],[57,55],[57,56],[58,56],[58,57],[59,57],[59,58],[60,58],[60,59],[61,59],[61,60],[62,60],[62,61],[63,61],
+[63,62],[64,62],[64,63],[65,63],[65,64],[66,64],[66,65],[67,65],[67,66],[68,66],[68,67],[69,67],[69,68],[70,68],[70,69],
+[71,69],[71,70],[72,70],[72,71],[73,71],[73,72],[74,72],[74,73],[75,73],[75,74],[76,74],[76,75],[77,75],[77,76],[78,76],
+[78,77],[79,77],[79,78],[80,78],[80,79],[81,79],[81,80],[82,80],[82,81],[83,81],[83,82],[84,82],[84,83],[85,83],[85,84],
+[86,84],[86,85],[87,85],[87,86],[88,86],[88,87],[89,87],[89,88],[90,88],[90,89],[91,89],[91,90],[92,90],[92,91],[93,91],
+[93,92],[94,92],[94,93],[95,93],[95,94],[96,94],[96,95],[97,95],[97,96],[98,96],[98,97],[99,97]
+]
+"""
+
+
+def canFinish(numCourses: int, prerequisites: List[List[int]]) -> bool:
     pass

@@ -1,16 +1,17 @@
 import unittest
 import array_problems.Solutions as array_problems
 import array_problems.Solutions_Two as array_problems_two
+import array_problems.Solutions_Three as array_problems_three
 
 
 class SolutionsTest(unittest.TestCase):
     def test_merge(self):
         intervals = [[1, 3], [2, 6], [8, 10], [15, 18]]
         output = [[1, 6], [8, 10], [15, 18]]
-        self.assertListEqual(output, array_problems_two.merge(intervals))
+        self.assertListEqual(output, array_problems_three.merge(intervals))
         intervals = [[1, 4], [4, 5]]
         output = [[1, 5]]
-        self.assertListEqual(output, array_problems_two.merge(intervals))
+        self.assertListEqual(output, array_problems_three.merge(intervals))
 
     def test_largest_parameter(self):
         input = [
@@ -18,7 +19,14 @@ class SolutionsTest(unittest.TestCase):
             [1, 0, 1, 1, 1],
             [0, 1, 0, 1, 1]]
         output = 7
-        self.assertEqual(output, array_problems_two.largest_parameter(input))
+        self.assertEqual(output, array_problems_three.largest_parameter(input))
+        input = [[0, 0, 0, 0, 0, 0, 0],
+                 [0, 1, 0, 1, 1, 1, 0],
+                 [0, 1, 0, 1, 1, 1, 0],
+                 [0, 0, 1, 1, 1, 1, 0],
+                 [0, 0, 0, 0, 0, 0, 0]]
+        output = 9
+        self.assertEqual(output, array_problems_three.largest_parameter(input))
 
     def test_max_increase_keep_city_skyline(self):
         grid = [
@@ -28,10 +36,10 @@ class SolutionsTest(unittest.TestCase):
             [0, 3, 1, 0]
         ]
         output = 35
-        self.assertEqual(output, array_problems_two.maxIncreaseKeepingSkyline(grid))
+        self.assertEqual(output, array_problems_three.maxIncreaseKeepingSkyline(grid))
         grid = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
         output = 0
-        self.assertEqual(output, array_problems_two.maxIncreaseKeepingSkyline(grid))
+        self.assertEqual(output, array_problems_three.maxIncreaseKeepingSkyline(grid))
 
     def test_array_pair_sum(self):
         nums = [6, 2, 6, 5, 1, 2]
@@ -49,7 +57,7 @@ class SolutionsTest(unittest.TestCase):
     def test_replace_elements(self):
         input = [17, 18, 5, 4, 6, 1]
         output = [18, 6, 6, 6, 1, -1]
-        self.assertEqual(output, array_problems_two.replaceElements(input))
+        self.assertEqual(output, array_problems_three.replaceElements(input))
 
     def test_count_squares(self):
         input = [
@@ -58,14 +66,14 @@ class SolutionsTest(unittest.TestCase):
             [0, 1, 1, 1]
         ]
         output = 15
-        self.assertEqual(output, array_problems_two.countSquares(input))
+        self.assertEqual(output, array_problems_three.countSquares(input))
         input = [
             [1, 0, 1],
             [1, 1, 0],
             [1, 1, 0]
         ]
         output = 7
-        self.assertEqual(output, array_problems_two.countSquares(input))
+        self.assertEqual(output, array_problems_three.countSquares(input))
 
     def test_count_battleships(self):
         board = [["X", ".", ".", "X"], [".", ".", ".", "X"], [".", ".", ".", "X"]]
@@ -76,7 +84,7 @@ class SolutionsTest(unittest.TestCase):
         firstList = [[0, 2], [5, 10], [13, 23], [24, 25]]
         secondList = [[1, 5], [8, 12], [15, 24], [25, 26]]
         output = [[1, 2], [5, 5], [8, 10], [15, 23], [24, 24], [25, 25]]
-        self.assertListEqual(output, array_problems_two.intervalIntersection(firstList, secondList))
+        self.assertListEqual(output, array_problems_three.intervalIntersection(firstList, secondList))
 
     def test_permute(self):
         nums = [1, 2, 3]
@@ -537,17 +545,17 @@ class SolutionsTest(unittest.TestCase):
             [1, 0]
         ]
         output = 2
-        self.assertEqual(output, array_problems.shortestPathBinaryMatrix(grid))
+        self.assertEqual(output, array_problems_three.shortestPathBinaryMatrix(grid))
         grid = [
             [0, 0, 0],
             [1, 1, 0],
             [1, 1, 0]
         ]
         output = 4
-        self.assertEqual(output, array_problems.shortestPathBinaryMatrix(grid))
+        self.assertEqual(output, array_problems_three.shortestPathBinaryMatrix(grid))
         grid = [[1, 0, 0], [1, 1, 0], [1, 1, 0]]
         output = -1
-        self.assertEqual(output, array_problems.shortestPathBinaryMatrix(grid))
+        self.assertEqual(output, array_problems_three.shortestPathBinaryMatrix(grid))
 
     def test_exists(self):
         board = [["A", "B", "C", "E"], ["S", "F", "C", "S"], ["A", "D", "E", "E"]]
@@ -574,14 +582,14 @@ class SolutionsTest(unittest.TestCase):
     def test_first_and_last_k(self):
         nums = [1, 1, 1, 1, 1, 2, 2, 3, 4, 5, 5, 5, 5, 6]
         k = 1
-        self.assertListEqual([0, 4], array_problems.first_and_last_of_k(nums, k))
+        self.assertListEqual([0, 4], array_problems_three.first_and_last_of_k(nums, k))
         nums = [1, 1, 1, 1, 1, 2, 2, 3, 4, 5, 5, 5, 5, 6, 11]
         k = 10
         array_problems.first_and_last_of_k(nums, k)
-        self.assertListEqual([-1, -1], array_problems.first_and_last_of_k(nums, k))
+        self.assertListEqual([-1, -1], array_problems_three.first_and_last_of_k(nums, k))
         nums = [1, 1, 1, 1, 1, 2, 2, 3, 4, 5, 5, 5, 5, 6]
         k = 3
-        self.assertListEqual([7, 7], array_problems.first_and_last_of_k(nums, k))
+        self.assertListEqual([7, 7], array_problems_three.first_and_last_of_k(nums, k))
 
     def test_toeplitze_matrix(self):
         matrix = [[1, 2, 3, 4], [5, 1, 2, 3], [9, 5, 1, 2]]
@@ -608,22 +616,22 @@ class SolutionsTest(unittest.TestCase):
     def test_can_attend_meetings(self):
         input = [[0, 30], [5, 10], [15, 20]]
         output = False
-        self.assertEqual(output, array_problems.canAttendMeetings(input))
+        self.assertEqual(output, array_problems_three.canAttendMeetings(input))
         input = [[7, 10], [2, 4]]
         output = True
-        self.assertEqual(output, array_problems.canAttendMeetings(input))
+        self.assertEqual(output, array_problems_three.canAttendMeetings(input))
 
     def test_num_meeting_rooms(self):
         input = [[0, 30], [5, 10], [15, 20]]
         output = 2
-        self.assertEqual(output, array_problems.numberMeetingRooms(input))
+        self.assertEqual(output, array_problems_three.numberMeetingRooms(input))
 
     def test_meeting_room_conflicts(self):
         calendar = [[1, 3], [4, 6], [6, 8], [9, 11], [6, 9], [1, 3], [4, 10]]
         rooms = 3
         queries = [[1, 9], [2, 6], [7, 9], [3, 5], [3, 9], [2, 4], [7, 10], [5, 9], [3, 10], [9, 10]]
         output = [False, True, False, True, False, True, False, False, False, True]
-        self.assertListEqual(output, array_problems.meeting_room_conflicts(calendar, rooms, queries))
+        self.assertListEqual(output, array_problems_three.meeting_room_conflicts(calendar, rooms, queries))
 
     def test_pacific_atlantic(self):
         heights = [[1, 2, 2, 3, 5], [3, 2, 3, 4, 4], [2, 4, 5, 3, 1], [6, 7, 1, 4, 5], [5, 1, 1, 2, 4]]
@@ -632,6 +640,44 @@ class SolutionsTest(unittest.TestCase):
         heights = [[2, 1], [1, 2]]
         output = [[0, 0], [0, 1], [1, 0], [1, 1]]
         self.assertCountEqual(output, array_problems.pacificAtlantic(heights))
+
+    def test_pick_random_weight(self):
+        pick_weight_random = array_problems_three.PickWeightedRandom([1, 3, 7, 1])
+        print(pick_weight_random.pickIndex())
+        print(pick_weight_random.pickIndex())
+        print(pick_weight_random.pickIndex())
+        print(pick_weight_random.pickIndex())
+        print(pick_weight_random.pickIndex())
+        print(pick_weight_random.pickIndex())
+        print(pick_weight_random.pickIndex())
+        print(pick_weight_random.pickIndex())
+        print(pick_weight_random.pickIndex())
+        print(pick_weight_random.pickIndex())
+        print(pick_weight_random.pickIndex())
+
+    def test_full_justify(self):
+        words = ["This", "is", "an", "example", "of", "text", "justification."]
+        maxWidth = 16
+        output = [
+            "This    is    an",
+            "example  of text",
+            "justification.  "
+        ]
+        self.assertListEqual(output, array_problems_three.fullJustify(words, maxWidth))
+        words = ["What", "must", "be", "acknowledgment", "shall", "be"]
+        maxWidth = 16
+        output = [
+            "What   must   be",
+            "acknowledgment  ",
+            "shall be        "
+        ]
+        self.assertListEqual(output, array_problems_three.fullJustify(words, maxWidth))
+
+    def test_exclusive_time(self):
+        n = 2
+        logs = ["0:start:0", "1:start:2", "1:end:5", "0:end:6"]
+        output = [3, 4]
+        self.assertListEqual(output, array_problems_three.exclusiveTime(n, logs))
 
 
 if __name__ == '__main__':

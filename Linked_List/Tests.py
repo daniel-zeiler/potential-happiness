@@ -101,6 +101,14 @@ class SolutionsTest(unittest.TestCase, CustomAssertion):
         self.assertEqual(3, lru_cache.get(3))
         self.assertEqual(4, lru_cache.get(4))
 
+    def test_next_larger_value(self):
+        head = list_builder([2, 1, 5])
+        output = [5, 5, 0]
+        self.assertListEqual(output, linked_list.nextLargerNodes(head))
+        head = list_builder([2, 7, 4, 3, 5])
+        output = [7, 0, 5, 5, 0]
+        self.assertListEqual(output, linked_list.nextLargerNodes(head))
+
 
 if __name__ == '__main__':
     unittest.main()

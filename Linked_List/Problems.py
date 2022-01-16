@@ -492,3 +492,56 @@ Explanation: Since the list has two middle nodes with values 3 and 4, we return 
 
 def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
     pass
+
+
+"""
+Given the head of a linked list, reverse the nodes of the list k at a time, and return the modified list.
+
+k is a positive integer and is less than or equal to the length of the linked list. If the number of nodes is not a multiple of k then left-out nodes, in the end, should remain as it is.
+
+You may not alter the values in the list's nodes, only nodes themselves may be changed.
+
+ 
+
+Example 1:
+
+
+Input: head = [1,2,3,4,5], k = 2
+Output: [2,1,4,3,5]
+Example 2:
+
+
+Input: head = [1,2,3,4,5], k = 3
+Output: [3,2,1,4,5]
+
+"""
+
+
+def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+    pass
+
+
+"""
+You are given the head of a linked list with n nodes.
+
+For each node in the list, find the value of the next greater node. That is, for each node, find the value of the first node that is next to it and has a strictly larger value than it.
+
+Return an integer array answer where answer[i] is the value of the next greater node of the ith node (1-indexed). If the ith node does not have a next greater node, set answer[i] = 0.
+
+
+
+Example 1:
+
+
+Input: head = [2,1,5]
+Output: [5,5,0]
+Example 2:
+
+
+Input: head = [2,7,4,3,5]
+Output: [7,0,5,5,0]
+"""
+
+
+def nextLargerNodes(head: Optional[ListNode]) -> List[int]:
+    pass

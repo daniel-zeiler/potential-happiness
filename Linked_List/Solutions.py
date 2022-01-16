@@ -1,5 +1,5 @@
 import collections
-from typing import Optional
+from typing import Optional, List
 
 
 class ListNode:
@@ -169,3 +169,20 @@ class LRUCache:
                 self.remove_from_tail()
 
             self.add_node(node)
+
+
+def nextLargerNodes(head: Optional[ListNode]) -> List[int]:
+    stack = []
+    result = []
+
+    def traverse(node, index):
+        if node:
+            result.append(0)
+            while stack and stack[-1][1] < node.val:
+                stack_index, value = stack.pop()
+                result[stack_index] = node.val
+            stack.append([index, node.val])
+            traverse(node.next, index + 1)
+
+    traverse(head, 0)
+    return result

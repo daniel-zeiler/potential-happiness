@@ -282,7 +282,7 @@ Explanation: There are no elements to the right of index 0.
 """
 
 
-def replaceElements(self, arr: List[int]) -> List[int]:
+def replaceElements(arr: List[int]) -> List[int]:
     pass
 
 
@@ -2282,7 +2282,7 @@ Output: []
 """
 
 
-def first_and_last_of_k(nums: List[int]) -> List[int]:
+def first_and_last_of_k(nums: List[int], k: int) -> List[int]:
     pass
 
 
@@ -2489,7 +2489,7 @@ and so on.
 """
 
 
-class Solution:
+class PickWeightedRandom:
 
     def __init__(self, w: List[int]):
         pass
@@ -2533,77 +2533,185 @@ Output:
 ]
 Example 2:
 
-Input: words = ["What","must","be","acknowledgment","shall","be"], maxWidth = 16 Output: [ "What   must   be", 
-"acknowledgment  ", "shall be        " ] Explanation: Note that the last line is "shall be    " instead of "shall     
+Input: words = [
+    "What","must","be","acknowledgment","shall","be"
+], 
+maxWidth = 16 
+Output: [
+    "What   must   be", 
+    "acknowledgment  ",
+     "shall be        " 
+] 
+Explanation: Note that the last line is "shall be    " instead of "shall     
 be", because the last line must be left-justified instead of fully-justified. Note that the second line is also 
-left-justified becase it contains only one word. Example 3: 
+left-justified becase it contains only one word. 
 
-Input: words = ["Science","is","what","we","understand","well","enough","to","explain","to","a","computer.","Art",
-"is","everything","else","we","do"], maxWidth = 20 Output: [ "Science  is  what we", "understand      well", 
-"enough to explain to", "a  computer.  Art is", "everything  else  we", "do                  " ] """
+Example 3: 
+
+Input: words = [
+    "Science","is","what","we","understand","well","enough","to","explain","to","a","computer.","Art",
+"is","everything","else","we","do"
+], 
+maxWidth = 20 
+Output: [ 
+    "Science  is  what we",
+    "understand      well", 
+    "enough to explain to",
+    "a  computer.  Art is",
+    "everything  else  we",
+    "do                  "
+]
+"""
 
 
-def fullJustify(self, words: List[str], maxWidth: int) -> List[str]:
+def fullJustify(words: List[str], maxWidth: int) -> List[str]:
     pass
 
 
 """
-On a single-threaded CPU, we execute a program containing n functions. Each function has a unique ID between 0 and n-1.
+Assume the following rules are for the tic-tac-toe game on an n x n board between two players:
 
-Function calls are stored in a call stack: when a function call starts, its ID is pushed onto the stack, and when a 
-function call ends, its ID is popped off the stack. The function whose ID is at the top of the stack is the current 
-function being executed. Each time a function starts or ends, we write a log with the ID, whether it started or 
-ended, and the timestamp. 
+A move is guaranteed to be valid and is placed on an empty block.
+Once a winning condition is reached, no more moves are allowed.
+A player who succeeds in placing n of their marks in a horizontal, vertical, or diagonal row wins the game.
+Implement the TicTacToe class:
 
-You are given a list logs, where logs[i] represents the ith log message formatted as a string "{function_id}:{"start" 
-| "end"}:{timestamp}". For example, "0:start:3" means a function call with function ID 0 started at the beginning of 
-timestamp 3, and "1:end:2" means a function call with function ID 1 ended at the end of timestamp 2. Note that a 
-function can be called multiple times, possibly recursively. 
+TicTacToe(int n) Initializes the object the size of the board n.
+int move(int row, int col, int player) Indicates that the player with id player plays at the cell (row, col) of the board. The move is guaranteed to be a valid move.
+ 
 
-A function's exclusive time is the sum of execution times for all function calls in the program. For example, 
-if a function is called twice, one call executing for 2 time units and another call executing for 1 time unit, 
-the exclusive time is 2 + 1 = 3. 
+Example 1:
 
-Return the exclusive time of each function in an array, where the value at the ith index represents the exclusive 
-time for the function with ID i. 
+Input
+["TicTacToe", "move", "move", "move", "move", "move", "move", "move"]
+[[3], [0, 0, 1], [0, 2, 2], [2, 2, 1], [1, 1, 2], [2, 0, 1], [1, 0, 2], [2, 1, 1]]
+Output
+[null, 0, 0, 0, 0, 0, 0, 1]
+
+Explanation
+TicTacToe ticTacToe = new TicTacToe(3);
+Assume that player 1 is "X" and player 2 is "O" in the board.
+ticTacToe.move(0, 0, 1); // return 0 (no one wins)
+|X| | |
+| | | |    // Player 1 makes a move at (0, 0).
+| | | |
+
+ticTacToe.move(0, 2, 2); // return 0 (no one wins)
+|X| |O|
+| | | |    // Player 2 makes a move at (0, 2).
+| | | |
+
+ticTacToe.move(2, 2, 1); // return 0 (no one wins)
+|X| |O|
+| | | |    // Player 1 makes a move at (2, 2).
+| | |X|
+
+ticTacToe.move(1, 1, 2); // return 0 (no one wins)
+|X| |O|
+| |O| |    // Player 2 makes a move at (1, 1).
+| | |X|
+
+ticTacToe.move(2, 0, 1); // return 0 (no one wins)
+|X| |O|
+| |O| |    // Player 1 makes a move at (2, 0).
+|X| |X|
+
+ticTacToe.move(1, 0, 2); // return 0 (no one wins)
+|X| |O|
+|O|O| |    // Player 2 makes a move at (1, 0).
+|X| |X|
+
+ticTacToe.move(2, 1, 1); // return 1 (player 1 wins)
+|X| |O|
+|O|O| |    // Player 1 makes a move at (2, 1).
+|X|X|X|
+"""
+
+
+class TicTacToe:
+
+    def __init__(self, n: int):
+        pass
+
+    def move(self, row: int, col: int, player: int) -> int:
+        pass
+
+
+"""
+Given an array of integers arr, return true if and only if it is a valid mountain array.
+
+Recall that arr is a mountain array if and only if:
+
+arr.length >= 3
+There exists some i with 0 < i < arr.length - 1 such that:
+arr[0] < arr[1] < ... < arr[i - 1] < arr[i]
+arr[i] > arr[i + 1] > ... > arr[arr.length - 1]
 
  
 
 Example 1:
 
-
-Input: n = 2, logs = ["0:start:0","1:start:2","1:end:5","0:end:6"]
-Output: [3,4]
-Explanation:
-Function 0 starts at the beginning of time 0, then it executes 2 for units of time and reaches the end of time 1.
-Function 1 starts at the beginning of time 2, executes for 4 units of time, and ends at the end of time 5.
-Function 0 resumes execution at the beginning of time 6 and executes for 1 unit of time.
-So function 0 spends 2 + 1 = 3 units of total time executing, and function 1 spends 4 units of total time executing.
+Input: arr = [2,1]
+Output: false
 Example 2:
 
-Input: n = 1, logs = ["0:start:0","0:start:2","0:end:5","0:start:6","0:end:6","0:end:7"]
-Output: [8]
-Explanation:
-Function 0 starts at the beginning of time 0, executes for 2 units of time, and recursively calls itself.
-Function 0 (recursive call) starts at the beginning of time 2 and executes for 4 units of time.
-Function 0 (initial call) resumes execution then immediately calls itself again.
-Function 0 (2nd recursive call) starts at the beginning of time 6 and executes for 1 unit of time.
-Function 0 (initial call) resumes execution at the beginning of time 7 and executes for 1 unit of time.
-So function 0 spends 2 + 4 + 1 + 1 = 8 units of total time executing.
+Input: arr = [3,5,5]
+Output: false
 Example 3:
 
-Input: n = 2, logs = ["0:start:0","0:start:2","0:end:5","1:start:6","1:end:6","0:end:7"]
-Output: [7,1]
-Explanation:
-Function 0 starts at the beginning of time 0, executes for 2 units of time, and recursively calls itself.
-Function 0 (recursive call) starts at the beginning of time 2 and executes for 4 units of time.
-Function 0 (initial call) resumes execution then immediately calls function 1.
-Function 1 starts at the beginning of time 6, executes 1 unit of time, and ends at the end of time 6.
-Function 0 resumes execution at the beginning of time 6 and executes for 2 units of time.
-So function 0 spends 2 + 4 + 1 = 7 units of total time executing, and function 1 spends 1 unit of total time executing.
-
+Input: arr = [0,3,2,1]
+Output: true
 """
 
 
-def exclusiveTime(n: int, logs: List[str]) -> List[int]:
+def validMountainArray(arr: List[int]) -> bool:
     pass
+
+
+class MyCalendarTwo:
+
+    def __init__(self):
+        self.overlaps = []
+        self.calendar = []
+
+    def book(self, start: int, end: int) -> bool:
+        for i, j in self.overlaps:
+            if start < j and end > i:
+                return False
+        for i, j in self.calendar:
+            if start < j and end > i:
+                self.overlaps.append((max(start, i), min(end, j)))
+        self.calendar.append((start, end))
+        return True
+
+
+calendar_two = MyCalendarTwo()
+print(calendar_two.book(10, 20))
+print(calendar_two.book(50, 60))
+print(calendar_two.book(10, 40))
+print(calendar_two.book(5, 15))
+print(calendar_two.book(5, 10))
+print(calendar_two.book(25, 55))
+
+
+def shortestToChar(s: str, c: str) -> List[int]:
+    target_indices = []
+    for i, character in enumerate(s):
+        if character == c:
+            target_indices.append(i)
+
+    result = [0 for _ in range(len(s))]
+    pointer_a = 0
+    for i, character in enumerate(s):
+        if pointer_a == len(target_indices) - 1:
+            result[i] = (abs(i - target_indices[pointer_a]))
+        elif abs(i - target_indices[pointer_a]) > abs(i - target_indices[pointer_a + 1]):
+            pointer_a += 1
+        result[i] = (abs(i - target_indices[pointer_a]))
+
+    return result
+
+
+s = "loveleetcode"
+c = "e"
+print(shortestToChar(s, c))

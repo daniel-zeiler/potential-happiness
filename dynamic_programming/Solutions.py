@@ -297,3 +297,20 @@ def wordBreak(s: str, wordDict: List[str]) -> bool:
             pointer_a += 1
 
     return result[-1]
+
+
+def maxProfitTwo(prices: List[int]) -> int:
+    result = [[0 for _ in range(len(prices) + 1)] for _ in range(len(prices) + 1)]
+    for x in range(len(prices)):
+        for y in range(len(prices)):
+            if x == 0 and y == 0:
+                result[x][y] = 0
+            elif x == 0 or y == 1:
+                result[x][y] =1
+            else:
+                result[x][y] = result[x - 1][y - 2] + max(0, prices[x - 1] - prices[y - 1])
+    print(result)
+
+
+prices = [1, 5, 3, 6, 4]
+print(maxProfitTwo(prices))

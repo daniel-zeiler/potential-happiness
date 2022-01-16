@@ -930,8 +930,7 @@ def first_and_last_of_k(nums: List[int], k) -> List[int]:
         if low > high:
             return
         mid_point = int((high + low) / 2)
-        value = nums[mid_point]
-        if value == k:
+        if nums[mid_point] == k:
             result[1] = mid_point
             bisect_right(mid_point + 1, high)
         else:
