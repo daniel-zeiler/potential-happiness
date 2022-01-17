@@ -167,6 +167,14 @@ class SolutionsTest(unittest.TestCase):
         ]
         self.assertCountEqual(output, backtracking_two.combine(n, k))
 
+    def test_beautiful_arrangments(self):
+        n = 2
+        output = 2
+        self.assertEqual(output, backtracking_two.countArrangement(n))
+        n = 7
+        output = 41
+        self.assertEqual(output, backtracking_two.countArrangement(n))
+
 
 if __name__ == '__main__':
     unittest.main()

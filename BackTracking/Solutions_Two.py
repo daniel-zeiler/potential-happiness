@@ -287,3 +287,20 @@ def combine(n: int, k: int) -> List[List[int]]:
 
     combine_function(values, [])
     return result
+
+
+def countArrangement(n: int) -> int:
+    result = 0
+    values = {i for i in range(1, n + 1)}
+
+    def backtracking_function(position, values):
+        if position > n:
+            nonlocal result
+            result += 1
+        for value in values:
+            if position % value == 0 or value % position == 0:
+                backtracking_function(position + 1, values - {value})
+
+    backtracking_function(1, values)
+
+    return result
