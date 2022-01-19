@@ -256,6 +256,11 @@ class SolutionsTest(unittest.TestCase):
                          ]
         print(graph_two.canFinish(numCourses, prerequisites))
 
+    def test_maximum_distance_traveled(self):
+        edges = [[1, 2, 1], [2, 3, 2], [2, 4, 3], [1, 5, 4]]
+        number_of_cities = 5
+        self.assertEqual(22, graph_two.maximum_distance_travelled_by_all_couples(number_of_cities, edges))
+
 
 if __name__ == '__main__':
     unittest.main()

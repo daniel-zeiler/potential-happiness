@@ -194,20 +194,18 @@ I'm going to slide the tail up.
 
 
 def longestOnes(nums: List[int], k: int) -> int:
-    longest_ones = 0
-    flipped_zeros = 0
-    pointer_start = 0
-
-    for i, value in enumerate(nums):
-        if value == 0:
-            flipped_zeros += 1
-        while flipped_zeros > k:
-            if nums[pointer_start] == 0:
-                flipped_zeros -= 1
-            pointer_start += 1
-        longest_ones = max(longest_ones, i - pointer_start + 1)
-
-    return longest_ones
+    pointer_a = 0
+    result = 0
+    flipped = 0
+    for i, num in enumerate(nums):
+        while flipped > k:
+            if nums[pointer_a] == 0:
+                flipped -= 1
+            pointer_a += 1
+        if num == 0:
+            flipped += 1
+        result = max(result, i - pointer_a)
+    return result
 
 
 def findMaxConsecutiveOnes(nums: List[int]) -> int:
@@ -460,3 +458,63 @@ def valid_mount_array(input_array):
             if value > input_array[i - 1]:
                 return False
     return not increasing
+
+
+def rotate_matrix(input_matrix):
+    def transpose():
+        for x in range(len(input_matrix)):
+            for y in range(x + 1, len(input_matrix[0])):
+                input_matrix[x][y], input_matrix[y][x] = input_matrix[y][x], input_matrix[x][y]
+
+    def reverse():
+        for x, row in enumerate(input_matrix):
+            input_matrix[x] = row[::-1]
+
+    transpose()
+    reverse()
+
+
+def fallAndCrush2(board):
+    directions = [[-1, 0], [1, 0], [1, 1], [1, -1], [-1, -1], [0, 1], [0, -1], [-1, 1]]
+
+    def explode(x, y):
+        board[x][y] = '.'
+        for x_direction, y_direction in directions:
+            x_target, y_target = x + x_direction, y + y_direction
+            if 0 <= x_target < len(board) and 0 <= y_target < len(board[0]):
+                board[x_target][y_target] = '.'
+
+    explosion_set = set()
+    processing = True
+
+    while processing:
+        processing = False
+        for x in range(len(board) - 1, -1, -1):
+            for y in range(len(board[0])):
+                if board[x][y] == '#':
+                    if x == len(board) - 1 or board[x + 1][y] == '#':
+                        continue
+                    elif board[x + 1][y] == '*':
+                        explosion_set.add((x + 1, y))
+                        processing = True
+                    else:
+                        board[x][y] = '.'
+                        board[x + 1][y] = '#'
+                        processing = True
+        for (x, y) in explosion_set:
+            explode(x, y)
+        explosion_set = set()
+
+    return board
+
+
+def number_of_markers_on_road(coordinates):
+    intervals = []
+    coordinates.sort(key=lambda x: x[0])
+    for interval in coordinates:
+        if not intervals or intervals[-1][1] < interval[0]:
+            intervals.append(interval)
+        else:
+            intervals[-1][1] = max(intervals[-1][1], interval[1])
+
+    return sum([x[1] - x[0] + 1 for x in intervals])

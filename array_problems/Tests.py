@@ -242,11 +242,11 @@ class SolutionsTest(unittest.TestCase):
         nums = [0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1]
         k = 3
         output = 10
-        self.assertEqual(output, array_problems_two.longestOnes(nums, k))
+        self.assertEqual(output, array_problems_three.longestOnes(nums, k))
         nums = [1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0]
         k = 2
         output = 6
-        self.assertEqual(output, array_problems_two.longestOnes(nums, k))
+        self.assertEqual(output, array_problems_three.longestOnes(nums, k))
 
     def test_num_enclaves(self):
         grid = [
@@ -678,6 +678,41 @@ class SolutionsTest(unittest.TestCase):
         logs = ["0:start:0", "1:start:2", "1:end:5", "0:end:6"]
         output = [3, 4]
         self.assertListEqual(output, array_problems_three.exclusiveTime(n, logs))
+
+    def test_rotate_matrix(self):
+        matrix = [
+            [1, 2, 3],
+            [4, 5, 6],
+            [7, 8, 9]
+        ]
+        output = [
+            [7, 4, 1],
+            [8, 5, 2],
+            [9, 6, 3]
+        ]
+        array_problems_three.rotate_matrix(matrix)
+        print(matrix)
+        self.assertListEqual(output, matrix)
+
+    def test_fall_and_crush(self):
+        input = [['#', '.', '#', '#', '*'],
+                 ['#', '.', '.', '#', '#'],
+                 ['.', '#', '.', '#', '.'],
+                 ['.', '.', '#', '.', '#'],
+                 ['#', '*', '.', '.', '.'],
+                 ['.', '.', '*', '#', '.']]
+        output = [['.', '.', '.', '.', '*'],
+                  ['.', '.', '.', '.', '.'],
+                  ['.', '.', '.', '.', '.'],
+                  ['.', '.', '.', '.', '.'],
+                  ['.', '.', '.', '#', '#'],
+                  ['#', '.', '#', '#', '#']]
+        self.assertListEqual(output, array_problems_three.fallAndCrush2(input))
+
+    def test_number_of_markers_on_road(self):
+        coordinates = [[4, 7], [-1, 5], [3, 6]]
+        output = 9
+        self.assertEqual(output, array_problems_three.number_of_markers_on_road(coordinates))
 
 
 if __name__ == '__main__':

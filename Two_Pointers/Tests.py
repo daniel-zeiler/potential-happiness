@@ -70,19 +70,19 @@ class SolutionsTest(unittest.TestCase, linked_list.CustomAssertion):
     def test_sort_color(self):
         nums = [2, 0, 2, 1, 1, 0]
         output = [0, 0, 1, 1, 2, 2]
-        two_pointer.sortColors(nums)
+        two_pointer_two.sortColors(nums)
         self.assertListEqual(output, nums)
         nums = [2, 0, 1]
         output = [0, 1, 2]
-        two_pointer.sortColors(nums)
+        two_pointer_two.sortColors(nums)
         self.assertListEqual(output, nums)
         nums = [0]
         output = [0]
-        two_pointer.sortColors(nums)
+        two_pointer_two.sortColors(nums)
         self.assertListEqual(output, nums)
         nums = [1]
         output = [1]
-        two_pointer.sortColors(nums)
+        two_pointer_two.sortColors(nums)
         self.assertListEqual(output, nums)
 
     def test_is_palindrome(self):
@@ -116,29 +116,29 @@ class SolutionsTest(unittest.TestCase, linked_list.CustomAssertion):
         nums1 = [1, 2, 2, 1]
         nums2 = [2, 2]
         output = [2]
-        self.assertListEqual(output, two_pointer.intersection(nums1, nums2))
+        self.assertListEqual(output, two_pointer_two.intersection(nums1, nums2))
         nums1 = [4, 9, 5]
         nums2 = [9, 4, 9, 8, 4]
         output = [4, 9]
-        self.assertListEqual(output, two_pointer.intersection(nums1, nums2))
+        self.assertCountEqual(output, two_pointer_two.intersection(nums1, nums2))
 
     def test_is_subsequence(self):
         s = "abc"
         t = "ahbgdc"
         output = True
-        self.assertEqual(output, two_pointer.isSubsequence(s, t))
+        self.assertEqual(output, two_pointer_two.isSubsequence(s, t))
         s = "axc"
         t = "ahbgdc"
         output = False
-        self.assertEqual(output, two_pointer.isSubsequence(s, t))
+        self.assertEqual(output, two_pointer_two.isSubsequence(s, t))
 
     def test_reverse(self):
         s = "Let's take LeetCode contest"
         output = "s'teL ekat edoCteeL tsetnoc"
-        self.assertEqual(output, two_pointer.reverseWords(s))
+        self.assertEqual(output, two_pointer_two.reverseWords(s))
         s = "God Ding"
         output = "doG gniD"
-        self.assertEqual(output, two_pointer.reverseWords(s))
+        self.assertEqual(output, two_pointer_two.reverseWords(s))
 
     def test_valid_palindrome(self):
         s = "aba"
@@ -151,10 +151,10 @@ class SolutionsTest(unittest.TestCase, linked_list.CustomAssertion):
     def test_partition_labels(self):
         s = "ababcbacadefegdehijhklij"
         output = [9, 7, 8]
-        self.assertListEqual(output, two_pointer.partitionLabels(s))
+        self.assertListEqual(output, two_pointer_two.partitionLabels(s))
         s = "eccbbbbdec"
         output = [10]
-        self.assertListEqual(output, two_pointer.partitionLabels(s))
+        self.assertListEqual(output, two_pointer_two.partitionLabels(s))
 
     def test_sort_array_by_parity(self):
         nums = [3, 1, 2, 4]

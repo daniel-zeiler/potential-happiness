@@ -201,8 +201,26 @@ class SolutionsTest(unittest.TestCase):
         self.assertEqual(output, dynamic_programming.wordBreak(s, wordDict))
         s = "catsandog"
         wordDict = ["cats", "dog", "sand", "and", "cat"]
-        output=False
+        output = False
         self.assertEqual(output, dynamic_programming.wordBreak(s, wordDict))
+
+    def test_max_score(self):
+        input = [[1, 3],
+                 [5, 10],
+                 [3, 12]]
+        t = 9
+        k = 10
+        output = 9
+        self.assertEqual(output, dynamic_programming.max_score(input, t, k))
+        input = [[12, 10],
+                 [16, 10],
+                 [20, 10],
+                 [24, 10],
+                 [8, 3]]
+        t= 40
+        k= 21
+        output = 36
+        self.assertEqual(output, dynamic_programming.max_score(input, t, k))
 
 
 if __name__ == '__main__':

@@ -1,6 +1,7 @@
 import unittest
 import BackTracking.Solutions as backtracking
 import BackTracking.Solutions_Two as backtracking_two
+import BackTracking.Solutions_Three as backtracking_three
 
 
 class SolutionsTest(unittest.TestCase):
@@ -9,16 +10,16 @@ class SolutionsTest(unittest.TestCase):
         output_1 = ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"]
         input_2 = "2"
         output_2 = ["a", "b", "c"]
-        self.assertCountEqual(backtracking_two.letter_combinations(input_1), output_1)
-        self.assertCountEqual(backtracking_two.letter_combinations(input_2), output_2)
+        self.assertCountEqual(backtracking_three.letter_combinations(input_1), output_1)
+        self.assertCountEqual(backtracking_three.letter_combinations(input_2), output_2)
 
     def test_generate_parentheses(self):
         input = 3
         output = ["((()))", "(()())", "(())()", "()(())", "()()()"]
         input_2 = 1
         output_2 = ["()"]
-        self.assertCountEqual(backtracking_two.generate_parentheses(input), output)
-        self.assertCountEqual(backtracking_two.generate_parentheses(input_2), output_2)
+        self.assertCountEqual(backtracking_three.generate_parentheses(input), output)
+        self.assertCountEqual(backtracking_three.generate_parentheses(input_2), output_2)
 
     def test_permute(self):
         input_1 = [1, 2, 3]
@@ -27,9 +28,9 @@ class SolutionsTest(unittest.TestCase):
         output_2 = [[0, 1], [1, 0]]
         input_3 = [1]
         output_3 = [[1]]
-        self.assertCountEqual(backtracking_two.permute(input_1), output_1)
-        self.assertCountEqual(backtracking_two.permute(input_2), output_2)
-        self.assertCountEqual(backtracking_two.permute(input_3), output_3)
+        self.assertCountEqual(backtracking_three.permute(input_1), output_1)
+        self.assertCountEqual(backtracking_three.permute(input_2), output_2)
+        self.assertCountEqual(backtracking_three.permute(input_3), output_3)
 
     def test_exists(self):
         board = [
@@ -39,7 +40,7 @@ class SolutionsTest(unittest.TestCase):
         ]
         word = "SEE"
         output = True
-        self.assertEqual(backtracking_two.exist(board, word), output)
+        self.assertEqual(backtracking_three.exist(board, word), output)
         board = [
             ["A", "B", "C", "E"],
             ["S", "F", "C", "S"],
@@ -47,7 +48,7 @@ class SolutionsTest(unittest.TestCase):
         ]
         word = "ABCCED"
         output = True
-        self.assertEqual(backtracking_two.exist(board, word), output)
+        self.assertEqual(backtracking_three.exist(board, word), output)
         board = [
             ["A", "B", "C", "E"],
             ["S", "F", "C", "S"],
@@ -55,7 +56,7 @@ class SolutionsTest(unittest.TestCase):
         ]
         word = "ABCB"
         output = False
-        self.assertEqual(backtracking_two.exist(board, word), output)
+        self.assertEqual(backtracking_three.exist(board, word), output)
 
     def test_get_maximum_gold(self):
         grid = [[1, 0, 7], [2, 0, 6], [3, 4, 5], [0, 3, 0], [9, 0, 20]]
@@ -107,10 +108,10 @@ class SolutionsTest(unittest.TestCase):
     def test_subsets(self):
         nums = [1, 2, 3]
         output = [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
-        self.assertCountEqual(output, backtracking_two.subsets(nums))
+        self.assertCountEqual(output, backtracking_three.subsets(nums))
         nums = [0]
         output = [[], [0]]
-        self.assertCountEqual(output, backtracking_two.subsets(nums))
+        self.assertCountEqual(output, backtracking_three.subsets(nums))
 
     def test_combination_iterator(self):
         combination_iterator = backtracking_two.CombinationIterator("abc", 2)

@@ -1,3 +1,4 @@
+import collections
 from typing import List, Optional
 
 from Linked_List.Problems import ListNode
@@ -76,3 +77,70 @@ def removeElement(nums: List[int], val: int) -> int:
             nums[write_pointer] = num
             write_pointer += 1
     return write_pointer
+
+
+def sortColors(nums: List[int]) -> None:
+    zero_pointer = 0
+    for read_pointer, num in enumerate(nums):
+        if num == 0:
+            nums[zero_pointer], nums[read_pointer] = nums[read_pointer], nums[zero_pointer]
+            zero_pointer += 1
+    one_pointer = zero_pointer
+    for read_pointer in range(one_pointer, len(nums)):
+        num = nums[read_pointer]
+        if num == 1:
+            nums[one_pointer], nums[read_pointer] = nums[read_pointer], nums[one_pointer]
+            one_pointer += 1
+
+
+def intersection(nums1: List[int], nums2: List[int]) -> List[int]:
+    return list(set(nums1) & set(nums2))
+
+
+def isSubsequence(s: str, t: str) -> bool:
+    result = [[0 for _ in range(len(s) + 1)] for _ in range(len(t) + 1)]
+
+    for x in range(len(t) + 1):
+        for y in range(len(s) + 1):
+            if x == 0 or y == 0:
+                continue
+            char_s = s[y - 1]
+            char_t = t[x - 1]
+            if char_s == char_t:
+                result[x][y] = result[x - 1][y - 1] + 1
+            else:
+                result[x][y] = max(result[x - 1][y], result[x][y - 1])
+    return result[-1][-1] == len(s)
+
+
+def reverseWords(s):
+    s = list(s)
+    pointer_a = 0
+    for i, value in enumerate(s):
+        if value == ' ':
+            s[pointer_a:i] = s[pointer_a:i][::-1]
+            pointer_a = i + 1
+    s[pointer_a:len(s)] = s[pointer_a:len(s)][::-1]
+    return ''.join(s)
+
+
+def partitionLabels(s: str) -> List[int]:
+    partitions = collections.defaultdict(list)
+    for index, character in enumerate(s):
+        if character not in partitions:
+            partitions[character] = [index, index]
+        else:
+            partitions[character][1] = index
+    partitions = sorted(list(partitions.values()), key=lambda x: x[0])
+
+    merged = []
+
+    for partition in partitions:
+        if not merged:
+            merged.append(partition)
+        elif merged[-1][1] > partition[0]:
+            merged[-1][1] = max(merged[-1][1], partition[1])
+        else:
+            merged.append(partition)
+
+    return [x[1] - x[0] + 1 for x in merged]

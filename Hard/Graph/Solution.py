@@ -1,3 +1,4 @@
+import collections
 from typing import List
 
 
@@ -41,3 +42,37 @@ def numIslands2(m: int, n: int, positions: List[List[int]]) -> List[int]:
 
         result.append(size)
     return result
+
+
+def numBusesToDestination(routes: List[List[int]], source: int, target: int) -> int:
+    if source == target: return 0
+    graph = collections.defaultdict(set)
+    for i, r1 in enumerate(routes):
+        for j in range(i + 1, len(routes)):
+            r2 = routes[j]
+            if any(r in r2 for r in r1):
+                graph[i].add(j)
+                graph[j].add(i)
+
+    if source == target:
+        return 0
+    visited = set()
+    targets = set()
+    for bus, route in enumerate(routes):
+        if target in route:
+            targets.add(bus)
+        if source in route:
+            visited.add(bus)
+
+    queue = collections.deque([[1, node] for node in visited])
+    while queue:
+        distance, current_node = queue.popleft()
+        visited.add(current_node)
+        if current_node in targets:
+            return distance
+
+        for adjacent in graph[current_node]:
+            if adjacent not in visited:
+                queue.append([distance + 1, adjacent])
+
+    return -1

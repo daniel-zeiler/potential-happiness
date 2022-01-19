@@ -17,6 +17,16 @@ class SolutionsTest(unittest.TestCase):
         medianFinder.addNum(3)
         self.assertEqual(2.0, medianFinder.findMedian())
 
+    def test_number_of_cabs(self):
+        n = 10
+        cabTravelTime = [1, 3, 5, 7, 8]
+        output = 7
+        self.assertEqual(output, heap_problems.number_of_cabs(n, cabTravelTime))
+        n = 3
+        cabTravelTime = [3, 4, 8]
+        output = 6
+        self.assertEqual(output, heap_problems.number_of_cabs(n, cabTravelTime))
+
 
 if __name__ == '__main__':
     unittest.main()

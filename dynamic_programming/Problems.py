@@ -970,3 +970,73 @@ exection -> execution (insert 'u')
 
 def minDistance(self, word1: str, word2: str) -> int:
     pass
+
+
+"""
+A game company launched a new game in which the player is given n tasks. Each task has a corresponding score and 
+time required to complete the task. Whenever the player completes a task, the task's score gets added to the player's 
+total score. The player is given t units of time to play the game. In the given time, the player has to maximise his 
+total score by completing the tasks with the constraint that, his total score should not be less than k. Find the 
+total time spent by the player to obtain the maximum possible score in time t. If there are more than one possible 
+ways to obtain max score then return the minimum time required to obtain the max score. 
+
+Note:
+
+Return -1 if it is not possible to score k points in time t.
+Example 1:
+
+Input: arr:
+[[1,3],
+[5,10],
+[3,12]]
+n: 3
+t: 9
+k: 10
+Output: 9
+Explanation: The player can complete all three tasks in 9 units of time.
+Example 2:
+
+Input: arr:
+[[12,10],
+[16,10],
+[20,10],
+[24,10],
+[8,3]]
+n: 5
+t: 40
+k: 21
+Output: 36
+Explanation: The maximum possible score here is 23. The player can obtain this score in two ways:
+
+completing tasks at index 0, 1, 4 which takes 12+16+8 = 36 units of time
+completing tasks at index 0, 2, 4 which takes 12+20+8 = 40 units of time.
+Hence 36 is the answer.
+Constraints:
+0 < n < 1000
+0< t < 1000
+0< k < 1000
+0 < arr[i][j] < 25
+[execution time limit] 4 seconds (py3)
+
+[input] array.array.integer arr
+
+A n*2 array corresponding to n tasks where,
+a[i][0] = Time required to complete task i
+a[i][1] = Scores obtained on completing task i
+
+[input] integer t
+
+Time given to play the game
+
+[input] integer k
+
+Minimum score to be obtained
+
+[output] integer
+
+Time spent by the player to obtain maximum possible score.
+"""
+
+
+def max_score(tasks, time_given, minimum_score):
+    pass

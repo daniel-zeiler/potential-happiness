@@ -306,11 +306,27 @@ def maxProfitTwo(prices: List[int]) -> int:
             if x == 0 and y == 0:
                 result[x][y] = 0
             elif x == 0 or y == 1:
-                result[x][y] =1
+                result[x][y] = 1
             else:
                 result[x][y] = result[x - 1][y - 2] + max(0, prices[x - 1] - prices[y - 1])
     print(result)
 
 
-prices = [1, 5, 3, 6, 4]
-print(maxProfitTwo(prices))
+def max_score(tasks, time_given, minimum_score):
+    result = [[0 for _ in range(time_given + 1)] for _ in range(len(tasks) + 1)]
+    max_score_in_table = 0
+    max_time_for_score = 0
+    for x in range(1, len(tasks) + 1):
+        for y in range(1, time_given + 1):
+            time_for_task = tasks[x - 1][0]
+            score_for_task = tasks[x - 1][1]
+            current_time = y
+            if current_time < time_for_task:
+                result[x][y] = result[x - 1][y]
+            else:
+                result[x][y] = max(result[x - 1][y], result[x][y - 1],
+                                   score_for_task + result[x - 1][y - time_for_task])
+            if result[x][y] > max_score_in_table:
+                max_score_in_table = result[x][y]
+                max_time_for_score = y
+    return max_time_for_score
