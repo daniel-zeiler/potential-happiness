@@ -1,0 +1,57 @@
+1. Requirements gathering
+    Functional Requirements:
+        Given a URL, generate a unique shortened URL
+        Given a shortened URL, redirect to the original URL
+        Optional ability to customize shortened URL
+        Links will expire after a TTL
+    Non functional requirements:
+        Highly availabile,
+        minimize latency as much as possible
+    Extended requirements:
+        Analytics
+        REST API and other services
+
+
+2. APIs
+    GET {hostname}/{shortened_url}
+    POST {hostname}/shortener
+        {
+            'api_key':'string',
+            'username':'string'
+            'URL':'string',
+            (optional) 'expirationDate': int
+            (optional) 'custom_path':'string'
+        }
+    response:
+        {
+            'shortened_url':'string'
+        }
+    DELETE {hostname}/shortener
+        {
+            'api_key',
+            'username':'string',
+            'shortened_url':'string'
+        }
+    The api key can be validated within the API gateway, our method
+    of authentication and rate limiting.
+
+3. Data Model
+    Not really necessary for relationships between entities at this point
+    so a NOSQL solution would work great here.  Something like Cassandra
+    or DynamoDB.  Also it's easier to scale NOSQL solutions.
+    USER:
+        UserId, email, registrationDate, lastLogin
+
+    ShortenedURL:
+        OriginalUrl, ShortenedUrl, UserId, CreationDate, ExpirationDate
+
+4. High Level Design
+
+    Storage: NoSQL database that's consistently hashed.
+    We'd need a caching layer between the application and our database.
+    We can diversify the application layer into constituent components.
+    A read / write service.  This will allow our system to scale
+    dynamically based upon load.  It also helps to diversify to different
+    microservices to make our system overall more maintainable
+    and we can isolate certain behaviors or issues to individual components.
+

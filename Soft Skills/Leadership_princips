@@ -1,76 +1,56 @@
 Customer Obsession: Leaders start with the customer and work backwards. They work vigorously to earn and keep customer trust. Although leaders
 pay attention to competitors, they obsess over customers.
-    Example 1:
 
+    Example 1: Who was your most difficult customer?
+        Situation: Customer wasn't familiar with how APIs work and they were based in Japan / not fluent in English
+        Task: I needed to get them using our API.  They were unable to develop a solution that enabled them to stream us
+        data and handle responses appropriately.
+        Action: I Built a python SDK package for them that was then used by others.  This was generalized and a standard
+        offering for the company going forward.
+        Learning:  It taught me a lot about expectations of the customer and how to optimize for smooth onboarding and 
+        ease of use.
 
-    Example 2:
+    Example 2: Tell me about a time when you didn't meet customer expectations.  What happened and how did you deal with 
+    the situation.
+        Situation:  A frontend feature was rolled out without adequate testing and this caused recurring errors on that 
+        part of the application.  This
 
+    Example 3:  How do you go about prioritizing customer needs when you are dealing with a large number of customers?
+        Situation:
+        Task:
+        Action:
+        Result:
 
 Ownership: Leaders are owners. They think long-term and don’t sacrifice long-term value for short-term results. They act on behalf of the entire
 company, beyond just their own team. They never say “that’s not my job.”
-    Example 1:
 
-
-    Example 2:
-
+    Example 1:Tell me about a time when you took on a task that was beyond your job responsibilities
+        Situation:
+        Task:
+        Action:
+        Result:
+    
+    Example 2: Tell me about a time when you had to work on a task with unclear responsibilities
+        Situation:
+        Task:
+        Action:
+        Result:
+        
+    Example 3: Tell me about a time when you showed an intitive to work on a challenging project.
+        Situation:
+        Task:
+        Action:
+        Result:
 
 Invent and Simplify: Leaders expect and require innovation and invention from their teams and always find ways to simplify. They are externally
 aware, look for new ideas from everywhere, and are not limited by “not invented here.” As we do new things, we accept that we may be
 misunderstood for long periods of time.
-    Example 1:
 
+    Example 1:Describe a time when you found a simple solution to a complex problem
 
-    Example 2:
+    Example 2: Tell me about a time when you invented something.
 
-
-Are Right, A Lot: Leaders are right a lot. They have strong judgment and good instincts. They seek diverse perspectives and work to disconfirm their
-beliefs.
-    Example 1:
-
-
-    Example 2:
-
-
-Hire and Develop the Best: Leaders raise the performance bar with every hire and promotion. They recognize exceptional talent, and willingly move
-them throughout the organization. Leaders develop leaders and take seriously their role in coaching others. We work on behalf of our people to
-invent mechanisms for development like career choice.
-    Example 1:
-
-
-    Example 2:
-
-
-Insist on the Highest Standards: Leaders have relentlessly high standards—many people may think these standards are unreasonably high. Leaders
-are continually raising the bar and drive their teams to deliver high quality products, services and processes. Leaders ensure that defects do not get
-sent down the line and that problems are fixed so they stay fixed.
-    Example 1:
-
-
-    Example 2:
-
-
-Think Big: Thinking small is a self-fulfilling prophecy. Leaders create and communicate a bold direction that inspires results. They think differently and
-look around corners for ways to serve customers.
-    Example 1:
-
-
-    Example 2:
-
-
-Bias for Action: Speed matters in business. Many decisions and actions are reversible and do not need extensive study. We value calculated risk
-taking.
-    Example 1:
-
-
-    Example 2:
-
-
-Frugality: Accomplish more with less. Constraints breed resourcefulness, self-sufficiency and invention. There are no extra points for growing
-headcount, budget size or fixed expense.
-    Example 1:
-
-
-    Example 2:
+    Example 3: Tell me about a time when you tried to simplify a process but failed.  What would you have done differently.
 
 
 Learn and Be Curious: Leaders are never done learning and always seek to improve themselves. They are curious about new possibilities and act to
@@ -80,14 +60,6 @@ explore them.
 
     Example 2:
 
-
-Earn Trust: Leaders listen attentively, speak candidly, and treat others respectfully. They are vocally self-critical, even when doing so is awkward or
-embarrassing. Leaders do not believe their or their team’s body odor smells of perfume. They benchmark themselves and their teams against the
-best.
-    Example 1:
-
-
-    Example 2:
 
 
 Dive Deep: Leaders operate at all levels, stay connected to the details, audit frequently, and are skeptical when metrics and anecdote differ. No task
@@ -114,3 +86,15 @@ they rise to the occasion and never settle.
 
     Example 2:
 
+
+interviewer 1: logical maintainable
+    learn and be curios, invent and simplify
+
+interviewer 2: coding data structures algorithms
+    ownership, customer obsession
+
+interviewer 3: system design
+    have backbone disagree and commit, and earns trust
+
+interviewer 4: coding problem solving
+    deliver results, dive deep

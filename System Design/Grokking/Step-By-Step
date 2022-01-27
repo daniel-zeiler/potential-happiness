@@ -1,0 +1,49 @@
+Technical Requirements
+
+Non-Technical Requirements
+
+Step 1: Clarify Requirements and close in on scope
+    Technical requirements: What should it do?
+    Non-technical requirements:
+    Scalability
+    Reliability
+    Availability,
+    Maintainability.
+
+Step 2: System interface definition
+    Defines exact contract expected from our system
+    APIs will guide the data flow
+
+Step 3: Define the data model
+    Clarify how data will flow between components and storage requirements
+    Guide data partitioning and management.
+    User:
+        UserId, Name, Email, DoB, CreationDate, LasLogin, etc.
+    Tweet:
+        TweetId, Content, TweetLocation, NumberOfLikes, UserId, etc.
+    UserFollow:
+        UserId1, UserId2
+    FavoriteTweets:
+        UserId1, TweetId, Timestamp
+
+Step 4: High-level design
+    Identify enough components to solve *the problem*.  Get storage, application
+    layer, load balancer, client and model the data flow relationship between
+    different components.
+
+Step 5: Drill down into more details
+    From this high level design one can break out into sharding, partitioning,
+    scaling, caching, and high availability / distribution. Discuss different pros
+    and cons
+
+    How should we partition our data?  Should we storage all the data of a user on the smae database?
+    How will we handle hot users?
+    How and where should we introduce a cache to speed things up?
+    How and where should we need better load balancing?
+
+Step 6: Identify and resolving bottlenecks
+    Are there any single points of failure?  How should we mitigate that?
+    Is replication covered so we dont have data loss?
+    Do we have enough services to maintain availability if some go down?
+    Go into monitoring and logging at this point.  Maybe some things about
+    success metrics as well!

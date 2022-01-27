@@ -19,8 +19,7 @@ class Trie:
                 return word == node.word
             if word_remaining[0] in node.children:
                 return search_node(node.children[word_remaining[0]], word_remaining[1:])
-            else:
-                return False
+            return False
 
         return search_node(self.head, word)
 
@@ -39,8 +38,7 @@ class Trie:
                 return self.gather(node)
             elif prefix_remaining[0] in node.children:
                 return prefix_function(node.children[prefix_remaining[0]], prefix_remaining[1:])
-            else:
-                return []
+            return []
 
         return prefix_function(self.head, prefix)
 
@@ -54,8 +52,7 @@ class Trie:
                 if delete:
                     del node.children[word_remaining[0]]
                 return not node.children
-            else:
-                return False
+            return False
 
         traverse(self.head, word)
 
@@ -96,3 +93,4 @@ class TestTrie(unittest.TestCase):
         trie.delete('cat')
         self.assertEqual(True, trie.search('cats'))
         self.assertEqual(False, trie.search('cat'))
+        trie.print_trie()

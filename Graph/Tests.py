@@ -5,6 +5,7 @@ import output as output
 
 import Graph.Solutions as graph
 import Graph.Solutions_Two as graph_two
+import Graph.Solutions_Three as graph_three
 
 
 class SolutionsTest(unittest.TestCase):
@@ -33,35 +34,45 @@ class SolutionsTest(unittest.TestCase):
     def test_all_paths_source_to_target(self):
         input = [[4, 3, 1], [3, 2, 4], [3], [4], []]
         output = [[0, 4], [0, 3, 4], [0, 1, 3, 4], [0, 1, 2, 3, 4], [0, 1, 4]]
-        self.assertListEqual(output, graph_two.all_paths_source_to_target(input))
+        self.assertListEqual(output, graph_three.all_paths_source_to_target(input))
         input = [[1], []]
         output = [[0, 1]]
-        self.assertListEqual(output, graph_two.all_paths_source_to_target(input))
+        self.assertListEqual(output, graph_three.all_paths_source_to_target(input))
         input = [[1, 2, 3], [2], [3], []]
         output = [[0, 1, 2, 3], [0, 2, 3], [0, 3]]
-        self.assertListEqual(output, graph_two.all_paths_source_to_target(input))
+        self.assertListEqual(output, graph_three.all_paths_source_to_target(input))
         input = [[1, 3], [2], [3], []]
         output = [[0, 1, 2, 3], [0, 3]]
-        self.assertListEqual(output, graph_two.all_paths_source_to_target(input))
+        self.assertListEqual(output, graph_three.all_paths_source_to_target(input))
         input = [[1, 2], [3], [3], []]
         output = [[0, 1, 3], [0, 2, 3]]
-        self.assertListEqual(output, graph_two.all_paths_source_to_target(input))
+        self.assertListEqual(output, graph_three.all_paths_source_to_target(input))
+
+    def test_minimum_vertices_reach_all_nodes(self):
+        n = 6
+        edges = [[0, 1], [0, 2], [2, 5], [3, 4], [4, 2]]
+        output = [0, 3]
+        self.assertListEqual(output, graph_three.minimum_vertices_reach_all_nodes(n, edges))
+        n = 5
+        edges = [[0, 1], [2, 1], [3, 1], [1, 4], [2, 4]]
+        output = [0, 2, 3]
+        self.assertListEqual(output, graph_three.minimum_vertices_reach_all_nodes(n, edges))
 
     def test_keys_and_rooms(self):
         rooms = [[1], [2], [3], []]
         output = True
-        self.assertEqual(output, graph_two.keys_and_rooms(rooms))
+        self.assertEqual(output, graph_three.keys_and_rooms(rooms))
         rooms = [[1, 3], [3, 0, 1], [2], [0]]
         output = False
-        self.assertEqual(output, graph_two.keys_and_rooms(rooms))
+        self.assertEqual(output, graph_three.keys_and_rooms(rooms))
 
     def test_number_of_provinces(self):
         isConnected = [[1, 1, 0], [1, 1, 0], [0, 0, 1]]
         output = 2
-        self.assertEqual(output, graph_two.number_of_provinces(isConnected))
+        self.assertEqual(output, graph_three.number_of_provinces(isConnected))
         isConnected = [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
         output = 3
-        self.assertEqual(output, graph_two.number_of_provinces(isConnected))
+        self.assertEqual(output, graph_three.number_of_provinces(isConnected))
         isConnected = [
             [1, 0, 0, 1],
             [0, 1, 1, 0],
@@ -69,37 +80,37 @@ class SolutionsTest(unittest.TestCase):
             [1, 0, 1, 1]
         ]
         output = 1
-        self.assertEqual(output, graph_two.number_of_provinces(isConnected))
+        self.assertEqual(output, graph_three.number_of_provinces(isConnected))
 
     def test_redundant_connections(self):
         edges = [[1, 2], [1, 3], [2, 3]]
         output = [2, 3]
-        self.assertListEqual(output, graph_two.redundant_connections(edges))
+        self.assertListEqual(output, graph_three.redundant_connections(edges))
         edges = [[1, 2], [2, 3], [3, 4], [1, 4], [1, 5]]
         output = [1, 4]
-        self.assertListEqual(output, graph_two.redundant_connections(edges))
+        self.assertListEqual(output, graph_three.redundant_connections(edges))
 
     def test_maximal_network_rank(self):
         n = 4
         roads = [[0, 1], [0, 3], [1, 2], [1, 3]]
         output = 4
-        self.assertEqual(output, graph_two.maximal_network_rank(n, roads))
+        self.assertEqual(output, graph_three.maximal_network_rank(n, roads))
         n = 5
         roads = [[0, 1], [0, 3], [1, 2], [1, 3], [2, 3], [2, 4]]
         output = 5
-        self.assertEqual(output, graph_two.maximal_network_rank(n, roads))
+        self.assertEqual(output, graph_three.maximal_network_rank(n, roads))
         n = 8
         roads = [[0, 1], [1, 2], [2, 3], [2, 4], [5, 6], [5, 7]]
         output = 5
-        self.assertEqual(output, graph_two.maximal_network_rank(n, roads))
+        self.assertEqual(output, graph_three.maximal_network_rank(n, roads))
 
     def test_find_eventual_safe(self):
         input = [[1, 2], [2, 3], [5], [0], [5], [], []]
         output = [2, 4, 5, 6]
-        self.assertListEqual(output, graph_two.find_eventual_safe_nodes(input))
+        self.assertListEqual(output, graph_three.find_eventual_safe_nodes(input))
         input = [[1, 2, 3, 4], [1, 2], [3, 4], [0, 4], []]
         output = [4]
-        self.assertListEqual(output, graph_two.find_eventual_safe_nodes(input))
+        self.assertListEqual(output, graph_three.find_eventual_safe_nodes(input))
 
     def test_is_graph_bipartite(self):
         input = [[1, 2, 3], [0, 2], [0, 1, 3], [0, 2]]
@@ -113,48 +124,48 @@ class SolutionsTest(unittest.TestCase):
         n = 3
         paths = [[1, 2], [2, 3], [3, 1]]
         output = [1, 2, 3]
-        self.assertListEqual(output, graph_two.flower_planting_no_adjacent(n, paths))
+        self.assertListEqual(output, graph_three.flower_planting_no_adjacent(n, paths))
 
         n = 4
         paths = [[1, 2], [3, 4]]
         output = [1, 2, 1, 2]
-        self.assertListEqual(output, graph_two.flower_planting_no_adjacent(n, paths))
+        self.assertListEqual(output, graph_three.flower_planting_no_adjacent(n, paths))
 
         n = 4
         paths = [[1, 2], [2, 3], [3, 4], [4, 1], [1, 3], [2, 4]]
         output = [1, 2, 3, 4]
-        self.assertListEqual(output, graph_two.flower_planting_no_adjacent(n, paths))
+        self.assertListEqual(output, graph_three.flower_planting_no_adjacent(n, paths))
 
     def test_network_delay(self):
         times = [[2, 1, 1], [2, 3, 1], [3, 4, 1]]
         n = 4
         k = 2
         output = 2
-        self.assertEqual(output, graph_two.network_delay_time(times, n, k))
+        self.assertEqual(output, graph_three.network_delay_time(times, n, k))
         times = [[1, 2, 1]]
         n = 2
         k = 1
         output = 1
-        self.assertEqual(output, graph_two.network_delay_time(times, n, k))
+        self.assertEqual(output, graph_three.network_delay_time(times, n, k))
         times = [[1, 2, 1]]
         n = 2
         k = 2
         output = -1
-        self.assertEqual(output, graph_two.network_delay_time(times, n, k))
+        self.assertEqual(output, graph_three.network_delay_time(times, n, k))
 
     def test_possible_bipartition(self):
         n = 4
         dislikes = [[1, 2], [1, 3], [2, 4]]
         output = True
-        self.assertEqual(output, graph_two.possible_bipartition(n, dislikes))
+        self.assertEqual(output, graph_three.possible_bipartition(n, dislikes))
         n = 3
         dislikes = [[1, 2], [1, 3], [2, 3]]
         output = False
-        self.assertEqual(output, graph_two.possible_bipartition(n, dislikes))
+        self.assertEqual(output, graph_three.possible_bipartition(n, dislikes))
         n = 5
         dislikes = [[1, 2], [2, 3], [3, 4], [4, 5], [1, 5]]
         output = False
-        self.assertEqual(output, graph_two.possible_bipartition(n, dislikes))
+        self.assertEqual(output, graph_three.possible_bipartition(n, dislikes))
 
     def test_coarse_schedule(self):
         numCourses = 2

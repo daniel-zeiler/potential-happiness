@@ -1,0 +1,73 @@
+1. Requirements Clarification
+    Users / Customers
+    Scale of reads / writes
+    Performance
+    Cost
+
+2. Functionality Requirements
+    Take clarified requirements and write them out
+    Transform those requirements into functional APIs
+
+3. Non functional requirements
+    Scalability
+    Performance
+    Availability
+
+4. High Level architecture
+    Start small, throw some high level components onto the whiteboard
+    Drive the conversation!
+
+5. Data Model!
+    How should data be organized?  Store raw?  Aggregate?
+
+6 Database choice
+    SQL vs NoSQL
+    SQL:
+        In this configuration we would need a service that's aware of all this.
+        Somethting like Zookeeper or a light proxy server.
+        This will route traffic to the correct shard.
+        Shard dies / becomes availabel due to network partition.
+    NoSQL:
+        Leaderless replication.
+        Consistent Hashing!
+        Gossip protocal so you don't need to have zookeeper or proxy server
+        all shards know state of other shards
+        consistency is achieved by quorum. n/2 + 1 for reads and writes
+        Clients call any node and are forwarded via consistent hashing
+
+    Query results stored in a distributed cache.
+
+    Rolling up data, second, minute, hour, day granularity.
+    Old data can be stored in object storage.  Hot storage, cold storage.
+
+7. Services
+    How to make scalable, reliable, and fast?
+
+    Checkpointing!
+    Partitioning Services and queues!  Dead-Letter queues.
+    Write state to disk for restarts after failures.
+
+    Batching
+
+    Batching, Timeouts, Retries (exponential backoff and jitter).
+
+    Load Balancing!
+        Hash based, Least response time, CPU base, Round Robin.
+        Machines tell load balancers to register ID address
+        Load balancers ping for service health
+        Load balancer is registered to DNS for the services address
+
+        Primary and secondary load balancers handle high availability
+            in different datacenters
+
+    Partition Service discovery
+
+    Message encoding
+        Schemas, binary formats (thrift, protobuffers)
+
+8. Identify bottlenecks, Monitoring, alerting, and logging.
+    Monitoring:
+        metrics: Error count, processing time.
+        Alerts to users
+        signals: Latency, Traffic, Errors, saturation
+        Testing

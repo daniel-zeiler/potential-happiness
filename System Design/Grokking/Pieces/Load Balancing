@@ -1,0 +1,20 @@
+Load balancers do a number of things
+    distribute load across multiple copies of a service
+    keep track of health of resources
+    stop sending traffic to elevated error rate resource
+
+
+    Client -> LB -> Web Server -> LB -> Application -> LB -> database
+
+Benfits of load balancing
+    Faster uninterrupted service
+    less downtime and higher throughput
+    requests are distributed across a cluster
+
+Load balancing algorithms:
+    Least Connection method
+    Least response time method
+    Least bandwidth method
+    Round robin Method
+    Weighted round robin method
+

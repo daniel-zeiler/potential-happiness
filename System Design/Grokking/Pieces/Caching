@@ -1,0 +1,23 @@
+Caches take care of locality of reference principle
+
+A cache is short-term memory.  Much faster than reading from disk or
+the database.
+
+CDN (Conent Delivery Network)
+
+Typically caches static assets like images, jpegs, video, html, etc.
+If not available the cache will query the backend server for the files
+
+Cache invalidation:
+    Write-through cache
+        increases latency, both are written at the same time.
+        Minimizes risk of data loss.
+
+    Write-around cache
+        write goes directly to database bypassing cache. Making the cache
+        invalid.  Newer reads will be slower.
+
+    Write-back cache
+        Writes go directly to the cache.  Fastest way.  Cache then handles
+        database writes.  Low latency, high throughput.  Risk of data loss
+

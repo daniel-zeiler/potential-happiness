@@ -1,3 +1,82 @@
+Reality Analytics:
+
+1. Python SDK For Customers to interact with our API.
+
+    One major issue we noticed early on in the devleopment process was the ability for users to ingress data into our
+    system.  Many of our clients weren't software engineers and lacked the technical expertise to build appropriate
+    interfaces into our product.  I took it upon myself to build a python SDK that allowed for an easy interface into
+    our system that our customers used to bootstrap themselves into our product.  This was extended and generalized overtime
+    to become a vital component that we offered to our userbase for devleopment work outside of the context of our user
+    interface.
+
+2. System to Train and deploy machine learning models.
+
+    The general product that we offered was one that allowed our clients to train, validate, and deploy machine learning
+    models into the cloud.  It allowed them to submit large amounts of data, either with labeled or unlabeled data we would
+    detect anomalies on.  Once we had their data, we trained a large number of models and the users were able to select
+    which ones were best based upon things like processing time and overall accuracy. They could them deploy that model,
+    or replace one that's already active, within our VPC and could send requests for further classification.
+
+3. Putting together a demo for AI Expo.
+
+    One aspect that I wasn't aware of was the necessity to compartmentalize our entire system to work offline.  This was
+    a difficult task and I managed to put together a toy system that fit within a laptop and was able to be demoed to clients
+    directly and was used at Trade Shows.
+
+Maxar Technologies:
+
+4. Analysis Ready Data - Datastore
+
+
+5. Analysis Ready Data - Service
+    Two seperate components:
+        We abstracted away the handing of complex processing infrastructure deployments and data ingress from our analysts and machine learning engineers.
+        Our ML engineers could create containerized analytical processes and we would deploy infrastructure to support it.  The models themselves
+        were versioned and we could swap them as needed.  Analysts too, do not need to know about the underlying mechanism for classification, instead
+        they were able to select regions, and under various conditions, analysis would take place and customer deliverables could be acquired.
+
+            Hows this work?  Once a ML engineer registers their containerized application with us, we deployed a number deployed a SQS and aggregator
+            service specifically for it.  Then, once some new regions for classification are aggregated we passed that request off to a step function
+            which handled imagery ordering, image partitioning, and finally, batching and queueing, and finally evocation of that containerized application.
+            After that process is complete results were stored and a notification service handled customer alerts, emails, slack notifications, etc.
+
+            Our analysts defined areas of interest for a specific analysis.  Once data enters our datastore, a stream processor would process those write
+            events and forward intersecting regions to our aggregator service for processing.
+
+
+6. DARPA contract
+
+    Platform that allowed the fusion of multi-datasource and multi-model classification / execution in a secure environment.
+    Synthetic Aperture Radar, Imagery.  These modules were containerized and delivered outputs within the same platform
+    that offers the request.
+
+
+Twitter:
+
+8. Looker Ingress Proxy
+    Twitter Internal Load Balancer could not support our product due to various reasons.
+    Our proxy solution wasn't under any SLA and started to fail under traffic.
+    We quickly developed our own proxying solution to maintain availability.
+
+9. Looker Technical Design Document
+    We created the initial technical design for platforming Looker within Twitter.  This technical design document
+    balanced tradeoffs and overall complexity with a tight implementation and schedule.
+    First we held one on one meetings with involved stakeholders to understand the challenges and necessities of the system.
+    Then we consulted with appropriate teams to further our understanding of the implementation and submitted an initial
+    design draft for review.  Then we went through the technical design review process with all involved.  Finally
+    we partitioned the workspace into constituent components and set development milestones we were able to meet.
+    All of these components were storyline and further broken down into sprints before work began.
+
+        Some general feedback we received from this process were generally around information security, compliance,
+        cost distribution amongst teams, and monitoring related.
+
+10. Looker General Availability
+    We needed to build a platform that allowed Looker to interface with a large number of datasources.
+    Additionally stream in schema changes for our developer community.
+
+
+    
+
 Maxar
     Analysis Ready Data Platform
         Serverless application backed by a custom data store.

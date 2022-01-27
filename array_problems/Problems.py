@@ -110,35 +110,6 @@ def maxIncreaseKeepingSkyline(grid: List[List[int]]) -> int:
 
 
 """
-Given an array nums of integers, return how many of them contain an even number of digits.
-
- 
-
-Example 1:
-
-Input: nums = [12,345,2,6,7896]
-Output: 2
-Explanation: 
-12 contains 2 digits (even number of digits). 
-345 contains 3 digits (odd number of digits). 
-2 contains 1 digit (odd number of digits). 
-6 contains 1 digit (odd number of digits). 
-7896 contains 4 digits (even number of digits). 
-Therefore only 12 and 7896 contain an even number of digits.
-Example 2:
-
-Input: nums = [555,901,482,1771]
-Output: 1 
-Explanation: 
-Only 1771 contains an even number of digits.
-"""
-
-
-def findNumbers(nums: List[int]) -> int:
-    pass
-
-
-"""
 Design a stack which supports the following operations.
 
 Implement the CustomStack class:
@@ -952,26 +923,6 @@ def canReach(arr: List[int], start: int) -> bool:
 
 
 """
-Given an array of integers nums, sort the array in ascending order.
-
- 
-
-Example 1:
-
-Input: nums = [5,2,3,1]
-Output: [1,2,3,5]
-Example 2:
-
-Input: nums = [5,1,1,2,0,0]
-Output: [0,0,1,1,2,5]
-"""
-
-
-def sortArray(nums: List[int]) -> List[int]:
-    pass
-
-
-"""
 Given a binary array nums and an integer k, return the maximum number of consecutive 1's in the 
 array if you can flip at most k 0's.
 
@@ -993,29 +944,6 @@ Bolded numbers were flipped from 0 to 1. The longest subarray is underlined.
 
 
 def longestOnes(nums: List[int], k: int) -> int:
-    pass
-
-
-"""
-Given an array nums of size n, return the majority element.
-
-The majority element is the element that appears more than ⌊n / 2⌋ times. You may assume that the 
-majority element always exists in the array.
-
- 
-
-Example 1:
-
-Input: nums = [3,2,3]
-Output: 3
-Example 2:
-
-Input: nums = [2,2,1,1,1,2,2]
-Output: 2
-"""
-
-
-def majorityElement(self, nums: List[int]) -> int:
     pass
 
 
@@ -1112,56 +1040,6 @@ def numEnclaves(grid: List[List[int]]) -> int:
 
 
 """
-Given an integer array nums, move all 0's to the end of it while maintaining the relative order 
-of the non-zero elements.
-
-Note that you must do this in-place without making a copy of the array.
-
- 
-
-Example 1:
-
-Input: nums = [0,1,0,3,12]
-Output: [1,3,12,0,0]
-Example 2:
-
-Input: nums = [0]
-Output: [0]
-"""
-
-
-def moveZeroes(nums: List[int]) -> None:
-    """
-    Do not return anything, modify nums in-place instead.
-    """
-
-
-"""
-Given an integer array nums, return true if any value appears at least twice in the array, 
-and return false if every element is distinct.
-
- 
-
-Example 1:
-
-Input: nums = [1,2,3,1]
-Output: true
-Example 2:
-
-Input: nums = [1,2,3,4]
-Output: false
-Example 3:
-
-Input: nums = [1,1,1,3,3,4,3,2,4,2]
-Output: true
-"""
-
-
-def containsDuplicate(nums: List[int]) -> bool:
-    pass
-
-
-"""
 Given a m x n grid filled with non-negative numbers, find a path from top left to bottom right, 
 which minimizes the sum of all numbers along its path.
 
@@ -1183,35 +1061,6 @@ Output: 12
 
 
 def minPathSum(grid: List[List[int]]) -> int:
-    pass
-
-
-"""
-An array is monotonic if it is either monotone increasing or monotone decreasing.
-
-An array nums is monotone increasing if for all i <= j, nums[i] <= nums[j]. An array nums is 
-monotone decreasing if for all i <= j, nums[i] >= nums[j].
-
-Given an integer array nums, return true if the given array is monotonic, or false otherwise.
-
- 
-
-Example 1:
-
-Input: nums = [1,2,2,3]
-Output: true
-Example 2:
-
-Input: nums = [6,5,4,4]
-Output: true
-Example 3:
-
-Input: nums = [1,3,2]
-Output: false
-"""
-
-
-def isMonotonic(nums: List[int]) -> bool:
     pass
 
 
@@ -1250,91 +1099,6 @@ Output: [[2,2,2],[2,2,2]]
 
 def floodFill(image: List[List[int]], sr: int, sc: int, newColor: int) -> List[List[int]]:
     pass
-
-
-"""
-Design your implementation of the circular double-ended queue (deque).
-
-Implement the MyCircularDeque class:
-
-MyCircularDeque(int k) Initializes the deque with a maximum size of k.
-boolean insertFront() Adds an item at the front of Deque. Returns true if the operation is 
-successful, or false otherwise.
-boolean insertLast() Adds an item at the rear of Deque. Returns true if the operation is 
-successful, or false otherwise.
-boolean deleteFront() Deletes an item from the front of Deque. Returns true if the operation is 
-successful, or false otherwise.
-boolean deleteLast() Deletes an item from the rear of Deque. Returns true if the operation is 
-successful, or false otherwise.
-int getFront() Returns the front item from the Deque. Returns -1 if the deque is empty.
-int getRear() Returns the last item from Deque. Returns -1 if the deque is empty.
-boolean isEmpty() Returns true if the deque is empty, or false otherwise.
-boolean isFull() Returns true if the deque is full, or false otherwise.
- 
-
-Example 1:
-
-Input
-["MyCircularDeque", "insertLast", "insertLast", "insertFront", "insertFront", "getRear", 
-"isFull", "deleteLast", "insertFront", "getFront"]
-[[3], [1], [2], [3], [4], [], [], [], [4], []]
-Output
-[null, true, true, true, false, 2, true, true, true, 4]
-
-Explanation
-MyCircularDeque myCircularDeque = new MyCircularDeque(3);
-myCircularDeque.insertLast(1);  // return True
-myCircularDeque.insertLast(2);  // return True
-myCircularDeque.insertFront(3); // return True
-myCircularDeque.insertFront(4); // return False, the queue is full.
-myCircularDeque.getRear();      // return 2
-myCircularDeque.isFull();       // return True
-myCircularDeque.deleteLast();   // return True
-myCircularDeque.insertFront(4); // return True
-myCircularDeque.getFront();     // return 4
-"""
-
-
-class MyCircularDeque:
-
-    def __init__(self, k: int):
-        pass
-
-    def insertFront(self, value: int) -> bool:
-        pass
-
-    def insertLast(self, value: int) -> bool:
-        pass
-
-    def deleteFront(self) -> bool:
-        pass
-
-    def deleteLast(self) -> bool:
-        pass
-
-    def getFront(self) -> int:
-        pass
-
-    def getRear(self) -> int:
-        pass
-
-    def isEmpty(self) -> bool:
-        pass
-
-    def isFull(self) -> bool:
-        pass
-
-
-# Your MyCircularDeque object will be instantiated and called as such:
-# obj = MyCircularDeque(k)
-# param_1 = obj.insertFront(value)
-# param_2 = obj.insertLast(value)
-# param_3 = obj.deleteFront()
-# param_4 = obj.deleteLast()
-# param_5 = obj.getFront()
-# param_6 = obj.getRear()
-# param_7 = obj.isEmpty()
-# param_8 = obj.isFull()
 
 
 """
@@ -1474,28 +1238,6 @@ def reorderLogFiles(logs: List[str]) -> List[str]:
 
 
 """
-Given a binary array nums, return the maximum number of consecutive 1's in the array.
-
- 
-
-Example 1:
-
-Input: nums = [1,1,0,1,1,1]
-Output: 3
-Explanation: The first two digits or the last three digits are consecutive 1s. The maximum number 
-of consecutive 1s is 3.
-Example 2:
-
-Input: nums = [1,0,1,1,0,1]
-Output: 2
-"""
-
-
-def findMaxConsecutiveOnes(nums: List[int]) -> int:
-    pass
-
-
-"""
 Given two integer arrays nums1 and nums2, return an array of their intersection. Each element in 
 the result must appear as many times as it shows in both arrays and you may return the result in 
 any order.
@@ -1559,43 +1301,8 @@ Output: 1
 """
 
 
-def maxArea(self, height: List[int]) -> int:
+def maxArea(height: List[int]) -> int:
     pass
-
-
-"""
-Given an array nums with n objects colored red, white, or blue, sort them in-place so that 
-objects of the same color are adjacent, with the colors in the order red, white, and blue.
-
-We will use the integers 0, 1, and 2 to represent the color red, white, and blue, respectively.
-
-You must solve this problem without using the library's sort function.
-
- 
-
-Example 1:
-
-Input: nums = [2,0,2,1,1,0]
-Output: [0,0,1,1,2,2]
-Example 2:
-
-Input: nums = [2,0,1]
-Output: [0,1,2]
-Example 3:
-
-Input: nums = [0]
-Output: [0]
-Example 4:
-
-Input: nums = [1]
-Output: [1]
-"""
-
-
-def sortColors(nums: List[int]) -> None:
-    """
-    Do not return anything, modify nums in-place instead.
-    """
 
 
 """
@@ -1711,7 +1418,11 @@ is impossible, return -1.
 Example 1:
 
 
-Input: grid = [[2,1,1],[1,1,0],[0,1,1]]
+Input: grid = [
+    [2,1,1],
+    [1,1,0],
+    [0,1,1]
+]
 Output: 4
 Example 2:
 
@@ -1916,59 +1627,6 @@ divide and conquer approach, which is more subtle.
 
 
 def maxSubArray(nums: List[int]) -> int:
-    pass
-
-
-"""
-Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such 
-that each unique element appears only once. The relative order of the elements should be kept the 
-same.
-
-Since it is impossible to change the length of the array in some languages, you must instead have 
-the result be placed in the first part of the array nums. More formally, if there are k elements 
-after removing the duplicates, then the first k elements of nums should hold the final result. It 
-does not matter what you leave beyond the first k elements.
-
-Return k after placing the final result in the first k slots of nums.
-
-Do not allocate extra space for another array. You must do this by modifying the input array 
-in-place with O(1) extra memory.
-
-Custom Judge:
-
-The judge will test your solution with the following code:
-
-int[] nums = [...]; // Input array
-int[] expectedNums = [...]; // The expected answer with correct length
-
-int k = removeDuplicates(nums); // Calls your implementation
-
-assert k == expectedNums.length;
-for (int i = 0; i < k; i++) {
-    assert nums[i] == expectedNums[i];
-}
-If all assertions pass, then your solution will be accepted.
-
- 
-
-Example 1:
-
-Input: nums = [1,1,2]
-Output: 2, nums = [1,2,_]
-Explanation: Your function should return k = 2, with the first two elements of nums being 1 and 2 
-respectively.
-It does not matter what you leave beyond the returned k (hence they are underscores).
-Example 2:
-
-Input: nums = [0,0,1,1,1,2,2,3,3,4]
-Output: 5, nums = [0,1,2,3,4,_,_,_,_,_]
-Explanation: Your function should return k = 5, with the first five elements of nums being 0, 1, 
-2, 3, and 4 respectively.
-It does not matter what you leave beyond the returned k (hence they are underscores).
-"""
-
-
-def removeDuplicates(self, nums: List[int]) -> int:
     pass
 
 
@@ -2330,22 +1988,6 @@ output = [3,8,4,6,5]
 
 
 def plus_one_large_number(input: List[List[int]]) -> List[int]:
-    pass
-
-
-"""
-Amazon wants to return a list of lockers that are closest to a given x,y coordinate.  
-The input is position the current position and lockers, a list of x,y coordinate pairs.
-return the closest n pairs of lockers to your current position.
-
-
-position = [x,y]
-lockers = [[x0,y0],[x1,y1],[x2,y2],[x3,y3]]
-number_of_lockers = 3
-"""
-
-
-def closest_lockers(x, y, lockers, number_of_lockers):
     pass
 
 
@@ -2777,4 +2419,37 @@ For coordinates=[[4, 7], [-1, 5], [3, 6]], the output should be easyCountUber(co
 
 
 def number_of_markers_on_road(coordinates):
+    pass
+
+
+"""
+You are given an n x n binary matrix grid where 1 represents land and 0 represents water.
+
+An island is a 4-directionally connected group of 1's not connected to any other 1's. There are exactly two islands 
+in grid. 
+
+You may change 0's to 1's to connect the two islands to form one island.
+
+Return the smallest number of 0's you must flip to connect the two islands.
+
+ 
+
+Example 1:
+
+Input: grid = [
+    [0,1],[1,0]
+]
+Output: 1
+Example 2:
+
+Input: grid = [[0,1,0],[0,0,0],[0,0,1]]
+Output: 2
+Example 3:
+
+Input: grid = [[1,1,1,1,1],[1,0,0,0,1],[1,0,1,0,1],[1,0,0,0,1],[1,1,1,1,1]]
+Output: 1
+"""
+
+
+def shortestBridge(self, grid: List[List[int]]) -> int:
     pass

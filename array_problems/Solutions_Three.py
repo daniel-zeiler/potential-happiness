@@ -518,3 +518,49 @@ def number_of_markers_on_road(coordinates):
             intervals[-1][1] = max(intervals[-1][1], interval[1])
 
     return sum([x[1] - x[0] + 1 for x in intervals])
+
+
+def shortestBridge(grid: List[List[int]]) -> int:
+    island_one = collections.deque([])
+    island_two = collections.deque([])
+    directions = [[-1, 0], [1, 0], [0, -1], [0, 1]]
+
+    def yield_directions(x, y):
+        for x_direction, y_direction in directions:
+            x_target, y_target = x + x_direction, y + y_direction
+            if 0 <= x_target < len(grid) and 0 <= y_target < len(grid[0]):
+                if grid[x_target][y_target] == 1:
+                    yield x_target, y_target
+
+    def traverse(x, y, island):
+        island.append((0, x, y))
+        grid[x][y] = -1
+        for x_direction, y_direction in yield_directions(x, y):
+            traverse(x_direction, y_direction, island)
+
+    for x, row in enumerate(grid):
+        for y, value in enumerate(row):
+            if value == 1:
+                if not island_one:
+                    traverse(x, y, island_one)
+                else:
+                    traverse(x, y, island_two)
+    visited_island_one = {(x[1], x[2]): 0 for x in list(island_one)}
+    visited_island_two = {(x[1], x[2]): 0 for x in list(island_two)}
+
+    def get_next_directions(x, y, visited):
+        for x_direction, y_direction in directions:
+            x_target, y_target = x + x_direction, y + y_direction
+            if 0 <= x_target < len(grid) and 0 <= y_target < len(grid[0]):
+                if (x_target, y_target) not in visited:
+                    yield x_target, y_target
+
+    while island_one:
+        distance, x, y = island_one.popleft()
+        for x_direction, y_direction in get_next_directions(x, y, visited_island_one):
+            if (x_direction, y_direction) in visited_island_two:
+                return visited_island_two[(x_direction, y_direction)] + distance
+            if (x_direction, y_direction) not in visited_island_one:
+                visited_island_one[x_direction, y_direction] = distance + 1
+                island_one.append((distance + 1, x_direction, y_direction))
+    return -1
