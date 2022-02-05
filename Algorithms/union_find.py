@@ -20,7 +20,7 @@ def union(x, y, parents):
 
 
 # This algorithm will determine the total number of paritions within a set of nodes.
-# if the eunion function returns false, then the edge is already within the same set.
+# if the union function returns false, then the edge is already within the same set.
 def union_find(edges: List[List[int]]):
     parents = [i for i in range(len(edges) + 1)]
     for origin, destination in edges:

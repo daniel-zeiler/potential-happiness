@@ -171,19 +171,19 @@ class SolutionsTest(unittest.TestCase):
         numCourses = 2
         prerequisites = [[1, 0]]
         output = [0, 1]
-        self.assertListEqual(output, graph_two.course_schedule_two(numCourses, prerequisites))
+        self.assertListEqual(output, graph_three.course_schedule_two(numCourses, prerequisites))
         numCourses = 4
         prerequisites = [[1, 0], [2, 0], [3, 1], [3, 2]]
         output = [0, 2, 1, 3]
-        self.assertListEqual(output, graph_two.course_schedule_two(numCourses, prerequisites))
+        self.assertListEqual([0, 1, 2, 3], graph_three.course_schedule_two(numCourses, prerequisites))
         numCourses = 1
         prerequisites = []
         output = [0]
-        self.assertListEqual(output, graph_two.course_schedule_two(numCourses, prerequisites))
+        self.assertListEqual(output, graph_three.course_schedule_two(numCourses, prerequisites))
         numCourses = 2
         prerequisites = [[0, 1]]
         output = [1, 0]
-        self.assertListEqual(output, graph_two.course_schedule_two(numCourses, prerequisites))
+        self.assertListEqual(output, graph_three.course_schedule_two(numCourses, prerequisites))
 
     def test_calc_equation(self):
         equations = [["a", "b"], ["b", "c"]]
@@ -199,21 +199,21 @@ class SolutionsTest(unittest.TestCase):
             input.append(graph_two.Employee(employee[0], employee[1], employee[2]))
         id = 1
         output = 11
-        self.assertEqual(output, graph_two.getImportance(input, id))
+        self.assertEqual(output, graph_three.getImportance(input, id))
         employees = [[1, 2, [5]], [5, -3, []]]
         input = []
         for employee in employees:
             input.append(graph_two.Employee(employee[0], employee[1], employee[2]))
         id = 5
         output = -3
-        self.assertEqual(output, graph_two.getImportance(input, id))
+        self.assertEqual(output, graph_three.getImportance(input, id))
 
     def test_ladder_length(self):
 
         word = "hit"
         target = "cog"
         word_list = ["hot", "dot", "dog", "lot", "log", "cog"]
-        self.assertEqual(5, graph_two.ladderLength(word, target, word_list))
+        self.assertEqual(5, graph_three.ladderLength(word, target, word_list))
 
     def test_can_finish(self):
         numCourses = 2

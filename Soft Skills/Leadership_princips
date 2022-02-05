@@ -7,28 +7,36 @@ pay attention to competitors, they obsess over customers.
         data and handle responses appropriately.
         Action: I Built a python SDK package for them that was then used by others.  This was generalized and a standard
         offering for the company going forward.
-        Learning:  It taught me a lot about expectations of the customer and how to optimize for smooth onboarding and 
+        Learning:  It taught me a lot about expectations of the customer and how to optimize for smooth onboarding and
         ease of use.
 
     Example 2: Tell me about a time when you didn't meet customer expectations.  What happened and how did you deal with 
     the situation.
-        Situation:  A frontend feature was rolled out without adequate testing and this caused recurring errors on that 
-        part of the application.  This
+        Situation:  Yeah recently transitioned our method of traffic ingress of the standard service at Twitter to a backup
+        due to unsupported features of our product. Unfortunately this backup feature wasn' able to handle our traffic and
+        our consultation missed the mark here for our use case.  They also weren't guaranteeing an SLA so we were left holding
+        the load.  Very slow traffic, dropped requests, etc.
+        Task: We needed to quickly set up our own ingress proxy with enough capacity and failover to take over for this service.
+        Action: This really impacted our users at the time and we received a lot of feedback in our slack channels about slowness.
+        It took a few days to get this service up and running but since that time we've not received of those types of messages
+        and it's been continuously service traffic for over a year without issues.
+        Learning:  This taught me a lot of thoroughly testing co-dependent services and their integration with any individual service
+        before pushing it into production, even if other's say it's okay to rely on their service.
 
     Example 3:  How do you go about prioritizing customer needs when you are dealing with a large number of customers?
-        Situation:
-        Task:
-        Action:
-        Result:
+        Situation: We have a large number of customers that have direct access to the platform engineering team
+        Task: We have a data modeling working group that works to streamline customer workflows
+        Action: This sets a standard that our users work within and provides a platform for us to hear customer feedback
+        Result: This allows us to prioritize what features our customers need and see how commonalities between then so we can schedule new features
 
 Ownership: Leaders are owners. They think long-term and don’t sacrifice long-term value for short-term results. They act on behalf of the entire
 company, beyond just their own team. They never say “that’s not my job.”
 
     Example 1:Tell me about a time when you took on a task that was beyond your job responsibilities
-        Situation:
-        Task:
-        Action:
-        Result:
+        Situation: We needed to create a demo of our product for use in trade shows or VC meetings
+        Task: I containerized and miniaturized our application with a sample dataset that would fit into a laptop
+        Action: We were able to demonstrate the capabilities of our startup to trade shows and investors and we secured a signficant amount
+        of funding for our company.
     
     Example 2: Tell me about a time when you had to work on a task with unclear responsibilities
         Situation:
@@ -36,7 +44,7 @@ company, beyond just their own team. They never say “that’s not my job.”
         Action:
         Result:
         
-    Example 3: Tell me about a time when you showed an intitive to work on a challenging project.
+    Example 3: Tell me about a time when you showed an initiative to work on a challenging project.
         Situation:
         Task:
         Action:
@@ -46,7 +54,7 @@ Invent and Simplify: Leaders expect and require innovation and invention from th
 aware, look for new ideas from everywhere, and are not limited by “not invented here.” As we do new things, we accept that we may be
 misunderstood for long periods of time.
 
-    Example 1:Describe a time when you found a simple solution to a complex problem
+    Example 1: Describe a time when you found a simple solution to a complex problem.
 
     Example 2: Tell me about a time when you invented something.
 
@@ -55,36 +63,42 @@ misunderstood for long periods of time.
 
 Learn and Be Curious: Leaders are never done learning and always seek to improve themselves. They are curious about new possibilities and act to
 explore them.
-    Example 1:
 
+    Example 1: Tell me about an important lesson you learned over the past year.
 
-    Example 2:
+    Example 1: Tell me about a situation or experience you went through that changed your way of thinking.
 
+    Example 1: Tell me about a time when you made a smarter decision with the help of your curiosity.
 
 
 Dive Deep: Leaders operate at all levels, stay connected to the details, audit frequently, and are skeptical when metrics and anecdote differ. No task
 is beneath them.
-    Example 1:
 
+    Example 1: Tell me about the most complicated problem you've had to deal with.
 
-    Example 2:
+    Example 2: Give me an example of when you utilized in-depth data to develop a solution.
+
+    Example 3: Tell me about something that you have learned in your role.
 
 
 Have Backbone; Disagree and Commit: Leaders are obligated to respectfully challenge decisions when they disagree, even when doing so is
 uncomfortable or exhausting. Leaders have conviction and are tenacious. They do not compromise for the sake of social cohesion. Once a decision is
 determined, they commit wholly.
-    Example 1:
 
+    Example 1: Describe a time when you disagreed with the approach of a team member. What did you do?
 
-    Example 2:
+    Example 2: Give me an example of something you believe in that nobody else does.
+
+    Example 3: Tell me about an unpopular decision of yours.
 
 
 Deliver Results: Leaders focus on the key inputs for their business and deliver them with the right quality and in a timely fashion. Despite setbacks,
 they rise to the occasion and never settle.
-    Example 1:
+    Example 1: Describe the most challenging situation in your life and how you handled it.
 
+    Example 2: Give an example of a time when you had to handle a variety of assignments. What was the outcome?
 
-    Example 2:
+    Example 3: Tell me about a time when your team gave up on something, but you pushed them to deliver results.
 
 
 interviewer 1: logical maintainable

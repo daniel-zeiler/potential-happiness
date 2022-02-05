@@ -270,3 +270,55 @@ def addBoldTag(s: str, words: List[str]) -> str:
 s = "abcxyz123"
 words = ["abc", "123"]
 addBoldTag(s, words)
+
+
+def findWords(board: List[List[str]], words: List[str]) -> List[str]:
+    class FindWordNode:
+        def __init__(self):
+            self.word = None
+            self.children = collections.defaultdict(FindWordNode)
+
+    class FindWordTrie:
+        def __init__(self, board):
+            self.board = board
+            self.head = FindWordNode()
+            self.directions = [[-1, 0], [1, 0], [0, 1], [0, -1]]
+
+        def add_word(self, word):
+            def recursive_add(node, word_remaining):
+                if not word_remaining:
+                    node.word = word
+                    return
+                letter = word_remaining[0]
+                if letter not in node.children:
+                    node.children[letter] = FindWordNode()
+                recursive_add(node.children[letter], word_remaining[1:])
+
+            recursive_add(self.head, word)
+
+        def traverse_position(self, x, y, node):
+            result = []
+            self.board[x][y], temp = None, self.board[x][y]
+            if node.word:
+                result.append(node.word)
+            for x_direction, y_direction in self.directions:
+                x_target, y_target = x + x_direction, y + y_direction
+                if 0 <= x_target < len(self.board) and 0 <= y_target < len(self.board[0]):
+                    letter = self.board[x_target][y_target]
+                    if letter and letter in node.children:
+                        result.extend(self.traverse_position(x_target, y_target, node.children[letter]))
+            self.board[x][y] = temp
+            return result
+
+        def traverse_board(self):
+            result = []
+            for x, row in enumerate(self.board):
+                for y, value in enumerate(row):
+                    if value in self.head.children:
+                        result.extend(self.traverse_position(x, y, self.head.children[value]))
+            return result
+
+    trie = FindWordTrie(board)
+    for word in words:
+        trie.add_word(word)
+    return trie.traverse_board()

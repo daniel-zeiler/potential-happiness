@@ -221,3 +221,107 @@ def possible_bipartition(n, dislikes):
             if not traverse(i, True):
                 return False
     return True
+
+
+def course_schedule_two(num_courses, prerequisites):
+    def get_graph():
+        in_degree = {n: 0 for n in range(num_courses)}
+        graph = collections.defaultdict(list)
+        for destination, origin in prerequisites:
+            graph[origin].append(destination)
+            in_degree[destination] += 1
+        return graph, in_degree
+
+    graph, in_degree = get_graph()
+    queue = collections.deque([])
+    result = []
+
+    for key, value in in_degree.items():
+        if value == 0:
+            queue.append(key)
+
+    while queue:
+        node = queue.popleft()
+        result.append(node)
+        for adjacent in graph[node]:
+            in_degree[adjacent] -= 1
+            if in_degree[adjacent] == 0:
+                queue.append(adjacent)
+
+    if len(result) == num_courses:
+        return result
+    return []
+
+
+# Definition for Employee.
+class Employee:
+    def __init__(self, id: int, importance: int, subordinates: List[int]):
+        self.id = id
+        self.importance = importance
+        self.subordinates = subordinates
+
+
+def getImportance(employees: List['Employee'], id: int) -> int:
+    def get_graph():
+        graph = collections.defaultdict(Employee)
+        for employee in employees:
+            graph[employee.id] = employee
+        return graph
+
+    graph = get_graph()
+
+    def traverse(employee_id):
+        employee = graph[employee_id]
+        importance = employee.importance
+        for subordinate in employee.subordinates:
+            importance += traverse(subordinate)
+        return importance
+
+    return traverse(id)
+
+
+def knows(a, b) -> bool:
+    pass
+
+
+def findCelebrity(n: int) -> int:
+    in_degree = {i: 0 for i in range(n)}
+    out_degree = {i: 0 for i in range(n)}
+    for i in range(n):
+        for j in range(n):
+            if i != j and knows(i, j):
+                out_degree[i] += 1
+                in_degree[j] += 1
+    for i in range(n):
+        if out_degree[i] == 0 and in_degree[i] == n:
+            return i
+    return -1
+
+
+def ladderLength(beginWord: str, endWord: str, wordList: List[str]) -> int:
+    wordList.append(beginWord)
+    if endWord not in wordList:
+        return 0
+
+    def build_graph():
+        graph = collections.defaultdict(list)
+        for word in wordList:
+            for i, letter in enumerate(word):
+                transform = word[:i] + '*' + word[i + 1:]
+                graph[word].append(transform)
+                graph[transform].append(word)
+        return graph
+
+    graph = build_graph()
+
+    queue = collections.deque([[2, beginWord]])
+    visited_set = {beginWord}
+    while queue:
+        distance, word = queue.popleft()
+        if word == endWord:
+            return distance / 2
+        for adjacent in graph[word]:
+            if adjacent not in visited_set:
+                visited_set.add(adjacent)
+                queue.append([distance + 1, adjacent])
+    return 0
