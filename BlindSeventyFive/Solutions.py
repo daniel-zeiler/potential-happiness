@@ -917,3 +917,56 @@ def cloneGraph(node: Node) -> Node:
     recursive_link_nodes(node)
 
     return node_map[node]
+
+
+def canFinish(numCourses: int, prerequisites: List[List[int]]) -> bool:
+    def get_graph():
+        graph = collections.defaultdict(list)
+        in_degree = {i: 0 for i in range(numCourses)}
+        for destination, origin in prerequisites:
+            graph[origin].append(destination)
+            in_degree[destination] += 1
+        return graph, in_degree
+
+    graph, in_degree = get_graph()
+    queue = collections.deque([])
+    visited = set()
+    for key, value in in_degree.items():
+        if value == 0:
+            queue.append(key)
+            visited.add(key)
+
+    while queue:
+        node_id = queue.popleft()
+        for adjacent in graph[node_id]:
+            if adjacent not in visited:
+                in_degree[adjacent] -= 1
+                if in_degree[adjacent] == 0:
+                    visited.add(adjacent)
+                    queue.append(adjacent)
+    return len(visited) == numCourses
+
+
+def numIslands(grid: List[List[str]]) -> int:
+    directions = [[-1, 0], [1, 0], [0, -1], [0, 1]]
+
+    def yield_valid_directions(x, y):
+        for x_direction, y_direction in directions:
+            x_target, y_target = x + x_direction, y + y_direction
+            if 0 <= x_target < len(grid) and 0 <= y_target < len(grid[0]):
+                if grid[x_target][y_target] == "1":
+                    yield x_target, y_target
+
+    def traverse(x, y):
+        for x_direction, y_direction in yield_valid_directions(x, y):
+            grid[x_direction][y_direction] = 0
+            traverse(x_direction, y_direction)
+
+    result = 0
+    for x, row in enumerate(grid):
+        for y, value in enumerate(row):
+            if value == "1":
+                result += 1
+                grid[x][y] = 0
+                traverse(x, y)
+    return result

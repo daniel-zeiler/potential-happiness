@@ -1,63 +1,64 @@
 import unittest
 import Stack.Solutions as stack
 import Stack.Solutions_Two as stack_two
+import Stack.Solutions_Three as stack_three
 
 
 class SolutionsTest(unittest.TestCase):
     def test_max_depth(self):
         s = "(1+(2*3)+((8)/4))+1"
         output = 3
-        self.assertEqual(output, stack_two.maxDepth(s))
+        self.assertEqual(output, stack_three.maxDepth(s))
         s = "(1)+((2))+(((3)))"
         output = 3
-        self.assertEqual(output, stack_two.maxDepth(s))
+        self.assertEqual(output, stack_three.maxDepth(s))
         s = "1+(2*3)/(2-1)"
         output = 1
-        self.assertEqual(output, stack_two.maxDepth(s))
+        self.assertEqual(output, stack_three.maxDepth(s))
         s = "1"
         output = 0
-        self.assertEqual(output, stack_two.maxDepth(s))
+        self.assertEqual(output, stack_three.maxDepth(s))
 
     def test_remove_outer_parentheses(self):
         s = "(()())(())"
         output = "()()()"
-        self.assertEqual(output, stack_two.removeOuterParentheses(s))
+        self.assertEqual(output, stack_three.removeOuterParentheses(s))
         s = "(()())(())(()(()))"
         output = "()()()()(())"
-        self.assertEqual(output, stack_two.removeOuterParentheses(s))
+        self.assertEqual(output, stack_three.removeOuterParentheses(s))
         s = "()()"
         output = ""
-        self.assertEqual(output, stack_two.removeOuterParentheses(s))
+        self.assertEqual(output, stack_three.removeOuterParentheses(s))
 
     def test_remove_duplicates(self):
         s = "abbaca"
         output = "ca"
-        self.assertEqual(output, stack_two.removeDuplicates(s))
+        self.assertEqual(output, stack_three.removeDuplicates(s))
         s = "azxxzy"
         output = "ay"
-        self.assertEqual(output, stack_two.removeDuplicates(s))
+        self.assertEqual(output, stack_three.removeDuplicates(s))
 
     def test_cal_points(self):
         ops = ["5", "2", "C", "D", "+"]
         output = 30
-        self.assertEqual(output, stack_two.calPoints(ops))
+        self.assertEqual(output, stack_three.calPoints(ops))
         ops = ["5", "-2", "4", "C", "D", "9", "+", "+"]
         output = 27
-        self.assertEqual(output, stack_two.calPoints(ops))
+        self.assertEqual(output, stack_three.calPoints(ops))
         ops = ["1"]
         output = 1
-        self.assertEqual(output, stack_two.calPoints(ops))
+        self.assertEqual(output, stack_three.calPoints(ops))
 
     def test_make_good(self):
         s = "leEeetcode"
         output = "leetcode"
-        self.assertEqual(output, stack_two.makeGood(s))
+        self.assertEqual(output, stack_three.makeGood(s))
         s = "abBAcC"
         output = ""
-        self.assertEqual(output, stack_two.makeGood(s))
+        self.assertEqual(output, stack_three.makeGood(s))
         s = "s"
         output = "s"
-        self.assertEqual(output, stack_two.makeGood(s))
+        self.assertEqual(output, stack_three.makeGood(s))
 
     def test_my_queue(self):
         my_queue = stack.MyQueue()
@@ -81,44 +82,44 @@ class SolutionsTest(unittest.TestCase):
         s = "ab#c"
         t = "ad#c"
         output = True
-        self.assertEqual(output, stack_two.backspaceCompare(s, t))
+        self.assertEqual(output, stack_three.backspaceCompare(s, t))
         s = "ab##"
         t = "c#d#"
         output = True
-        self.assertEqual(output, stack_two.backspaceCompare(s, t))
+        self.assertEqual(output, stack_three.backspaceCompare(s, t))
         s = "a##c"
         t = "#a#c"
         output = True
-        self.assertEqual(output, stack_two.backspaceCompare(s, t))
+        self.assertEqual(output, stack_three.backspaceCompare(s, t))
         s = "a#c"
         t = "b"
         output = False
-        self.assertEqual(output, stack_two.backspaceCompare(s, t))
+        self.assertEqual(output, stack_three.backspaceCompare(s, t))
 
     def test_validate_brackets(self):
         s = "()"
         output = True
-        self.assertEqual(output, stack_two.isValid(s))
+        self.assertEqual(output, stack_three.isValid(s))
         s = "()[]{}"
         output = True
-        self.assertEqual(output, stack_two.isValid(s))
+        self.assertEqual(output, stack_three.isValid(s))
         s = "(]"
         output = False
-        self.assertEqual(output, stack_two.isValid(s))
+        self.assertEqual(output, stack_three.isValid(s))
 
     def test_min_add_to_make_valid(self):
         s = "())"
         output = 1
-        self.assertEqual(output, stack_two.minAddToMakeValid(s))
+        self.assertEqual(output, stack_three.minAddToMakeValid(s))
         s = "((("
         output = 3
-        self.assertEqual(output, stack_two.minAddToMakeValid(s))
+        self.assertEqual(output, stack_three.minAddToMakeValid(s))
         s = "()"
         output = 0
-        self.assertEqual(output, stack_two.minAddToMakeValid(s))
+        self.assertEqual(output, stack_three.minAddToMakeValid(s))
         s = "()))(("
         output = 4
-        self.assertEqual(output, stack_two.minAddToMakeValid(s))
+        self.assertEqual(output, stack_three.minAddToMakeValid(s))
 
     def test_custom_stack(self):
         custom_stack = stack.CustomStack(3)
@@ -138,68 +139,68 @@ class SolutionsTest(unittest.TestCase):
     def test_reverse_parentheses(self):
         s = "(abcd)"
         output = "dcba"
-        self.assertEqual(output, stack_two.reverseParentheses(s))
+        self.assertEqual(output, stack_three.reverseParentheses(s))
         s = "(u(love)i)"
         output = "iloveu"
-        self.assertEqual(output, stack_two.reverseParentheses(s))
+        self.assertEqual(output, stack_three.reverseParentheses(s))
         s = "(ed(et(oc))el)"
         output = "leetcode"
-        self.assertEqual(output, stack_two.reverseParentheses(s))
+        self.assertEqual(output, stack_three.reverseParentheses(s))
         s = "a(bcdefghijkl(mno)p)q"
         output = "apmnolkjihgfedcbq"
-        self.assertEqual(output, stack_two.reverseParentheses(s))
+        self.assertEqual(output, stack_three.reverseParentheses(s))
 
     def test_validate_stack_sequence(self):
         pushed = [1, 2, 3, 4, 5]
         popped = [4, 5, 3, 2, 1]
         output = True
-        self.assertEqual(output, stack_two.validateStackSequences(pushed, popped))
+        self.assertEqual(output, stack_three.validateStackSequences(pushed, popped))
         pushed = [1, 2, 3, 4, 5]
         popped = [4, 3, 5, 1, 2]
         output = False
-        self.assertEqual(output, stack_two.validateStackSequences(pushed, popped))
+        self.assertEqual(output, stack_three.validateStackSequences(pushed, popped))
 
     def test_min_remove_make_valid(self):
         s = "lee(t(c)o)de)"
         output = "lee(t(c)o)de"
-        self.assertEqual(output, stack_two.minRemoveToMakeValid(s))
+        self.assertEqual(output, stack_three.minRemoveToMakeValid(s))
         s = "a)b(c)d"
         output = "ab(c)d"
-        self.assertEqual(output, stack_two.minRemoveToMakeValid(s))
+        self.assertEqual(output, stack_three.minRemoveToMakeValid(s))
         s = "))(("
         output = ""
-        self.assertEqual(output, stack_two.minRemoveToMakeValid(s))
+        self.assertEqual(output, stack_three.minRemoveToMakeValid(s))
         s = "(a(b(c)d)"
         output = "a(b(c)d)"
-        self.assertEqual(output, stack_two.minRemoveToMakeValid(s))
+        self.assertEqual(output, stack_three.minRemoveToMakeValid(s))
 
     def test_is_valid_abc(self):
         s = "aabcbc"
         output = True
-        self.assertEqual(output, stack_two.is_valid_abc(s))
+        self.assertEqual(output, stack_three.is_valid_abc(s))
         s = "abcabcababcc"
         output = True
-        self.assertEqual(output, stack_two.is_valid_abc(s))
+        self.assertEqual(output, stack_three.is_valid_abc(s))
         s = "abccba"
         output = False
-        self.assertEqual(output, stack_two.is_valid_abc(s))
+        self.assertEqual(output, stack_three.is_valid_abc(s))
         s = "cababc"
         output = False
-        self.assertEqual(output, stack_two.is_valid_abc(s))
+        self.assertEqual(output, stack_three.is_valid_abc(s))
 
     def test_remove_duplicate_value(self):
         s = "abcd"
         k = 2
         output = "abcd"
-        self.assertEqual(output, stack_two.remove_duplicate_value(s, k))
+        self.assertEqual(output, stack_three.remove_duplicate_value(s, k))
         s = "deeedbbcccbdaa"
         k = 3
         output = "aa"
-        self.assertEqual(output, stack_two.remove_duplicate_value(s, k))
+        self.assertEqual(output, stack_three.remove_duplicate_value(s, k))
         s = "pbbcggttciiippooaais"
         k = 2
         output = "ps"
-        self.assertEqual(output, stack_two.remove_duplicate_value(s, k))
+        self.assertEqual(output, stack_three.remove_duplicate_value(s, k))
 
     def test_decode_string(self):
         s = "3[a]2[bc]"

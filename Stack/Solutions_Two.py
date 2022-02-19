@@ -345,7 +345,7 @@ def validSubarrays(nums: List[int]) -> int:
             if nums[pointer_b] < nums[pointer_a]:
                 break
             temp_result.append(nums[pointer_b])
-            result+=1
+            result += 1
             pointer_b += 1
         pointer_a += 1
     return result

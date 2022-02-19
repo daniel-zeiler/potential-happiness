@@ -32,7 +32,6 @@ Only one valid answer exists.
 
 Follow-up: Can you come up with an algorithm that is less than O(n2) time complexity?
 """
-import collections
 from binarytree import Node
 from typing import List, Optional
 
@@ -347,7 +346,8 @@ def characterReplacement(s: str, k: int) -> int:
     pass
 
 
-"""Given two strings s and t of lengths m and n respectively, return the minimum window substring of s such that 
+"""
+Given two strings s and t of lengths m and n respectively, return the minimum window substring of s such that 
 every character in t (including duplicates) is included in the window. If there is no such substring, return the 
 empty string "". 
 
@@ -825,11 +825,14 @@ def wordBreak(self, s: str, wordDict: List[str]) -> bool:
 
 
 """
-Given an array of distinct integers candidates and a target integer target, return a list of all unique combinations of candidates where the chosen numbers sum to target. You may return the combinations in any order.
+Given an array of distinct integers candidates and a target integer target, return a list of all unique 
+combinations of candidates where the chosen numbers sum to target. You may return the combinations in any order. 
 
-The same number may be chosen from candidates an unlimited number of times. Two combinations are unique if the frequency of at least one of the chosen numbers is different.
+The same number may be chosen from candidates an unlimited number of times. Two combinations are unique if the 
+frequency of at least one of the chosen numbers is different. 
 
-It is guaranteed that the number of unique combinations that sum up to target is less than 150 combinations for the given input.
+It is guaranteed that the number of unique combinations that sum up to target is less than 150 combinations for the 
+given input. 
 
  
 
@@ -852,7 +855,7 @@ Output: []
 """
 
 
-def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+def combinationSum(candidates: List[int], target: int) -> List[List[int]]:
     pass
 
 
@@ -1666,4 +1669,95 @@ class Node:
 
 
 def cloneGraph(node: Node) -> Node:
+    pass
+
+
+"""
+There are a total of numCourses courses you have to take, labeled from 0 to numCourses - 1. You are given an array 
+prerequisites where prerequisites[i] = [ai, bi] indicates that you must take course bi first if you want to take 
+course ai. 
+
+For example, the pair [0, 1], indicates that to take course 0 you have to first take course 1.
+Return true if you can finish all courses. Otherwise, return false.
+
+ 
+
+Example 1:
+
+Input: numCourses = 2, prerequisites = [[1,0]]
+Output: true
+Explanation: There are a total of 2 courses to take. 
+To take course 1 you should have finished course 0. So it is possible.
+Example 2:
+
+Input: numCourses = 2, prerequisites = [[1,0],[0,1]] Output: false Explanation: There are a total of 2 courses to 
+take. To take course 1 you should have finished course 0, and to take course 0 you should also have finished course 
+1. So it is impossible. """
+
+
+def canFinish(numCourses: int, prerequisites: List[List[int]]) -> bool:
+    pass
+
+
+"""
+There is an m x n rectangular island that borders both the Pacific Ocean and Atlantic Ocean. The Pacific Ocean 
+touches the island's left and top edges, and the Atlantic Ocean touches the island's right and bottom edges. 
+
+The island is partitioned into a grid of square cells. You are given an m x n integer matrix heights where heights[
+r][c] represents the height above sea level of the cell at coordinate (r, c). 
+
+The island receives a lot of rain, and the rain water can flow to neighboring cells directly north, south, east, 
+and west if the neighboring cell's height is less than or equal to the current cell's height. Water can flow from any 
+cell adjacent to an ocean into the ocean. 
+
+Return a 2D list of grid coordinates result where result[i] = [ri, ci] denotes that rain water can flow from cell (
+ri, ci) to both the Pacific and Atlantic oceans. 
+
+ 
+
+Example 1:
+
+
+Input: heights = [[1,2,2,3,5],[3,2,3,4,4],[2,4,5,3,1],[6,7,1,4,5],[5,1,1,2,4]]
+Output: [[0,4],[1,3],[1,4],[2,2],[3,0],[3,1],[4,0]]
+Example 2:
+
+Input: heights = [[2,1],[1,2]]
+Output: [[0,0],[0,1],[1,0],[1,1]]
+"""
+
+
+def pacificAtlantic(heights: List[List[int]]) -> List[List[int]]:
+    pass
+
+
+"""
+Given an m x n 2D binary grid grid which represents a map of '1's (land) and '0's (water), return the number of islands.
+
+An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.
+
+ 
+
+Example 1:
+
+Input: grid = [
+  ["1","1","1","1","0"],
+  ["1","1","0","1","0"],
+  ["1","1","0","0","0"],
+  ["0","0","0","0","0"]
+]
+Output: 1
+Example 2:
+
+Input: grid = [
+  ["1","1","0","0","0"],
+  ["1","1","0","0","0"],
+  ["0","0","1","0","0"],
+  ["0","0","0","1","1"]
+]
+Output: 3
+"""
+
+
+def numIslands(grid: List[List[str]]) -> int:
     pass

@@ -2,106 +2,120 @@ import collections
 import heapq
 
 
-class User:
-    def __init__(self, user_id):
-        self.portfolio = collections.defaultdict(int)
-        self.user_id = user_id
-        self.money = 0
-        self.open_orders = collections.defaultdict(Order)
-
-    def deposit(self, value):
-        self.money += value
-
-    def withdraw(self, value):
-        self.money = min(0, self.money - value)
-
-    def create_buy_order(self, stock, value, quantity):
-        if self.money >= quantity * value:
-            self.money -= quantity * value
-            return BuyOrder(stock.symbol, quantity, value, self.user_id)
-        raise Exception("User does not have enough money to create this order")
-
-    def create_sell_order(self, stock, value, quantity):
-        if stock.symbol in self.portfolio and self.portfolio[stock.symbol] >= quantity:
-            self.portfolio[stock.symbol] -= quantity
-            return SellOrder(stock.symbol, quantity, value, self.user_id)
-        raise Exception('User does not own enough %s' % stock.symbol)
-
-
 class Order:
-    def __init__(self, symbol, quantity, value, user_id):
-        self.symbol = symbol
+    def __init__(self, quantity, value, stock_name, user_id):
         self.value = value
         self.quantity = quantity
-        self.fulfilled_quantity = 0
+        self.stock_name = stock_name
         self.user_id = user_id
 
-    def update_order(self, quantity):
-        pass
 
+class Listing:
+    def __init__(self, stock_name):
+        self.stock_name = stock_name
+        self.buy_orders = []
+        self.sell_orders = []
 
-class SellOrder(Order):
-    def __init__(self, symbol, quantity, value, user_id):
-        super().__init__(symbol, quantity, value, user_id)
+    def current_price(self):
+        if not self.buy_orders or not self.sell_orders:
+            return float('inf')
+        buy_order = self.buy_orders[0][1]
+        sell_order = self.sell_orders[0][1]
+        return (buy_order.value * buy_order.quantity + sell_order.value * sell_order.quantity) / \
+               (buy_order.quantity + sell_order.quantity)
 
+    def buy(self, order):
+        if self.sell_orders:
+            sell_order = self.sell_orders[0][1]
+            while sell_order and sell_order.value < order.value and order.quantity > 0:
+                if sell_order.quantity < order.quantity:
+                    order.quantity -= heapq.heappop(self.sell_orders)[1].quantity
+                    if not self.sell_orders:
+                        break
+                    sell_order = self.sell_orders[0][1]
+                else:
+                    sell_order.quantity -= order.quantity
+                    order.quantity = 0
 
-class BuyOrder(Order):
-    def __init__(self, symbol, quantity, value, user_id):
-        super().__init__(symbol, quantity, value, user_id)
+        if order.quantity > 0:
+            heapq.heappush(self.buy_orders, (-order.value, order))
+
+    def sell(self, order):
+        if self.buy_orders:
+            buy_order = self.buy_orders[0][1]
+            while buy_order and buy_order.value > order.value and order.quantity > 0:
+                if buy_order.quantity < order.quantity:
+                    order.quantity -= heapq.heappop(self.buy_orders)[1].quantity
+                    if not self.buy_orders:
+                        break
+                    buy_order = self.buy_orders[0][1]
+                else:
+                    buy_order.quantity -= order.quantity
+                    order.quantity = 0
+
+        if order.quantity > 0:
+            heapq.heappush(self.sell_orders, (order.value, order))
 
 
 class Stock:
-    def __init__(self, symbol):
-        self.symbol = symbol
-        self.buy_orders_heap = []
-        self.sell_orders_heap = []
+    def __init__(self, stock_name, user_id, quantity):
+        self.stock_name = stock_name
+        self.user_id = user_id
+        self.quantity = quantity
 
-    def buy(self, quantity, value, user_id):
-        while self.sell_orders_heap[0][0] < value and quantity > 0:
-            if self.sell_orders_heap[0][1].quanity > quantity:
-                self.sell_orders_heap[0][1].quanity -= quantity
-                return 0
-            else:
-                quantity -= self.sell_orders_heap[0].pop()[1].quanity
-        buy_order = BuyOrder(self.symbol, quantity, value, user_id)
-        heapq.heappush(self.buy_orders_heap, (value, buy_order))
 
-        return buy_order
+class User:
+    def __init__(self, user_id):
+        self.portfolio = collections.defaultdict(Stock)
+        self.money = 0
+        self.user_id = user_id
 
-    def sell(self, quantity, value, user_id):
-        while self.buy_orders_heap[0][0] > value and quantity > 0:
-            if self.buy_orders_heap[0][1].quanity > quantity:
-                self.buy_orders_heap[0][1].quanity -= quantity
-                return 0
-            else:
-                quantity -= self.sell_orders_heap[0].pop()[1].quanity
-        sell_order = SellOrder(self.symbol, quantity, value, user_id)
-        heapq.heappush(self.sell_orders_heap, (value, sell_order))
+    def sell(self, value, quantity, stock_name):
+        order = Order(quantity, value, stock_name, self.user_id)
+        # validate order
+        return order
 
-        return sell_order
+    def buy(self, value, quantity, stock_name):
+        order = Order(quantity, value, stock_name, self.user_id)
+        # validate order
+        return order
 
 
 class StockExchange:
     def __init__(self):
-        self.stocks = collections.defaultdict(Stock)
+        self.listings = collections.defaultdict(Listing)
         self.users = collections.defaultdict(User)
 
-    def add_stock(self, symbol):
-        self.stocks[symbol] = Stock(symbol)
+    def add_user(self, user_id):
+        self.users[user_id] = User(user_id)
+        return self.users[user_id]
 
-    def process_buy_order(self, user_id, symbol, quantity, value):
-        if user_id not in self.users or symbol not in self.stocks:
-            return -1
-        user = self.users[user_id]
-        stock = self.stocks[symbol]
-        buy_order = user.create_buy_order(stock, value, quantity)
+    def add_listing(self, stock_name):
+        self.listings[stock_name] = Listing(stock_name)
 
-    def process_sell_order(self, user_id, symbol, quantity, value):
-        if user_id not in self.users or symbol not in self.stocks:
-            return -1
-        user = self.users[user_id]
-        stock = self.stocks[symbol]
-        sell_order = user.create_sell_order(stock, value, quantity)
+    def buy_order(self, order):
+        if order.stock_name in self.listings:
+            stock = self.listings[order.stock_name]
+            stock.buy(order)
+            print(stock.current_price())
 
-    def process_transaction(self, sold, bought):
-        pass
+    def sell_order(self, order):
+        if order.stock_name in self.listings:
+            stock = self.listings[order.stock_name]
+            stock.sell(order)
+            print(stock.current_price())
+
+
+stock_exchange = StockExchange()
+stock_exchange.add_listing('COIN')
+user_one = stock_exchange.add_user('USER_ONE')
+user_two = stock_exchange.add_user('USER_TWO')
+stock_exchange.sell_order(user_one.sell(102, 100, 'COIN'))
+stock_exchange.buy_order(user_two.buy(100, 100, 'COIN'))
+stock_exchange.buy_order(user_two.buy(99, 100, 'COIN'))
+stock_exchange.buy_order(user_two.buy(98, 100, 'COIN'))
+stock_exchange.buy_order(user_two.buy(97, 100, 'COIN'))
+stock_exchange.buy_order(user_two.buy(5, 100000, 'COIN'))
+stock_exchange.sell_order(user_one.sell(75, 2000, 'COIN'))
+stock_exchange.sell_order(user_one.sell(200, 100, 'COIN'))
+stock_exchange.buy_order(user_two.buy(55, 1000, 'COIN'))

@@ -1,86 +1,91 @@
-import collections
-from typing import Any
-
-
-class Directory:
-    def __init__(self, path, directory_name):
-        self.children = collections.defaultdict(Any)
-        self.path = path
-        self.directory_name = directory_name
-
-    def add_file(self, file_name, path, contents):
-        if file_name in self.children:
-            if not isinstance(self.children[file_name], File):
-                raise Exception('invalid filename %', file_name)
-            self.children[file_name].contents += contents
-        else:
-            self.children[file_name] = File(path, file_name, contents)
-
-    def add_directory(self, filename, directory):
-        self.children[filename] = directory
+import unittest
 
 
 class File:
-    def __init__(self, path, filename, contents):
-        self.filename = filename
-        self.path = path
+    def __init__(self, name, contents):
+        self.name = name
         self.contents = contents
 
 
-class Filesystem:
+class Directory:
+    def __init__(self, name):
+        self.name = name
+        self.child_directories = {}
+        self.child_files = {}
+
+
+class FileSystem:
     def __init__(self):
-        self.root = Directory('', '')
+        self.root = Directory('')
 
-    def traverse_to(self, current_directory, path):
-        if not path:
-            return current_directory
-        elif path[0] not in current_directory.children or not isinstance(current_directory.children[path[0]],
-                                                                         Directory):
-            raise Exception('invalid path %s', path)
-        else:
-            return self.traverse_to(current_directory.children[path[0]], path[1:])
+    def traverse_to_parent_directory(self, node, file_path):
+        if len(file_path) == 1:
+            return node
+        directory = file_path[0]
+        if directory == '':
+            return self.traverse_to_parent_directory(node, file_path[1:])
+        if directory not in node.child_directories:
+            return None
+        return self.traverse_to_parent_directory(node.child_directories[directory], file_path[1:])
 
-    def add_file(self, path, contents):
-        split_path = path.split('/')
-        target_directory = split_path[1:-1]
-        file_name = split_path[-1]
-        directory = self.traverse_to(self.root, target_directory)
-        directory.add_file(file_name, path, contents)
-
-    def list_path(self, path):
-        split_path = path.split('/')
-        target_directory = split_path[1:-1]
-        directory = self.traverse_to(self.root, target_directory)
-        result = []
-        for child in directory.children.values():
-            if isinstance(child, File):
-                result.append(child.filename)
+    def add_file(self, file_path, contents):
+        file_path = file_path.split('/')
+        node = self.traverse_to_parent_directory(self.root, file_path)
+        file_name = file_path[-1]
+        if node and file_name not in node.child_directories:
+            if file_name in node.child_files:
+                node.child_files[file_name].contents += contents
             else:
-                result.append('/' + child.directory_name)
-        return result
+                node.child_files[file_name] = File(file_name, contents)
 
-    def read_contents(self, path):
-        split_path = path.split('/')
-        target_directory = split_path[1:-1]
-        file_name = split_path[-1]
-        directory = self.traverse_to(self.root, target_directory)
-        if file_name not in directory.children or not isinstance(directory.children[file_name], File):
-            raise Exception('invalid file name %s', file_name)
-        else:
-            return directory.children[file_name].contents
+    def add_directory(self, file_path):
+        file_path = file_path.split('/')
 
-    def add_directory(self, path):
-        split_path = path.split('/')
-        target_directory = split_path[1:-1]
-        directory_name = split_path[-1]
-        directory = self.traverse_to(self.root, target_directory)
-        directory.add_directory(directory_name, Directory(path, directory_name))
+        def recursive_add_directory(node, path_remaining):
+            if path_remaining:
+                dir_name = path_remaining[0]
+                if dir_name == '':
+                    recursive_add_directory(node, path_remaining[1:])
+                    return
+                if dir_name in node.child_files:
+                    return
+                elif dir_name not in node.child_directories:
+                    node.child_directories[dir_name] = Directory(dir_name)
+                recursive_add_directory(node.child_directories[dir_name], path_remaining[1:])
+
+        recursive_add_directory(self.root, file_path)
+
+    def list_directory(self, file_path):
+        file_path = file_path.split('/')
+
+        def recursive_list(node, path_remaining):
+            if not path_remaining:
+                return list(node.child_directories.keys()) + list(node.child_files.keys())
+            next_directory = path_remaining[0]
+            if next_directory == '':
+                return recursive_list(node, path_remaining[1:])
+            if next_directory not in node.child_directories:
+                return []
+            return recursive_list(node.child_directories[next_directory], path_remaining[1:])
+
+        return recursive_list(self.root, file_path)
+
+    def read_file(self, file_path):
+        file_path = file_path.split('/')
+        node = self.traverse_to_parent_directory(self.root, file_path)
+        file_name = file_path[-1]
+        if node and file_name in node.child_files:
+            return node.child_files[file_name].contents
 
 
-file_system = Filesystem()
-file_system.add_file('/something.txt', 'this is the contents of the file')
-file_system.add_file('/something.txt', 'this is the contents of the file')
-file_system.add_directory('/a_dir')
-file_system.add_file('/a_dir/something_else.txt', 'how now brown cow')
-print(file_system.read_contents('/something.txt'))
-print(file_system.list_path('/a_dir/'))
+class TestingFileSystem(unittest.TestCase):
+    def test_file_system(self):
+        file_system = FileSystem()
+        file_system.add_file('/something.txt', 'this is the contents of the file')
+        self.assertEqual('this is the contents of the file', file_system.read_file('/something.txt'))
+        file_system.add_file('/something.txt', 'this is the contents of the file')
+        file_system.add_directory('/a_dir')
+        file_system.add_file('/a_dir/something_else.txt', 'how now brown cow')
+        self.assertEqual('how now brown cow', file_system.read_file('a_dir/something_else.txt'))
+        self.assertListEqual(['something_else.txt'], file_system.list_directory('/a_dir'))
+        self.assertListEqual(['a_dir', 'something.txt'], file_system.list_directory(''))

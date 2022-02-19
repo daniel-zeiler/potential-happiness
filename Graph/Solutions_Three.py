@@ -308,7 +308,6 @@ def ladderLength(beginWord: str, endWord: str, wordList: List[str]) -> int:
         for word in wordList:
             for i, letter in enumerate(word):
                 transform = word[:i] + '*' + word[i + 1:]
-                graph[word].append(transform)
                 graph[transform].append(word)
         return graph
 

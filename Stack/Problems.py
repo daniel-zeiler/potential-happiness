@@ -82,8 +82,8 @@ def removeOuterParentheses(s: str) -> str:
     pass
 
 
-"""
-You are given a string s consisting of lowercase English letters. A duplicate removal consists of choosing two adjacent and equal letters and removing them.
+"""You are given a string s consisting of lowercase English letters. A duplicate removal consists of choosing two 
+adjacent and equal letters and removing them. 
 
 We repeatedly make duplicate removals on s until we no longer can.
 
@@ -93,11 +93,9 @@ Return the final string after all such duplicate removals have been made. It can
 
 Example 1:
 
-Input: s = "abbaca"
-Output: "ca"
-Explanation: 
-For example, in "abbaca" we could remove "bb" since the letters are adjacent and equal, and this is the only possible move.  The result of this move is that the string is "aaca", of which only "aa" is possible, so the final string is "ca".
-Example 2:
+Input: s = "abbaca" Output: "ca" Explanation: For example, in "abbaca" we could remove "bb" since the letters are 
+adjacent and equal, and this is the only possible move.  The result of this move is that the string is "aaca", 
+of which only "aa" is possible, so the final string is "ca". Example 2: 
 
 Input: s = "azxxzy"
 Output: "ay"
@@ -108,16 +106,16 @@ def removeDuplicates(s: str) -> str:
     pass
 
 
-"""
-You are keeping score for a baseball game with strange rules. The game consists of several rounds, where the scores of past rounds may affect future rounds' scores.
+"""You are keeping score for a baseball game with strange rules. The game consists of several rounds, 
+where the scores of past rounds may affect future rounds' scores. 
 
-At the beginning of the game, you start with an empty record. You are given a list of strings ops, where ops[i] is the ith operation you must apply to the record and is one of the following:
+At the beginning of the game, you start with an empty record. You are given a list of strings ops, where ops[i] is 
+the ith operation you must apply to the record and is one of the following: 
 
-An integer x - Record a new score of x.
-"+" - Record a new score that is the sum of the previous two scores. It is guaranteed there will always be two previous scores.
-"D" - Record a new score that is double the previous score. It is guaranteed there will always be a previous score.
-"C" - Invalidate the previous score, removing it from the record. It is guaranteed there will always be a previous score.
-Return the sum of all the scores on the record.
+An integer x - Record a new score of x. "+" - Record a new score that is the sum of the previous two scores. It is 
+guaranteed there will always be two previous scores. "D" - Record a new score that is double the previous score. It 
+is guaranteed there will always be a previous score. "C" - Invalidate the previous score, removing it from the 
+record. It is guaranteed there will always be a previous score. Return the sum of all the scores on the record. 
 
  
 
@@ -162,9 +160,9 @@ Given a string s of lower and upper case English letters.
 
 A good string is a string which doesn't have two adjacent characters s[i] and s[i + 1] where:
 
-0 <= i <= s.length - 2
-s[i] is a lower-case letter and s[i + 1] is the same letter but in upper-case or vice-versa.
-To make the string good, you can choose two adjacent characters that make the string bad and remove them. You can keep doing this until the string becomes good.
+0 <= i <= s.length - 2 s[i] is a lower-case letter and s[i + 1] is the same letter but in upper-case or vice-versa. 
+To make the string good, you can choose two adjacent characters that make the string bad and remove them. You can 
+keep doing this until the string becomes good. 
 
 Return the string after making it good. The answer is guaranteed to be unique under the given constraints.
 
@@ -174,10 +172,8 @@ Notice that an empty string is also good.
 
 Example 1:
 
-Input: s = "leEeetcode"
-Output: "leetcode"
-Explanation: In the first step, either you choose i = 1 or i = 2, both will result "leEeetcode" to be reduced to "leetcode".
-Example 2:
+Input: s = "leEeetcode" Output: "leetcode" Explanation: In the first step, either you choose i = 1 or i = 2, 
+both will result "leEeetcode" to be reduced to "leetcode". Example 2: 
 
 Input: s = "abBAcC"
 Output: ""
@@ -195,7 +191,8 @@ def makeGood(s: str) -> str:
     pass
 
 
-"""Implement a first in first out (FIFO) queue using only two stacks. The implemented queue should support all the 
+"""
+Implement a first in first out (FIFO) queue using only two stacks. The implemented queue should support all the 
 functions of a normal queue (push, peek, pop, and empty). 
 
 Implement the MyQueue class:
@@ -474,10 +471,11 @@ Design a stack which supports the following operations.
 
 Implement the CustomStack class:
 
-CustomStack(int maxSize) Initializes the object with maxSize which is the maximum number of elements in the stack or do nothing if the stack reached the maxSize.
-void push(int x) Adds x to the top of the stack if the stack hasn't reached the maxSize.
-int pop() Pops and returns the top of stack or -1 if the stack is empty.
-void inc(int k, int val) Increments the bottom k elements of the stack by val. If there are less than k elements in the stack, just increment all the elements in the stack.
+CustomStack(int maxSize) Initializes the object with maxSize which is the maximum number of elements in the stack or 
+do nothing if the stack reached the maxSize. void push(int x) Adds x to the top of the stack if the stack hasn't 
+reached the maxSize. int pop() Pops and returns the top of stack or -1 if the stack is empty. void inc(int k, 
+int val) Increments the bottom k elements of the stack by val. If there are less than k elements in the stack, 
+just increment all the elements in the stack. 
  
 
 Example 1:
@@ -663,8 +661,8 @@ def is_valid_abc(s: str) -> bool:
     pass
 
 
-"""
-You are given a string s and an integer k, a k duplicate removal consists of choosing k adjacent and equal letters from s and removing them, causing the left and the right side of the deleted substring to concatenate together.
+"""You are given a string s and an integer k, a k duplicate removal consists of choosing k adjacent and equal letters 
+from s and removing them, causing the left and the right side of the deleted substring to concatenate together. 
 
 We repeatedly make k duplicate removals on s until we no longer can.
 
@@ -699,11 +697,13 @@ def remove_duplicate_value(s: str, k: int) -> str:
 """
 Given an encoded string, return its decoded string.
 
-The encoding rule is: k[encoded_string], where the encoded_string inside the square brackets is being repeated exactly k times. Note that k is guaranteed to be a positive integer.
+The encoding rule is: k[encoded_string], where the encoded_string inside the square brackets is being repeated 
+exactly k times. Note that k is guaranteed to be a positive integer. 
 
 You may assume that the input string is always valid; No extra white spaces, square brackets are well-formed, etc.
 
-Furthermore, you may assume that the original data does not contain any digits and that digits are only for those repeat numbers, k. For example, there won't be input like 3a or 2[4].
+Furthermore, you may assume that the original data does not contain any digits and that digits are only for those 
+repeat numbers, k. For example, there won't be input like 3a or 2[4]. 
 
  
 
@@ -1042,7 +1042,6 @@ Output: 5
 
 def calculate(self, s: str) -> int:
     pass
-
 
 
 """
