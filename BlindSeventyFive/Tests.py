@@ -516,3 +516,42 @@ class SolutionsTest(unittest.TestCase, CustomAssertion):
         ]
         output = 3
         self.assertEqual(output, bsf.numIslands(grid))
+
+    def test_merge_interval(self):
+        intervals = [[1, 3], [2, 6], [8, 10], [15, 18]]
+        output = [[1, 6], [8, 10], [15, 18]]
+        self.assertListEqual(output, bsf3.merge(intervals))
+        intervals = [[1, 4], [4, 5]]
+        output = [[1, 5]]
+        self.assertListEqual(output, bsf3.merge(intervals))
+
+    def test_erase_overlap_interval(self):
+        intervals = [[1, 2], [2, 3], [3, 4], [1, 3]]
+        output = 1
+        self.assertEqual(output, bsf3.eraseOverlapIntervals(intervals))
+
+    def test_can_attend_meetings(self):
+        intervals = [[0, 30], [5, 10], [15, 20]]
+        output = False
+        self.assertEqual(output, bsf3.canAttendMeetings(intervals))
+        intervals = [[7, 10], [2, 4]]
+        output = True
+        self.assertEqual(output, bsf3.canAttendMeetings(intervals))
+
+    def test_min_meeting_rooms(self):
+        intervals = [[0, 30], [5, 10], [15, 20]]
+        output = 2
+        self.assertEqual(output, bsf3.minMeetingRooms(intervals))
+        intervals = [[7, 10], [2, 4]]
+        output = 1
+        self.assertEqual(output, bsf3.minMeetingRooms(intervals))
+
+    def test_insert_interval(self):
+        intervals = [[1, 3], [6, 9]]
+        newInterval = [2, 5]
+        output = [[1, 5], [6, 9]]
+        self.assertListEqual(output, bsf3.insert(intervals, newInterval))
+        intervals = [[1, 2], [3, 5], [6, 7], [8, 10], [12, 16]]
+        newInterval = [4, 8]
+        output = [[1, 2], [3, 10], [12, 16]]
+        self.assertListEqual(output, bsf3.insert(intervals, newInterval))

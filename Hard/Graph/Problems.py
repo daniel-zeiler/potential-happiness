@@ -12,7 +12,9 @@ assume all four edges of the grid are all surrounded by water.
 
 Example 1:
 
-Input: m = 3, n = 3, positions = [[0,0],[0,1],[1,2],[2,1]]
+Input: m = 3, n = 3, positions = [
+    [0,0],[0,1],[1,2],[2,1]
+]
 Output: [1,1,2,3]
 Explanation:
 Initially, the 2d grid is filled with water.
@@ -28,7 +30,7 @@ Output: [1]
 from typing import List
 
 
-def numIslands2(self, m: int, n: int, positions: List[List[int]]) -> List[int]:
+def numIslands2(m: int, n: int, positions: List[List[int]]) -> List[int]:
     pass
 
 
@@ -90,5 +92,5 @@ Explanation: The order is invalid, so return "".
 """
 
 
-def alienOrder(self, words: List[str]) -> str:
+def alienOrder(words: List[str]) -> str:
     pass

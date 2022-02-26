@@ -9,7 +9,7 @@ class Order:
         self.timestamp = timestamp
 
     def __str__(self):
-        return ("value:%s quantity:%s" % (self.value, self.quantity))
+        return "value:%s quantity:%s" % (self.value, self.quantity)
 
 
 class Listing:

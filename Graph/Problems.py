@@ -1,4 +1,5 @@
 import collections
+import heapq
 from typing import List
 
 """
@@ -709,3 +710,258 @@ Explanation: There is no way to connect all cities even if all edges are used.
 
 def minimumCost(self, n: int, connections: List[List[int]]) -> int:
     pass
+
+
+"""
+Currency Exchange
+
+
+You given data set in the form of list of <curr1 - curr2 - ask - bid> ask means how much curr2 do you have to spend 
+to buy 1 unit of curr1 and bid is how much of curr2 will you get if you sell 1 unit of curr1. 
+Now given any two currencies x and y. Find the best conversion rate.
+
+a list of currency relationships with exchange values. (BTC - USD)
+find the best exchange rate from currency1 to currency2.
+
+data = [
+    (BTC,ETH,1/10,10),
+    (BTC,USDC,1/13000,13000),
+    (ETH,USDC,1/1300,1300),
+    (LINK,USDC,1/28,28),
+    (LINK,SDE,1/234,234),
+    (SDE,COIN,1/400,400),
+    (COIN,USDC,1/24,24)
+]
+
+"""
+
+
+def currency_exchange(currency_one, currency_two, data):
+    def get_graph():
+        graph = collections.defaultdict(dict)
+        for curr_one, curr_two, rate in data:
+            graph[curr_one][curr_two] = rate
+            graph[curr_two][curr_one] = 1 / rate
+        return graph
+
+    graph = get_graph()
+
+    def traverse(currency, visited):
+        result = 0
+        if currency == currency_two:
+            return 1
+        for adjacent in graph[currency]:
+            if adjacent not in visited:
+                result = max(result, graph[currency][adjacent] * traverse(adjacent, visited | {adjacent}))
+        return result
+
+    return traverse(currency_one, {currency_one})
+
+
+data = [
+    ['USD', 'JPY', 110], ['USD', 'AUD', 1.45], ['JPY', 'GBP', 0.0070]
+]
+print(currency_exchange('GBP', 'AUD', data))
+
+"""
+You're developing a system for scheduling advising meetings with students in a Computer Science program. Each 
+meeting should be scheduled when a student has completed 50% of their academic program. 
+
+Each course at our university has at most one prerequisite that must be taken first. No two courses share a 
+prerequisite. There is only one path through the program. 
+
+Write a function that takes a list of (prerequisite, course) pairs, and returns the name of the course that the 
+student will be taking when they are halfway through their program. (If a track has an even number of courses, 
+and therefore has two "middle" courses, you should return the first one.) 
+
+Sample input 1: (arbitrarily ordered)
+prereqs_courses1 = [
+	["Foundations of Computer Science", "Operating Systems"],
+	["Data Structures", "Algorithms"],
+	["Computer Networks", "Computer Architecture"],
+	["Algorithms", "Foundations of Computer Science"],
+	["Computer Architecture", "Data Structures"],
+	["Software Design", "Computer Networks"]
+]
+
+In this case, the order of the courses in the program is:
+	Software Design
+	Computer Networks
+	Computer Architecture
+	Data Structures
+	Algorithms
+	Foundations of Computer Science
+	Operating Systems
+
+Sample output 1:
+	"Data Structures"
+
+
+Sample input 2:
+prereqs_courses2 = [
+	["Data Structures", "Algorithms"],
+	["Algorithms", "Foundations of Computer Science"],
+	["Foundations of Computer Science", "Logic"]
+]
+
+
+Sample output 2:
+	"Algorithms"
+
+Sample input 3:
+prereqs_courses3 = [
+	["Data Structures", "Algorithms"],
+]
+
+
+Sample output 3:
+	"Data Structures"
+
+Complexity analysis variables:
+
+n: number of pairs in the input
+
+prereqs_courses1 = [
+    ["Foundations of Computer Science", "Operating Systems"],
+    ["Data Structures", "Algorithms"],
+    ["Computer Networks", "Computer Architecture"],
+    ["Algorithms", "Foundations of Computer Science"],
+    ["Computer Architecture", "Data Structures"],
+    ["Software Design", "Computer Networks"]
+]
+
+prereqs_courses2 = [
+    ["Data Structures", "Algorithms"],
+    ["Algorithms", "Foundations of Computer Science"],
+    ["Foundations of Computer Science", "Logic"]
+ ]
+
+prereqs_courses3 = [
+    ["Data Structures", "Algorithms"]
+]
+"""
+
+from collections import defaultdict, deque
+
+
+def half_prereq(prerequisites):
+    def get_graph_and_in_degree():
+        in_degree = defaultdict(int)
+        graph = defaultdict(list)
+        for before, after in prerequisites:
+            if before not in in_degree:
+                in_degree[before] = 0
+            if after not in in_degree:
+                in_degree[after] = 0
+            graph[before].append(after)
+            in_degree[after] += 1
+        return graph, in_degree
+
+    graph, in_degree = get_graph_and_in_degree()
+    queue = deque(list(filter(lambda x: in_degree[x] == 0, in_degree.keys())))
+
+    result = []
+    while queue:
+        course = queue.popleft()
+        result.append(course)
+        for adjacent in graph[course]:
+            in_degree[adjacent] -= 1
+            if in_degree[adjacent] == 0:
+                queue.append(adjacent)
+
+    if len(result) != len(graph):
+        raise Exception('unable to complete')
+    return result[(len(result) // 2)]
+
+
+prereqs_courses1 = [
+    ["Foundations of Computer Science", "Operating Systems"],
+    ["Data Structures", "Algorithms"],
+    ["Computer Networks", "Computer Architecture"],
+    ["Algorithms", "Foundations of Computer Science"],
+    ["Computer Architecture", "Data Structures"],
+    ["Software Design", "Computer Networks"]
+]
+print(half_prereq(prereqs_courses1))
+
+"""
+You operate a marketplace for buying & selling used textbooks For a given textbook eg“TheoryofCryptography”
+there are people who want to buy this textbook and people who want to sell
+
+OfferstoBUY: [$100, $100, $99, $99, $97, $90]
+
+OfferstoSELL:[$109, $110, $110, $114, $115$, 119]
+
+A match occurs when two people agree on a price Some new offers do not match These offers should be added to the 
+active set of offers 
+
+For example, Tim offers to SELL at $150 This will not match No one is willing to buy at that price so we save the offer
+
+OfferstoSELL:: [$109, $110, $110, $114, $115, $119, $150]
+
+When matching we want to give the customer the “best price”
+
+Example matches: If Jane offers to BUY at $120
+
+she will match and buy a book for $109 (the lowest offer)
+"""
+
+
+class OfferMatchingLinearTime:
+    def __init__(self, max_price):
+        self.prices = [deque([]) for _ in range(max_price)]
+        self.buy_pointer = -1
+        self.sell_pointer = max_price + 1
+        self.max_price = max_price
+
+    def buy(self, offer):
+        if self.sell_pointer == self.max_price + 1 or offer < self.prices[self.sell_pointer][0]:
+            self.prices[offer].append(offer)
+            self.buy_pointer = max(self.buy_pointer, offer)
+        else:
+            result = self.prices[self.sell_pointer].popleft()
+            while not self.prices[self.sell_pointer] and self.sell_pointer != self.max_price + 1:
+                self.sell_pointer += 1
+            return result
+
+    def sell(self, offer):
+        if self.buy_pointer == -1 or offer > self.prices[self.buy_pointer][0]:
+            self.prices[offer].append(offer)
+            self.sell_pointer = min(self.sell_pointer, offer)
+        else:
+            result = self.prices[self.buy_pointer].popleft()
+            while not self.prices[self.buy_pointer] and self.buy_pointer != -1:
+                self.buy_pointer -= 1
+            return result
+
+
+class OfferMatcher:
+    def __init__(self):
+        self.buy_offers = []
+        self.sell_offers = []
+
+    def buy(self, offer):
+        if not self.sell_offers or offer < self.sell_offers[0]:
+            heapq.heappush(self.buy_offers, -offer)
+        else:
+            return heapq.heappop(self.sell_offers)
+
+    def sell(self, offer):
+        if not self.buy_offers or offer > -self.buy_offers[0]:
+            heapq.heappush(self.sell_offers, offer)
+        else:
+            return -heapq.heappop(self.buy_offers)
+
+    def __str__(self):
+        return str(sorted(self.buy_offers, key=lambda x: -x)) + '\n' + str(sorted(self.sell_offers))
+
+
+offer_matcher = OfferMatcher()
+OfferstoBUY = [100, 100, 99, 99, 97, 90]
+OfferstoSELL = [109, 110, 110, 114, 115, 119]
+for buy, sell in zip(OfferstoBUY, OfferstoSELL):
+    print(offer_matcher.buy(buy))
+    print(offer_matcher.sell(sell))
+print(offer_matcher)
+print(offer_matcher.sell(150))
+print(offer_matcher.buy(120))

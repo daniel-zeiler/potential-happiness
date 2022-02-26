@@ -1761,3 +1761,122 @@ Output: 3
 
 def numIslands(grid: List[List[str]]) -> int:
     pass
+
+
+"""Given an array of intervals where intervals[i] = [starti, endi], merge all overlapping intervals, and return an 
+array of the non-overlapping intervals that cover all the intervals in the input. 
+
+ 
+
+Example 1:
+
+Input: intervals = [[1,3],[2,6],[8,10],[15,18]]
+Output: [[1,6],[8,10],[15,18]]
+Explanation: Since intervals [1,3] and [2,6] overlaps, merge them into [1,6].
+Example 2:
+
+Input: intervals = [[1,4],[4,5]]
+Output: [[1,5]]
+Explanation: Intervals [1,4] and [4,5] are considered overlapping.
+"""
+
+
+def merge(intervals: List[List[int]]) -> List[List[int]]:
+    pass
+
+
+"""
+Given an array of intervals intervals where intervals[i] = [starti, endi], return the minimum number of intervals 
+you need to remove to make the rest of the intervals non-overlapping. 
+
+ 
+
+Example 1:
+
+Input: intervals = [[1,2],[2,3],[3,4],[1,3]]
+Output: 1
+Explanation: [1,3] can be removed and the rest of the intervals are non-overlapping.
+Example 2:
+
+Input: intervals = [[1,2],[1,2],[1,2]]
+Output: 2
+Explanation: You need to remove two [1,2] to make the rest of the intervals non-overlapping.
+Example 3:
+
+Input: intervals = [[1,2],[2,3]]
+Output: 0
+Explanation: You don't need to remove any of the intervals since they're already non-overlapping.
+"""
+
+
+def eraseOverlapIntervals(intervals: List[List[int]]) -> int:
+    pass
+
+
+"""Given an array of meeting time intervals where intervals[i] = [starti, endi], determine if a person could attend 
+all meetings. 
+
+ 
+
+Example 1:
+
+Input: intervals = [[0,30],[5,10],[15,20]]
+Output: false
+Example 2:
+
+Input: intervals = [[7,10],[2,4]]
+Output: true
+"""
+
+
+def canAttendMeetings(intervals: List[List[int]]) -> bool:
+    pass
+
+
+"""
+Given an array of meeting time intervals intervals where intervals[i] = [starti, endi], return the minimum number 
+of conference rooms required. 
+
+ 
+
+Example 1:
+
+Input: intervals = [[0,30],[5,10],[15,20]]
+Output: 2
+Example 2:
+
+Input: intervals = [[7,10],[2,4]]
+Output: 1
+"""
+
+
+def minMeetingRooms(intervals: List[List[int]]) -> int:
+    pass
+
+
+"""
+You are given an array of non-overlapping intervals intervals where intervals[i] = [starti, endi] represent the 
+start and the end of the ith interval and intervals is sorted in ascending order by starti. You are also given an 
+interval newInterval = [start, end] that represents the start and end of another interval. 
+
+Insert newInterval into intervals such that intervals is still sorted in ascending order by starti and intervals 
+still does not have any overlapping intervals (merge overlapping intervals if necessary). 
+
+Return intervals after the insertion.
+
+ 
+
+Example 1:
+
+Input: intervals = [[1,3],[6,9]], newInterval = [2,5]
+Output: [[1,5],[6,9]]
+Example 2:
+
+Input: intervals = [[1,2],[3,5],[6,7],[8,10],[12,16]], newInterval = [4,8]
+Output: [[1,2],[3,10],[12,16]]
+Explanation: Because the new interval [4,8] overlaps with [3,5],[6,7],[8,10].
+"""
+
+
+def insert(intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
+    pass

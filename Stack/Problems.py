@@ -1010,7 +1010,7 @@ Follow up: Can you solve it in O(n) time complexity?
 """
 
 
-def findUnsortedSubarray(self, nums: List[int]) -> int:
+def findUnsortedSubarray(nums: List[int]) -> int:
     pass
 
 
@@ -1019,9 +1019,11 @@ Given a string s which represents an expression, evaluate this expression and re
 
 The integer division should truncate toward zero.
 
-You may assume that the given expression is always valid. All intermediate results will be in the range of [-231, 231 - 1].
+You may assume that the given expression is always valid. All intermediate results will be in the range of [-231, 
+231 - 1]. 
 
-Note: You are not allowed to use any built-in function which evaluates strings as mathematical expressions, such as eval().
+Note: You are not allowed to use any built-in function which evaluates strings as mathematical expressions, 
+such as eval(). 
 
  
 
@@ -1040,7 +1042,7 @@ Output: 5
 """
 
 
-def calculate(self, s: str) -> int:
+def calculate(s: str) -> int:
     pass
 
 

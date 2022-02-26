@@ -160,3 +160,76 @@ def characterReplacement(s: str, k: int) -> int:
                 current_replacements += 1
             result = max(result, read_pointer - start_pointer + 1)
     return result
+
+
+def merge(intervals: List[List[int]]) -> List[List[int]]:
+    intervals.sort(key=lambda x: x[0])
+    result = []
+    for i, interval in enumerate(intervals):
+        if not result or result[-1][1] < interval[0]:
+            result.append(interval)
+        else:
+            result[-1][1] = max(result[-1][1], interval[1])
+    return result
+
+
+def eraseOverlapIntervals(intervals):
+    intervals.sort(key=lambda x: x[1])
+    temp_interval = None
+    result = 0
+    for interval in intervals:
+        if temp_interval is None:
+            temp_interval = interval
+        elif interval[0] >= temp_interval[1]:
+            temp_interval = interval
+        else:
+            result += 1
+    return result
+
+
+def canAttendMeetings(intervals: List[List[int]]) -> bool:
+    temp_interval = None
+
+    for interval in intervals:
+        if temp_interval is not None and temp_interval[1] < interval[0]:
+            return False
+        temp_interval = interval
+    return True
+
+
+def minMeetingRooms(intervals):
+    meeting_rooms = []
+    intervals.sort(key=lambda x: x[0])
+    for interval in intervals:
+        for meeting_room in meeting_rooms:
+            if meeting_room[-1][1] < interval[0]:
+                meeting_room.append(interval)
+                break
+        else:
+            meeting_rooms.append([interval])
+    return len(meeting_rooms)
+
+
+def insert(intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
+    new_start, new_end = newInterval
+    idx, n = 0, len(intervals)
+    output = []
+
+    while idx < n and new_start > intervals[idx][0]:
+        output.append(intervals[idx])
+        idx += 1
+
+    if not output or output[-1][1] < new_start:
+        output.append(newInterval)
+    else:
+        output[-1][1] = max(output[-1][1], new_end)
+
+    while idx < n:
+        interval = intervals[idx]
+        start, end = interval
+        idx += 1
+        if output[-1][1] < start:
+            output.append(interval)
+        else:
+            output[-1][1] = max(output[-1][1], end)
+    return output

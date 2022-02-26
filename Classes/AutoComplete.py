@@ -41,120 +41,65 @@ sentence in system. And the following input will be counted as a new search.
 """
 import collections
 import heapq
-from typing import List
 
 
-class SentenceObj:
-    def __init__(self, sentence, value):
-        self.sentence = sentence
-        self.value = value
+class AutocompleteNode:
+    def __init__(self):
+        self.children = collections.defaultdict(AutocompleteNode)
+        self.words = set()
+        self.word_heap = []
+        self.limit = 3
 
-    def __lt__(self, nxt):
-        if self.value != nxt.value:
-            return self.value < nxt.value
-        else:
-            for self_char, next_char in zip(self.sentence, nxt.sentence):
-                if ord(self_char) != ord(next_char):
-                    return ord(self_char) > ord(next_char)
-            return len(self.sentence) > len(nxt.sentence)
-
-    def __repr__(self):
-        return self.sentence
+    def add_to_node(self, word, weight):
+        heapq.heappush(self.word_heap, (weight, word))
+        if len(self.word_heap) > self.limit:
+            heapq.heappop(self.word_heap)
 
 
-class AutoCompleteNode:
-    def __init__(self, letter=None, value=0):
-        self.letter = letter
-        self.value = value
-        self.sentence = None
-        self.top_three = []
-        self.children = collections.defaultdict(AutoCompleteNode)
-
-
-class AutocompleteSystem:
-
-    def __init__(self, sentences: List[str], times: List[int]):
+class Autocomplete:
+    def __init__(self):
+        self.head = AutocompleteNode()
+        self.cursor_node = self.head
+        self.cache_counter = collections.defaultdict(int)
         self.input_string = ''
-        self.head = AutoCompleteNode('')
-        self.pointer = self.head
-        for sentence, time in zip(sentences, times):
-            self.add_word(sentence, time)
 
-    def add_word(self, sentence, time):
-        def add_word_recursive(node, sentence_remaining):
-            if not sentence_remaining:
-                node.sentence = sentence
-                node.value += time
-                node.top_three = [SentenceObj(sentence, node.value)]
-                return node.top_three
-            letter = sentence_remaining[0]
-            if letter not in node.children:
-                node.children[letter] = AutoCompleteNode(letter)
-            child_top_three = add_word_recursive(node.children[letter], sentence_remaining[1:])
-            if node.value is not 0:
-                heapq.heappush(child_top_three, SentenceObj(node.sentence, node.value))
-            if len(node.top_three) > 3:
-                heapq.heappop(child_top_three)
-            node.top_three = child_top_three
-            return node.top_three
+    def add(self, word, weight):
+        self.cache_counter[word] += weight
 
-        add_word_recursive(self.head, sentence)
+        def add_recursive(node, word_remaining):
+            if not word_remaining:
+                node.words.add(word)
+            else:
+                letter = word_remaining[0]
+                if letter not in node.children:
+                    node.children[letter] = AutocompleteNode()
+                node.words.add(word)
+                add_recursive(node.children[letter], word_remaining[1:])
 
-    def input(self, c: str) -> List[str]:
-        node = self.pointer
-        if c == '#':
-            self.add_word(self.input_string, 1)
-            self.pointer = self.head
-            self.input_string = ''
+        add_recursive(self.head, word)
+
+    def input_character(self, character):
+        if character == '#':
+            self.complete_word()
+        else:
+            self.input_string += character
+            if self.cursor_node is not None and character in self.cursor_node.children:
+                self.cursor_node = self.cursor_node.children[character]
+                return sorted(self.cursor_node.words, key=lambda x: -self.cache_counter[x])
             return []
-        self.input_string += c
-        if self.pointer and c in node.children:
-            self.pointer = node.children[c]
-            return self.pointer.top_three
-        self.pointer = None
-        return []
+
+    def complete_word(self):
+        self.add(self.input_string, 1)
+        self.input_string = ''
+        self.cursor_node = self.head
 
 
-# Your AutocompleteSystem object will be instantiated and called as such:
-# obj = AutocompleteSystem(sentences, times)
-# param_1 = obj.input(c)
+autocomplete = Autocomplete()
+words = ['a', 'cat', 'catheter', 'cats', 'camp', 'cathay', 'camps']
+weights = [1, 2, 3, 4, 5, 6, 7]
+for word, weight in zip(words, weights):
+    autocomplete.add(word, weight)
 
-autocomplete = AutocompleteSystem(["i love you", "island", "iroman", "i love leetcode"], [5, 3, 2, 2])
-print(autocomplete.input('i'))
-print(autocomplete.input(' '))
-print(autocomplete.input('a'))
-print(autocomplete.input('#'))
-print('~~~~~')
-print(autocomplete.input('i'))
-print(autocomplete.input(' '))
-print(autocomplete.input('a'))
-print(autocomplete.input('#'))
-print('~~~~~')
-print(autocomplete.input('i'))
-print(autocomplete.input(' '))
-print(autocomplete.input('a'))
-print(autocomplete.input('#'))
-print('~~~~~')
-print(autocomplete.input('i'))
-print(autocomplete.input(' '))
-print(autocomplete.input('a'))
-print(autocomplete.input('#'))
-print('~~~~~')
-
-print(autocomplete.input('i'))
-print(autocomplete.input(' '))
-print(autocomplete.input('a'))
-print(autocomplete.input('#'))
-print('~~~~~')
-
-print(autocomplete.input('i'))
-print(autocomplete.input(' '))
-print(autocomplete.input('a'))
-print(autocomplete.input('#'))
-print('~~~~~')
-
-print(autocomplete.input('i'))
-print(autocomplete.input(' '))
-print(autocomplete.input('a'))
-print(autocomplete.input('#'))
-print('~~~~~')
+inputs = ['a', '#', 'c', 'a', 't', 's', '#']
+for input in inputs:
+    print(autocomplete.input_character(input))

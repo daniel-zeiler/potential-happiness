@@ -205,50 +205,77 @@ class SolutionsTest(unittest.TestCase):
     def test_decode_string(self):
         s = "3[a]2[bc]"
         output = "aaabcbc"
-        self.assertEqual(output, stack_two.decodeString(s))
+        self.assertEqual(output, stack_three.decodeString(s))
         s = "3[a2[c]]"
         output = "accaccacc"
-        self.assertEqual(output, stack_two.decodeString(s))
+        self.assertEqual(output, stack_three.decodeString(s))
         s = "2[abc]3[cd]ef"
         output = "abcabccdcdcdef"
-        self.assertEqual(output, stack_two.decodeString(s))
+        self.assertEqual(output, stack_three.decodeString(s))
         s = "abc3[cd]xyz"
         output = "abccdcdcdxyz"
-        self.assertEqual(output, stack_two.decodeString(s))
+        self.assertEqual(output, stack_three.decodeString(s))
         s = "100[lol]"
-        self.assertEqual(100 * 'lol', stack_two.decodeString(s))
+        self.assertEqual(100 * 'lol', stack_three.decodeString(s))
 
     def test_eval_rpn(self):
-        # tokens = ["2", "1", "+", "3", "*"]
-        # output = 9
-        # self.assertEqual(output, stack_two.evalRPN(tokens))
-        # tokens = ["4", "13", "5", "/", "+"]
-        # output = 6
-        # self.assertEqual(output, stack_two.evalRPN(tokens))
+        tokens = ["2", "1", "+", "3", "*"]
+        output = 9
+        self.assertEqual(output, stack_two.evalRPN(tokens))
+        tokens = ["4", "13", "5", "/", "+"]
+        output = 6
+        self.assertEqual(output, stack_two.evalRPN(tokens))
         tokens = ["10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"]
         output = 22
-        self.assertEqual(output, stack_two.evalRPN(tokens))
+        self.assertEqual(output, stack_three.evalRPN(tokens))
 
     def test_prices(self):
         prices = [8, 4, 6, 2, 3]
         output = [4, 2, 4, 2, 3]
-        self.assertListEqual(output, stack_two.finalPrices(prices))
+        self.assertListEqual(output, stack_three.finalPrices(prices))
         prices = [1, 2, 3, 4, 5]
         output = [1, 2, 3, 4, 5]
-        self.assertListEqual(output, stack_two.finalPrices(prices))
+        self.assertListEqual(output, stack_three.finalPrices(prices))
         prices = [10, 1, 1, 6]
         output = [9, 0, 1, 6]
-        self.assertListEqual(output, stack_two.finalPrices(prices))
+        self.assertListEqual(output, stack_three.finalPrices(prices))
 
     def test_next_greater(self):
         nums1 = [4, 1, 2]
         nums2 = [1, 3, 4, 2]
         output = [-1, 3, -1]
-        self.assertListEqual(output, stack_two.nextGreaterElement(nums1, nums2))
+        self.assertListEqual(output, stack_three.nextGreaterElement(nums1, nums2))
         nums1 = [2, 4]
         nums2 = [1, 2, 3, 4]
         output = [3, -1]
-        self.assertListEqual(output, stack_two.nextGreaterElement(nums1, nums2))
+        self.assertListEqual(output, stack_three.nextGreaterElement(nums1, nums2))
+
+    def test_daily_temperature(self):
+        temperatures = [73, 74, 75, 71, 69, 72, 76, 73]
+        output = [1, 1, 4, 2, 1, 1, 0, 0]
+        self.assertListEqual(output, stack_three.dailyTemperatures(temperatures))
+        temperatures = [30, 40, 50, 60]
+        output = [1, 1, 1, 0]
+        self.assertListEqual(output, stack_three.dailyTemperatures(temperatures))
+        temperatures = [30, 60, 90]
+        output = [1, 1, 0]
+        self.assertListEqual(output, stack_three.dailyTemperatures(temperatures))
+
+    def test_next_greater_circular(self):
+        nums = [1, 2, 1]
+        output = [2, -1, 2]
+        self.assertListEqual(output, stack_three.nextGreaterElements(nums))
+        nums = [1, 2, 3, 4, 3]
+        output = [2, 3, 4, -1, 4]
+        self.assertListEqual(output, stack_three.nextGreaterElements(nums))
+
+    def test_find_unsorted_subarry(self):
+        nums = [2, 6, 4, 8, 10, 9, 15]
+        output = 5
+        self.assertEqual(output, stack_three.findUnsortedSubarray(nums))
+        nums = [1, 2, 3, 4]
+        output = 0
+        self.assertEqual(output, stack_three.findUnsortedSubarray(nums))
 
 
 if __name__ == '__main__':

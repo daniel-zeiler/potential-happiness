@@ -1,5 +1,8 @@
+import math
 from collections import deque
 from typing import List
+
+import increasing as increasing
 
 
 def maxDepth(s: str) -> int:
@@ -214,3 +217,121 @@ def remove_duplicate_value(s: str, k: int) -> str:
         result += char
 
     return result
+
+
+def decodeString(s: str) -> str:
+    def recursive_decode(pointer):
+        result = ''
+        while pointer < len(s):
+            character = s[pointer]
+            if character.isnumeric():
+                pointer += 1
+                while s[pointer].isnumeric():
+                    character += s[pointer]
+                    pointer += 1
+                pointer, temp_result = recursive_decode(pointer + 1)
+                result += int(character) * temp_result
+            elif character == ']':
+                return pointer + 1, result
+            else:
+                result += character
+                pointer += 1
+        return pointer, result
+
+    pointer, result = recursive_decode(0)
+    return result
+
+
+def evalRPN(tokens: List[str]) -> int:
+    stack = []
+
+    for character in tokens:
+        if character == '+':
+            stack.append(stack.pop() + stack.pop())
+        elif character == '/':
+            denom = stack.pop()
+            num = stack.pop()
+            stack.append(int(num / denom))
+        elif character == '*':
+            stack.append(stack.pop() * stack.pop())
+        elif character == '-':
+            second = stack.pop()
+            first = stack.pop()
+            stack.append(first - second)
+        else:
+            stack.append(int(character))
+    return stack[0]
+
+
+def finalPrices(prices: List[int]) -> List[int]:
+    stack = []
+    result = [price for price in prices]
+    for i, price in enumerate(prices):
+        while stack and price <= prices[stack[-1]]:
+            index = stack.pop()
+            result[index] -= price
+        stack.append(i)
+    return result
+
+
+def nextGreaterElement(nums1: List[int], nums2: List[int]) -> List[int]:
+    num_one_dict = {num: -1 for num in nums1}
+
+    stack = []
+    for i, number in enumerate(nums2):
+        while stack and stack[-1] < number:
+            index = stack.pop()
+            if nums2[index] in num_one_dict:
+                num_one_dict[nums2[index]] = number
+        stack.append(i)
+
+    for i, num in enumerate(nums1):
+        if num in num_one_dict:
+            nums1[i] = num_one_dict[num]
+    return nums1
+
+
+def dailyTemperatures(temperatures: List[int]) -> List[int]:
+    stack = []
+    result = [0 for _ in range(len(temperatures))]
+    for i, temperature in enumerate(temperatures):
+        while stack and temperatures[stack[-1]] < temperature:
+            result[stack[-1]] = i - stack[-1]
+            stack.pop()
+        stack.append(i)
+    return result
+
+
+def nextGreaterElements(nums: List[int]) -> List[int]:
+    stack = []
+    result = [-1 for _ in range(len(nums))]
+    for i, number in enumerate(nums):
+        while stack and nums[stack[-1]] < number:
+            result[stack.pop()] = number
+        stack.append(i)
+
+    for i, number in enumerate(nums):
+        while stack and nums[stack[-1]] < number:
+            result[stack.pop()] = number
+    return result
+
+
+def findUnsortedSubarray(nums: List[int]) -> int:
+    left = float('inf')
+    right = float('-inf')
+    increasing_stack = []
+    decreasing_stack = []
+
+    for i, number in enumerate(nums):
+        while increasing_stack and nums[increasing_stack[-1]] > number:
+            left = min(left, increasing_stack.pop())
+        increasing_stack.append(i)
+
+    for i, number in reversed(list(enumerate(nums))):
+        while decreasing_stack and nums[decreasing_stack[-1]] < number:
+            right = max(right, decreasing_stack.pop())
+        decreasing_stack.append(i)
+
+    if left != float('inf'):
+        return right - left + 1
+    return 0
