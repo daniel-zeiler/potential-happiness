@@ -450,7 +450,7 @@ Explanation: The answer [[-2,4],[3,3]] would also be accepted.
 """
 
 
-def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
+def kClosest(points: List[List[int]], k: int) -> List[List[int]]:
     pass
 
 
@@ -1114,7 +1114,7 @@ Output: 1
 """
 
 
-def lengthOfLIS(self, nums: List[int]) -> int:
+def lengthOfLIS(nums: List[int]) -> int:
     pass
 
 
@@ -1619,7 +1619,8 @@ s = "loveleetcode"
 c = "e"
 print(shortestToChar(s, c))
 
-"""There is a long road with markers on it after each unit of distance. There are some ubers standing on the road. 
+"""
+There is a long road with markers on it after each unit of distance. There are some ubers standing on the road. 
 You are given the starting and ending coordinate of each uber (both inclusive). Note: At any given marker there may 
 be multiple ubers or there may be none at all. 
 
@@ -1628,7 +1629,9 @@ r) is considered to be present on a marker m if and only if l ≤ m ≤ r.
 
 Example
 
-For coordinates=[[4, 7], [-1, 5], [3, 6]], the output should be easyCountUber(coordinates) = 9.
+For coordinates=[
+    [4, 7], [-1, 5], [3, 6]
+    ], the output should be easyCountUber(coordinates) = 9.
 """
 
 

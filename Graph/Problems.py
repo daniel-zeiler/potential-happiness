@@ -1,5 +1,6 @@
 import collections
 import heapq
+import time
 from typing import List
 
 """
@@ -935,33 +936,45 @@ class OfferMatchingLinearTime:
             return result
 
 
+from datetime import datetime, timedelta
+
+
 class OfferMatcher:
     def __init__(self):
         self.buy_offers = []
         self.sell_offers = []
 
-    def buy(self, offer):
-        if not self.sell_offers or offer < self.sell_offers[0]:
-            heapq.heappush(self.buy_offers, -offer)
+    def buy(self, offer, cancellation_time):
+        timestamp = datetime.now()
+        while self.sell_offers and timestamp > self.sell_offers[0][1]:
+            heapq.heappop(self.sell_offers)
+        if not self.sell_offers or offer < self.sell_offers[0][0]:
+            heapq.heappush(self.buy_offers, [-offer, cancellation_time])
         else:
-            return heapq.heappop(self.sell_offers)
+            return heapq.heappop(self.sell_offers[0])
 
-    def sell(self, offer):
-        if not self.buy_offers or offer > -self.buy_offers[0]:
-            heapq.heappush(self.sell_offers, offer)
+    def sell(self, offer, cancellation_time):
+        timestamp = datetime.now()
+        while self.buy_offers and timestamp > self.buy_offers[0][1]:
+            heapq.heappop(self.buy_offers)
+        if not self.buy_offers or offer > -self.buy_offers[0][0]:
+            heapq.heappush(self.sell_offers, [offer, cancellation_time])
         else:
-            return -heapq.heappop(self.buy_offers)
+            return -heapq.heappop(self.buy_offers[0])
 
     def __str__(self):
-        return str(sorted(self.buy_offers, key=lambda x: -x)) + '\n' + str(sorted(self.sell_offers))
+        return str(sorted(self.buy_offers, key=lambda x: -x[0])) + '\n' + str(sorted(self.sell_offers))
 
 
 offer_matcher = OfferMatcher()
 OfferstoBUY = [100, 100, 99, 99, 97, 90]
 OfferstoSELL = [109, 110, 110, 114, 115, 119]
+a_time = datetime.now()
+
 for buy, sell in zip(OfferstoBUY, OfferstoSELL):
-    print(offer_matcher.buy(buy))
-    print(offer_matcher.sell(sell))
+    print(offer_matcher.buy(buy, a_time + timedelta(minutes=30)))
+    print(offer_matcher.sell(sell, a_time + timedelta(minutes=30)))
+
 print(offer_matcher)
-print(offer_matcher.sell(150))
-print(offer_matcher.buy(120))
+print(offer_matcher.sell(150, a_time + timedelta(minutes=30)))
+print(offer_matcher.buy(120, a_time + timedelta(minutes=30)))
