@@ -1,6 +1,5 @@
 import collections
 import heapq
-import time
 from typing import List
 
 """
@@ -978,3 +977,309 @@ for buy, sell in zip(OfferstoBUY, OfferstoSELL):
 print(offer_matcher)
 print(offer_matcher.sell(150, a_time + timedelta(minutes=30)))
 print(offer_matcher.buy(120, a_time + timedelta(minutes=30)))
+
+"""
+You are in a city that consists of n intersections numbered from 0 to n - 1 with bi-directional roads between some 
+intersections. The inputs are generated such that you can reach any intersection from any other intersection and that 
+there is at most one road between any two intersections. 
+
+You are given an integer n and a 2D integer array roads where roads[i] = [ui, vi, timei] means that there is a road 
+between intersections ui and vi that takes timei minutes to travel. You want to know in how many ways you can travel 
+from intersection 0 to intersection n - 1 in the shortest amount of time. 
+
+Return the number of ways you can arrive at your destination in the shortest amount of time. Since the answer may be 
+large, return it modulo 109 + 7. 
+
+ 
+
+Example 1:
+
+
+Input: n = 7, roads = [[0,6,7],[0,1,2],[1,2,3],[1,3,3],[6,3,3],[3,5,1],[6,5,1],[2,5,1],[0,4,5],[4,6,2]]
+Output: 4
+Explanation: The shortest amount of time it takes to go from intersection 0 to intersection 6 is 7 minutes.
+The four ways to get there in 7 minutes are:
+- 0 ➝ 6
+- 0 ➝ 4 ➝ 6
+- 0 ➝ 1 ➝ 2 ➝ 5 ➝ 6
+- 0 ➝ 1 ➝ 3 ➝ 5 ➝ 6
+Example 2:
+
+Input: n = 2, roads = [[1,0,10]]
+Output: 1
+Explanation: There is only one way to go from intersection 0 to intersection 1, and it takes 10 minutes.
+"""
+
+
+def countPaths(self, n: int, roads: List[List[int]]) -> int:
+    pass
+
+
+"""There is an undirected weighted connected graph. You are given a positive integer n which denotes that the graph 
+has n nodes labeled from 1 to n, and an array edges where each edges[i] = [ui, vi, weighti] denotes that there is an 
+edge between nodes ui and vi with weight equal to weighti. 
+
+A path from node start to node end is a sequence of nodes [z0, z1, z2, ..., zk] such that z0 = start and zk = end and 
+there is an edge between zi and zi+1 where 0 <= i <= k-1. 
+
+The distance of a path is the sum of the weights on the edges of the path. Let distanceToLastNode(x) denote the 
+shortest distance of a path between node n and node x. A restricted path is a path that also satisfies that 
+distanceToLastNode(zi) > distanceToLastNode(zi+1) where 0 <= i <= k-1. 
+
+Return the number of restricted paths from node 1 to node n. Since that number may be too large, return it modulo 109 
++ 7. 
+
+ 
+
+Example 1:
+
+
+Input: n = 5, edges = [[1,2,3],[1,3,3],[2,3,1],[1,4,2],[5,2,2],[3,5,1],[5,4,10]] Output: 3 Explanation: Each circle 
+contains the node number in black and its distanceToLastNode value in blue. The three restricted paths are: 1) 1 --> 
+2 --> 5 2) 1 --> 2 --> 3 --> 5 3) 1 --> 3 --> 5 Example 2: 
+
+
+Input: n = 7, edges = [[1,3,1],[4,1,2],[7,3,4],[2,5,3],[5,6,1],[6,7,2],[7,5,3],[2,6,4]] Output: 1 Explanation: Each 
+circle contains the node number in black and its distanceToLastNode value in blue. The only restricted path is 1 --> 
+3 --> 7. """
+
+
+def countRestrictedPaths(self, n: int, edges: List[List[int]]) -> int:
+    pass
+
+
+"""
+There are a total of numCourses courses you have to take, labeled from 0 to numCourses - 1. You are given an array 
+prerequisites where prerequisites[i] = [ai, bi] indicates that you must take course ai first if you want to take 
+course bi. 
+
+For example, the pair [0, 1] indicates that you have to take course 0 before you can take course 1. Prerequisites can 
+also be indirect. If course a is a prerequisite of course b, and course b is a prerequisite of course c, then course 
+a is a prerequisite of course c. 
+
+You are also given an array queries where queries[j] = [uj, vj]. For the jth query, you should answer whether course 
+uj is a prerequisite of course vj or not. 
+
+Return a boolean array answer, where answer[j] is the answer to the jth query.
+
+ 
+
+Example 1:
+
+
+Input: numCourses = 2, prerequisites = [[1,0]], queries = [[0,1],[1,0]]
+Output: [false,true]
+Explanation: The pair [1, 0] indicates that you have to take course 1 before you can take course 0.
+Course 0 is not a prerequisite of course 1, but the opposite is true.
+Example 2:
+
+Input: numCourses = 2, prerequisites = [], queries = [[1,0],[0,1]]
+Output: [false,false]
+Explanation: There are no prerequisites, and each course is independent.
+Example 3:
+
+
+Input: numCourses = 3, prerequisites = [[1,2],[1,0],[2,0]], queries = [[1,0],[1,2]]
+Output: [true,true]
+"""
+
+
+def checkIfPrerequisite(self, numCourses: int, prerequisites: List[List[int]], queries: List[List[int]]) -> List[bool]:
+    pass
+
+
+"""
+There are n cities numbered from 0 to n-1. Given the array edges where edges[i] = [fromi, toi, weighti] represents a 
+bidirectional and weighted edge between cities fromi and toi, and given the integer distanceThreshold. 
+
+Return the city with the smallest number of cities that are reachable through some path and whose distance is at most 
+distanceThreshold, If there are multiple such cities, return the city with the greatest number. 
+
+Notice that the distance of a path connecting cities i and j is equal to the sum of the edges' weights along that path.
+
+ 
+
+Example 1:
+
+
+Input: n = 4, edges = [[0,1,3],[1,2,1],[1,3,4],[2,3,1]], distanceThreshold = 4 Output: 3 Explanation: The figure 
+above describes the graph. The neighboring cities at a distanceThreshold = 4 for each city are: City 0 -> [City 1, 
+City 2] City 1 -> [City 0, City 2, City 3] City 2 -> [City 0, City 1, City 3] City 3 -> [City 1, City 2] Cities 0 and 
+3 have 2 neighboring cities at a distanceThreshold = 4, but we have to return city 3 since it has the greatest 
+number. Example 2: 
+
+
+Input: n = 5, edges = [[0,1,2],[0,4,8],[1,2,3],[1,4,2],[2,3,1],[3,4,1]], distanceThreshold = 2
+Output: 0
+Explanation: The figure above describes the graph. 
+The neighboring cities at a distanceThreshold = 2 for each city are:
+City 0 -> [City 1] 
+City 1 -> [City 0, City 4] 
+City 2 -> [City 3, City 4] 
+City 3 -> [City 2, City 4]
+City 4 -> [City 1, City 2, City 3] 
+The city 0 has 1 neighboring city at a distanceThreshold = 2.
+"""
+
+
+def findTheCity(self, n: int, edges: List[List[int]], distanceThreshold: int) -> int:
+    pass
+
+
+"""
+There are n computers numbered from 0 to n - 1 connected by ethernet cables connections forming a network where 
+connections[i] = [ai, bi] represents a connection between computers ai and bi. Any computer can reach any other 
+computer directly or indirectly through the network. 
+
+You are given an initial computer network connections. You can extract certain cables between two directly connected 
+computers, and place them between any pair of disconnected computers to make them directly connected. 
+
+Return the minimum number of times you need to do this in order to make all the computers connected. If it is not 
+possible, return -1. 
+
+ 
+
+Example 1:
+
+
+Input: n = 4, connections = [[0,1],[0,2],[1,2]]
+Output: 1
+Explanation: Remove cable between computer 1 and 2 and place between computers 1 and 3.
+Example 2:
+
+
+Input: n = 6, connections = [[0,1],[0,2],[0,3],[1,2],[1,3]]
+Output: 2
+Example 3:
+
+Input: n = 6, connections = [[0,1],[0,2],[0,3],[1,2]]
+Output: -1
+Explanation: There are not enough cables.
+"""
+
+
+def makeConnected(self, n: int, connections: List[List[int]]) -> int:
+    pass
+
+
+"""
+You are given an undirected weighted graph of n nodes (0-indexed), represented by an edge list where edges[i] = [
+a, b] is an undirected edge connecting the nodes a and b with a probability of success of traversing that edge 
+succProb[i]. 
+
+Given two nodes start and end, find the path with the maximum probability of success to go from start to end and 
+return its success probability. 
+
+If there is no path from start to end, return 0. Your answer will be accepted if it differs from the correct answer 
+by at most 1e-5. 
+
+ 
+
+Example 1:
+
+
+
+Input: n = 3, edges = [[0,1],[1,2],[0,2]], succProb = [0.5,0.5,0.2], start = 0, end = 2 Output: 0.25000 Explanation: 
+There are two paths from start to end, one having a probability of success = 0.2 and the other has 0.5 * 0.5 = 0.25. 
+Example 2: 
+
+
+
+Input: n = 3, edges = [[0,1],[1,2],[0,2]], succProb = [0.5,0.5,0.3], start = 0, end = 2
+Output: 0.30000
+Example 3:
+
+
+
+Input: n = 3, edges = [[0,1]], succProb = [0.5], start = 0, end = 2
+Output: 0.00000
+Explanation: There is no path between 0 and 2.
+"""
+
+
+def maxProbability(self, n: int, edges: List[List[int]], succProb: List[float], start: int, end: int) -> float:
+    pass
+
+
+"""
+You are given an integer n, the number of nodes in a directed graph where the nodes are labeled from 0 to n - 1. 
+Each edge is red or blue in this graph, and there could be self-edges and parallel edges. 
+
+You are given two arrays redEdges and blueEdges where:
+
+redEdges[i] = [ai, bi] indicates that there is a directed red edge from node ai to node bi in the graph, 
+and blueEdges[j] = [uj, vj] indicates that there is a directed blue edge from node uj to node vj in the graph. Return 
+an array answer of length n, where each answer[x] is the length of the shortest path from node 0 to node x such that 
+the edge colors alternate along the path, or -1 if such a path does not exist. 
+
+ 
+
+Example 1:
+
+Input: n = 3, redEdges = [[0,1],[1,2]], blueEdges = []
+Output: [0,1,-1]
+Example 2:
+
+Input: n = 3, redEdges = [[0,1]], blueEdges = [[2,1]]
+Output: [0,1,-1]
+"""
+
+
+def shortestAlternatingPaths(self, n: int, redEdges: List[List[int]], blueEdges: List[List[int]]) -> List[int]:
+    pass
+
+
+"""There is a group of n people labeled from 0 to n - 1 where each person has a different amount of money and a 
+different level of quietness. 
+
+You are given an array richer where richer[i] = [ai, bi] indicates that ai has more money than bi and an integer 
+array quiet where quiet[i] is the quietness of the ith person. All the given data in richer are logically correct (
+i.e., the data will not lead you to a situation where x is richer than y and y is richer than x at the same time). 
+
+Return an integer array answer where answer[x] = y if y is the least quiet person (that is, the person y with the 
+smallest value of quiet[y]) among all people who definitely have equal to or more money than the person x. 
+
+ 
+
+Example 1:
+
+Input: richer = [[1,0],[2,1],[3,1],[3,7],[4,3],[5,3],[6,3]], quiet = [3,2,5,4,6,1,7,0] Output: [5,5,2,5,4,5,6,
+7] Explanation: answer[0] = 5. Person 5 has more money than 3, which has more money than 1, which has more money than 
+0. The only person who is quieter (has lower quiet[x]) is person 7, but it is not clear if they have more money than 
+person 0. answer[7] = 7. Among all people that definitely have equal to or more money than person 7 (which could be 
+persons 3, 4, 5, 6, or 7), the person who is the quietest (has lower quiet[x]) is person 7. The other answers can be 
+filled out with similar reasoning. """
+
+
+def loudAndRich(self, richer: List[List[int]], quiet: List[int]) -> List[int]:
+    pass
+
+
+"""
+There are n cities connected by some number of flights. You are given an array flights where flights[i] = [fromi, 
+toi, pricei] indicates that there is a flight from city fromi to city toi with cost pricei. 
+
+You are also given three integers src, dst, and k, return the cheapest price from src to dst with at most k stops. If 
+there is no such route, return -1. 
+
+ 
+
+Example 1:
+
+
+Input: n = 3, flights = [[0,1,100],[1,2,100],[0,2,500]], src = 0, dst = 2, k = 1
+Output: 200
+Explanation: The graph is shown.
+The cheapest price from city 0 to city 2 with at most 1 stop costs 200, as marked red in the picture.
+Example 2:
+
+
+Input: n = 3, flights = [[0,1,100],[1,2,100],[0,2,500]], src = 0, dst = 2, k = 0
+Output: 500
+Explanation: The graph is shown.
+The cheapest price from city 0 to city 2 with at most 0 stop costs 500, as marked blue in the picture.
+"""
+
+
+def findCheapestPrice(self, n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int:
+    pass
