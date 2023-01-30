@@ -42,13 +42,15 @@ def maxDepth(s: str) -> int:
     pass
 
 
-"""
-A valid parentheses string is either empty "", "(" + A + ")", or A + B, where A and B are valid parentheses strings, and + represents string concatenation.
+"""A valid parentheses string is either empty "", "(" + A + ")", or A + B, where A and B are valid parentheses 
+strings, and + represents string concatenation. 
 
-For example, "", "()", "(())()", and "(()(()))" are all valid parentheses strings.
-A valid parentheses string s is primitive if it is nonempty, and there does not exist a way to split it into s = A + B, with A and B nonempty valid parentheses strings.
+For example, "", "()", "(())()", and "(()(()))" are all valid parentheses strings. A valid parentheses string s is 
+primitive if it is nonempty, and there does not exist a way to split it into s = A + B, with A and B nonempty valid 
+parentheses strings. 
 
-Given a valid parentheses string s, consider its primitive decomposition: s = P1 + P2 + ... + Pk, where Pi are primitive valid parentheses strings.
+Given a valid parentheses string s, consider its primitive decomposition: s = P1 + P2 + ... + Pk, where Pi are 
+primitive valid parentheses strings. 
 
 Return s after removing the outermost parentheses of every primitive string in the primitive decomposition of s.
 
@@ -251,8 +253,8 @@ class MyQueue:
 # param_3 = obj.peek()
 # param_4 = obj.empty()
 
-"""
-Implement a last-in-first-out (LIFO) stack using only two queues. The implemented stack should support all the functions of a normal stack (push, top, pop, and empty).
+"""Implement a last-in-first-out (LIFO) stack using only two queues. The implemented stack should support all the 
+functions of a normal stack (push, top, pop, and empty). 
 
 Implement the MyStack class:
 
@@ -262,8 +264,9 @@ int top() Returns the element on the top of the stack.
 boolean empty() Returns true if the stack is empty, false otherwise.
 Notes:
 
-You must use only standard operations of a queue, which means that only push to back, peek/pop from front, size and is empty operations are valid.
-Depending on your language, the queue may not be supported natively. You may simulate a queue using a list or deque (double-ended queue) as long as you use only a queue's standard operations.
+You must use only standard operations of a queue, which means that only push to back, peek/pop from front, 
+size and is empty operations are valid. Depending on your language, the queue may not be supported natively. You may 
+simulate a queue using a list or deque (double-ended queue) as long as you use only a queue's standard operations. 
  
 
 Example 1:
@@ -368,8 +371,8 @@ class MinStack:
 # param_4 = obj.getMin()
 
 
-"""
-Given two strings s and t, return true if they are equal when both are typed into empty text editors. '#' means a backspace character.
+"""Given two strings s and t, return true if they are equal when both are typed into empty text editors. '#' means a 
+backspace character. 
 
 Note that after backspacing an empty text, the text will continue empty.
 
@@ -398,7 +401,7 @@ Explanation: s becomes "c" while t becomes "b".
 """
 
 
-def backspaceCompare(self, s: str, t: str) -> bool:
+def backspaceCompare(s: str, t: str) -> bool:
     pass
 
 
@@ -426,7 +429,7 @@ Output: false
 """
 
 
-def isValid(self, s: str) -> bool:
+def isValid(s: str) -> bool:
     pass
 
 
@@ -462,7 +465,7 @@ Output: 4
 """
 
 
-def minAddToMakeValid(self, s: str) -> int:
+def minAddToMakeValid(s: str) -> int:
     pass
 
 
@@ -553,12 +556,12 @@ Output: "apmnolkjihgfedcbq"
 """
 
 
-def reverseParentheses(self, s: str) -> str:
+def reverseParentheses(s: str) -> str:
     pass
 
 
-"""
-Given two integer arrays pushed and popped each with distinct values, return true if this could have been the result of a sequence of push and pop operations on an initially empty stack, or false otherwise.
+"""Given two integer arrays pushed and popped each with distinct values, return true if this could have been the 
+result of a sequence of push and pop operations on an initially empty stack, or false otherwise. 
 
  
 
@@ -586,7 +589,8 @@ def validateStackSequences(pushed: List[int], popped: List[int]) -> bool:
 """
 Given a string s of '(' , ')' and lowercase English characters.
 
-Your task is to remove the minimum number of parentheses ( '(' or ')', in any positions ) so that the resulting parentheses string is valid and return any valid string.
+Your task is to remove the minimum number of parentheses ( '(' or ')', in any positions ) so that the resulting 
+parentheses string is valid and return any valid string. 
 
 Formally, a parentheses string is valid if and only if:
 
@@ -623,10 +627,11 @@ def minRemoveToMakeValid(s: str) -> str:
 """
 Given a string s, determine if it is valid.
 
-A string s is valid if, starting with an empty string t = "", you can transform t into s after performing the following operation any number of times:
+A string s is valid if, starting with an empty string t = "", you can transform t into s after performing the 
+following operation any number of times: 
 
-Insert string "abc" into any position in t. More formally, t becomes tleft + "abc" + tright, where t == tleft + tright. Note that tleft and tright may be empty.
-Return true if s is a valid string, otherwise, return false.
+Insert string "abc" into any position in t. More formally, t becomes tleft + "abc" + tright, where t == tleft + 
+tright. Note that tleft and tright may be empty. Return true if s is a valid string, otherwise, return false. 
 
  
 
@@ -781,14 +786,11 @@ special discount.
 
 Example 1:
 
-Input: prices = [8,4,6,2,3]
-Output: [4,2,4,2,3]
-Explanation: 
-For item 0 with price[0]=8 you will receive a discount equivalent to prices[1]=4, therefore, the final price you will pay is 8 - 4 = 4. 
-For item 1 with price[1]=4 you will receive a discount equivalent to prices[3]=2, therefore, the final price you will pay is 4 - 2 = 2. 
-For item 2 with price[2]=6 you will receive a discount equivalent to prices[3]=2, therefore, the final price you will pay is 6 - 2 = 4. 
-For items 3 and 4 you will not receive any discount at all.
-Example 2:
+Input: prices = [8,4,6,2,3] Output: [4,2,4,2,3] Explanation: For item 0 with price[0]=8 you will receive a discount 
+equivalent to prices[1]=4, therefore, the final price you will pay is 8 - 4 = 4. For item 1 with price[1]=4 you will 
+receive a discount equivalent to prices[3]=2, therefore, the final price you will pay is 4 - 2 = 2. For item 2 with 
+price[2]=6 you will receive a discount equivalent to prices[3]=2, therefore, the final price you will pay is 6 - 2 = 
+4. For items 3 and 4 you will not receive any discount at all. Example 2: 
 
 Input: prices = [1,2,3,4,5]
 Output: [1,2,3,4,5]
@@ -842,10 +844,10 @@ def nextGreaterElement(nums1: List[int], nums2: List[int]) -> List[int]:
 """
 Given an array arr of positive integers, consider all binary trees such that:
 
-Each node has either 0 or 2 children;
-The values of arr correspond to the values of each leaf in an in-order traversal of the tree.
-The value of each non-leaf node is equal to the product of the largest leaf value in its left and right subtree, respectively.
-Among all possible binary trees considered, return the smallest possible sum of the values of each non-leaf node. It is guaranteed this sum fits into a 32-bit integer.
+Each node has either 0 or 2 children; The values of arr correspond to the values of each leaf in an in-order 
+traversal of the tree. The value of each non-leaf node is equal to the product of the largest leaf value in its left 
+and right subtree, respectively. Among all possible binary trees considered, return the smallest possible sum of the 
+values of each non-leaf node. It is guaranteed this sum fits into a 32-bit integer. 
 
 A node is a leaf if and only if it has zero children.
 
@@ -908,8 +910,8 @@ the current day.
 The span of the stock's price today is defined as the maximum number of consecutive days (starting from today and 
 going backward) for which the stock price was less than or equal to today's price. 
 
-For example, if the price of a stock over the next 7 days were [100,80,60,70,60,75,85], then the stock spans would be [1,1,1,2,1,4,6].
-Implement the StockSpanner class:
+For example, if the price of a stock over the next 7 days were [100,80,60,70,60,75,85], then the stock spans would be 
+[1,1,1,2,1,4,6]. Implement the StockSpanner class: 
 
 StockSpanner() Initializes the object of the class.
 int next(int price) Returns the span of the stock's price given that today's price is price.
@@ -923,16 +925,10 @@ Input
 Output
 [null, 1, 1, 1, 2, 1, 4, 6]
 
-Explanation
-StockSpanner stockSpanner = new StockSpanner();
-stockSpanner.next(100); // return 1
-stockSpanner.next(80);  // return 1
-stockSpanner.next(60);  // return 1
-stockSpanner.next(70);  // return 2
-stockSpanner.next(60);  // return 1
-stockSpanner.next(75);  // return 4, because the last 4 prices (including today's price of 75) were less than or equal to today's price.
-stockSpanner.next(85);  // return 6
-"""
+Explanation StockSpanner stockSpanner = new StockSpanner(); stockSpanner.next(100); // return 1 stockSpanner.next(
+80);  // return 1 stockSpanner.next(60);  // return 1 stockSpanner.next(70);  // return 2 stockSpanner.next(60);  // 
+return 1 stockSpanner.next(75);  // return 4, because the last 4 prices (including today's price of 75) were less 
+than or equal to today's price. stockSpanner.next(85);  // return 6 """
 
 
 class StockSpanner:

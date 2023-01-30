@@ -496,7 +496,7 @@ Output: true
 """
 
 
-def findTarget(self, root: Optional[TreeNode], k: int) -> bool:
+def findTarget(root: Optional[TreeNode], k: int) -> bool:
     pass
 
 

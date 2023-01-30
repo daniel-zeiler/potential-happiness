@@ -216,7 +216,7 @@ Output: 0
 """
 
 
-def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
+def maxAreaOfIsland(grid: List[List[int]]) -> int:
     pass
 
 

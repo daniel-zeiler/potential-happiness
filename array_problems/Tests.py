@@ -4,16 +4,17 @@ import array_problems.Solutions_Two as array_problems_two
 import array_problems.Solutions_Three as array_problems_three
 import array_problems.Solutions_Four as array_problems_four
 import array_problems.Solutions_Five as array_problems_five
+import array_problems.Solutions_Six as array_problems_six
 
 
 class SolutionsTest(unittest.TestCase):
     def test_merge(self):
         intervals = [[1, 3], [2, 6], [8, 10], [15, 18]]
         output = [[1, 6], [8, 10], [15, 18]]
-        self.assertListEqual(output, array_problems_five.merge(intervals))
+        self.assertListEqual(output, array_problems_six.merge(intervals))
         intervals = [[1, 4], [4, 5]]
         output = [[1, 5]]
-        self.assertListEqual(output, array_problems_five.merge(intervals))
+        self.assertListEqual(output, array_problems_six.merge(intervals))
 
     def test_largest_parameter(self):
         input = [
@@ -46,20 +47,20 @@ class SolutionsTest(unittest.TestCase):
     def test_array_pair_sum(self):
         nums = [6, 2, 6, 5, 1, 2]
         output = 9
-        self.assertEqual(output, array_problems_five.arrayPairSum(nums))
+        self.assertEqual(output, array_problems_six.arrayPairSum(nums))
         nums = [1, 4, 3, 2]
         output = 4
-        self.assertEqual(output, array_problems_five.arrayPairSum(nums))
+        self.assertEqual(output, array_problems_six.arrayPairSum(nums))
 
     def test_sort_array_by_parity(self):
         input = [3, 1, 2, 4]
         output = [2, 4, 3, 1]
-        self.assertEqual(output, array_problems_five.sortArrayByParity(input))
+        self.assertEqual(output, array_problems_six.sortArrayByParity(input))
 
     def test_replace_elements(self):
         input = [17, 18, 5, 4, 6, 1]
         output = [18, 6, 6, 6, 1, -1]
-        self.assertEqual(output, array_problems_five.replaceElements(input))
+        self.assertEqual(output, array_problems_six.replaceElements(input))
 
     def test_count_squares(self):
         input = [
@@ -86,28 +87,28 @@ class SolutionsTest(unittest.TestCase):
         firstList = [[0, 2], [5, 10], [13, 23], [24, 25]]
         secondList = [[1, 5], [8, 12], [15, 24], [25, 26]]
         output = [[1, 2], [5, 5], [8, 10], [15, 23], [24, 24], [25, 25]]
-        self.assertListEqual(output, array_problems_five.intervalIntersection(firstList, secondList))
+        self.assertListEqual(output, array_problems_six.intervalIntersection(firstList, secondList))
 
     def test_permute(self):
         nums = [1, 2, 3]
         output = [[1, 2, 3], [1, 3, 2], [2, 1, 3], [2, 3, 1], [3, 1, 2], [3, 2, 1]]
-        self.assertListEqual(output, array_problems_five.permute(nums))
+        self.assertListEqual(output, array_problems_six.permute(nums))
 
     def test_subsets(self):
         nums = [1, 2, 3]
         output = [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
-        self.assertCountEqual(output, array_problems_five.subsets(nums))
+        self.assertCountEqual(output, array_problems_six.subsets(nums))
         nums = [0]
         output = [[], [0]]
-        self.assertCountEqual(output, array_problems_five.subsets(nums))
+        self.assertCountEqual(output, array_problems_six.subsets(nums))
 
     def test_cal_points(self):
         ops = ["5", "2", "C", "D", "+"]
         output = 30
-        self.assertEqual(output, array_problems_five.calPoints(ops))
+        self.assertEqual(output, array_problems_six.calPoints(ops))
         ops = ["5", "-2", "4", "C", "D", "9", "+", "+"]
         output = 27
-        self.assertEqual(output, array_problems_five.calPoints(ops))
+        self.assertEqual(output, array_problems_six.calPoints(ops))
 
     def test_island_perimeter(self):
         grid = [
@@ -146,17 +147,17 @@ class SolutionsTest(unittest.TestCase):
         arr1 = [2, 3, 1, 3, 2, 4, 6, 7, 9, 2, 19]
         arr2 = [2, 1, 4, 3, 9, 6]
         output = [2, 2, 2, 1, 4, 3, 3, 9, 6, 7, 19]
-        self.assertListEqual(output, array_problems_five.relativeSortArray(arr1, arr2))
+        self.assertListEqual(output, array_problems_six.relativeSortArray(arr1, arr2))
 
     def test_intersection(self):
         nums1 = [1, 2, 2, 1]
         nums2 = [2, 2]
         output = [2]
-        self.assertCountEqual(output, array_problems_five.intersection(nums1, nums2))
+        self.assertCountEqual(output, array_problems_six.intersection(nums1, nums2))
         nums1 = [4, 9, 5]
         nums2 = [9, 4, 9, 8, 4]
         output = [9, 4]
-        self.assertCountEqual(output, array_problems_five.intersection(nums1, nums2))
+        self.assertCountEqual(output, array_problems_six.intersection(nums1, nums2))
 
     def test_minimal_fall_path(self):
         matrix = [
@@ -165,13 +166,23 @@ class SolutionsTest(unittest.TestCase):
             [7, 8, 9]
         ]
         output = 13
-        self.assertEqual(output, array_problems_five.minFallingPathSum(matrix))
+        self.assertEqual(output, array_problems_six.minFallingPathSum(matrix))
         matrix = [
             [-19, 57],
             [-40, -5]
         ]
         output = -59
-        self.assertEqual(output, array_problems_five.minFallingPathSum(matrix))
+        self.assertEqual(output, array_problems_six.minFallingPathSum(matrix))
+
+    def test_kClosest(self):
+        points = [[1, 3], [-2, 2]]
+        k = 1
+        output = [[-2, 2]]
+        self.assertCountEqual(output, array_problems_six.kClosest(points, k))
+        points = [[3, 3], [5, -1], [-2, 4]]
+        k = 2
+        output = [[3, 3], [-2, 4]]
+        self.assertCountEqual(output, array_problems_six.kClosest(points, k))
 
     def test_get_max_gold(self):
         input = [
@@ -195,11 +206,11 @@ class SolutionsTest(unittest.TestCase):
         pushed = [1, 2, 3, 4, 5]
         popped = [4, 5, 3, 2, 1]
         output = True
-        self.assertEqual(output, array_problems_four.validateStackSequences(pushed, popped))
+        self.assertEqual(output, array_problems_six.validateStackSequences(pushed, popped))
         pushed = [1, 2, 3, 4, 5]
         popped = [4, 3, 5, 1, 2]
         output = False
-        self.assertEqual(output, array_problems_four.validateStackSequences(pushed, popped))
+        self.assertEqual(output, array_problems_six.validateStackSequences(pushed, popped))
 
     def test_update_board(self):
         board = [
@@ -234,7 +245,7 @@ class SolutionsTest(unittest.TestCase):
     def test_last_stones(self):
         input = [2, 7, 4, 1, 8, 1]
         output = 1
-        self.assertEqual(output, array_problems_five.lastStoneWeight(input))
+        self.assertEqual(output, array_problems_six.lastStoneWeight(input))
 
     def test_can_reach(self):
         arr = [4, 2, 3, 0, 3, 1, 2]

@@ -59,10 +59,6 @@ Since the largest window of s only has one 'a', return empty string.
 """
 
 
-def compare_counts(character_count_s, character_count_t):
-    pass
-
-
 def min_window(s: str, t: str) -> str:
     pass
 

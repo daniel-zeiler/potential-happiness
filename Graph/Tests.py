@@ -1,8 +1,6 @@
 import unittest
 from typing import List
 
-import output as output
-
 import Graph.Solutions as graph
 import Graph.Solutions_Two as graph_two
 import Graph.Solutions_Three as graph_three

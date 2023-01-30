@@ -113,7 +113,7 @@ Explanation: The optimal pairing is (2, 1), (2, 5), (6, 6). min(2, 1) + min(2, 5
 """
 
 
-def arrayPairSum(self, nums: List[int]) -> int:
+def arrayPairSum(nums: List[int]) -> int:
     pass
 
 

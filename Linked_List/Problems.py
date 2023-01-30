@@ -6,8 +6,8 @@ class ListNode:
 
 from typing import Optional, List
 
-"""
-You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.
+"""You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse 
+order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list. 
 
 You may assume the two numbers do not contain any leading zero, except the number 0 itself.
 
@@ -88,8 +88,8 @@ def merge_two_lists(list1: Optional[ListNode], list2: Optional[ListNode]) -> Opt
     pass
 
 
-"""
-Given the head of a sorted linked list, delete all duplicates such that each element appears only once. Return the linked list sorted as well.
+"""Given the head of a sorted linked list, delete all duplicates such that each element appears only once. Return the 
+linked list sorted as well. 
 
  
 
@@ -113,7 +113,9 @@ def delete_duplicates(head: Optional[ListNode]) -> Optional[ListNode]:
 """
 Given head, the head of a linked list, determine if the linked list has a cycle in it.
 
-There is a cycle in a linked list if there is some node in the list that can be reached again by continuously following the next pointer. Internally, pos is used to denote the index of the node that tail's next pointer is connected to. Note that pos is not passed as a parameter.
+There is a cycle in a linked list if there is some node in the list that can be reached again by continuously 
+following the next pointer. Internally, pos is used to denote the index of the node that tail's next pointer is 
+connected to. Note that pos is not passed as a parameter. 
 
 Return true if there is a cycle in the linked list. Otherwise, return false.
 
@@ -149,10 +151,10 @@ Design a data structure that follows the constraints of a Least Recently Used (L
 
 Implement the LRUCache class:
 
-LRUCache(int capacity) Initialize the LRU cache with positive size capacity.
-int get(int key) Return the value of the key if the key exists, otherwise return -1.
-void put(int key, int value) Update the value of the key if the key exists. Otherwise, add the key-value pair to the cache. If the number of keys exceeds the capacity from this operation, evict the least recently used key.
-The functions get and put must each run in O(1) average time complexity.
+LRUCache(int capacity) Initialize the LRU cache with positive size capacity. int get(int key) Return the value of the 
+key if the key exists, otherwise return -1. void put(int key, int value) Update the value of the key if the key 
+exists. Otherwise, add the key-value pair to the cache. If the number of keys exceeds the capacity from this 
+operation, evict the least recently used key. The functions get and put must each run in O(1) average time complexity. 
 
  
 
@@ -190,8 +192,8 @@ class LRUCache:
         pass
 
 
-"""
-Given the heads of two singly linked-lists headA and headB, return the node at which the two lists intersect. If the two linked lists have no intersection at all, return null.
+"""Given the heads of two singly linked-lists headA and headB, return the node at which the two lists intersect. If 
+the two linked lists have no intersection at all, return null. 
 
 For example, the following two linked lists begin to intersect at node c1:
 
@@ -204,45 +206,42 @@ Custom Judge:
 
 The inputs to the judge are given as follows (your program is not given these inputs):
 
-intersectVal - The value of the node where the intersection occurs. This is 0 if there is no intersected node.
-listA - The first linked list.
-listB - The second linked list.
-skipA - The number of nodes to skip ahead in listA (starting from the head) to get to the intersected node.
-skipB - The number of nodes to skip ahead in listB (starting from the head) to get to the intersected node.
-The judge will then create the linked structure based on these inputs and pass the two heads, headA and headB to your program. If you correctly return the intersected node, then your solution will be accepted.
+intersectVal - The value of the node where the intersection occurs. This is 0 if there is no intersected node. listA 
+- The first linked list. listB - The second linked list. skipA - The number of nodes to skip ahead in listA (starting 
+from the head) to get to the intersected node. skipB - The number of nodes to skip ahead in listB (starting from the 
+head) to get to the intersected node. The judge will then create the linked structure based on these inputs and pass 
+the two heads, headA and headB to your program. If you correctly return the intersected node, then your solution will 
+be accepted. 
 
  
 
 Example 1:
 
 
-Input: intersectVal = 8, listA = [4,1,8,4,5], listB = [5,6,1,8,4,5], skipA = 2, skipB = 3
-Output: Intersected at '8'
-Explanation: The intersected node's value is 8 (note that this must not be 0 if the two lists intersect).
-From the head of A, it reads as [4,1,8,4,5]. From the head of B, it reads as [5,6,1,8,4,5]. There are 2 nodes before the intersected node in A; There are 3 nodes before the intersected node in B.
-Example 2:
+Input: intersectVal = 8, listA = [4,1,8,4,5], listB = [5,6,1,8,4,5], skipA = 2, skipB = 3 Output: Intersected at '8' 
+Explanation: The intersected node's value is 8 (note that this must not be 0 if the two lists intersect). From the 
+head of A, it reads as [4,1,8,4,5]. From the head of B, it reads as [5,6,1,8,4,5]. There are 2 nodes before the 
+intersected node in A; There are 3 nodes before the intersected node in B. Example 2: 
 
 
-Input: intersectVal = 2, listA = [1,9,1,2,4], listB = [3,2,4], skipA = 3, skipB = 1
-Output: Intersected at '2'
-Explanation: The intersected node's value is 2 (note that this must not be 0 if the two lists intersect).
-From the head of A, it reads as [1,9,1,2,4]. From the head of B, it reads as [3,2,4]. There are 3 nodes before the intersected node in A; There are 1 node before the intersected node in B.
-Example 3:
+Input: intersectVal = 2, listA = [1,9,1,2,4], listB = [3,2,4], skipA = 3, skipB = 1 Output: Intersected at '2' 
+Explanation: The intersected node's value is 2 (note that this must not be 0 if the two lists intersect). From the 
+head of A, it reads as [1,9,1,2,4]. From the head of B, it reads as [3,2,4]. There are 3 nodes before the intersected 
+node in A; There are 1 node before the intersected node in B. Example 3: 
 
 
-Input: intersectVal = 0, listA = [2,6,4], listB = [1,5], skipA = 3, skipB = 2
-Output: No intersection
-Explanation: From the head of A, it reads as [2,6,4]. From the head of B, it reads as [1,5]. Since the two lists do not intersect, intersectVal must be 0, while skipA and skipB can be arbitrary values.
-Explanation: The two lists do not intersect, so return null.
-"""
+Input: intersectVal = 0, listA = [2,6,4], listB = [1,5], skipA = 3, skipB = 2 Output: No intersection Explanation: 
+From the head of A, it reads as [2,6,4]. From the head of B, it reads as [1,5]. Since the two lists do not intersect, 
+intersectVal must be 0, while skipA and skipB can be arbitrary values. Explanation: The two lists do not intersect, 
+so return null. """
 
 
 def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> ListNode:
     pass
 
 
-"""
-Given the head of a linked list and an integer val, remove all the nodes of the linked list that has Node.val == val, and return the new head.
+"""Given the head of a linked list and an integer val, remove all the nodes of the linked list that has Node.val == 
+val, and return the new head. 
 
  
 
@@ -292,8 +291,8 @@ def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
     pass
 
 
-"""
-Write a function to delete a node in a singly-linked list. You will not be given access to the head of the list, instead you will be given access to the node to be deleted directly.
+"""Write a function to delete a node in a singly-linked list. You will not be given access to the head of the list, 
+instead you will be given access to the node to be deleted directly. 
 
 It is guaranteed that the node to be deleted is not a tail node in the list.
 
@@ -302,16 +301,12 @@ It is guaranteed that the node to be deleted is not a tail node in the list.
 Example 1:
 
 
-Input: head = [4,5,1,9], node = 5
-Output: [4,1,9]
-Explanation: You are given the second node with value 5, the linked list should become 4 -> 1 -> 9 after calling your function.
-Example 2:
+Input: head = [4,5,1,9], node = 5 Output: [4,1,9] Explanation: You are given the second node with value 5, 
+the linked list should become 4 -> 1 -> 9 after calling your function. Example 2: 
 
 
-Input: head = [4,5,1,9], node = 1
-Output: [4,5,9]
-Explanation: You are given the third node with value 1, the linked list should become 4 -> 5 -> 9 after calling your function.
-Example 3:
+Input: head = [4,5,1,9], node = 1 Output: [4,5,9] Explanation: You are given the third node with value 1, the linked 
+list should become 4 -> 5 -> 9 after calling your function. Example 3: 
 
 Input: head = [1,2,3,4], node = 3
 Output: [1,2,4]
@@ -334,8 +329,8 @@ def deleteNode(self, node):
     pass
 
 
-"""
-Given the head of a singly linked list, group all the nodes with odd indices together followed by the nodes with even indices, and return the reordered list.
+"""Given the head of a singly linked list, group all the nodes with odd indices together followed by the nodes with 
+even indices, and return the reordered list. 
 
 The first node is considered odd, and the second node is even, and so on.
 
@@ -362,10 +357,11 @@ def oddEvenList(self, head: Optional[ListNode]) -> Optional[ListNode]:
     pass
 
 
-"""
-You are given the head of a linked list containing unique integer values and an integer array nums that is a subset of the linked list values.
+"""You are given the head of a linked list containing unique integer values and an integer array nums that is a 
+subset of the linked list values. 
 
-Return the number of connected components in nums where two values are connected if they appear consecutively in the linked list.
+Return the number of connected components in nums where two values are connected if they appear consecutively in the 
+linked list. 
 
  
 
@@ -393,24 +389,21 @@ Design your implementation of the circular double-ended queue (deque).
 
 Implement the MyCircularDeque class:
 
-MyCircularDeque(int k) Initializes the deque with a maximum size of k.
-boolean insertFront() Adds an item at the front of Deque. Returns true if the operation is successful, or false otherwise.
-boolean insertLast() Adds an item at the rear of Deque. Returns true if the operation is successful, or false otherwise.
-boolean deleteFront() Deletes an item from the front of Deque. Returns true if the operation is successful, or false otherwise.
-boolean deleteLast() Deletes an item from the rear of Deque. Returns true if the operation is successful, or false otherwise.
-int getFront() Returns the front item from the Deque. Returns -1 if the deque is empty.
-int getRear() Returns the last item from Deque. Returns -1 if the deque is empty.
-boolean isEmpty() Returns true if the deque is empty, or false otherwise.
-boolean isFull() Returns true if the deque is full, or false otherwise.
+MyCircularDeque(int k) Initializes the deque with a maximum size of k. boolean insertFront() Adds an item at the 
+front of Deque. Returns true if the operation is successful, or false otherwise. boolean insertLast() Adds an item at 
+the rear of Deque. Returns true if the operation is successful, or false otherwise. boolean deleteFront() Deletes an 
+item from the front of Deque. Returns true if the operation is successful, or false otherwise. boolean deleteLast() 
+Deletes an item from the rear of Deque. Returns true if the operation is successful, or false otherwise. int 
+getFront() Returns the front item from the Deque. Returns -1 if the deque is empty. int getRear() Returns the last 
+item from Deque. Returns -1 if the deque is empty. boolean isEmpty() Returns true if the deque is empty, 
+or false otherwise. boolean isFull() Returns true if the deque is full, or false otherwise. 
  
 
 Example 1:
 
-Input
-["MyCircularDeque", "insertLast", "insertLast", "insertFront", "insertFront", "getRear", "isFull", "deleteLast", "insertFront", "getFront"]
-[[3], [1], [2], [3], [4], [], [], [], [4], []]
-Output
-[null, true, true, true, false, 2, true, true, true, 4]
+Input ["MyCircularDeque", "insertLast", "insertLast", "insertFront", "insertFront", "getRear", "isFull", 
+"deleteLast", "insertFront", "getFront"] [[3], [1], [2], [3], [4], [], [], [], [4], []] Output [null, true, true, 
+true, false, 2, true, true, true, 4] 
 
 Explanation
 MyCircularDeque myCircularDeque = new MyCircularDeque(3);
@@ -497,7 +490,8 @@ def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
 """
 Given the head of a linked list, reverse the nodes of the list k at a time, and return the modified list.
 
-k is a positive integer and is less than or equal to the length of the linked list. If the number of nodes is not a multiple of k then left-out nodes, in the end, should remain as it is.
+k is a positive integer and is less than or equal to the length of the linked list. If the number of nodes is not a 
+multiple of k then left-out nodes, in the end, should remain as it is. 
 
 You may not alter the values in the list's nodes, only nodes themselves may be changed.
 
@@ -524,9 +518,11 @@ def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
 """
 You are given the head of a linked list with n nodes.
 
-For each node in the list, find the value of the next greater node. That is, for each node, find the value of the first node that is next to it and has a strictly larger value than it.
+For each node in the list, find the value of the next greater node. That is, for each node, find the value of the 
+first node that is next to it and has a strictly larger value than it. 
 
-Return an integer array answer where answer[i] is the value of the next greater node of the ith node (1-indexed). If the ith node does not have a next greater node, set answer[i] = 0.
+Return an integer array answer where answer[i] is the value of the next greater node of the ith node (1-indexed). If 
+the ith node does not have a next greater node, set answer[i] = 0. 
 
 
 
