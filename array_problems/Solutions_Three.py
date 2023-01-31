@@ -344,35 +344,6 @@ def numberMeetingRooms(intervals: List[List[int]]) -> int:
     return len(meeting_rooms)
 
 
-def meeting_room_conflicts(calendar: List[List[int]], rooms: int, queries: list[List[int]]) -> List[bool]:
-    rooms = [[] for _ in range(rooms)]
-    calendar.sort(key=lambda x: x[0])
-    for meeting in calendar:
-        for room in rooms:
-            if not room or meeting[0] >= room[-1][1]:
-                room.append(meeting)
-                break
-
-    def check_conflict(mid_interval, target_interval):
-        return mid_interval[0] < target_interval[0] < mid_interval[1] \
-               or mid_interval[0] < target_interval[1] < mid_interval[1] \
-               or target_interval[0] < mid_interval[0] < target_interval[1] \
-               or target_interval[0] < mid_interval[1] < target_interval[1]
-
-    def binary_search(query, room, low, high):
-        if low > high:
-            return True
-        mid_point = (low + high) // 2
-        mid_interval = room[mid_point]
-        if check_conflict(query, mid_interval):
-            return False
-        if mid_interval[1] > query[0]:
-            return binary_search(query, room, low, mid_point - 1)
-        return binary_search(query, room, mid_point + 1, high)
-
-    return [any(binary_search(query, room, 0, len(room) - 1) for room in rooms) for query in queries]
-
-
 class PickWeightedRandom:
 
     def __init__(self, w: List[int]):

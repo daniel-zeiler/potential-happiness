@@ -1,3 +1,4 @@
+import collections
 import heapq
 import math
 from typing import List
@@ -192,3 +193,25 @@ def lastStoneWeight(stones: List[int]) -> int:
         if stone_a != stone_b:
             heapq.heappush(stones, -abs(-stone_a - -stone_b))
     return -stones[0]
+
+
+def canReach(arr: List[int], start: int) -> bool:
+    queue = collections.deque([start])
+    visited = {start}
+    while queue:
+        index = queue.popleft()
+        if arr[index] == 0:
+            return True
+        neg_index = index - arr[index]
+        pos_index = index + arr[index]
+        if neg_index >= 0 and neg_index not in visited:
+            visited.add(neg_index)
+            queue.append(neg_index)
+        if pos_index < len(arr) and pos_index not in visited:
+            visited.add(pos_index)
+            queue.append(pos_index)
+    return False
+
+
+def minCostClimbingStairs(cost: List[int]) -> int:
+    pass

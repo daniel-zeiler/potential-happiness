@@ -80,7 +80,7 @@ class TestTrie(unittest.TestCase):
         trie = Trie()
         for word in words:
             trie.add(word)
-        trie.print_trie()
+            trie.print_trie()
         input = 'c'
         output = ['cat', 'catdog', 'call', 'cats']
         self.assertCountEqual(output, trie.prefix_search(input))

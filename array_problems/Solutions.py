@@ -446,7 +446,7 @@ class MyCircularDeque:
         node = CircularDequeNode(value)
         self.current_size += 1
         self.head.next, self.head.next.prev, node.next, node.prev = node, node, self.head.next, \
-                                                                    self.head
+            self.head
         return True
 
     def insertLast(self, value: int) -> bool:
@@ -454,7 +454,7 @@ class MyCircularDeque:
             return True
         node = CircularDequeNode(value)
         self.tail.prev, self.tail.prev.next, node.prev, node.next = node, node, self.tail.prev, \
-                                                                    self.tail
+            self.tail
         self.current_size += 1
         return True
 
@@ -993,47 +993,6 @@ def numberMeetingRooms(intervals: List[List[int]]) -> int:
             if not added:
                 meeting_rooms.append([interval])
     return len(meeting_rooms)
-
-
-def meeting_room_conflicts(calendar: List[List[int]], rooms: int, queries: list[List[int]]) -> List[bool]:
-    def binary_search_interval(interval, target_interval):
-        if not interval:
-            return False
-        mid_pointer = int(len(interval) / 2)
-        mid_interval = interval[mid_pointer]
-        if mid_interval[0] < target_interval[0] < mid_interval[1] \
-                or mid_interval[0] < target_interval[1] < mid_interval[1] \
-                or target_interval[0] < mid_interval[0] < target_interval[1] \
-                or target_interval[0] < mid_interval[1] < target_interval[1]:
-            return True
-        if mid_interval[1] > target_interval[0]:
-            return binary_search_interval(interval[:mid_pointer], target_interval)
-        else:
-            return binary_search_interval(interval[mid_pointer + 1:], target_interval)
-
-    rooms = [[] for _ in range(rooms)]
-    calendar.sort(key=lambda x: x[0])
-    for meeting in calendar:
-        for room in rooms:
-            if not room:
-                room.append(meeting)
-                break
-            elif meeting[0] >= room[-1][1]:
-                room.append(meeting)
-                break
-
-    result = []
-
-    for query in queries:
-        added = False
-        for room in rooms:
-            if not binary_search_interval(room, query):
-                result.append(True)
-                added = True
-                break
-        if not added:
-            result.append(False)
-    return result
 
 
 def pacificAtlantic(heights: List[List[int]]) -> List[List[int]]:

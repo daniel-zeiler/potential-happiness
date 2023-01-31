@@ -121,10 +121,71 @@ def num_tile_possibilities(tiles: str) -> int:
     return traverse(tiles) - 1
 
 
-def combinationSum(candidates: List[int], target: int) -> List[List[int]]:
-    def traverse(candidates_remaining, path, sum_remaining):
-        result = []
-        if not sum_remaining:
-            return [path]
-        for i, candidate in enumerate(candidates_remaining):
+def get_maximum_gold(grid: List[List[int]]) -> int:
+    directions = [[-1, 0], [1, 0], [0, 1], [0, -1]]
 
+    def traverse(x, y) -> int:
+        temp, grid[x][y] = grid[x][y], 0
+        max_path = 0
+        for x_direction, y_direction in directions:
+            new_x, new_y = x_direction + x, y_direction + y
+            if 0 <= new_x < len(grid) and 0 <= new_y < len(grid[0]) and grid[new_x][new_y] != 0:
+                max_path = max(traverse(new_x, new_y), max_path)
+        grid[x][y] = temp
+        return max_path + temp
+
+    max_path = 0
+    for x, row in enumerate(grid):
+        for y, value in enumerate(row):
+            if value != 0:
+                max_path = max(max_path, traverse(x, y))
+    return max_path
+
+
+def combinationSum(candidates: List[int], target: int) -> List[List[int]]:
+    def traverse(candidates, target_remaining, combo):
+        result = []
+        if target_remaining == 0:
+            result.append(combo)
+        elif target_remaining > 0:
+            for i, candid in enumerate(candidates):
+                result.extend(traverse(candidates[i:], target_remaining - candid, combo + [candid]))
+        return result
+
+    candidates.sort()
+    return traverse(candidates, target, [])
+
+
+def combinationSum3(k: int, n: int) -> List[List[int]]:
+    def traverse(nums_remaining, nums_so_far, remainder):
+        result = []
+        if remainder == 0 and len(nums_so_far) == k:
+            result.append(nums_so_far)
+        elif remainder > 0:
+            for i, value in enumerate(nums_remaining):
+                result.extend(
+                    traverse(nums_remaining[i + 1:], nums_so_far + [value], remainder - value))
+        return result
+
+    r = [i for i in range(1, 9)]
+    result = []
+    for i, value in enumerate(r):
+        result.extend(traverse(r[i + 1:], [value], n - value))
+    return result
+
+
+def combine(n: int, k: int) -> List[List[int]]:
+    def traverse(nums_remaining, nums_so_far):
+        result = []
+        if len(nums_so_far) == k:
+            result.append(nums_so_far)
+        else:
+            for i, value in enumerate(nums_remaining):
+                result.extend(traverse(nums_remaining[i + 1:], nums_so_far + [value]))
+        return result
+
+    result = []
+    r = [i for i in range(1, n + 1)]
+    for i, value in enumerate(r):
+        result.extend(traverse(r[i + 1:], [value]))
+    return result

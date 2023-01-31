@@ -1,8 +1,6 @@
 import collections
 from typing import List
 
-import compatibility as compatibility
-
 
 def letter_combinations(digits: str) -> List[str]:
     map = {

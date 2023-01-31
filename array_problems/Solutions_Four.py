@@ -654,8 +654,3 @@ def numberMeetingRooms(intervals: List[List[int]]) -> int:
             meeting_rooms.append([interval])
 
     return len(meeting_rooms)
-
-
-def meeting_room_conflicts(calendar: List[List[int]], rooms: int, queries: list[List[int]]) -> List[bool]:
-    rooms = [[] for _ in range(rooms)]
-    calendar.sort(key=lambda x: x[0])

@@ -63,10 +63,10 @@ class SolutionsTest(unittest.TestCase):
     def test_get_maximum_gold(self):
         grid = [[1, 0, 7], [2, 0, 6], [3, 4, 5], [0, 3, 0], [9, 0, 20]]
         output = 28
-        self.assertEqual(backtracking_four.get_maximum_gold(grid), output)
+        self.assertEqual(backtracking_five.get_maximum_gold(grid), output)
         grid = [[0, 6, 0], [5, 8, 7], [0, 9, 0]]
         output = 24
-        self.assertEqual(backtracking_four.get_maximum_gold(grid), output)
+        self.assertEqual(backtracking_five.get_maximum_gold(grid), output)
 
     def test_number_tile_possibilities(self):
         tiles = "AAB"
@@ -128,7 +128,7 @@ class SolutionsTest(unittest.TestCase):
         candidates = [2, 3, 6, 7]
         target = 7
         output = [[2, 2, 3], [7]]
-        self.assertListEqual(output, backtracking_four.combinationSum(candidates, target))
+        self.assertListEqual(output, backtracking_five.combinationSum(candidates, target))
 
     def test_find_words(self):
         board = [
@@ -149,11 +149,11 @@ class SolutionsTest(unittest.TestCase):
         k = 3
         n = 9
         output = [[1, 2, 6], [1, 3, 5], [2, 3, 4]]
-        self.assertListEqual(output, backtracking_four.combinationSum3(k, n))
+        self.assertListEqual(output, backtracking_five.combinationSum3(k, n))
         k = 3
         n = 7
         output = [[1, 2, 4]]
-        self.assertListEqual(output, backtracking_four.combinationSum3(k, n))
+        self.assertListEqual(output, backtracking_five.combinationSum3(k, n))
 
     def test_combine(self):
         n = 4
@@ -166,13 +166,13 @@ class SolutionsTest(unittest.TestCase):
             [1, 3],
             [1, 4],
         ]
-        self.assertCountEqual(output, backtracking_four.combine(n, k))
+        self.assertCountEqual(output, backtracking_five.combine(n, k))
         n = 1
         k = 1
         output = [
             [1]
         ]
-        self.assertCountEqual(output, backtracking_four.combine(n, k))
+        self.assertCountEqual(output, backtracking_five.combine(n, k))
 
     def test_beautiful_arrangments(self):
         n = 2

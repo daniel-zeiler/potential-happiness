@@ -251,11 +251,11 @@ class SolutionsTest(unittest.TestCase):
         arr = [4, 2, 3, 0, 3, 1, 2]
         start = 0
         output = True
-        self.assertEqual(output, array_problems_five.canReach(arr, start))
+        self.assertEqual(output, array_problems_six.canReach(arr, start))
         arr = [3, 0, 2, 1, 2]
         start = 2
         output = False
-        self.assertEqual(output, array_problems_five.canReach(arr, start))
+        self.assertEqual(output, array_problems_six.canReach(arr, start))
 
     def test_longest_ones(self):
         nums = [0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1]
