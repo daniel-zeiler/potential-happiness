@@ -3,6 +3,8 @@ import unittest
 import BlindSeventyFive.Solutions as bsf
 import BlindSeventyFive.SolutionsTwo as bsf2
 import BlindSeventyFive.SolutionsThree as bsf3
+import BlindSeventyFive.Solutions_Five as bsf5
+
 
 
 class ListNode:
@@ -60,64 +62,64 @@ class SolutionsTest(unittest.TestCase, CustomAssertion):
         nums = [2, 7, 11, 15]
         target = 9
         output = [0, 1]
-        self.assertListEqual(output, bsf3.twoSum(nums, target))
+        self.assertListEqual(output, bsf5.twoSum(nums, target))
         nums = [3, 2, 4]
         target = 6
         output = [1, 2]
-        self.assertListEqual(output, bsf3.twoSum(nums, target))
+        self.assertListEqual(output, bsf5.twoSum(nums, target))
         nums = [3, 3]
         target = 6
         output = [0, 1]
-        self.assertListEqual(output, bsf3.twoSum(nums, target))
+        self.assertListEqual(output, bsf5.twoSum(nums, target))
 
     def test_max_profit(self):
         prices = [7, 1, 5, 3, 6, 4]
         output = 5
-        self.assertEqual(output, bsf3.maxProfit(prices))
+        self.assertEqual(output, bsf5.maxProfit(prices))
         prices = [7, 6, 4, 3, 1]
         output = 0
-        self.assertEqual(output, bsf3.maxProfit(prices))
+        self.assertEqual(output, bsf5.maxProfit(prices))
 
     def test_contains_duplicates(self):
         nums = [1, 2, 3, 1]
         output = True
-        self.assertEqual(output, bsf3.containsDuplicate(nums))
+        self.assertEqual(output, bsf5.containsDuplicate(nums))
         nums = [1, 2, 3, 4]
         output = False
-        self.assertEqual(output, bsf3.containsDuplicate(nums))
+        self.assertEqual(output, bsf5.containsDuplicate(nums))
         nums = [1, 1, 1, 3, 3, 4, 3, 2, 4, 2]
         output = True
-        self.assertEqual(output, bsf3.containsDuplicate(nums))
+        self.assertEqual(output, bsf5.containsDuplicate(nums))
 
     def test_product_except_self(self):
         nums = [1, 2, 3, 4]
         output = [24, 12, 8, 6]
-        self.assertListEqual(output, bsf3.productExceptSelf(nums))
+        self.assertListEqual(output, bsf5.productExceptSelf(nums))
         nums = [-1, 1, 0, -3, 3]
         output = [0, 0, 9, 0, 0]
-        self.assertListEqual(output, bsf3.productExceptSelf(nums))
+        self.assertListEqual(output, bsf5.productExceptSelf(nums))
 
     def test_max_sub_array(self):
         nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
         output = 6
-        self.assertEqual(output, bsf3.maxSubArray(nums))
+        self.assertEqual(output, bsf5.maxSubArray(nums))
         nums = [5, 4, -1, 7, 8]
         output = 23
-        self.assertEqual(output, bsf3.maxSubArray(nums))
+        self.assertEqual(output, bsf5.maxSubArray(nums))
         nums = [1]
         output = 1
-        self.assertEqual(output, bsf3.maxSubArray(nums))
+        self.assertEqual(output, bsf5.maxSubArray(nums))
 
     def test_max_product_sub_array(self):
         nums = [2, 3, -2, 4]
         output = 6
-        self.assertEqual(output, bsf3.maxProduct(nums))
+        self.assertEqual(output, bsf5.maxProduct(nums))
         nums = [-2, 0, -1]
         output = 0
-        self.assertEqual(output, bsf3.maxProduct(nums))
+        self.assertEqual(output, bsf5.maxProduct(nums))
         nums = [-4, -3, -2]
         output = 12
-        self.assertEqual(output, bsf3.maxProduct(nums))
+        self.assertEqual(output, bsf5.maxProduct(nums))
 
     def test_find_min_rotated(self):
         nums = [3, 4, 5, 1, 2]
@@ -147,10 +149,10 @@ class SolutionsTest(unittest.TestCase, CustomAssertion):
     def test_three_sum(self):
         nums = [-1, 0, 1, 2, -1, -4]
         output = [[-1, -1, 2], [-1, 0, 1]]
-        self.assertCountEqual(output, bsf3.threeSum(nums))
+        self.assertCountEqual(output, bsf5.threeSum(nums))
         nums = [0, 0, 0, 0]
         output = [[0, 0, 0]]
-        self.assertCountEqual(output, bsf3.threeSum(nums))
+        self.assertCountEqual(output, bsf5.threeSum(nums))
 
     def test_max_area(self):
         height = [1, 8, 6, 2, 5, 4, 8, 3, 7]
@@ -160,13 +162,13 @@ class SolutionsTest(unittest.TestCase, CustomAssertion):
     def test_length_of_longest_string(self):
         s = "abcabcbb"
         output = 3
-        self.assertEqual(output, bsf3.lengthOfLongestSubstring(s))
+        self.assertEqual(output, bsf5.lengthOfLongestSubstring(s))
         s = "bbbbb"
         output = 1
-        self.assertEqual(output, bsf3.lengthOfLongestSubstring(s))
+        self.assertEqual(output, bsf5.lengthOfLongestSubstring(s))
         s = "pwwkew"
         output = 3
-        self.assertEqual(output, bsf3.lengthOfLongestSubstring(s))
+        self.assertEqual(output, bsf5.lengthOfLongestSubstring(s))
 
     def test_character_replacement(self):
         s = "BAAAB"

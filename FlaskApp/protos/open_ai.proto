@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+message AskChatGPTRequest{
+
+}
+message AskChatGPTResponse{
+
+}
+
+service OpenAI {
+  rpc AskChatGPT(AskChatGPTRequest) returns(AskChatGPTResponse){}
+}
