@@ -1398,7 +1398,7 @@ Output: []
 """
 
 
-def connect2(self, root: 'Node') -> 'Node':
+def connect2(root: 'Node') -> 'Node':
     pass
 
 
@@ -1686,8 +1686,8 @@ def inorderTraversal(self, root: Optional[Node]) -> List[int]:
     pass
 
 
-"""
-Given the root of a binary tree and an integer targetSum, return all root-to-leaf paths where the sum of the node values in the path equals targetSum. Each path should be returned as a list of the node values, not node references.
+"""Given the root of a binary tree and an integer targetSum, return all root-to-leaf paths where the sum of the node 
+values in the path equals targetSum. Each path should be returned as a list of the node values, not node references. 
 
 A root-to-leaf path is a path starting from the root and ending at any leaf node. A leaf is a node with no children.
 
@@ -1717,11 +1717,12 @@ def pathSum(root: Optional[Node], targetSum: int) -> List[List[int]]:
     pass
 
 
-"""
-You are given the root of a binary tree where each node has a value 0 or 1. Each root-to-leaf path represents a binary number starting with the most significant bit.
+"""You are given the root of a binary tree where each node has a value 0 or 1. Each root-to-leaf path represents a 
+binary number starting with the most significant bit. 
 
-For example, if the path is 0 -> 1 -> 1 -> 0 -> 1, then this could represent 01101 in binary, which is 13.
-For all leaves in the tree, consider the numbers represented by the path from the root to that leaf. Return the sum of these numbers.
+For example, if the path is 0 -> 1 -> 1 -> 0 -> 1, then this could represent 01101 in binary, which is 13. For all 
+leaves in the tree, consider the numbers represented by the path from the root to that leaf. Return the sum of these 
+numbers. 
 
 The test cases are generated so that the answer fits in a 32-bits integer.
 

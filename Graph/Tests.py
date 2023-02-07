@@ -95,64 +95,64 @@ class SolutionsTest(unittest.TestCase):
         n = 4
         roads = [[0, 1], [0, 3], [1, 2], [1, 3]]
         output = 4
-        self.assertEqual(output, graph_five.maximal_network_rank(n, roads))
+        self.assertEqual(output, graph_six.maximal_network_rank(n, roads))
         n = 5
         roads = [[0, 1], [0, 3], [1, 2], [1, 3], [2, 3], [2, 4]]
         output = 5
-        self.assertEqual(output, graph_five.maximal_network_rank(n, roads))
+        self.assertEqual(output, graph_six.maximal_network_rank(n, roads))
         n = 8
         roads = [[0, 1], [1, 2], [2, 3], [2, 4], [5, 6], [5, 7]]
         output = 5
-        self.assertEqual(output, graph_five.maximal_network_rank(n, roads))
+        self.assertEqual(output, graph_six.maximal_network_rank(n, roads))
 
     def test_find_eventual_safe(self):
         input = [[1, 2], [2, 3], [5], [0], [5], [], []]
         output = [2, 4, 5, 6]
-        self.assertListEqual(output, graph_five.find_eventual_safe_nodes(input))
+        self.assertListEqual(output, graph_six.find_eventual_safe_nodes(input))
         input = [[1, 2, 3, 4], [1, 2], [3, 4], [0, 4], []]
         output = [4]
-        self.assertListEqual(output, graph_five.find_eventual_safe_nodes(input))
+        self.assertListEqual(output, graph_six.find_eventual_safe_nodes(input))
 
     def test_is_graph_bipartite(self):
         input = [[1, 2, 3], [0, 2], [0, 1, 3], [0, 2]]
         output = False
-        self.assertEqual(output, graph_four.is_graph_bipartite(input))
+        self.assertEqual(output, graph_six.is_graph_bipartite(input))
         input = [[1, 3], [0, 2], [1, 3], [0, 2]]
         output = True
-        self.assertEqual(output, graph_four.is_graph_bipartite(input))
+        self.assertEqual(output, graph_six.is_graph_bipartite(input))
 
     def test_flower_planting(self):
         n = 3
         paths = [[1, 2], [2, 3], [3, 1]]
         output = [1, 2, 3]
-        self.assertListEqual(output, graph_four.flower_planting_no_adjacent(n, paths))
+        self.assertListEqual(output, graph_six.flower_planting_no_adjacent(n, paths))
 
         n = 4
         paths = [[1, 2], [3, 4]]
         output = [1, 2, 1, 2]
-        self.assertListEqual(output, graph_four.flower_planting_no_adjacent(n, paths))
+        self.assertListEqual(output, graph_six.flower_planting_no_adjacent(n, paths))
 
         n = 4
         paths = [[1, 2], [2, 3], [3, 4], [4, 1], [1, 3], [2, 4]]
         output = [1, 2, 3, 4]
-        self.assertListEqual(output, graph_four.flower_planting_no_adjacent(n, paths))
+        self.assertListEqual(output, graph_six.flower_planting_no_adjacent(n, paths))
 
     def test_network_delay(self):
         times = [[2, 1, 1], [2, 3, 1], [3, 4, 1]]
         n = 4
         k = 2
         output = 2
-        self.assertEqual(output, graph_four.network_delay_time(times, n, k))
+        self.assertEqual(output, graph_six.network_delay_time(times, n, k))
         times = [[1, 2, 1]]
         n = 2
         k = 1
         output = 1
-        self.assertEqual(output, graph_four.network_delay_time(times, n, k))
+        self.assertEqual(output, graph_six.network_delay_time(times, n, k))
         times = [[1, 2, 1]]
         n = 2
         k = 2
         output = -1
-        self.assertEqual(output, graph_four.network_delay_time(times, n, k))
+        self.assertEqual(output, graph_six.network_delay_time(times, n, k))
 
     def test_possible_bipartition(self):
         n = 4
@@ -172,59 +172,69 @@ class SolutionsTest(unittest.TestCase):
         numCourses = 2
         prerequisites = [[1, 0]]
         output = [0, 1]
-        self.assertListEqual(output, graph_four.course_schedule_two(numCourses, prerequisites))
+        self.assertListEqual(output, graph_six.course_schedule_two(numCourses, prerequisites))
         numCourses = 4
         prerequisites = [[1, 0], [2, 0], [3, 1], [3, 2]]
         output = [0, 2, 1, 3]
-        self.assertListEqual([0, 1, 2, 3], graph_four.course_schedule_two(numCourses, prerequisites))
+        self.assertListEqual([0, 1, 2, 3], graph_six.course_schedule_two(numCourses, prerequisites))
         numCourses = 1
         prerequisites = []
         output = [0]
-        self.assertListEqual(output, graph_four.course_schedule_two(numCourses, prerequisites))
+        self.assertListEqual(output, graph_six.course_schedule_two(numCourses, prerequisites))
         numCourses = 2
         prerequisites = [[0, 1]]
         output = [1, 0]
-        self.assertListEqual(output, graph_four.course_schedule_two(numCourses, prerequisites))
+        self.assertListEqual(output, graph_six.course_schedule_two(numCourses, prerequisites))
 
     def test_calc_equation(self):
         equations = [["a", "b"], ["b", "c"]]
         values = [2.0, 3.0]
         queries = [["a", "c"], ["b", "a"], ["a", "e"], ["a", "a"], ["x", "x"]]
         output = [6.00000, 0.50000, -1.00000, 1.00000, -1.00000]
-        self.assertListEqual(output, graph_four.calcEquation(equations, values, queries))
+        self.assertListEqual(output, graph_six.calcEquation(equations, values, queries))
+        equations = [["a", "b"], ["b", "c"], ["bc", "cd"]]
+        values = [1.5, 2.5, 5.0]
+        queries = [["a", "c"], ["c", "b"], ["bc", "cd"], ["cd", "bc"]]
+        output = [3.75000, 0.40000, 5.00000, 0.20000]
+        self.assertListEqual(output, graph_six.calcEquation(equations, values, queries))
+        equations = [["a", "b"]]
+        values = [0.5]
+        queries = [["a", "b"], ["b", "a"], ["a", "c"], ["x", "y"]]
+        output = [0.50000, 2.00000, -1.00000, -1.00000]
+        self.assertListEqual(output, graph_six.calcEquation(equations, values, queries))
 
     def test_importance(self):
         employees = [[1, 5, [2, 3]], [2, 3, []], [3, 3, []]]
         input = []
         for employee in employees:
-            input.append(graph_two.Employee(employee[0], employee[1], employee[2]))
+            input.append(graph_six.Employee(employee[0], employee[1], employee[2]))
         id = 1
         output = 11
-        self.assertEqual(output, graph_three.getImportance(input, id))
+        self.assertEqual(output, graph_six.getImportance(input, id))
         employees = [[1, 2, [5]], [5, -3, []]]
         input = []
         for employee in employees:
-            input.append(graph_two.Employee(employee[0], employee[1], employee[2]))
+            input.append(graph_six.Employee(employee[0], employee[1], employee[2]))
         id = 5
         output = -3
-        self.assertEqual(output, graph_three.getImportance(input, id))
+        self.assertEqual(output, graph_six.getImportance(input, id))
 
     def test_ladder_length(self):
 
         word = "hit"
         target = "cog"
         word_list = ["hot", "dot", "dog", "lot", "log", "cog"]
-        self.assertEqual(5, graph_four.ladderLength(word, target, word_list))
+        self.assertEqual(5, graph_six.ladderLength(word, target, word_list))
 
     def test_can_finish(self):
         numCourses = 2
         prerequisites = [[1, 0]]
         output = True
-        self.assertEqual(output, graph_two.canFinish(numCourses, prerequisites))
+        self.assertEqual(output, graph_six.canFinish(numCourses, prerequisites))
         numCourses = 2
         prerequisites = [[1, 0], [0, 1]]
         output = False
-        self.assertEqual(output, graph_two.canFinish(numCourses, prerequisites))
+        self.assertEqual(output, graph_six.canFinish(numCourses, prerequisites))
         numCourses = 100
         prerequisites = [[1, 0], [2, 0], [2, 1], [3, 1], [3, 2], [4, 2], [4, 3], [5, 3], [5, 4], [6, 4], [6, 5], [7, 5],
                          [7, 6], [8, 6],
@@ -266,7 +276,8 @@ class SolutionsTest(unittest.TestCase):
                          [98, 96], [98, 97],
                          [99, 97]
                          ]
-        self.assertEqual(output, graph_two.canFinish(numCourses, prerequisites))
+        output = True
+        self.assertEqual(output, graph_six.canFinish(numCourses, prerequisites))
 
     def test_maximum_distance_traveled(self):
         edges = [[1, 2, 1], [2, 3, 2], [2, 4, 3], [1, 5, 4]]
@@ -303,6 +314,22 @@ class SolutionsTest(unittest.TestCase):
         s2 = "cat"
         output = -1
         self.assertEqual(output, graph_four.kSimilarity(s1, s2))
+
+    def test_count_paths(self):
+        n = 7
+        roads = [[0, 6, 7], [0, 1, 2], [1, 2, 3], [1, 3, 3], [6, 3, 3], [3, 5, 1], [6, 5, 1], [2, 5, 1],
+                 [0, 4, 5], [4, 6, 2]]
+        self.assertEqual(4, graph_six.countPaths(n, roads))
+        n = 2
+        roads = [[1, 0, 10]]
+        self.assertEqual(1, graph_six.countPaths(n, roads))
+
+    def test_find_the_city(self):
+        n = 4
+        edges = [[0, 1, 3], [1, 2, 1], [1, 3, 4], [2, 3, 1]]
+        distanceThreshold = 4
+        output = 3
+        self.assertEqual(output, graph_six.findTheCity(n, edges, distanceThreshold))
 
 
 if __name__ == '__main__':

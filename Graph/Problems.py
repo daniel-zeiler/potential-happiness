@@ -505,10 +505,10 @@ and direct subordinates' IDs.
 
 You are given an array of employees employees where:
 
-employees[i].id is the ID of the ith employee.
-employees[i].importance is the importance value of the ith employee.
-employees[i].subordinates is a list of the IDs of the direct subordinates of the ith employee.
-Given an integer id that represents an employee's ID, return the total importance value of this employee and all their direct and indirect subordinates.
+employees[i].id is the ID of the ith employee. employees[i].importance is the importance value of the ith employee. 
+employees[i].subordinates is a list of the IDs of the direct subordinates of the ith employee. Given an integer id 
+that represents an employee's ID, return the total importance value of this employee and all their direct and 
+indirect subordinates. 
 
  
 
@@ -1122,7 +1122,7 @@ The city 0 has 1 neighboring city at a distanceThreshold = 2.
 """
 
 
-def findTheCity(self, n: int, edges: List[List[int]], distanceThreshold: int) -> int:
+def findTheCity(n: int, edges: List[List[int]], distanceThreshold: int) -> int:
     pass
 
 
