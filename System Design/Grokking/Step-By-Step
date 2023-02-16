@@ -5,10 +5,10 @@ Non-Technical Requirements
 Step 1: Clarify Requirements and close in on scope
     Technical requirements: What should it do?
     Non-technical requirements:
-    Scalability
-    Reliability
-    Availability,
-    Maintainability.
+        Scalability,
+        Reliability,
+        Availability,
+        Maintainability.
 
 Step 2: System interface definition
     Defines exact contract expected from our system
@@ -36,7 +36,7 @@ Step 5: Drill down into more details
     scaling, caching, and high availability / distribution. Discuss different pros
     and cons
 
-    How should we partition our data?  Should we storage all the data of a user on the smae database?
+    How should we partition our data?  Should we storage all the data of a user on the same database?
     How will we handle hot users?
     How and where should we introduce a cache to speed things up?
     How and where should we need better load balancing?

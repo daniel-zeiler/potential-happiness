@@ -620,7 +620,7 @@ Output: [[0,0,0,0],[0,4,5,0],[0,3,1,0]]
 """
 
 
-def setZeroes(self, matrix: List[List[int]]) -> None:
+def setZeroes(matrix: List[List[int]]) -> None:
     """
     Do not return anything, modify matrix in-place instead.
     """
@@ -651,7 +651,8 @@ def spiralOrder(matrix: List[List[int]]) -> List[int]:
 """
 Given an m x n grid of characters board and a string word, return true if word exists in the grid.
 
-The word can be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once.
+The word can be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or 
+vertically neighboring. The same letter cell may not be used more than once. 
 
  
 

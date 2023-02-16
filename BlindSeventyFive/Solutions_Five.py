@@ -101,3 +101,21 @@ def lengthOfLongestSubstring(s: str) -> int:
         character_set.add(character)
         longest_substring = max(longest_substring, pointer_b - pointer_a + 1)
     return longest_substring
+
+
+def setZeroes(matrix: List[List[int]]) -> None:
+    x_list = set()
+    y_list = set()
+    for x, row in enumerate(matrix):
+        for y, value in enumerate(row):
+            if value == 0:
+                x_list.add(x)
+                y_list.add(y)
+    for x in range(len(matrix)):
+        for y in range(len(matrix[0])):
+            if x in x_list or y in y_list:
+                matrix[x][y] = 0
+
+
+def exist(board: List[List[str]], word: str) -> bool:
+    pass

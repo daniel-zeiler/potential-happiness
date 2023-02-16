@@ -254,11 +254,11 @@ class SolutionsTest(unittest.TestCase, CustomAssertion):
     def test_set_zeros(self):
         matrix = [[1, 1, 1], [1, 0, 1], [1, 1, 1]]
         output = [[1, 0, 1], [0, 0, 0], [1, 0, 1]]
-        bsf2.setZeroes(matrix)
+        bsf5.setZeroes(matrix)
         self.assertEqual(output, matrix)
         matrix = [[0, 1, 2, 0], [3, 4, 5, 2], [1, 3, 1, 5]]
         output = [[0, 0, 0, 0], [0, 4, 5, 0], [0, 3, 1, 0]]
-        bsf2.setZeroes(matrix)
+        bsf5.setZeroes(matrix)
         self.assertEqual(output, matrix)
 
     def test_spiral_matrix(self):
