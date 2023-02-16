@@ -339,10 +339,10 @@ class SolutionsTest(unittest.TestCase):
     def test_min_cost_climbing_stairs(self):
         cost = [10, 15, 20]
         output = 15
-        self.assertEqual(output, array_problems_five.minCostClimbingStairs(cost))
+        self.assertEqual(output, array_problems_six.minCostClimbingStairs(cost))
         cost = [1, 100, 1, 1, 1, 100, 1, 1, 100, 1]
         output = 6
-        self.assertEqual(output, array_problems_five.minCostClimbingStairs(cost))
+        self.assertEqual(output, array_problems_six.minCostClimbingStairs(cost))
 
     def test_max_satisfied(self):
         customers = [1, 0, 1, 2, 1, 1, 7, 5]
@@ -363,11 +363,11 @@ class SolutionsTest(unittest.TestCase):
         nums1 = [1, 2, 2, 1]
         nums2 = [2, 2]
         output = [2, 2]
-        self.assertEqual(output, array_problems_four.intersect(nums1, nums2))
+        self.assertEqual(output, array_problems_six.intersect(nums1, nums2))
         nums1 = [4, 9, 5]
         nums2 = [9, 4, 9, 8, 4]
         output = [4, 9]
-        self.assertEqual(output, array_problems_four.intersect(nums1, nums2))
+        self.assertEqual(output, array_problems_six.intersect(nums1, nums2))
 
     def test_max_area(self):
         height = [1, 8, 6, 2, 5, 4, 8, 3, 7]
@@ -645,15 +645,15 @@ class SolutionsTest(unittest.TestCase):
         words = ["hello", "leetcode"]
         order = "hlabcdefgijkmnopqrstuvwxyz"
         output = True
-        self.assertEqual(output, array_problems_five.isAlienSorted(words, order))
+        self.assertEqual(output, array_problems_six.isAlienSorted(words, order))
         words = ["word", "world", "row"]
         order = "worldabcefghijkmnpqstuvxyz"
         output = False
-        self.assertEqual(output, array_problems_five.isAlienSorted(words, order))
+        self.assertEqual(output, array_problems_six.isAlienSorted(words, order))
         words = ["apple", "app"]
         order = "abcdefghijklmnopqrstuvwxyz"
         output = False
-        self.assertEqual(output, array_problems_five.isAlienSorted(words, order))
+        self.assertEqual(output, array_problems_six.isAlienSorted(words, order))
 
     def test_plus_one_large_number(self):
         input = [

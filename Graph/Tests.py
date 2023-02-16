@@ -331,6 +331,59 @@ class SolutionsTest(unittest.TestCase):
         output = 3
         self.assertEqual(output, graph_six.findTheCity(n, edges, distanceThreshold))
 
+    def test_makeConnections(self):
+        n = 4
+        connections = [[0, 1], [0, 2], [1, 2]]
+        output = 1
+        self.assertEqual(output, graph_six.makeConnected(n, connections))
+        n = 6
+        connections = [[0, 1], [0, 2], [0, 3], [1, 2], [1, 3]]
+        output = 2
+        self.assertEqual(output, graph_six.makeConnected(n, connections))
+        n = 6
+        connections = [[0, 1], [0, 2], [0, 3], [1, 2]]
+        output = -1
+        self.assertEqual(output, graph_six.makeConnected(n, connections))
+
+    def test_max_probability(self):
+        n = 3
+        edges = [[0, 1], [1, 2], [0, 2]]
+        succProb = [0.5, 0.5, 0.2]
+        start = 0
+        end = 2
+        output = 0.25000
+        self.assertEqual(output, graph_six.maxProbability(n, edges, succProb, start, end))
+        n = 3
+        edges = [[0, 1], [1, 2], [0, 2]]
+        succProb = [0.5, 0.5, 0.3]
+        start = 0
+        end = 2
+        output = 0.3000
+        self.assertEqual(output, graph_six.maxProbability(n, edges, succProb, start, end))
+        n = 3
+        edges = [[0, 1]]
+        succProb = [0.5]
+        start = 0
+        end = 2
+        output = 0.0000
+        self.assertEqual(output, graph_six.maxProbability(n, edges, succProb, start, end))
+
+    def test_find_cheapest_flights(self):
+        n = 3
+        flights = [[0, 1, 100], [1, 2, 100], [0, 2, 500]]
+        src = 0
+        dst = 2
+        k = 1
+        output = 200
+        self.assertEqual(output, graph_six.findCheapestPrice(n, flights, src, dst, k))
+        n = 3
+        flights = [[0, 1, 100], [1, 2, 100], [0, 2, 500]]
+        src = 0
+        dst = 2
+        k = 0
+        output = 500
+        self.assertEqual(output, graph_six.findCheapestPrice(n, flights, src, dst, k))
+
 
 if __name__ == '__main__':
     unittest.main()

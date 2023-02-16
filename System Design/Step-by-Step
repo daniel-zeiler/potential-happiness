@@ -12,13 +12,15 @@
     Scalability
     Performance
     Availability
+    Durability
+    Reliability
+
+5. Data Model!
+    How should data be organized?  Store raw?  Aggregate?
 
 4. High Level architecture
     Start small, throw some high level components onto the whiteboard
     Drive the conversation!
-
-5. Data Model!
-    How should data be organized?  Store raw?  Aggregate?
 
 6 Database choice
     SQL vs NoSQL

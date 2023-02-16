@@ -213,5 +213,34 @@ def canReach(arr: List[int], start: int) -> bool:
     return False
 
 
-def minCostClimbingStairs(cost: List[int]) -> int:
-    pass
+def intersect(nums1: List[int], nums2: List[int]) -> List[int]:
+    count_one = collections.defaultdict(int)
+    count_two = collections.defaultdict(int)
+    for num in nums1:
+        count_one[num] += 1
+    for num in nums2:
+        count_two[num] += 1
+
+    result = []
+    for key in count_one.keys():
+        if key in count_two:
+            for i in range(min(count_one[key], count_two[key])):
+                result.append(key)
+
+    return result
+
+
+def isAlienSorted(words: List[str], order: str) -> bool:
+    custom_ordering = {key: index for index, key in enumerate(order)}
+
+    for i in range(len(words) - 1):
+        for letter_a, letter_b in zip(words[i], words[i + 1]):
+            if letter_a != letter_b:
+                if custom_ordering[letter_a] > custom_ordering[letter_b]:
+                    return False
+                break
+        else:
+            if len(words[i]) > len(words[i + 1]):
+                return False
+
+    return True

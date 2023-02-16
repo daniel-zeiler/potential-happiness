@@ -1,10 +1,11 @@
 import unittest
 import Trie.Solutions as trie
+import Trie.Solutions_Two as trie_two
 
 
 class SolutionsTest(unittest.TestCase):
     def test_trie(self):
-        a_trie = trie.Trie()
+        a_trie = trie_two.Trie()
         a_trie.insert("apple")
         self.assertEqual(True, a_trie.search("apple"))
         self.assertEqual(False, a_trie.search("app"))
@@ -13,7 +14,7 @@ class SolutionsTest(unittest.TestCase):
         self.assertEqual(True, a_trie.search("app"))
 
     def test_word_dictionary(self):
-        word_dictionary = trie.WordDictionary()
+        word_dictionary = trie_two.WordDictionary()
         word_dictionary.addWord("bad")
         word_dictionary.addWord("dad")
         word_dictionary.addWord("mad")

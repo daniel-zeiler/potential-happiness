@@ -1,12 +1,16 @@
 Caches take care of locality of reference principle
 
+Redis or Memcache
+
 A cache is short-term memory.  Much faster than reading from disk or
 the database.
 
 CDN (Conent Delivery Network)
 
-Typically caches static assets like images, jpegs, video, html, etc.
-If not available the cache will query the backend server for the files
+    Typically caches static assets like images, jpegs, video, html, etc.
+    If not available the cache will query the backend server for the files
+
+CloudFront / Cloudflare
 
 Cache invalidation:
     Write-through cache

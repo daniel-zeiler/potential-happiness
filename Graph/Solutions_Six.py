@@ -1,4 +1,5 @@
 import collections
+import heapq
 from typing import List
 
 
@@ -381,8 +382,95 @@ def findTheCity(n: int, edges: List[List[int]], distanceThreshold: int) -> int:
     city = 0
     min_city = float('inf')
     for i in range(n):
-        num_cities = traverse(i, distanceThreshold , {i})
+        num_cities = traverse(i, distanceThreshold, {i})
         print(num_cities)
         if num_cities <= min_city:
             min_city, city = num_cities, i
     return city
+
+
+def makeConnected(n: int, connections: List[List[int]]) -> int:
+    number_redundant = 0
+
+    parents = [i for i in range(n)]
+    ranks = [1 for _ in range(n)]
+
+    def union(node_a, node_b):
+        parent_a, parent_b = find(node_a), find(node_b)
+        if parent_a == parent_b:
+            return False
+        rank_a, rank_b = ranks[parent_a], ranks[parent_b]
+        if rank_a >= rank_b:
+            parents[parent_b] = parent_a
+            ranks[parent_a] += rank_a
+        else:
+            parents[parent_b] = parent_a
+            ranks[parent_a] += rank_b
+        return True
+
+    def find(node):
+        if parents[node] != node:
+            parents[node] = find(parents[node])
+        return parents[node]
+
+    for origin, destination in connections:
+        if not union(origin, destination):
+            number_redundant += 1
+
+    for i in range(n):
+        find(i)
+
+    number_of_networks = len(set(parents))
+    if number_of_networks - 1 > number_redundant:
+        return -1
+    return number_of_networks - 1
+
+
+def maxProbability(n: int, edges: List[List[int]], succProb: List[float], start: int, end: int) -> float:
+    def get_graph():
+        graph = collections.defaultdict(list)
+        for index, (origin, destination) in enumerate(edges):
+            graph[origin].append([destination, succProb[index]])
+            graph[destination].append([origin, succProb[index]])
+        return graph
+
+    graph = get_graph()
+
+    queue = [[-1, start]]
+    visited = set()
+
+    while queue:
+        probability, position = heapq.heappop(queue)
+        if position not in visited:
+            visited.add(position)
+            if position == end:
+                return -probability
+            for adjacent, additional_probability in graph[position]:
+                if adjacent not in visited:
+                    heapq.heappush(queue, [probability * additional_probability, adjacent])
+
+    return float(0)
+
+
+def findCheapestPrice(n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int:
+    def get_graph():
+        graph = collections.defaultdict(list)
+        for origin, destination, cost in flights:
+            graph[origin].append([destination, cost])
+        return graph
+
+    graph = get_graph()
+
+    queue = [[0, src, 0]]
+    visited_set = set()
+
+    while queue:
+        path_cost, position, steps = heapq.heappop(queue)
+        if position == dst:
+            return path_cost
+        if position not in visited_set:
+            visited_set.add(position)
+            for adjacent, cost in graph[position]:
+                if adjacent not in visited_set and steps < k + 1:
+                    heapq.heappush(queue, [path_cost + cost, adjacent, steps + 1])
+    return -1

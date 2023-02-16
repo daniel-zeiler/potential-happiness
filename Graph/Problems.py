@@ -1158,7 +1158,7 @@ Explanation: There are not enough cables.
 """
 
 
-def makeConnected(self, n: int, connections: List[List[int]]) -> int:
+def makeConnected(n: int, connections: List[List[int]]) -> int:
     pass
 
 
@@ -1197,7 +1197,7 @@ Explanation: There is no path between 0 and 2.
 """
 
 
-def maxProbability(self, n: int, edges: List[List[int]], succProb: List[float], start: int, end: int) -> float:
+def maxProbability(n: int, edges: List[List[int]], succProb: List[float], start: int, end: int) -> float:
     pass
 
 
@@ -1225,7 +1225,7 @@ Output: [0,1,-1]
 """
 
 
-def shortestAlternatingPaths(self, n: int, redEdges: List[List[int]], blueEdges: List[List[int]]) -> List[int]:
+def shortestAlternatingPaths(n: int, redEdges: List[List[int]], blueEdges: List[List[int]]) -> List[int]:
     pass
 
 
@@ -1251,7 +1251,7 @@ persons 3, 4, 5, 6, or 7), the person who is the quietest (has lower quiet[x]) i
 filled out with similar reasoning. """
 
 
-def loudAndRich(self, richer: List[List[int]], quiet: List[int]) -> List[int]:
+def loudAndRich(richer: List[List[int]], quiet: List[int]) -> List[int]:
     pass
 
 
@@ -1281,5 +1281,5 @@ The cheapest price from city 0 to city 2 with at most 0 stop costs 500, as marke
 """
 
 
-def findCheapestPrice(self, n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int:
+def findCheapestPrice(n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int:
     pass

@@ -222,7 +222,7 @@ def flip_equiv(root1: Optional[Node], root2: Optional[Node]) -> bool:
         elif node_1.value != node_2.value:
             return False
         return traverse(node_1.left, node_2.left) and traverse(node_2.right, node_2.right) or \
-               traverse(node_1.left, node_2.right) and traverse(node_1.right, node_2.left)
+            traverse(node_1.left, node_2.right) and traverse(node_1.right, node_2.left)
 
     return traverse(root1, root2)
 
@@ -684,3 +684,19 @@ def isValidBST(root: Optional[Node]) -> bool:
         return traverse(node.left) and traverse(node.right)
 
     return traverse(root)
+
+
+def pathSum(root: Optional[Node], targetSum: int) -> List[List[int]]:
+    result = []
+
+    def traverse(node, current_path, sum_remaining):
+        if node:
+            sum_remaining -= node.value
+            if node.left is None and node.right is None and not sum_remaining:
+                result.append(current_path + [node.value])
+            if sum_remaining > 0:
+                traverse(node.left, current_path + [node.value], sum_remaining)
+                traverse(node.right, current_path + [node.value], sum_remaining)
+
+    traverse(root, [], targetSum)
+    return result

@@ -54,4 +54,3 @@
     dynamically based upon load.  It also helps to diversify to different
     microservices to make our system overall more maintainable
     and we can isolate certain behaviors or issues to individual components.
-

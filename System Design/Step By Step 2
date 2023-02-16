@@ -1,0 +1,140 @@
+1. Requirements Clarification
+    What is the purpose of this application?
+    How many users are we going to have?
+    What is the scale of reads and writes?
+
+    Example:
+        Create Yelp.
+            We should have 10,000 new locations per day.
+            1,000,000 reviews per day.
+            10,000,000 active users per day.
+
+        Create Spotify.
+            We should be able to support 10,000,000 DAU.
+            10 songs per user per day.
+            100,000,000 songs per day
+            2MB / song
+            4000,000 songs / hour
+            60,000 songs/ min
+            1,000 songs / second
+            2,000 MB / second
+            2GB / second
+
+2. Functional Requirements
+    Take clarified requirements and write them out.  Use those wrote out requirements and transform them into APIs.
+
+    Examples:
+        Yelp Functional Requirements.
+            User can search for locations within an area
+            Users can create location
+            User can read reviews for locations
+            Users can write reviews for locations
+
+            GET {hostname}/api/location/
+            {
+                coordinates:[[2]float]
+            }
+            response:
+            200
+            {
+                locations: []location
+            }
+
+            GET {hostname}/api/location/{location_id}
+            response:
+            200
+            {
+                location_id: UUID
+                location_name: string
+                coordinates: [2]float
+                description: string
+                rating: int
+                reviews: [
+                    {
+                        user_id: UUID
+                        review_id: UUID
+                        location_id: UUID
+                        review_text: string
+                    }
+                ]
+            }
+
+            POST {hostname}/api/location/
+            {
+                location_name: string
+                description: string
+                 coordinates: [2] string
+            }
+            Response:
+            200
+
+            POST {hostname}/api/location/{location_id}
+            {
+                review_id: UUID
+                rating: int
+            }
+            Response:
+            200
+
+        Yelp:
+            User can upload a song
+            User can listen to a song
+            User can search for songs
+            
+            Upload Song
+                Request:
+                    POST {hostname}/api/songs
+                    Body: music_file
+                Response:
+                    200
+                    Body:{
+                        song_id: UUID
+                    }
+            Download Song
+                Request:
+                    GET {hostname}/api/songs/{song_id}
+                Reponse:
+                    200
+                    Body: music_file
+            Search Songs
+                Request:
+                    GET {hostname}/api/songs?search_quary={string}
+                Response:
+                    200
+                    Body:
+                    {
+                        songs:[{
+                            song: string,
+                            song_id: UUID
+                            artist_name: string
+                            artist_id: UUID
+                        }]
+                    }
+
+3. Non-functional requirements
+    Here we should outline things like durability, reliability, scalability, availability, and performance
+    and how we should keep these attributes in mind when we're designing the restof our system
+
+        Example:
+            Yelp:
+                Availability - We should not have single points of failure
+                Performant - We should aim for low latency and high throughput
+                Scalability - We should be able to respond dynamically to load
+            Spotify:
+                Durability - music should not be lost.
+                Reliability -  We should be able to sustain network partitions.
+                Availability - We should try to reduce single points of failure
+                Performant - We should able to scale to meet load
+
+4. Data Model
+    Here we should use the API and functional requirements as a guide towards the design of the data model
+        Example:
+            Yelp:
+                User:
+                    user_id:    UUID 16byte
+                    user_name:  string 16byte
+                    email:      string 16 byte
+                Location:
+                    
+                Review
+            Spotify:
