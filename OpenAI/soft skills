@@ -1,0 +1,122 @@
+Companies:
+    Coinbase
+        Senior Software Engineer on the Retail Web3 Team
+        Sort of like a startup within Coinbase to hedge towards future use cases in the retail application
+        Our team launched this year and is already one of the leaders of growth within the company
+    Twitter
+        Senior Software Engineer on the Data Platform Team
+        We built the data ingestion pipelines to process large volumes of incoming events and platforms
+        for data analysis
+    Maxar Technologies
+        Staff Software Engineer on the product team
+    Reality Analytics
+        Early engineer at AI startup -- recently acquired
+
+
+Projects I've worked on
+    Coinbase:
+        Dapp Catalog
+            About:
+                Our dapp catalog serves as the interface between developer relations and our client facing application.
+                It allows for internal teams to configure and promote distributed applications that we can then
+                expose to our users.
+            Target Customers:
+                DevRel manage the list of available dapps
+                Distributed App Creators
+                End-users consume these dapps when using the retail applications.
+            Technologies:
+                Kubernetes:
+                    We have a K8s cluster of EC2 instances.
+                MongoDB:
+                    We use monogDB to store dapps that are created.
+                ReTool:
+                    This is an admin interface that allows for secure access and modification of the dapp catalog.  It's
+                    accessed by the developer relations team and is used to deploy new distributed applications, rank them,
+                    offer paid placements, and configure incentive programs such as airdrops or profit sharing for customer
+                    traffic.
+        Web3 Wallet
+            About:
+                This service is the interface for on-chain activity that our userbase will leverage when using our application.
+                It provides a secure means to interact with their crypto assets and the distributed applications developed
+                by the broader web3 ecosystem outside of coinbase (as well as internally developed applications).
+            Target Customers:
+                End-users interact with our managed wallet solution to trade crypto, NFT's, interact with dapps, etc.
+            Technologies:
+                Kubernetes:
+                    This service is a cluster of K8s applications
+                DynamoDB:
+                    We store things like transactions, wallets, user state in DynamoDB
+                Multi-party computation key-shared wallets:
+                    We have a proprietary multi-party computation wallet that acts as a secure customian of customer
+                    funds.
+
+        Wallet event processor of on-chain events
+            About:
+                Many different teams at coinbase index on-chain events such as transactions, swaps, trades, etc.
+                This service provides a way for these teams to publish events specifically for our customers and
+                for us to use those events to notify our customers when wallets are created, transactions and swaps
+                complete, and provides us an avenue for incentivization programs to reward users who choose to use
+                our product!  Additionally we have some compliance use cases when users are trading in assets that
+                Coinbase doesn't allow.
+            Target Customers:
+                This is a cross functional product that allows us to interface with compliance, different crypto
+                specific teams, the incentive and rewards team, as well as our own use cases.
+            Technologies Used:
+                Kafka:
+                    Data events are published on a kafka topic.  We have a number of consumers based upon those topics
+                    that can act asyncronously to incoming events.
+                SQS + Lambda + DLQ:
+                    Some of these events are enqueued into SQS for further processing by lambda functions, we use
+                    idempotency tokens to ensure singular events when necessary.  This allows for retries when these
+                    events are critically important and we shouldn't drop anything.
+                Kubernetes:
+                    All of this infrastructure is managed by kubernetes.
+
+
+    Twitter:
+        Data ingestion using kinesis to process and enrich incoming event data streams
+        Brought looker to general availability at Twitter
+
+    Maxar Technologies
+        Analysis Ready Data
+            About:
+            Target Customers:
+                Analysts would use this platform to create deliverables based upon ad-hoc queries or monitoring areas
+                of interest
+                ML Engineers would deploy ML models into our system for use.
+            Technologies:
+                S3 + Athena for geospatial analytics:
+                    Our models would create analytical results which are stored in s3.  Athena can be then be used
+                    to further analyze the resultant datasets and can be rendered onto the client for delivery.
+                Step functions:
+                    We used AWS step functions to built a system for imagery acquisition, data partitioning, and classification
+                    and result distribution and storage.
+                Serverless lamba functions:
+                    We expose a user interface backed by serverless lambda functions for analysts to use for delineating areas
+                    of interest and interacting with deployed models and for ML engineers to deloy new models.
+                Kafka:
+                    New imagery events are processed by kafka consumers
+
+        Geospatial Cloud Analytics Hub
+            About:
+                Multi-source and multi-model geospatial imagery analysis platform in a secure containerized environment.
+                Synthetic Aperture Radar, Imagery, custom data sources plug + play with a catalog of different models
+                that the users can import and use into the platform.
+            Target Customers:
+                Containerized platform ran in secure environments across a cluster of machines.
+            Technologies:
+
+    Reality Analytics
+        Timeseries Data Ingestion:
+
+        Model Training and Deployment:
+
+        Streaming classification:
+            About:
+                incoming datastreams connect via websocket to allow for incoming data to be quickly partitioned,
+                classified, and results to be streamed back to the source.
+            Target Customers:
+                Based upon use case, primarily phones and IoT devices
+            Technologies:
+                Incoming datastreams would be partitioned based upon model specifications and enqueued in SQS for
+                consumption by deployed containerized models.
