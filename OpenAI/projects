@@ -1,0 +1,99 @@
+Projects - Come up with 5-7 projects from your current role or past companies (A project is defined as things you’ve done professionally. For example, a software feature you launched, changing the way code reviews are done, writing a wiki for some product, etc. A project is any event you’ve done professionally)
+Write Out the Projects- Write/type these projects on a Word Doc or a piece of paper
+Write a Summary – With the list of projects you now have, write a summary for each project. Use this 4-step template below to write your summaries:
+Provide context – Providing context about the narrative before you get into the essential part of the story (Situation)
+What was the problem – What was the thing that needed to be done? (Task)
+What did you do – What was the action or how did you solve that problem? (Action)
+What were the results? (Results)
+
+    Dapp Browser / Browser
+
+        Situation
+        Task
+        Action
+        Result
+
+
+    Defi Service
+
+        Situation
+        Task
+        Action
+        Result
+
+    Looker at Twitter
+
+        Situation
+        Task
+        Action
+        Result
+
+    Data ingestion and Enrichment
+
+        Situation
+        Task
+        Action
+        Result
+
+    Analysis Ready Data
+
+        Situation
+        Task
+        Action
+        Result
+
+    Geospatial Cloud Analytics Hub
+
+        Situation
+        Task
+        Action
+        Result
+
+    System to train and deploy machine learning models
+
+        Situation
+            Our AI startup needed a way for our customers to train machine learning models on their given datasets.
+            They also needed to compare different results across training methods, and deploy different versions into
+            production as needed.
+        Task
+            As the first backend engineer I needed to design a system that was scalable enough to handle a rapidly
+            increasing workload.
+        Action
+
+        Result
+            This allowed us to build a MVP that would allow customers to train and deploy their own models using our
+            infrastructure.
+
+    Python SDK to integrate with our API
+
+        Situation
+            When I worked at Reality Analytics one of our first customers were a lab in Japan trying to use our API.
+            They weren't really familiar with using APIs and it was challenging to go back and forth with them
+            trying to integrate their workflow with ours due to the time difference.
+        Task
+            I needed to streamline this process and generalize for all future customers.  Our product was easy to use
+            from our perspective but it was apparent that it was difficult to use from others perspective.
+        Action
+            I put together a Python SDK that handled credentials, querying our API for results, streaming data into
+            our systems, training, validating, and deploying models, etc.  I then alongside my team were able to
+            merge this into the documentation and presented it to our friends in Japan.
+        Result
+            This became the go-to method for onboarding new users and drastically decreased the engineering overhead
+            we would need to take up with new customers.
+
+Reality Analytics:
+    System to train and deploy machine learning models
+    Python SDK to integrate with our API
+
+
+Maxar Technologies:
+    Analysis Ready Data
+    Geospatial Cloud Analytics Hub
+
+Twitter:
+    Looker at Twitter
+    Data ingestion and enrichment
+
+Coinbase:
+    Dapp Browser
+    Defi Service
