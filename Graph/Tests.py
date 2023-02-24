@@ -7,6 +7,7 @@ import Graph.Solutions_Three as graph_three
 import Graph.Solutions_Four as graph_four
 import Graph.Solution_Five as graph_five
 import Graph.Solutions_Six as graph_six
+import Graph.Solutions_Seven as graph_seven
 
 
 class SolutionsTest(unittest.TestCase):
@@ -35,7 +36,7 @@ class SolutionsTest(unittest.TestCase):
     def test_all_paths_source_to_target(self):
         input = [[4, 3, 1], [3, 2, 4], [3], [4], []]
         output = [[0, 4], [0, 3, 4], [0, 1, 3, 4], [0, 1, 2, 3, 4], [0, 1, 4]]
-        self.assertListEqual(output, graph_six.all_paths_source_to_target(input))
+        self.assertListEqual(output, graph_seven.all_paths_source_to_target(input))
         input = [[1], []]
         output = [[0, 1]]
         self.assertListEqual(output, graph_six.all_paths_source_to_target(input))
@@ -86,7 +87,7 @@ class SolutionsTest(unittest.TestCase):
     def test_redundant_connections(self):
         edges = [[1, 2], [1, 3], [2, 3]]
         output = [2, 3]
-        self.assertListEqual(output, graph_six.redundant_connections(edges))
+        self.assertListEqual(output, graph_seven.redundant_connections(edges))
         edges = [[1, 2], [2, 3], [3, 4], [1, 4], [1, 5]]
         output = [1, 4]
         self.assertListEqual(output, graph_six.redundant_connections(edges))

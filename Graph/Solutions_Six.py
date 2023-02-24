@@ -292,7 +292,7 @@ def ladderLength(beginWord: str, endWord: str, wordList: List[str]) -> int:
         return graph
 
     graph = get_graph()
-    if beginWord not in graph or endWord not in graph:
+    if endWord not in graph:
         return 0
 
     queue = collections.deque([[beginWord, 2]])

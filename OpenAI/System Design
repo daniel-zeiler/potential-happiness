@@ -1,0 +1,58 @@
+System Design Interview Guide
+
+0. Clarify requirements of our system
+    What should it do?  What shouldn't it do?  How are the users?
+
+1. Functional Requirements
+    List out the functional uses one-by-one
+    Ask about scale, how many users, how many read / write requests.  Find out how many per day / min / sec
+
+2. Non-functional Requirements
+    Durability
+    Reliability
+    Availability
+    Scalability
+    Performant
+    Partition Tolerant
+
+3. API definitions for each of the functional requirements
+
+4. Data model and total number of bytes
+    datetime 8 bytes
+    UUID 16 bytes
+    string 256 bytes / 512 bytes
+    int 8 bytes
+
+5. High level architecture
+    API gateway
+        Used for routing external requests into the VPC and request authentication and user information injection
+    Load Balancing, primary and secondary
+        Hash based, round robin, CPU load, load balancers are registered with DNS.
+    Read / Write services - scaling based upon CPU utilization or average latency
+    Zookeeper - dsitributed coordination service for maangring clusters, useful for MySQL databases or other distributed memory solutions
+    Databases:
+        Consistent hashing!
+        NoSQL for high scalability
+            DynamoDB is a good choice here
+            Can use gossip protocol to route traffic to correct shards / nodes / replicas. All shards communicate
+            Leaderless replication and scaling.  Consistency is achieved via n/2+1 quorum reads / writes
+        MySQL for consistency and complex queries
+            Leader - follower replication
+            need something like zookeepr or light service proxy to track
+    Caching - like redis or memcache
+        write-through, write-back, write-around, cache-aside (used for reads and cache misses).
+    Services:
+        SQS with DLQ for redrive
+        Batching and asynchronous processing
+    Notification service / fanout
+        This can be used alongside a queue to process events and fanout to a number of different services and notifiying
+        users including registering webhoks and sending information back to the user directly
+
+6. Identify bottlenecks and how we're achieving non-functional requirements
+    Can our system operate in a partition tolerant manner?
+    Are there any single points of failure in our system?
+    Can our system at every level scale to meet user demand?
+
+
+Monitoring
+    Metrics: CPU usage, error responses, average time spent in queue+
