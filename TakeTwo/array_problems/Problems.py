@@ -206,8 +206,7 @@ Output: [[3,7]]
 """
 
 
-def intervalIntersection(firstList: List[List[int]], secondList: List[List[int]]) -> List[
-    List[int]]:
+def intervalIntersection(first_list: List[List[int]], second_list: List[List[int]]) -> List[List[int]]:
     pass
 
 
@@ -308,7 +307,7 @@ Output: 1
 """
 
 
-def calPoints(ops: List[str]) -> int:
+def cal_points(ops: List[str]) -> int:
     pass
 
 
@@ -335,7 +334,7 @@ Output: 1
 """
 
 
-def singleNumber(self, nums: List[int]) -> int:
+def single_number(nums: List[int]) -> int:
     pass
 
 
@@ -359,7 +358,7 @@ Output: [22,28,8,6,17,44]
 """
 
 
-def relativeSortArray(arr1: List[int], arr2: List[int]) -> List[int]:
+def relative_sort_array(arr1: List[int], arr2: List[int]) -> List[int]:
     pass
 
 
@@ -416,7 +415,7 @@ Explanation: The falling path with a minimum sum is shown.
 """
 
 
-def minFallingPathSum(matrix: List[List[int]]) -> int:
+def min_falling_path_sum(matrix: List[List[int]]) -> int:
     pass
 
 
@@ -450,7 +449,7 @@ Explanation: The answer [[-2,4],[3,3]] would also be accepted.
 """
 
 
-def kClosest(points: List[List[int]], k: int) -> List[List[int]]:
+def k_closest(points: List[List[int]], k: int) -> List[List[int]]:
     pass
 
 

@@ -485,10 +485,8 @@ You can assume that you can always reach the last index.
 
 Example 1:
 
-Input: nums = [2,3,1,1,4]
-Output: 2
-Explanation: The minimum number of jumps to reach the last index is 2. Jump 1 step from index 0 to 1, then 3 steps to the last index.
-Example 2:
+Input: nums = [2,3,1,1,4] Output: 2 Explanation: The minimum number of jumps to reach the last index is 2. Jump 1 
+step from index 0 to 1, then 3 steps to the last index. Example 2: 
 
 Input: nums = [2,3,0,1,4]
 Output: 2
@@ -499,11 +497,12 @@ def jump(nums: List[int]) -> int:
     pass
 
 
-"""
-You are given an integer array nums. You want to maximize the number of points you get by performing the following operation any number of times:
+"""You are given an integer array nums. You want to maximize the number of points you get by performing the following 
+operation any number of times: 
 
-Pick any nums[i] and delete it to earn nums[i] points. Afterwards, you must delete every element equal to nums[i] - 1 and every element equal to nums[i] + 1.
-Return the maximum number of points you can earn by applying the above operation some number of times.
+Pick any nums[i] and delete it to earn nums[i] points. Afterwards, you must delete every element equal to nums[i] - 1 
+and every element equal to nums[i] + 1. Return the maximum number of points you can earn by applying the above 
+operation some number of times. 
 
  
 
@@ -534,9 +533,11 @@ def deleteAndEarn(self, nums: List[int]) -> int:
 """
 Given a circular integer array nums of length n, return the maximum possible sum of a non-empty subarray of nums.
 
-A circular array means the end of the array connects to the beginning of the array. Formally, the next element of nums[i] is nums[(i + 1) % n] and the previous element of nums[i] is nums[(i - 1 + n) % n].
+A circular array means the end of the array connects to the beginning of the array. Formally, the next element of 
+nums[i] is nums[(i + 1) % n] and the previous element of nums[i] is nums[(i - 1 + n) % n]. 
 
-A subarray may only include each element of the fixed buffer nums at most once. Formally, for a subarray nums[i], nums[i + 1], ..., nums[j], there does not exist i <= k1, k2 <= j with k1 % n == k2 % n.
+A subarray may only include each element of the fixed buffer nums at most once. Formally, for a subarray nums[i], 
+nums[i + 1], ..., nums[j], there does not exist i <= k1, k2 <= j with k1 % n == k2 % n. 
 
  
 
@@ -562,8 +563,8 @@ def maxSubarraySumCircular(self, nums: List[int]) -> int:
     pass
 
 
-"""
-Given an integer array nums, find a contiguous non-empty subarray within the array that has the largest product, and return the product.
+"""Given an integer array nums, find a contiguous non-empty subarray within the array that has the largest product, 
+and return the product. 
 
 The test cases are generated so that the answer will fit in a 32-bit integer.
 
@@ -588,8 +589,8 @@ def maxProduct(nums: List[int]) -> int:
     pass
 
 
-"""
-Given an array of integers nums, find the maximum length of a subarray where the product of all its elements is positive.
+"""Given an array of integers nums, find the maximum length of a subarray where the product of all its elements is 
+positive. 
 
 A subarray of an array is a consecutive sequence of zero or more values taken out of that array.
 
@@ -620,10 +621,11 @@ def getMaxLen(nums: List[int]) -> int:
     pass
 
 
-"""
-You are given an integer array values where values[i] represents the value of the ith sightseeing spot. Two sightseeing spots i and j have a distance j - i between them.
+"""You are given an integer array values where values[i] represents the value of the ith sightseeing spot. Two 
+sightseeing spots i and j have a distance j - i between them. 
 
-The score of a pair (i < j) of sightseeing spots is values[i] + values[j] + i - j: the sum of the values of the sightseeing spots, minus the distance between them.
+The score of a pair (i < j) of sightseeing spots is values[i] + values[j] + i - j: the sum of the values of the 
+sightseeing spots, minus the distance between them. 
 
 Return the maximum score of a pair of sightseeing spots.
 
@@ -683,7 +685,8 @@ def maxProfitTwo(self, prices: List[int]) -> int:
 """
 You are given an array prices where prices[i] is the price of a given stock on the ith day.
 
-Find the maximum profit you can achieve. You may complete as many transactions as you like (i.e., buy one and sell one share of the stock multiple times) with the following restrictions:
+Find the maximum profit you can achieve. You may complete as many transactions as you like (i.e., buy one and sell 
+one share of the stock multiple times) with the following restrictions: 
 
 After you sell your stock, you cannot buy stock on the next day (i.e., cooldown one day).
 Note: You may not engage in multiple transactions simultaneously (i.e., you must sell the stock before you buy again).
@@ -740,10 +743,11 @@ def updateMatrix(self, mat: List[List[int]]) -> List[List[int]]:
     pass
 
 
-"""
-You are given an array prices where prices[i] is the price of a given stock on the ith day, and an integer fee representing a transaction fee.
+"""You are given an array prices where prices[i] is the price of a given stock on the ith day, and an integer fee 
+representing a transaction fee. 
 
-Find the maximum profit you can achieve. You may complete as many transactions as you like, but you need to pay the transaction fee for each transaction.
+Find the maximum profit you can achieve. You may complete as many transactions as you like, but you need to pay the 
+transaction fee for each transaction. 
 
 Note: You may not engage in multiple transactions simultaneously (i.e., you must sell the stock before you buy again).
 
@@ -770,8 +774,8 @@ def maxProfitFour(self, prices: List[int], fee: int) -> int:
     pass
 
 
-"""
-Given a string s and a dictionary of strings wordDict, return true if s can be segmented into a space-separated sequence of one or more dictionary words.
+"""Given a string s and a dictionary of strings wordDict, return true if s can be segmented into a space-separated 
+sequence of one or more dictionary words. 
 
 Note that the same word in the dictionary may be reused multiple times in the segmentation.
 
@@ -800,10 +804,13 @@ def wordBreak(s: str, wordDict: List[str]) -> bool:
     pass
 
 
-"""
-You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed. All houses at this place are arranged in a circle. That means the first house is the neighbor of the last one. Meanwhile, adjacent houses have a security system connected, and it will automatically contact the police if two adjacent houses were broken into on the same night.
+"""You are a professional robber planning to rob houses along a street. Each house has a certain amount of money 
+stashed. All houses at this place are arranged in a circle. That means the first house is the neighbor of the last 
+one. Meanwhile, adjacent houses have a security system connected, and it will automatically contact the police if two 
+adjacent houses were broken into on the same night. 
 
-Given an integer array nums representing the amount of money of each house, return the maximum amount of money you can rob tonight without alerting the police.
+Given an integer array nums representing the amount of money of each house, return the maximum amount of money you 
+can rob tonight without alerting the police. 
 
 
 
@@ -829,10 +836,11 @@ def rob2(self, nums: List[int]) -> int:
     pass
 
 
-"""
-You are given an integer array coins representing coins of different denominations and an integer amount representing a total amount of money.
+"""You are given an integer array coins representing coins of different denominations and an integer amount 
+representing a total amount of money. 
 
-Return the number of combinations that make up that amount. If that amount of money cannot be made up by any combination of the coins, return 0.
+Return the number of combinations that make up that amount. If that amount of money cannot be made up by any 
+combination of the coins, return 0. 
 
 You may assume that you have an infinite number of each kind of coin.
 
@@ -865,8 +873,8 @@ def change(amount: int, coins: List[int]) -> int:
     pass
 
 
-"""
-You have planned some train traveling one year in advance. The days of the year in which you will travel are given as an integer array days. Each day is an integer from 1 to 365.
+"""You have planned some train traveling one year in advance. The days of the year in which you will travel are given 
+as an integer array days. Each day is an integer from 1 to 365. 
 
 Train tickets are sold in three different ways:
 
@@ -907,7 +915,8 @@ def mincostTickets(self, days: List[int], costs: List[int]) -> int:
 """
 You are given an array of integers stones where stones[i] is the weight of the ith stone.
 
-We are playing a game with the stones. On each turn, we choose any two stones and smash them together. Suppose the stones have weights x and y with x <= y. The result of this smash is:
+We are playing a game with the stones. On each turn, we choose any two stones and smash them together. Suppose the 
+stones have weights x and y with x <= y. The result of this smash is: 
 
 If x == y, both stones are destroyed, and
 If x != y, the stone of weight x is destroyed, and the stone of weight y has new weight y - x.

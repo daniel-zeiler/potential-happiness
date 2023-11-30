@@ -1,10 +1,6 @@
 import binarytree as binarytree
 import unittest
-import TakeOne.BlindSeventyFive.Solutions as bsf
-import TakeOne.BlindSeventyFive.SolutionsTwo as bsf2
-import TakeOne.BlindSeventyFive.SolutionsThree as bsf3
-import TakeOne.BlindSeventyFive.Solutions_Five as bsf5
-
+import TakeTwo.BlindSeventyFive.Solutions as bsf
 
 
 class ListNode:
@@ -62,53 +58,53 @@ class SolutionsTest(unittest.TestCase, CustomAssertion):
         nums = [2, 7, 11, 15]
         target = 9
         output = [0, 1]
-        self.assertListEqual(output, bsf5.twoSum(nums, target))
+        self.assertListEqual(output, bsf.two_sum(nums, target))
         nums = [3, 2, 4]
         target = 6
         output = [1, 2]
-        self.assertListEqual(output, bsf5.twoSum(nums, target))
+        self.assertListEqual(output, bsf.two_sum(nums, target))
         nums = [3, 3]
         target = 6
         output = [0, 1]
-        self.assertListEqual(output, bsf5.twoSum(nums, target))
+        self.assertListEqual(output, bsf.two_sum(nums, target))
 
     def test_max_profit(self):
         prices = [7, 1, 5, 3, 6, 4]
         output = 5
-        self.assertEqual(output, bsf5.maxProfit(prices))
+        self.assertEqual(output, bsf.max_profit(prices))
         prices = [7, 6, 4, 3, 1]
         output = 0
-        self.assertEqual(output, bsf5.maxProfit(prices))
+        self.assertEqual(output, bsf.max_profit(prices))
 
     def test_contains_duplicates(self):
         nums = [1, 2, 3, 1]
         output = True
-        self.assertEqual(output, bsf5.containsDuplicate(nums))
+        self.assertEqual(output, bsf.contains_duplicates(nums))
         nums = [1, 2, 3, 4]
         output = False
-        self.assertEqual(output, bsf5.containsDuplicate(nums))
+        self.assertEqual(output, bsf.contains_duplicates(nums))
         nums = [1, 1, 1, 3, 3, 4, 3, 2, 4, 2]
         output = True
-        self.assertEqual(output, bsf5.containsDuplicate(nums))
+        self.assertEqual(output, bsf.contains_duplicates(nums))
 
     def test_product_except_self(self):
         nums = [1, 2, 3, 4]
         output = [24, 12, 8, 6]
-        self.assertListEqual(output, bsf5.productExceptSelf(nums))
+        self.assertListEqual(output, bsf.product_except_self(nums))
         nums = [-1, 1, 0, -3, 3]
         output = [0, 0, 9, 0, 0]
-        self.assertListEqual(output, bsf5.productExceptSelf(nums))
+        self.assertListEqual(output, bsf.product_except_self(nums))
 
     def test_max_sub_array(self):
         nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
         output = 6
-        self.assertEqual(output, bsf5.maxSubArray(nums))
+        self.assertEqual(output, bsf.max_sub_array(nums))
         nums = [5, 4, -1, 7, 8]
         output = 23
-        self.assertEqual(output, bsf5.maxSubArray(nums))
+        self.assertEqual(output, bsf.max_sub_array(nums))
         nums = [1]
         output = 1
-        self.assertEqual(output, bsf5.maxSubArray(nums))
+        self.assertEqual(output, bsf.max_sub_array(nums))
 
     def test_max_product_sub_array(self):
         nums = [2, 3, -2, 4]

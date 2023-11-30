@@ -36,14 +36,15 @@ from binarytree import Node
 from typing import List, Optional
 
 
-def twoSum(nums, target):
+def two_sum(nums, target) -> List[int]:
     pass
 
 
 """
 You are given an array prices where prices[i] is the price of a given stock on the ith day.
 
-You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
+You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future 
+to sell that stock. 
 
 Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
 
@@ -63,11 +64,12 @@ Explanation: In this case, no transactions are done and the max profit = 0.
 """
 
 
-def maxProfit(prices: List[int]) -> int:
+def max_profit(prices: List[int]) -> int:
     pass
 
 
-"""Given an integer array nums, return true if any value appears at least twice in the array, and return false if 
+"""
+Given an integer array nums, return true if any value appears at least twice in the array, and return false if 
 every element is distinct. 
 
  
@@ -87,7 +89,7 @@ Output: true
 """
 
 
-def containsDuplicate(nums: List[int]) -> bool:
+def contains_duplicates(nums: List[int]) -> bool:
     pass
 
 
@@ -111,7 +113,8 @@ Output: [0,0,9,0,0]
 """
 
 
-def productExceptSelf(nums: List[int]) -> List[int]:
+# TODO
+def product_except_self(nums: List[int]) -> List[int]:
     pass
 
 
@@ -139,7 +142,7 @@ Output: 23
 """
 
 
-def maxSubArray(nums: List[int]) -> int:
+def max_sub_array(nums: List[int]) -> int:
     pass
 
 
@@ -740,7 +743,8 @@ def coin_change(coins: List[int], amount: int) -> int:
 """
 Given an integer array nums, return the length of the longest strictly increasing subsequence.
 
-A subsequence is a sequence that can be derived from an array by deleting some or no elements without changing the order of the remaining elements. For example, [3,6,2,7] is a subsequence of the array [0,3,1,6,2,2,7].
+A subsequence is a sequence that can be derived from an array by deleting some or no elements without changing the 
+order of the remaining elements. For example, [3,6,2,7] is a subsequence of the array [0,3,1,6,2,2,7]. 
 
  
 
@@ -764,10 +768,11 @@ def lengthOfLIS(self, nums: List[int]) -> int:
     pass
 
 
-"""
-Given two strings text1 and text2, return the length of their longest common subsequence. If there is no common subsequence, return 0.
+"""Given two strings text1 and text2, return the length of their longest common subsequence. If there is no common 
+subsequence, return 0. 
 
-A subsequence of a string is a new string generated from the original string with some characters (can be none) deleted without changing the relative order of the remaining characters.
+A subsequence of a string is a new string generated from the original string with some characters (can be none) 
+deleted without changing the relative order of the remaining characters. 
 
 For example, "ace" is a subsequence of "abcde".
 A common subsequence of two strings is a subsequence that is common to both strings.
@@ -796,8 +801,8 @@ def longestCommonSubsequence(self, text1: str, text2: str) -> int:
     pass
 
 
-"""
-Given a string s and a dictionary of strings wordDict, return true if s can be segmented into a space-separated sequence of one or more dictionary words.
+"""Given a string s and a dictionary of strings wordDict, return true if s can be segmented into a space-separated 
+sequence of one or more dictionary words. 
 
 Note that the same word in the dictionary may be reused multiple times in the segmentation.
 
@@ -860,10 +865,12 @@ def combinationSum(candidates: List[int], target: int) -> List[List[int]]:
     pass
 
 
-"""
-You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security systems connected and it will automatically contact the police if two adjacent houses were broken into on the same night.
+"""You are a professional robber planning to rob houses along a street. Each house has a certain amount of money 
+stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security systems 
+connected and it will automatically contact the police if two adjacent houses were broken into on the same night. 
 
-Given an integer array nums representing the amount of money of each house, return the maximum amount of money you can rob tonight without alerting the police.
+Given an integer array nums representing the amount of money of each house, return the maximum amount of money you 
+can rob tonight without alerting the police. 
 
  
 
@@ -886,10 +893,13 @@ def rob(self, nums: List[int]) -> int:
     pass
 
 
-"""
-You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed. All houses at this place are arranged in a circle. That means the first house is the neighbor of the last one. Meanwhile, adjacent houses have a security system connected, and it will automatically contact the police if two adjacent houses were broken into on the same night.
+"""You are a professional robber planning to rob houses along a street. Each house has a certain amount of money 
+stashed. All houses at this place are arranged in a circle. That means the first house is the neighbor of the last 
+one. Meanwhile, adjacent houses have a security system connected, and it will automatically contact the police if two 
+adjacent houses were broken into on the same night. 
 
-Given an integer array nums representing the amount of money of each house, return the maximum amount of money you can rob tonight without alerting the police.
+Given an integer array nums representing the amount of money of each house, return the maximum amount of money you 
+can rob tonight without alerting the police. 
 
  
 
@@ -918,11 +928,9 @@ def rob2(self, nums: List[int]) -> int:
 """
 A message containing letters from A-Z can be encoded into numbers using the following mapping:
 
-'A' -> "1"
-'B' -> "2"
-...
-'Z' -> "26"
-To decode an encoded message, all the digits must be grouped then mapped back into letters using the reverse of the mapping above (there may be multiple ways). For example, "11106" can be mapped into:
+'A' -> "1" 'B' -> "2" ... 'Z' -> "26" To decode an encoded message, all the digits must be grouped then mapped back 
+into letters using the reverse of the mapping above (there may be multiple ways). For example, "11106" can be mapped 
+into: 
 
 "AAJF" with the grouping (1 1 10 6)
 "KJF" with the grouping (11 10 6)
@@ -956,10 +964,12 @@ def numDecodings(self, s: str) -> int:
     pass
 
 
-"""
-There is a robot on an m x n grid. The robot is initially located at the top-left corner (i.e., grid[0][0]). The robot tries to move to the bottom-right corner (i.e., grid[m - 1][n - 1]). The robot can only move either down or right at any point in time.
+"""There is a robot on an m x n grid. The robot is initially located at the top-left corner (i.e., grid[0][0]). The 
+robot tries to move to the bottom-right corner (i.e., grid[m - 1][n - 1]). The robot can only move either down or 
+right at any point in time. 
 
-Given the two integers m and n, return the number of possible unique paths that the robot can take to reach the bottom-right corner.
+Given the two integers m and n, return the number of possible unique paths that the robot can take to reach the 
+bottom-right corner. 
 
 The test cases are generated so that the answer will be less than or equal to 2 * 109.
 
@@ -985,8 +995,8 @@ def uniquePaths(self, m: int, n: int) -> int:
     pass
 
 
-"""
-You are given an integer array nums. You are initially positioned at the array's first index, and each element in the array represents your maximum jump length at that position.
+"""You are given an integer array nums. You are initially positioned at the array's first index, and each element in 
+the array represents your maximum jump length at that position. 
 
 Return true if you can reach the last index, or false otherwise.
 
@@ -1319,15 +1329,15 @@ def lowestCommonAncestor(self, root: 'Node', p: 'Node', q: 'Node') -> 'Node':
     pass
 
 
-"""
-A trie (pronounced as "try") or prefix tree is a tree data structure used to efficiently store and retrieve keys in a dataset of strings. There are various applications of this data structure, such as autocomplete and spellchecker.
+"""A trie (pronounced as "try") or prefix tree is a tree data structure used to efficiently store and retrieve keys 
+in a dataset of strings. There are various applications of this data structure, such as autocomplete and spellchecker. 
 
 Implement the Trie class:
 
-Trie() Initializes the trie object.
-void insert(String word) Inserts the string word into the trie.
-boolean search(String word) Returns true if the string word is in the trie (i.e., was inserted before), and false otherwise.
-boolean startsWith(String prefix) Returns true if there is a previously inserted string word that has the prefix prefix, and false otherwise.
+Trie() Initializes the trie object. void insert(String word) Inserts the string word into the trie. boolean search(
+String word) Returns true if the string word is in the trie (i.e., was inserted before), and false otherwise. boolean 
+startsWith(String prefix) Returns true if there is a previously inserted string word that has the prefix prefix, 
+and false otherwise. 
  
 
 Example 1:
@@ -1369,9 +1379,9 @@ Design a data structure that supports adding new words and finding if a string m
 
 Implement the WordDictionary class:
 
-WordDictionary() Initializes the object.
-void addWord(word) Adds word to the data structure, it can be matched later.
-bool search(word) Returns true if there is any string in the data structure that matches word or false otherwise. word may contain dots '.' where dots can be matched with any letter.
+WordDictionary() Initializes the object. void addWord(word) Adds word to the data structure, it can be matched later. 
+bool search(word) Returns true if there is any string in the data structure that matches word or false otherwise. 
+word may contain dots '.' where dots can be matched with any letter. 
  
 
 Example:
@@ -1631,11 +1641,14 @@ class Node {
 
 Test case format:
 
-For simplicity, each node's value is the same as the node's index (1-indexed). For example, the first node with val == 1, the second node with val == 2, and so on. The graph is represented in the test case using an adjacency list.
+For simplicity, each node's value is the same as the node's index (1-indexed). For example, the first node with val 
+== 1, the second node with val == 2, and so on. The graph is represented in the test case using an adjacency list. 
 
-An adjacency list is a collection of unordered lists used to represent a finite graph. Each list describes the set of neighbors of a node in the graph.
+An adjacency list is a collection of unordered lists used to represent a finite graph. Each list describes the set of 
+neighbors of a node in the graph. 
 
-The given node will always be the first node with val = 1. You must return the copy of the given node as a reference to the cloned graph.
+The given node will always be the first node with val = 1. You must return the copy of the given node as a reference 
+to the cloned graph. 
 
  
 
@@ -1652,10 +1665,8 @@ Explanation: There are 4 nodes in the graph.
 Example 2:
 
 
-Input: adjList = [[]]
-Output: [[]]
-Explanation: Note that the input contains one empty list. The graph consists of only one node with val = 1 and it does not have any neighbors.
-Example 3:
+Input: adjList = [[]] Output: [[]] Explanation: Note that the input contains one empty list. The graph consists of 
+only one node with val = 1 and it does not have any neighbors. Example 3: 
 
 Input: adjList = []
 Output: []
@@ -1735,7 +1746,8 @@ def pacificAtlantic(heights: List[List[int]]) -> List[List[int]]:
 """
 Given an m x n 2D binary grid grid which represents a map of '1's (land) and '0's (water), return the number of islands.
 
-An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.
+An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may 
+assume all four edges of the grid are all surrounded by water. 
 
  
 

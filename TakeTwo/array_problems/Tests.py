@@ -115,10 +115,10 @@ class SolutionsTest(unittest.TestCase):
     def test_cal_points(self):
         ops = ["5", "2", "C", "D", "+"]
         output = 30
-        self.assertEqual(output, array_problems.calPoints(ops))
+        self.assertEqual(output, array_problems.cal_points(ops))
         ops = ["5", "-2", "4", "C", "D", "9", "+", "+"]
         output = 27
-        self.assertEqual(output, array_problems.calPoints(ops))
+        self.assertEqual(output, array_problems.cal_points(ops))
 
     def test_island_perimeter(self):
         grid = [
@@ -157,7 +157,7 @@ class SolutionsTest(unittest.TestCase):
         arr1 = [2, 3, 1, 3, 2, 4, 6, 7, 9, 2, 19]
         arr2 = [2, 1, 4, 3, 9, 6]
         output = [2, 2, 2, 1, 4, 3, 3, 9, 6, 7, 19]
-        self.assertListEqual(output, array_problems.relativeSortArray(arr1, arr2))
+        self.assertListEqual(output, array_problems.relative_sort_array(arr1, arr2))
 
     def test_intersection(self):
         nums1 = [1, 2, 2, 1]
@@ -176,13 +176,13 @@ class SolutionsTest(unittest.TestCase):
             [7, 8, 9]
         ]
         output = 13
-        self.assertEqual(output, array_problems.minFallingPathSum(matrix))
+        self.assertEqual(output, array_problems.min_falling_path_sum(matrix))
         matrix = [
             [-19, 57],
             [-40, -5]
         ]
         output = -59
-        self.assertEqual(output, array_problems.minFallingPathSum(matrix))
+        self.assertEqual(output, array_problems.min_falling_path_sum(matrix))
 
     def test_kClosest(self):
         points = [[1, 3], [-2, 2]]
