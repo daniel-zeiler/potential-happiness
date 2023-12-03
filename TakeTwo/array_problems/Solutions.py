@@ -1,3 +1,5 @@
+import collections
+import heapq
 from typing import List
 
 
@@ -134,9 +136,46 @@ def min_falling_path_sum(matrix: List[List[int]]) -> int:
             if x == 0:
                 result[x][y] = matrix[x][y]
             elif y == 0:
-                result[x][y] = matrix[x][y] + min(result[x-1][y], result[x-1][y + 1])
+                result[x][y] = matrix[x][y] + min(result[x - 1][y], result[x - 1][y + 1])
             elif y == len(matrix) - 1:
-                result[x][y] = matrix[x][y] + min(result[x-1][y], result[x - 1][y - 1])
+                result[x][y] = matrix[x][y] + min(result[x - 1][y], result[x - 1][y - 1])
             else:
-                result[x][y] = matrix[x][y] + min(result[x - 1][y - 1], result[x-1][y], result[x-1][y + 1])
+                result[x][y] = matrix[x][y] + min(result[x - 1][y - 1], result[x - 1][y], result[x - 1][y + 1])
     return min(result[-1])
+
+
+def last_stone_weight(stones: List[int]) -> int:
+    stones = [-1 * n for n in stones]
+    heapq.heapify(stones)
+    while len(stones) > 1:
+        stone_one = heapq.heappop(stones)
+        stone_two = heapq.heappop(stones)
+        if stone_one == stone_two:
+            pass
+        else:
+            heapq.heappush(stones, -stone_one + stone_two)
+    return heapq.heappop(stones)
+
+
+def can_reach(arr: List[int], start: int) -> bool:
+    visited = {start}
+    queue = collections.deque([start])
+
+    while queue:
+        position = queue.popleft()
+        value = arr[position]
+        if value == 0:
+            return True
+
+        position_left = position - value
+        position_right = position + value
+
+        if position_left >= 0 and position_left not in visited:
+            visited.add(position_left)
+            queue.append(position_left)
+
+        if position_right < len(arr) and position_right not in visited:
+            queue.append(position_right)
+            visited.add(position_right)
+
+    return False

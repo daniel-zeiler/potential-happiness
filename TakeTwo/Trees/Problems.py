@@ -30,7 +30,7 @@ Explanation: Root is considered as good.
 """
 
 
-def count_good_nodes_in_binary_tree(root):
+def count_good_nodes_in_binary_tree(root: Node) -> int:
     pass
 
 
@@ -275,7 +275,7 @@ Output: 0
 """
 
 
-def sumEvenGrandparent(root: Node) -> int:
+def sum_even_grandparents(root: Node) -> int:
     pass
 
 

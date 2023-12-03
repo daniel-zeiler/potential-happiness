@@ -255,17 +255,17 @@ class SolutionsTest(unittest.TestCase):
     def test_last_stones(self):
         input = [2, 7, 4, 1, 8, 1]
         output = 1
-        self.assertEqual(output, array_problems.lastStoneWeight(input))
+        self.assertEqual(output, array_problems.last_stone_weight(input))
 
     def test_can_reach(self):
         arr = [4, 2, 3, 0, 3, 1, 2]
         start = 0
         output = True
-        self.assertEqual(output, array_problems.canReach(arr, start))
+        self.assertEqual(output, array_problems.can_reach(arr, start))
         arr = [3, 0, 2, 1, 2]
         start = 2
         output = False
-        self.assertEqual(output, array_problems.canReach(arr, start))
+        self.assertEqual(output, array_problems.can_reach(arr, start))
 
     def test_longest_ones(self):
         nums = [0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1]
