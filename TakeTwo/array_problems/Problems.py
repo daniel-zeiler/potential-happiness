@@ -568,7 +568,7 @@ Output: 1
 """
 
 
-def lastStoneWeight(stones: List[int]) -> int:
+def last_stone_weight(stones: List[int]) -> int:
     pass
 
 
@@ -604,7 +604,7 @@ Explanation: There is no way to reach at index 1 with value 0.
 """
 
 
-def canReach(arr: List[int], start: int) -> bool:
+def can_reach(arr: List[int], start: int) -> bool:
     pass
 
 
