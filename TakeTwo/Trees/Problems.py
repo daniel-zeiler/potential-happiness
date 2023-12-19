@@ -1,3 +1,5 @@
+# 76 problems
+
 from typing import Optional, List
 from binarytree import Node
 

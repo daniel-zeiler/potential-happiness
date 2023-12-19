@@ -216,11 +216,11 @@ class SolutionsTest(unittest.TestCase):
         pushed = [1, 2, 3, 4, 5]
         popped = [4, 5, 3, 2, 1]
         output = True
-        self.assertEqual(output, array_problems.validateStackSequences(pushed, popped))
+        self.assertEqual(output, array_problems.validate_stack_sequence(pushed, popped))
         pushed = [1, 2, 3, 4, 5]
         popped = [4, 3, 5, 1, 2]
         output = False
-        self.assertEqual(output, array_problems.validateStackSequences(pushed, popped))
+        self.assertEqual(output, array_problems.validate_stack_sequence(pushed, popped))
 
     def test_update_board(self):
         board = [

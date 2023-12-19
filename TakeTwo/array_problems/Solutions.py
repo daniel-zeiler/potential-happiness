@@ -134,9 +134,29 @@ def min_falling_path_sum(matrix: List[List[int]]) -> int:
             if x == 0:
                 result[x][y] = matrix[x][y]
             elif y == 0:
-                result[x][y] = matrix[x][y] + min(result[x-1][y], result[x-1][y + 1])
+                result[x][y] = matrix[x][y] + min(result[x - 1][y], result[x - 1][y + 1])
             elif y == len(matrix) - 1:
-                result[x][y] = matrix[x][y] + min(result[x-1][y], result[x - 1][y - 1])
+                result[x][y] = matrix[x][y] + min(result[x - 1][y], result[x - 1][y - 1])
             else:
-                result[x][y] = matrix[x][y] + min(result[x - 1][y - 1], result[x-1][y], result[x-1][y + 1])
+                result[x][y] = matrix[x][y] + min(result[x - 1][y - 1], result[x - 1][y], result[x - 1][y + 1])
     return min(result[-1])
+
+
+def validate_stack_sequence(pushed: List[int], popped: List[int]) -> bool:
+    stack = []
+    while pushed and popped:
+        if not stack or popped[0] != stack[-1]:
+            stack.append(pushed.pop(0))
+        else:
+            popped.pop(0)
+            stack.pop()
+    while popped:
+        if stack[-1] != popped[0]:
+            return False
+        stack.pop()
+        popped.pop(0)
+    return True
+
+
+def top_k_frequent(nums: List[int], k: int) -> List[int]:
+    pass

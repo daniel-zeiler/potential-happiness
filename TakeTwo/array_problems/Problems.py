@@ -1,3 +1,5 @@
+# 63 problems
+
 from typing import List
 
 """
@@ -477,7 +479,7 @@ Explanation: 1 cannot be popped before 2.
 """
 
 
-def validateStackSequences(pushed: List[int], popped: List[int]) -> bool:
+def validate_stack_sequence(pushed: List[int], popped: List[int]) -> bool:
     pass
 
 
@@ -520,8 +522,6 @@ def rotate(matrix: List[List[int]]) -> None:
 Given an integer array nums and an integer k, return the k most frequent elements. You may return 
 the answer in any order.
 
- 
-
 Example 1:
 
 Input: nums = [1,1,1,2,2,3], k = 2
@@ -533,7 +533,7 @@ Output: [1]
 """
 
 
-def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+def top_k_frequent(nums: List[int], k: int) -> List[int]:
     pass
 
 

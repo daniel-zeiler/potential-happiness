@@ -1,3 +1,5 @@
+# 77 problems
+
 """
 Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
 
@@ -169,7 +171,7 @@ Explanation: The result cannot be 2, because [-2,-1] is not a subarray.
 """
 
 
-def maxProduct(nums: List[int]) -> int:
+def max_product(nums: List[int]) -> int:
     pass
 
 

@@ -1,3 +1,5 @@
+# 36 problems
+
 from itertools import product
 from typing import List
 
