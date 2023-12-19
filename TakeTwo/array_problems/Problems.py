@@ -629,7 +629,7 @@ Bolded numbers were flipped from 0 to 1. The longest subarray is underlined.
 """
 
 
-def longestOnes(nums: List[int], k: int) -> int:
+def longest_ones(nums: List[int], k: int) -> int:
     pass
 
 
@@ -665,7 +665,7 @@ The total cost is 6.
 """
 
 
-def minCostClimbingStairs(cost: List[int]) -> int:
+def min_cost_climbing_stairs(cost: List[int]) -> int:
     pass
 
 
@@ -701,7 +701,7 @@ Output: 1
 """
 
 
-def maxSatisfied(customers: List[int], grumpy: List[int], minutes: int) -> int:
+def max_satisfied(customers: List[int], grumpy: List[int], minutes: int) -> int:
     pass
 
 

@@ -271,11 +271,11 @@ class SolutionsTest(unittest.TestCase):
         nums = [0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1]
         k = 3
         output = 10
-        self.assertEqual(output, array_problems.longestOnes(nums, k))
+        self.assertEqual(output, array_problems.longest_ones(nums, k))
         nums = [1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0]
         k = 2
         output = 6
-        self.assertEqual(output, array_problems.longestOnes(nums, k))
+        self.assertEqual(output, array_problems.longest_ones(nums, k))
 
     def test_num_enclaves(self):
         grid = [
@@ -349,10 +349,10 @@ class SolutionsTest(unittest.TestCase):
     def test_min_cost_climbing_stairs(self):
         cost = [10, 15, 20]
         output = 15
-        self.assertEqual(output, array_problems.minCostClimbingStairs(cost))
+        self.assertEqual(output, array_problems.min_cost_climbing_stairs(cost))
         cost = [1, 100, 1, 1, 1, 100, 1, 1, 100, 1]
         output = 6
-        self.assertEqual(output, array_problems.minCostClimbingStairs(cost))
+        self.assertEqual(output, array_problems.min_cost_climbing_stairs(cost))
 
     def test_max_satisfied(self):
         customers = [1, 0, 1, 2, 1, 1, 7, 5]

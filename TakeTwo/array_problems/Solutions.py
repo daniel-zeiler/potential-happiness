@@ -163,6 +163,7 @@ def validate_stack_sequence(pushed: List[int], popped: List[int]) -> bool:
 def top_k_frequent(nums: List[int], k: int) -> List[int]:
     pass
 
+
 def last_stone_weight(stones: List[int]) -> int:
     stones = [-1 * n for n in stones]
     heapq.heapify(stones)
@@ -199,3 +200,46 @@ def can_reach(arr: List[int], start: int) -> bool:
 
     return False
 
+
+"""
+This function has two points.  The first pointer will scan the length of nums.  The second pointer will keep track 
+of the last valid position As we increment the first pointer, we will track the number of flips already present in 
+section between the two.  In the event we reach a position that requires a flip and we've reached our limit, 
+we will increment pointer two and try to undo the flips until we can proceed with pointer one. O(n) time complexity.  
+O(1) space complexity. 
+"""
+
+
+def longest_ones(nums: List[int], k: int) -> int:
+    number_of_flips = 0
+    longest_ones = 0
+    pointer_a = 0
+    pointer_b = 0
+    while pointer_a < len(nums):
+        if nums[pointer_a] == 0:
+            while number_of_flips == k:
+                if nums[pointer_b] == 0:
+                    number_of_flips -= 1
+                pointer_b += 1
+            number_of_flips += 1
+        longest_ones = max(longest_ones, pointer_a - pointer_b + 1)
+        pointer_a += 1
+    return longest_ones
+
+
+"""
+I will create a temporary result list and keep track of the minimum cost to climb to each location.
+The formula for each position will be temp[x] = cost[x] + min(cost[x-1],cost[x-2])
+The result will be min[temp[-1],temp[-2])
+This is an O(n) time and space complexity algorithm.
+"""
+
+
+def min_cost_climbing_stairs(costs: List[int]) -> int:
+    temp = [0 for _ in range(len(costs))]
+    for i, cost in enumerate(costs):
+        if i == 0 or i == 1:
+            temp[i] = cost
+        else:
+            temp[i] = cost + min(temp[i - 1], temp[i - 2])
+    return min(temp[-1], temp[-2])
