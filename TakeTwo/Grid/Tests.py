@@ -1,4 +1,4 @@
-import TakeOne.Grid.Solutions_Two as grid_two
+import TakeTwo.Grid.Solutions as grid
 
 import unittest
 
@@ -11,25 +11,25 @@ class SolutionsTest(unittest.TestCase):
                  [0, 0, 1, 1, 1, 1, 0],
                  [0, 0, 0, 0, 0, 0, 0]]
         output = 9
-        self.assertEqual(output, grid_two.largest_parameter(input))
+        self.assertEqual(output, grid.largest_parameter(input))
         input = [[1, 0, 1, 1, 1],
                  [1, 0, 1, 1, 1],
                  [0, 1, 0, 1, 1]]
         output = 7
-        self.assertEqual(output, grid_two.largest_parameter(input))
+        self.assertEqual(output, grid.largest_parameter(input))
 
     def test_maxIncreaseKeepingSkyline(self):
-        grid = [
+        input = [
             [3, 0, 8, 4],
             [2, 4, 5, 7],
             [9, 2, 6, 3],
             [0, 3, 1, 0]
         ]
         output = 35
-        self.assertEqual(output, grid_two.maxIncreaseKeepingSkyline(grid))
-        grid = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+        self.assertEqual(output, grid.maxIncreaseKeepingSkyline(input))
+        input = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
         output = 0
-        self.assertEqual(output, grid_two.maxIncreaseKeepingSkyline(grid))
+        self.assertEqual(output, grid.maxIncreaseKeepingSkyline(input))
 
     def test_countSquares(self):
         matrix = [
@@ -38,22 +38,22 @@ class SolutionsTest(unittest.TestCase):
             [0, 1, 1, 1]
         ]
         output = 15
-        self.assertEqual(output, grid_two.countSquares(matrix))
+        self.assertEqual(output, grid.countSquares(matrix))
         matrix = [
             [1, 0, 1],
             [1, 1, 0],
             [1, 1, 0]
         ]
         output = 7
-        self.assertEqual(output, grid_two.countSquares(matrix))
+        self.assertEqual(output, grid.countSquares(matrix))
 
     def test_CountBattleships(self):
         matrix = [["X", ".", ".", "X"], [".", ".", ".", "X"], [".", ".", ".", "X"]]
         output = 2
-        self.assertEqual(output, grid_two.countBattleships(matrix))
+        self.assertEqual(output, grid.countBattleships(matrix))
         matrix = [["."]]
         output = 0
-        self.assertEqual(output, grid_two.countBattleships(matrix))
+        self.assertEqual(output, grid.countBattleships(matrix))
 
     def test_islandparameter(self):
         grid = [

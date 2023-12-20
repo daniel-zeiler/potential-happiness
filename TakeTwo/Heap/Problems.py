@@ -1,4 +1,4 @@
-# 5 problems
+# 3 problems
 
 """You're given a list of n integers arr[0..(n-1)]. You must compute a list output[0..(n-1)] such that,
 for each index i (between 0 and n-1, inclusive), output[i] is equal to the product of the three largest elements out
