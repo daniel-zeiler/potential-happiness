@@ -1,4 +1,4 @@
-#28 problems
+# 28 problems
 
 from idlelib.tree import TreeNode
 from typing import List, Optional
@@ -38,7 +38,7 @@ Output: 2
 """
 
 
-def maxArea(height: List[int]) -> int:
+def max_area(height: List[int]) -> int:
     pass
 
 
@@ -63,7 +63,8 @@ Output: [1]
 """
 
 
-def removeNthFromEnd(head: Optional[ListNode], n: int) -> Optional[ListNode]:
+# TODO FIX THIS AFTER DOING LINKED LISTS
+def remove_nth_from_end(head: Optional[ListNode], n: int) -> Optional[ListNode]:
     pass
 
 

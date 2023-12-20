@@ -1,9 +1,9 @@
 import unittest
 
-import TakeOne.Two_Pointers.Solutions as two_pointer
+import TakeTwo.TwoPointer.Solutions as two_pointer
 import TakeOne.Two_Pointers.Solutions_Two as two_pointer_two
 import TakeOne.Two_Pointers.Solutions_three as two_pointer_three
-import TakeOne.Linked_List.Tests as linked_list
+import TakeTwo.LinkedList.Tests as linked_list
 
 
 def print_list(head: linked_list.ListNode):
@@ -18,30 +18,31 @@ class SolutionsTest(unittest.TestCase, linked_list.CustomAssertion):
     def test_max_area(self):
         height = [1, 8, 6, 2, 5, 4, 8, 3, 7]
         output = 49
-        self.assertEqual(output, two_pointer_three.maxArea(height))
+        self.assertEqual(output, two_pointer.max_area(height))
         height = [1, 1]
         output = 1
-        self.assertEqual(output, two_pointer_three.maxArea(height))
+        self.assertEqual(output, two_pointer.max_area(height))
         height = [4, 3, 2, 1, 4]
         output = 16
-        self.assertEqual(output, two_pointer_three.maxArea(height))
+        self.assertEqual(output, two_pointer.max_area(height))
         height = [1, 2, 1]
         output = 2
-        self.assertEqual(output, two_pointer_three.maxArea(height))
+        self.assertEqual(output, two_pointer.max_area(height))
 
     def test_remove_nth_from_end(self):
         input = linked_list.list_builder([1, 2, 3, 4, 5])
         n = 2
         output = linked_list.list_builder([1, 2, 3, 5])
-        self.assert_compare_lists(output, two_pointer_three.removeNthFromEnd(input, n))
+        linked_list.print_list(two_pointer.remove_nth_from_end(input, n))
+        self.assert_compare_lists(output, two_pointer.remove_nth_from_end(input, n))
         input = linked_list.list_builder([1, 2])
         n = 1
         output = linked_list.list_builder([1])
-        self.assert_compare_lists(output, two_pointer_three.removeNthFromEnd(input, n))
+        self.assert_compare_lists(output, two_pointer.remove_nth_from_end(input, n))
         input = linked_list.list_builder([1])
         n = 1
         output = linked_list.list_builder([])
-        self.assert_compare_lists(output, two_pointer_three.removeNthFromEnd(input, n))
+        self.assert_compare_lists(output, two_pointer.remove_nth_from_end(input, n))
 
     def test_remove_duplicates(self):
         nums = [1, 1, 2]
