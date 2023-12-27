@@ -99,4 +99,20 @@ def sum_even_grandparents(root: Node) -> int:
 
 
 def lca_deepest_leaves(root: Optional[Node]) -> Optional[Node]:
-    pass
+    def traverse(node, current_level) -> [Node, int]:
+        if not node:
+            return None, float('-inf')
+        if not node.right and not node.left:
+            return node, current_level
+
+        left_node, left_level = traverse(node.left, current_level + 1)
+        right_node, right_level = traverse(node.right, current_level + 1)
+
+        if left_level == right_level:
+            return node, right_level
+        if left_level < right_level:
+            return right_node, right_level
+        return left_node, left_level
+
+    lca, level = traverse(root, 0)
+    return lca

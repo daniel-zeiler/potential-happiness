@@ -119,13 +119,13 @@ class SolutionsTest(unittest.TestCase, CustomAssertion):
     def test_lca_deepest_leaves(self):
         input = binarytree.build2([3, 5, 1, 6, 2, 0, 8, None, None, 7, 4])
         output = binarytree.build2([2, 7, 4])
-        self.assert_compare_trees(trees_four.lca_deepest_leaves(input), output)
+        self.assert_compare_trees(trees.lca_deepest_leaves(input), output)
         input = binarytree.build2([1])
         output = binarytree.build2([1])
-        self.assert_compare_trees(trees_four.lca_deepest_leaves(input), output)
+        self.assert_compare_trees(trees.lca_deepest_leaves(input), output)
         input = binarytree.build2([0, 1, 3, None, 2])
         output = binarytree.build2([2])
-        self.assert_compare_trees(trees_four.lca_deepest_leaves(input), output)
+        self.assert_compare_trees(trees.lca_deepest_leaves(input), output)
 
     def test_del_nodes(self):
         root = binarytree.build2([1, 2, 3, 4, 5, 6, 7])
