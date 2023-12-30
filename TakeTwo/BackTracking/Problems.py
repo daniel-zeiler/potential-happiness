@@ -352,7 +352,7 @@ Output: []
 """
 
 
-def combinationSum(candidates: List[int], target: int) -> List[List[int]]:
+def combination_sum(candidates: List[int], target: int) -> List[List[int]]:
     pass
 
 
@@ -429,8 +429,6 @@ def combinationSum3(k: int, n: int) -> List[List[int]]:
 Given two integers n and k, return all possible combinations of k numbers out of the range [1, n].
 
 You may return the answer in any order.
-
- 
 
 Example 1:
 

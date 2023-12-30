@@ -118,3 +118,50 @@ def all_paths_source_to_target(graph: List[List[int]]) -> List[List[int]]:
 
     traverse(0, {0})
     return result
+
+
+def num_tile_possibilities(tiles: str) -> int:
+    def backtracking_function(tiles_remaining, tmp):
+        result = 0
+        if tmp:
+            result = 1
+        for i, tile in enumerate(tiles_remaining):
+            if not i or tile != tiles_remaining[i - 1]:
+                result += backtracking_function(tiles_remaining[:i] + tiles_remaining[i + 1:], tmp + tile)
+        return result
+
+    return backtracking_function(tiles, "")
+
+
+def get_maximum_gold(grid: List[List[int]]) -> int:
+    directions = [[1, 0], [-1, 0], [0, 1], [0, -1]]
+
+    def traverse_mine(x: int, y: int) -> int:
+        tmp, gold, grid[x][y], max_along_path = grid[x][y], grid[x][y], 0, 0
+        for x_direction, y_direction in directions:
+            x_position, y_position = x + x_direction, y + y_direction
+            if 0 <= x_position < len(grid) and 0 <= y_position < len(grid[0]) and grid[x_position][y_position]:
+                max_along_path = max(max_along_path, traverse_mine(x_position, y_position))
+        grid[x][y] = tmp
+        return gold + max_along_path
+
+    max_gold = 0
+    for x, row in enumerate(grid):
+        for y, value in enumerate(row):
+            if value:
+                max_gold = max(max_gold, traverse_mine(x, y))
+    return max_gold
+
+
+def combination_sum(candidates: List[int], target: int) -> List[List[int]]:
+    result = []
+
+    def backtracking_function(candidates_remaining, target_remaining, tmp):
+        if not target_remaining:
+            result.append(tmp)
+        if target_remaining > 0:
+            for i, value in enumerate(candidates_remaining):
+                backtracking_function(candidates_remaining[i:], target_remaining - value, tmp + [value])
+
+    backtracking_function(candidates, target, [])
+    return result

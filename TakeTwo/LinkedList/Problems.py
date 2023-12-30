@@ -194,7 +194,8 @@ class LRUCache:
         pass
 
 
-"""Given the heads of two singly linked-lists headA and headB, return the node at which the two lists intersect. If 
+"""
+Given the heads of two singly linked-lists headA and headB, return the node at which the two lists intersect. If 
 the two linked lists have no intersection at all, return null. 
 
 For example, the following two linked lists begin to intersect at node c1:
@@ -238,7 +239,7 @@ intersectVal must be 0, while skipA and skipB can be arbitrary values. Explanati
 so return null. """
 
 
-def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> ListNode:
+def getIntersectionNode(headA: ListNode, headB: ListNode) -> ListNode:
     pass
 
 

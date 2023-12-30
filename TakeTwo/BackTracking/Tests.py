@@ -60,18 +60,18 @@ class SolutionsTest(unittest.TestCase):
     def test_get_maximum_gold(self):
         grid = [[1, 0, 7], [2, 0, 6], [3, 4, 5], [0, 3, 0], [9, 0, 20]]
         output = 28
-        self.assertEqual(backtracking_five.get_maximum_gold(grid), output)
+        self.assertEqual(backtracking.get_maximum_gold(grid), output)
         grid = [[0, 6, 0], [5, 8, 7], [0, 9, 0]]
         output = 24
-        self.assertEqual(backtracking_five.get_maximum_gold(grid), output)
+        self.assertEqual(backtracking.get_maximum_gold(grid), output)
 
     def test_number_tile_possibilities(self):
         tiles = "AAB"
         output = 8
-        self.assertEqual(output, backtracking_five.num_tile_possibilities(tiles))
+        self.assertEqual(output, backtracking.num_tile_possibilities(tiles))
         tiles = "AAABBC"
         output = 188
-        self.assertEqual(output, backtracking_five.num_tile_possibilities(tiles))
+        self.assertEqual(output, backtracking.num_tile_possibilities(tiles))
 
     def test_all_paths_source_to_target(self):
         graph = [[1, 2], [3], [3], []]
@@ -125,7 +125,7 @@ class SolutionsTest(unittest.TestCase):
         candidates = [2, 3, 6, 7]
         target = 7
         output = [[2, 2, 3], [7]]
-        self.assertListEqual(output, backtracking_five.combinationSum(candidates, target))
+        self.assertListEqual(output, backtracking.combination_sum(candidates, target))
 
     def test_find_words(self):
         board = [

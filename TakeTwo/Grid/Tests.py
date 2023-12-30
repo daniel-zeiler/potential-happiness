@@ -56,35 +56,65 @@ class SolutionsTest(unittest.TestCase):
         self.assertEqual(output, grid.countBattleships(matrix))
 
     def test_islandparameter(self):
-        grid = [
+        input = [
             [0, 1, 0, 0],
             [1, 1, 1, 0],
             [0, 1, 0, 0],
             [1, 1, 0, 0]
         ]
         output = 16
-        self.assertEqual(output, grid_two.islandPerimeter(grid))
-        grid = [[1]]
+        self.assertEqual(output, grid.islandPerimeter(input))
+        input = [[1]]
         output = 4
-        self.assertEqual(output, grid_two.islandPerimeter(grid))
-        grid = [[1, 0]]
+        self.assertEqual(output, grid.islandPerimeter(input))
+        input = [[1, 0]]
         output = 4
-        self.assertEqual(output, grid_two.islandPerimeter(grid))
+        self.assertEqual(output, grid.islandPerimeter(input))
 
     def test_max_area(self):
-        grid = [[0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
-                [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0],
-                [0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
-                [0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0],
-                [0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 0],
-                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
-                [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0],
-                [0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0]]
+        input = [[0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+                 [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0],
+                 [0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+                 [0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0],
+                 [0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 0],
+                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+                 [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0],
+                 [0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0]]
         output = 6
-        self.assertEqual(output, grid_two.maxAreaOfIsland(grid))
-        grid = [[0, 0, 0, 0, 0, 0, 0, 0]]
+        self.assertEqual(output, grid.maxAreaOfIsland(input))
+        input = [[0, 0, 0, 0, 0, 0, 0, 0]]
         output = 0
-        self.assertEqual(output, grid_two.maxAreaOfIsland(grid))
+        self.assertEqual(output, grid.maxAreaOfIsland(input))
+
+    def test_update_board(self):
+        board = [
+            ["E", "E", "E", "E", "E"],
+            ["E", "E", "M", "E", "E"],
+            ["E", "E", "E", "E", "E"],
+            ["E", "E", "E", "E", "E"]
+        ]
+        output = [
+            ["B", "1", "E", "1", "B"],
+            ["B", "1", "M", "1", "B"],
+            ["B", "1", "1", "1", "B"],
+            ["B", "B", "B", "B", "B"]
+        ]
+        click = [3, 0]
+        self.assertListEqual(output, grid.updateBoard(board, click))
+        board = [
+            ["B", "1", "E", "1", "B"],
+            ["B", "1", "M", "1", "B"],
+            ["B", "1", "1", "1", "B"],
+            ["B", "B", "B", "B", "B"]
+        ]
+        click = [1, 2]
+        output = [
+            ["B", "1", "E", "1", "B"],
+            ["B", "1", "X", "1", "B"],
+            ["B", "1", "1", "1", "B"],
+            ["B", "B", "B", "B", "B"]
+        ]
+        self.assertListEqual(output, grid.updateBoard(board, click))
 
     def test_maxGold(self):
         grid = [[0, 6, 0], [5, 8, 7], [0, 9, 0]]

@@ -74,3 +74,81 @@ def countBattleships(board: List[List[str]]) -> int:
                 result += 1
                 traverse(x, y)
     return result
+
+
+def islandPerimeter(grid: List[List[int]]) -> int:
+    directions = [[-1, 0], [1, 0], [0, -1], [0, 1]]
+
+    def traverse(x: int, y: int) -> int:
+        perimeter_size = 0
+        grid[x][y] = -1
+        for x_direction, y_direction in directions:
+            x_position, y_position = x + x_direction, y + y_direction
+            if 0 <= x_position < len(grid) and 0 <= y_position < len(grid[0]):
+                if grid[x_position][y_position] == 1:
+                    perimeter_size += traverse(x_position, y_position)
+                elif grid[x_position][y_position] == 0:
+                    perimeter_size += 1
+            else:
+                perimeter_size += 1
+        return perimeter_size
+
+    result = 0
+    for x, row in enumerate(grid):
+        for y, value in enumerate(row):
+            if value == 1:
+                result += traverse(x, y)
+    return result
+
+
+def maxAreaOfIsland(grid: List[List[int]]) -> int:
+    directions = [[-1, 0], [1, 0], [0, -1], [0, 1]]
+
+    def find_area(x: int, y: int) -> int:
+        result = 1
+        grid[x][y] = 0
+        for x_direction, y_direction in directions:
+            x_position, y_position = x + x_direction, y + y_direction
+            if 0 <= x_position < len(grid) and 0 <= y_position < len(grid[0]) and grid[x_position][y_position]:
+                result += find_area(x_position, y_position)
+        return result
+
+    max_area = 0
+    for x, row in enumerate(grid):
+        for y, value in enumerate(row):
+            if value == 1:
+                max_area = max(max_area, find_area(x, y))
+    return max_area
+
+
+def updateBoard(board: List[List[str]], click: List[int]) -> List[List[str]]:
+    directions = [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]]
+
+    if board[click[0]][click[1]] == 'M':
+        board[click[0]][click[1]] = 'X'
+        return board
+
+    def count_adjacent_mines(x: int, y: int) -> int:
+        result = 0
+        for x_direction, y_direction in directions:
+            x_position, y_position = x + x_direction, y + y_direction
+            if 0 <= x_position < len(board) and 0 <= y_position < len(board[0]):
+                if board[x_position][y_position] == 'M':
+                    result += 1
+        return result
+
+    def update_function(x: int, y: int):
+        number_of_adjacent_mines = count_adjacent_mines(x, y)
+        if not number_of_adjacent_mines:
+            board[x][y] = 'B'
+            for x_direction, y_direction in directions:
+                x_position, y_position = x + x_direction, y + y_direction
+                if 0 <= x_position < len(board) and 0 <= y_position < len(board[0]) \
+                        and board[x_position][y_position] == 'E':
+                    update_function(x_position, y_position)
+        else:
+            board[x][y] = str(number_of_adjacent_mines)
+
+    update_function(click[0], click[1])
+
+    return board
