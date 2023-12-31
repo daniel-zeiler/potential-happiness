@@ -131,12 +131,14 @@ class SolutionsTest(unittest.TestCase, CustomAssertion):
         root = binarytree.build2([1, 2, 3, 4, 5, 6, 7])
         to_delete = [3, 5]
         output = [binarytree.build2([1, 2, None, 4]), binarytree.build2([6]), binarytree.build2([7])]
-        for i, result in enumerate(trees_four.del_nodes(root, to_delete)):
+        for i, result in enumerate(trees.del_nodes(root, to_delete)):
+            print(result)
+            print(output[i])
             self.assert_compare_trees(output[i], result)
         root = binarytree.build2([1, 2, 4, None, 3])
         to_delete = [3]
         output = [binarytree.build2([1, 2, 4])]
-        for i, result in enumerate(trees_four.del_nodes(root, to_delete)):
+        for i, result in enumerate(trees.del_nodes(root, to_delete)):
             self.assert_compare_trees(output[i], result)
 
     def test_bst_to_gst(self):

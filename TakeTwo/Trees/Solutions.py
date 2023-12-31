@@ -116,3 +116,22 @@ def lca_deepest_leaves(root: Optional[Node]) -> Optional[Node]:
 
     lca, level = traverse(root, 0)
     return lca
+
+
+def del_nodes(root: Node, to_delete: List[int]) -> List[Node]:
+    node_queue = [root]
+    to_delete = set(to_delete)
+
+    def traverse_tree(node: Node) -> Optional[Node]:
+        if node:
+            if node.value in to_delete:
+                node_queue.append(node.left)
+                node_queue.append(node.right)
+                return None
+            node.left, node.right = traverse_tree(node.left), traverse_tree(node.right)
+            return node
+
+    for node in node_queue:
+        traverse_tree(node)
+
+    return list(filter(lambda x: x is not None, node_queue))
