@@ -243,3 +243,39 @@ def min_cost_climbing_stairs(costs: List[int]) -> int:
         else:
             temp[i] = cost + min(temp[i - 1], temp[i - 2])
     return min(temp[-1], temp[-2])
+
+
+"""
+The goal is to find the maximum sliding window of size minutes such that we maximize the number of customers with 
+index matching with windows grumpy value of (1). To do this, i'll initialize a window of size (n) and count the total.
+I'll then slide the window to the end.
+"""
+
+
+def max_satisfied(customers: List[int], grumpy: List[int], minutes: int) -> int:
+    window_pointer_a = 0
+    window_pointer_b = 0
+    current_window_flipped = 0
+    already_satisfied = 0
+    for i in range(minutes):
+        if grumpy[i] == 1:
+            current_window_flipped += customers[i]
+        else:
+            already_satisfied += customers[i]
+        window_pointer_b += 1
+
+    max_window = current_window_flipped
+
+    while window_pointer_b < len(grumpy):
+        if grumpy[window_pointer_a] == 1:
+            current_window_flipped -= customers[window_pointer_a]
+        if grumpy[window_pointer_b] == 1:
+            current_window_flipped += customers[window_pointer_b]
+        else:
+            already_satisfied += customers[window_pointer_b]
+
+        window_pointer_b += 1
+        window_pointer_a += 1
+        max_window = max(max_window, current_window_flipped)
+
+    return already_satisfied + max_window

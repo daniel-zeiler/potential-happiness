@@ -359,7 +359,7 @@ class SolutionsTest(unittest.TestCase):
         grumpy = [0, 1, 0, 1, 0, 1, 0, 1]
         minutes = 3
         output = 16
-        self.assertEqual(output, array_problems.maxSatisfied(customers, grumpy, minutes))
+        self.assertEqual(output, array_problems.max_satisfied(customers, grumpy, minutes))
 
     def test_max_consecutive(self):
         nums = [1, 1, 0, 1, 1, 1]
