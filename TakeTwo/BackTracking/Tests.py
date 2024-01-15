@@ -136,21 +136,21 @@ class SolutionsTest(unittest.TestCase):
         ]
         words = ["oath", "pea", "eat", "rain"]
         output = ["eat", "oath"]
-        self.assertCountEqual(output, backtracking_two.findWords(board, words))
+        self.assertCountEqual(output, backtracking.find_Words(board, words))
         board = [["a", "b"], ["c", "d"]]
         words = ["abcb"]
         output = []
-        self.assertCountEqual(output, backtracking_two.findWords(board, words))
+        self.assertCountEqual(output, backtracking.find_Words(board, words))
 
     def test_combination_sum_three(self):
         k = 3
         n = 9
         output = [[1, 2, 6], [1, 3, 5], [2, 3, 4]]
-        self.assertListEqual(output, backtracking_five.combinationSum3(k, n))
+        self.assertListEqual(output, backtracking.combination_sum_3(k, n))
         k = 3
         n = 7
         output = [[1, 2, 4]]
-        self.assertListEqual(output, backtracking_five.combinationSum3(k, n))
+        self.assertListEqual(output, backtracking.combination_sum_3(k, n))
 
     def test_combine(self):
         n = 4
@@ -163,21 +163,21 @@ class SolutionsTest(unittest.TestCase):
             [1, 3],
             [1, 4],
         ]
-        self.assertCountEqual(output, backtracking_five.combine(n, k))
+        self.assertCountEqual(output, backtracking.combine(n, k))
         n = 1
         k = 1
         output = [
             [1]
         ]
-        self.assertCountEqual(output, backtracking_five.combine(n, k))
+        self.assertCountEqual(output, backtracking.combine(n, k))
 
     def test_beautiful_arrangments(self):
         n = 2
         output = 2
-        self.assertEqual(output, backtracking_two.countArrangement(n))
+        self.assertEqual(output, backtracking.countArrangement(n))
         n = 7
         output = 41
-        self.assertEqual(output, backtracking_two.countArrangement(n))
+        self.assertEqual(output, backtracking.countArrangement(n))
 
 
 if __name__ == '__main__':

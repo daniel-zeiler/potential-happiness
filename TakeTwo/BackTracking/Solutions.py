@@ -165,3 +165,74 @@ def combination_sum(candidates: List[int], target: int) -> List[List[int]]:
 
     backtracking_function(candidates, target, [])
     return result
+
+
+def find_Words(board: List[List[str]], words: List[str]) -> List[str]:
+    directions = [[-1, 0], [1, 0], [0, -1], [0, 1]]
+
+    def backtracking_function(x, y, word_remaining):
+        board[x][y], tmp = "null", board[x][y]
+        if not word_remaining:
+            return True
+        for x_direction, y_direction in directions:
+            x_position, y_position = x + x_direction, y + y_direction
+            if 0 <= x_position < len(board) and 0 <= y_position < len(board[0]) and board[x_position][y_position] == \
+                    word_remaining[0]:
+                if backtracking_function(x_position, y_position, word_remaining[1:]):
+                    board[x][y] = tmp
+                    return True
+        board[x][y] = tmp
+        return False
+
+    result = []
+    for x, row in enumerate(board):
+        for y, value in enumerate(row):
+            for word in words:
+                if value == word[0] and backtracking_function(x, y, word[1:]):
+                    result.append(word)
+    return result
+
+
+def combination_sum_3(k: int, n: int) -> List[List[int]]:
+    result = []
+
+    def backtracking_function(target_remaining, nums_so_far, nums_remaining):
+        if len(nums_so_far) == k and target_remaining == 0:
+            result.append(nums_so_far)
+        elif len(nums_so_far) <= k and target_remaining >= 0:
+            for i, num in enumerate(nums_remaining):
+                backtracking_function(target_remaining - num, nums_so_far + [num], nums_remaining[i + 1:])
+
+    nums = list(range(1, 10))
+    for i, num in enumerate(nums):
+        backtracking_function(n - num, [num], nums[i + 1:])
+    return result
+
+
+def combine(n: int, k: int) -> List[List[int]]:
+    result = []
+
+    def combine_helper_function(remaining: List[int], list_so_far: List[int]):
+        if len(list_so_far) == k:
+            result.append(list_so_far)
+        else:
+            for i, number in enumerate(remaining):
+                combine_helper_function(remaining[i + 1:], list_so_far + [number])
+
+    combine_helper_function(list(range(1, n + 1)), [])
+    return result
+
+
+def countArrangement(n: int) -> int:
+    values = {i for i in range(1, n + 1)}
+
+    def beautiful_arrangement_helper_function(numbs_remaining: set, position: int) -> int:
+        result = 0
+        if position > n:
+            return 1
+        for number in numbs_remaining:
+            if number % position == 0 or position % number == 0:
+                result += beautiful_arrangement_helper_function(numbs_remaining - {number}, position + 1)
+        return result
+
+    return beautiful_arrangement_helper_function(values, 1)

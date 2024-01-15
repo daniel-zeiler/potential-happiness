@@ -1,9 +1,6 @@
 import binarytree
 import unittest
 import TakeTwo.Trees.Solutions as trees
-import TakeOne.Trees.Solutions_Two as trees_two
-import TakeOne.Trees.Solutions_Three as trees_three
-import TakeOne.Trees.Solutions_Four as trees_four
 from binarytree import Node
 
 

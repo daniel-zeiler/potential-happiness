@@ -279,3 +279,15 @@ def max_satisfied(customers: List[int], grumpy: List[int], minutes: int) -> int:
         max_window = max(max_window, current_window_flipped)
 
     return already_satisfied + max_window
+
+
+def intersect(nums1: List[int], nums2: List[int]) -> List[int]:
+    count_1, count_2, result = collections.Counter(nums1), collections.Counter(nums2), []
+    for key, value in count_1.items():
+        if key in count_2:
+            result.extend([key for _ in range(value)])
+    return result
+
+
+def maxArea(height: List[int]) -> int:
+    pass

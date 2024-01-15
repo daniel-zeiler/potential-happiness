@@ -387,7 +387,7 @@ Output: []
 """
 
 
-def findWords(board: List[List[str]], words: List[str]) -> List[str]:
+def find_Words(board: List[List[str]], words: List[str]) -> List[str]:
     pass
 
 
@@ -421,7 +421,7 @@ Input: k = 4, n = 1 Output: [] Explanation: There are no valid combinations. Usi
 1,9], the smallest sum we can get is 1+2+3+4 = 10 and since 10 > 1, there are no valid combination. """
 
 
-def combinationSum3(k: int, n: int) -> List[List[int]]:
+def combination_sum_3(k: int, n: int) -> List[List[int]]:
     pass
 
 
@@ -480,5 +480,5 @@ Input: n = 1
 """
 
 
-def countArrangement(self, n: int) -> int:
+def countArrangement(n: int) -> int:
     pass
