@@ -1,4 +1,4 @@
-# 19 problems
+# 10 problems
 
 """
 A trie (pronounced as "try") or prefix tree is a tree data structure used to efficiently store
