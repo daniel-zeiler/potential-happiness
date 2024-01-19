@@ -5,7 +5,7 @@ import collections
 class TrieNode:
     def __init__(self, word: str = None):
         self.word = word
-        self.children = collections.defaultdict(dict)
+        self.children = collections.defaultdict(TrieNode)
 
 
 class Trie:
@@ -73,3 +73,39 @@ class WordDictionary:
                                                                         word_remaining[1:])
 
         return search_helper(self.head, word)
+
+
+class ReplaceWordsTrie:
+    def __init__(self):
+        self.head = TrieNode()
+
+    def insert(self, word: str):
+        def insert_helper(node, word_remaining):
+            if not word_remaining:
+                node.word = word
+            else:
+                if word_remaining[0] not in node.children:
+                    node.children[word_remaining[0]] = TrieNode()
+                insert_helper(node.children[word_remaining[0]], word_remaining[1:])
+
+        insert_helper(self.head, word)
+
+    def find_first(self, word: str) -> str:
+        def find_first_helper(node: TrieNode, word_remaining: str) -> str:
+            if node.word:
+                return node.word
+            if not word_remaining or word_remaining[0] not in node.children:
+                return word
+            return find_first_helper(node.children[word_remaining[0]], word_remaining[1:])
+
+        return find_first_helper(self.head, word)
+
+
+def replaceWords(dictionary: List[str], sentence: str) -> str:
+    replace_words_trie = ReplaceWordsTrie()
+    for word in dictionary:
+        replace_words_trie.insert(word)
+    result = []
+    for word in sentence.split(" "):
+        result.append(replace_words_trie.find_first(word))
+    return " ".join(result)

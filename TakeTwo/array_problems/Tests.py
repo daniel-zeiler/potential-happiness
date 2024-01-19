@@ -804,6 +804,3 @@ class SolutionsTest(unittest.TestCase):
         output = 1
         self.assertEqual(output, array_problems.shortestBridge(grid))
 
-
-if __name__ == '__main__':
-    unittest.main()

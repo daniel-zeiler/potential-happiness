@@ -290,4 +290,44 @@ def intersect(nums1: List[int], nums2: List[int]) -> List[int]:
 
 
 def maxArea(height: List[int]) -> int:
-    pass
+    max_area, pointer_a, pointer_b = 0, 0, len(height) - 1
+    while pointer_a < pointer_b:
+        height_a, height_b = height[pointer_a], height[pointer_b]
+        max_area = max(max_area, min(height_a, height_b) * (pointer_b - pointer_a))
+        if height_a < height_b:
+            pointer_a += 1
+        else:
+            pointer_b -= 1
+    return max_area
+
+
+def maxProfit(prices: List[int]) -> int:
+    max_profit, min_so_far = 0, float('inf')
+    for i, price in enumerate(prices):
+        if i:
+            max_profit = max(max_profit, price - min_so_far)
+        min_so_far = min(min_so_far, price)
+    return max_profit
+
+
+def isAlienSorted(words: List[str], order: str) -> bool:
+    ordering_dict = collections.defaultdict(int)
+    for i, value in enumerate(order):
+        ordering_dict[value] = i
+
+    def check_ordering(word_one: str, word_two: str):
+        pointer_one, pointer_two = 0, 0
+        while pointer_one < len(word_one) and pointer_two < len(word_two):
+            char_one, char_two = word_one[pointer_one], word_two[pointer_two]
+            if char_one != char_two:
+                return ordering_dict[char_one] < ordering_dict[char_two]
+            pointer_one += 1
+            pointer_two += 1
+        return len(word_two) >= len(word_one)
+
+    for i, word in enumerate(words):
+        if i:
+            prev_word = words[i - 1]
+            if not check_ordering(prev_word, word):
+                return False
+    return True
