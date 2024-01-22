@@ -1,7 +1,6 @@
 import unittest
 
-from TakeTwo import Graph as graph_two, Graph as graph_three, Graph as graph_four, Graph as graph_six, \
-    Graph as graph_seven
+from TakeTwo import Graph as graph_two
 import TakeTwo.Graph.Solutions as graph
 
 

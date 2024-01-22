@@ -1,8 +1,6 @@
 import unittest
 
 import TakeTwo.TwoPointer.Solutions as two_pointer
-import TakeOne.Two_Pointers.Solutions_Two as two_pointer_two
-import TakeOne.Two_Pointers.Solutions_three as two_pointer_three
 import TakeTwo.LinkedList.Tests as linked_list
 
 
@@ -95,33 +93,33 @@ class SolutionsTest(unittest.TestCase, linked_list.CustomAssertion):
         self.assertEqual(output, two_pointer.isPalindrome(s))
         s = " "
         output = True
-        self.assertEqual(output, two_pointer_three.isPalindrome(s))
+        self.assertEqual(output, two_pointer.isPalindrome(s))
 
     def test_move_zeros(self):
         nums = [0, 1, 0, 3, 12]
         output = [1, 3, 12, 0, 0]
-        two_pointer_three.moveZeroes(nums)
+        two_pointer.moveZeroes(nums)
         self.assertListEqual(output, nums)
 
     def test_reverse_string(self):
         s = ["h", "e", "l", "l", "o"]
         output = ["o", "l", "l", "e", "h"]
-        two_pointer_three.reverseString(s)
+        two_pointer.reverseString(s)
         self.assertListEqual(output, s)
         s = ["H", "a", "n", "n", "a", "h"]
         output = ["h", "a", "n", "n", "a", "H"]
-        two_pointer_three.reverseString(s)
+        two_pointer.reverseString(s)
         self.assertListEqual(output, s)
 
     def test_intersection(self):
         nums1 = [1, 2, 2, 1]
         nums2 = [2, 2]
         output = [2]
-        self.assertListEqual(output, two_pointer_two.intersection(nums1, nums2))
+        self.assertListEqual(output, two_pointer.intersection(nums1, nums2))
         nums1 = [4, 9, 5]
         nums2 = [9, 4, 9, 8, 4]
         output = [4, 9]
-        self.assertCountEqual(output, two_pointer_two.intersection(nums1, nums2))
+        self.assertCountEqual(output, two_pointer.intersection(nums1, nums2))
 
     def test_is_subsequence(self):
         s = "abc"

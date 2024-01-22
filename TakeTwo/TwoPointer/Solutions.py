@@ -72,8 +72,37 @@ def sortColors(nums: List[int]) -> None:
 def isPalindrome(s: str) -> bool:
     start_pointer, end_pointer = 0, len(s) - 1
     while start_pointer < end_pointer:
-        if s[start_pointer] != s[end_pointer]:
-            return False
+        start_character = s[start_pointer]
+        end_character = s[end_pointer]
+        if start_character.isalpha() and end_character.isalpha():
+            if start_character.lower() != end_character.lower():
+                return False
+            start_pointer += 1
+            end_pointer -= 1
+        elif not start_character.isalpha():
+            start_pointer += 1
+        else:
+            end_pointer -= 1
+    return True
+
+
+def moveZeroes(nums: List[int]) -> None:
+    read_pointer, write_pointer = 0, 0
+    while read_pointer < len(nums):
+        read_character = nums[read_pointer]
+        if read_character != 0:
+            nums[read_pointer], nums[write_pointer] = nums[write_pointer], nums[read_pointer]
+            write_pointer += 1
+        read_pointer += 1
+
+
+def reverseString(s: List[str]) -> None:
+    start_pointer, end_pointer = 0, len(s) - 1
+    while start_pointer < end_pointer:
+        s[start_pointer], s[end_pointer] = s[end_pointer], s[start_pointer]
         start_pointer += 1
         end_pointer -= 1
-    return True
+
+
+def intersection(nums1: List[int], nums2: List[int]) -> List[int]:
+    return list(set(nums1).intersection(set(nums2)))
