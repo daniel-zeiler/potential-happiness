@@ -138,17 +138,17 @@ class SolutionsTest(unittest.TestCase):
         n = 4
         k = 2
         output = 2
-        self.assertEqual(output, graph_six.network_delay_time(times, n, k))
+        self.assertEqual(output, graph.network_delay_time(times, n, k))
         times = [[1, 2, 1]]
         n = 2
         k = 1
         output = 1
-        self.assertEqual(output, graph_six.network_delay_time(times, n, k))
+        self.assertEqual(output, graph.network_delay_time(times, n, k))
         times = [[1, 2, 1]]
         n = 2
         k = 2
         output = -1
-        self.assertEqual(output, graph_six.network_delay_time(times, n, k))
+        self.assertEqual(output, graph.network_delay_time(times, n, k))
 
     def test_possible_bipartition(self):
         n = 4

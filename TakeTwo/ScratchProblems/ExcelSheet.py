@@ -1,73 +1,63 @@
 import collections
+from typing import List
 
 
 class Cell:
-    def __init__(self, value: int, x_position: str, y_position: str):
+    def __init__(self, row: str, column: str, value: int):
+        self.row = row
+        self.column = column
         self.value = value
-        self.parent_operations = {}
-        self.child_operations = {}
-        self.x_position = x_position
-        self.y_position = y_position
-
-    def update_children(self, value):
-        self.value = value
-        for child_operation in self.child_operations:
-            cell = child_operation.cell
-            op = child_operation.op
-            self.update_children(cell, value + op)
-
-    def remove_parents(self):
-        for parent_operation in self.parent_operations:
-            del parent_operation.cell.child_operations[self.x_position + self.y_position]
-
-
-class Operation:
-    def __init__(self, cell: Cell, op: str):
-        self.cell = cell
-        self.op = op
 
 
 class ExcelSheet:
     def __init__(self):
-        self.nodes = collections.defaultdict(Cell)
+        self.cells = collections.defaultdict(Cell)
 
-    def delete(self, x_position: str, y_position: str):
-        if x_position + y_position in self.nodes:
-            cell = self.nodes[x_position + y_position]
-            if not cell.child_operations:
-                cell.remove_parents()
-                del self.nodes[x_position + y_position]
-            else:
-                raise Exception(f"Cell {x_position + y_position} has child operations")
+    def __str__(self):
+        result = ""
+        for cell in self.cells.values():
+            result += f"row: {cell.row} column: {cell.column} value: {cell.value}\n"
+        return result
 
-    def standard_write(self, x_position: str, y_position: str, value: int):
-        if x_position + y_position not in self.nodes:
-            self.nodes[x_position + y_position] = Cell(value, x_position, y_position)
+    def assign_value(self, row: str, column: str, value: int) -> Cell:
+        if row + column not in self.cells:
+            self.cells[row + column] = Cell(row, column, value)
         else:
-            cell = self.nodes[x_position + y_position]
-            cell.remove_parents()
-            cell.parent_operations = {}
-            cell.update_children(value)
+            self.cells[row + column].value = value
+        return self.cells[row + column]
 
-    def advanced_write(self, x_position: str, y_position: str, operations: collections.Iterable[Operation]):
-        if not self.check_cycle(x_position, y_position):
-            raise Exception(f"Cell {x_position + y_position} operation will create a cycle")
-        for operation in operations:
-            if operation.cell.x_position == x_position and operation.cell.y_position == y_position:
-                raise Exception(f"Cell {x_position + y_position} self reference in advanced write")
+    def delete_value(self, row: str, column: str):
+        if row + column in self.cells:
+            del self.cells[row + column]
 
-    def read_cell(self, x_position, y_position):
-        if x_position + y_position in self.nodes:
-            return self.nodes[x_position + y_position].value
+    def read_value(self, row, column) -> int:
+        if row + column in self.cells:
+            return self.cells[row + column].value
 
-    def check_cycle(self, x_position, y_position, starting_position):
-        visited = set(starting_position)
+    def perform_operations(self, row: str, column: str, initial_value: int, cell_coordinates: List[str],
+                           operations: List[str]) -> Cell:
+        new_cell = self.assign_value(row, column, initial_value)
+        for cell_coordinates, operation in zip(cell_coordinates, operations):
+            if cell_coordinates not in self.cells:
+                raise Exception(f"Cell {cell_coordinates} does not exist")
+            cell = self.cells[cell_coordinates]
+            if operation == "+":
+                new_cell.value += cell.value
+            elif operation == "-":
+                new_cell.value -= cell.value
+            elif operation == "*":
+                new_cell.value *= cell.value
+            elif operation == "/":
+                new_cell.value /= cell.value
+            else:
+                raise Exception(f"Unkown operation:{operation}")
+        return new_cell
 
 
-ExcelSheet = ExcelSheet()
-ExcelSheet.standard_write("1", "2", 5)
-print(ExcelSheet.read_cell("1", "2"))
-ExcelSheet.standard_write("1", "2", 6)
-print(ExcelSheet.read_cell("1", "2"))
-ExcelSheet.delete("1", "2")
-print(ExcelSheet.read_cell("1", "2"))
+excel_sheet = ExcelSheet()
+cell_one = excel_sheet.assign_value("1", "2", 3)
+cell_two = excel_sheet.assign_value("1", "1", 3)
+excel_sheet.assign_value("1", "2", 5)
+cell_three = excel_sheet.perform_operations("1", "3", 0, ["12", "11"], ["+", "+"])
+cell_four = excel_sheet.perform_operations("1", "4", 70, ["12", "11", "13"], ["+", "*", "-"])
+print(excel_sheet)

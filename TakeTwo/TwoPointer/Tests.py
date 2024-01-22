@@ -47,11 +47,11 @@ class SolutionsTest(unittest.TestCase, linked_list.CustomAssertion):
     def test_remove_duplicates(self):
         nums = [1, 1, 2]
         output = 2
-        self.assertEqual(output, two_pointer_three.removeDuplicates(nums))
+        self.assertEqual(output, two_pointer.removeDuplicates(nums))
         self.assertListEqual([1, 2], nums[:2])
         nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
         output = 5
-        self.assertEqual(output, two_pointer_three.removeDuplicates(nums))
+        self.assertEqual(output, two_pointer.removeDuplicates(nums))
         self.assertListEqual([0, 1, 2, 3, 4], nums[:5])
 
     def test_remove_elements(self):
@@ -59,40 +59,40 @@ class SolutionsTest(unittest.TestCase, linked_list.CustomAssertion):
         val = 3
         output = 2
         output_2 = [2, 2]
-        self.assertEqual(output, two_pointer_three.removeElement(nums, val))
+        self.assertEqual(output, two_pointer.removeElement(nums, val))
         self.assertCountEqual(output_2, nums[:2])
         nums = [0, 1, 2, 2, 3, 0, 4, 2]
         val = 2
         output = 5
         output_2 = [0, 1, 4, 0, 3]
-        self.assertEqual(output, two_pointer_three.removeElement(nums, val))
+        self.assertEqual(output, two_pointer.removeElement(nums, val))
         self.assertCountEqual(output_2, nums[:5])
 
     def test_sort_color(self):
         nums = [2, 0, 2, 1, 1, 0]
         output = [0, 0, 1, 1, 2, 2]
-        two_pointer_three.sortColors(nums)
+        two_pointer.sortColors(nums)
         self.assertListEqual(output, nums)
         nums = [2, 0, 1]
         output = [0, 1, 2]
-        two_pointer_three.sortColors(nums)
+        two_pointer.sortColors(nums)
         self.assertListEqual(output, nums)
         nums = [0]
         output = [0]
-        two_pointer_three.sortColors(nums)
+        two_pointer.sortColors(nums)
         self.assertListEqual(output, nums)
         nums = [1]
         output = [1]
-        two_pointer_three.sortColors(nums)
+        two_pointer.sortColors(nums)
         self.assertListEqual(output, nums)
 
     def test_is_palindrome(self):
         s = "A man, a plan, a canal: Panama"
         output = True
-        self.assertEqual(output, two_pointer_three.isPalindrome(s))
+        self.assertEqual(output, two_pointer.isPalindrome(s))
         s = "race a car"
         output = False
-        self.assertEqual(output, two_pointer_three.isPalindrome(s))
+        self.assertEqual(output, two_pointer.isPalindrome(s))
         s = " "
         output = True
         self.assertEqual(output, two_pointer_three.isPalindrome(s))

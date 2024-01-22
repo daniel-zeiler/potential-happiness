@@ -1,5 +1,6 @@
 from typing import List
 import collections
+import heapq
 
 
 def find_town_judge(n: int, trust: List[List[int]]) -> int:
@@ -206,5 +207,32 @@ def flower_planting_no_adjacent(n, paths) -> List[int]:
 
     return list(visited_colors.values())
 
+
 def network_delay_time(times, n, k):
+    visited = set()
+    max_time = 0
+
+    def build_graph() -> dict:
+        graph = collections.defaultdict(list)
+        for origin, destination, time in times:
+            graph[origin].append([destination, time])
+        return graph
+
+    graph = build_graph()
+
+    queue = [[0, k]]
+    while queue:
+        time, position = heapq.heappop(queue)
+        if position not in visited:
+            visited.add(position)
+            max_time = max(time, max_time)
+            for neighbor, transmit_time in graph[position]:
+                heapq.heappush(queue, [transmit_time + time, neighbor])
+
+    if len(visited) == n:
+        return max_time
+    return -1
+
+
+def possible_bipartition(n, dislikes):
     pass

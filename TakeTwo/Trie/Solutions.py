@@ -109,3 +109,44 @@ def replaceWords(dictionary: List[str], sentence: str) -> str:
     for word in sentence.split(" "):
         result.append(replace_words_trie.find_first(word))
     return " ".join(result)
+
+
+class MagicWordNode:
+    def __init__(self):
+        self.children = collections.defaultdict(MagicWordNode)
+        self.word = None
+
+
+class MagicDictionary:
+
+    def __init__(self):
+        self.head = MagicWordNode()
+
+    def buildDict(self, dictionary: List[str]) -> None:
+        def build_dict_helper(node, word_remaining, word):
+            if not word_remaining:
+                node.word = word
+            else:
+                if word_remaining[0] not in node.children:
+                    node.children[word_remaining[0]] = TrieNode()
+                build_dict_helper(node.children[word_remaining[0]], word_remaining[1:], word)
+
+        for word in dictionary:
+            build_dict_helper(self.head, word, word)
+
+    def search(self, searchWord: str) -> bool:
+        def search_word_helper(node, word_remaining, flipped):
+            if not word_remaining:
+                return node.word is not None and flipped
+            else:
+                if word_remaining[0] not in node.children:
+                    if flipped:
+                        return False
+                    for child in node.children.values():
+                        if search_word_helper(child, word_remaining[1:], True):
+                            return True
+                    return False
+                else:
+                    return search_word_helper(node.children[word_remaining[0]], word_remaining[1:], flipped)
+
+        return search_word_helper(self.head, searchWord, False)
