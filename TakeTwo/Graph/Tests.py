@@ -153,33 +153,33 @@ class SolutionsTest(unittest.TestCase):
         n = 4
         dislikes = [[1, 2], [1, 3], [2, 4]]
         output = True
-        self.assertEqual(output, graph_three.possible_bipartition(n, dislikes))
+        self.assertEqual(output, graph.possible_bipartition(n, dislikes))
         n = 3
         dislikes = [[1, 2], [1, 3], [2, 3]]
         output = False
-        self.assertEqual(output, graph_three.possible_bipartition(n, dislikes))
+        self.assertEqual(output, graph.possible_bipartition(n, dislikes))
         n = 5
         dislikes = [[1, 2], [2, 3], [3, 4], [4, 5], [1, 5]]
         output = False
-        self.assertEqual(output, graph_three.possible_bipartition(n, dislikes))
+        self.assertEqual(output, graph.possible_bipartition(n, dislikes))
 
     def test_coarse_schedule(self):
         numCourses = 2
         prerequisites = [[1, 0]]
         output = [0, 1]
-        self.assertListEqual(output, graph_six.course_schedule_two(numCourses, prerequisites))
+        self.assertListEqual(output, graph.course_schedule_two(numCourses, prerequisites))
         numCourses = 4
         prerequisites = [[1, 0], [2, 0], [3, 1], [3, 2]]
         output = [0, 2, 1, 3]
-        self.assertListEqual([0, 1, 2, 3], graph_six.course_schedule_two(numCourses, prerequisites))
+        self.assertListEqual(output, graph.course_schedule_two(numCourses, prerequisites))
         numCourses = 1
         prerequisites = []
         output = [0]
-        self.assertListEqual(output, graph_six.course_schedule_two(numCourses, prerequisites))
+        self.assertListEqual(output, graph.course_schedule_two(numCourses, prerequisites))
         numCourses = 2
         prerequisites = [[0, 1]]
         output = [1, 0]
-        self.assertListEqual(output, graph_six.course_schedule_two(numCourses, prerequisites))
+        self.assertListEqual(output, graph.course_schedule_two(numCourses, prerequisites))
 
     def test_calc_equation(self):
         equations = [["a", "b"], ["b", "c"]]

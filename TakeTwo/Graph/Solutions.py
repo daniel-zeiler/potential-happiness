@@ -235,4 +235,83 @@ def network_delay_time(times, n, k):
 
 
 def possible_bipartition(n, dislikes):
-    pass
+    visited = collections.defaultdict(bool)
+
+    def build_graph() -> dict:
+        graph = collections.defaultdict(list)
+        for origin, destination in dislikes:
+            graph[origin].append(destination)
+            graph[destination].append(origin)
+        return graph
+
+    graph = build_graph()
+
+    def traverse(node_id, partition_label):
+        visited[node_id] = partition_label
+        for adjacent in graph[node_id]:
+            if adjacent not in visited:
+                if not traverse(adjacent, not partition_label):
+                    return False
+            elif visited[adjacent] == partition_label:
+                return False
+        return True
+
+    for i in range(1, n):
+        if i not in visited:
+            if not traverse(i, True):
+                return False
+    return True
+
+
+def course_schedule_two(num_courses, prerequisites):
+    def build_graph() -> {dict, dict}:
+        graph = collections.defaultdict(list)
+        in_degree = {n: 0 for n in range(num_courses)}
+        for before, after in prerequisites:
+            graph[before].append(after)
+            in_degree[after] += 1
+        return graph, in_degree
+
+    result = []
+    graph, in_degree = build_graph()
+    visited = set()
+    queue = collections.deque([])
+    for key, value in in_degree.items():
+        if value == 0:
+            queue.append(key)
+
+    while queue:
+        position = queue.popleft()
+        if position not in visited:
+            result.append(position)
+            for adjacent in graph[position]:
+                in_degree[adjacent] -= 1
+                if in_degree[adjacent] == 0:
+                    queue.append(adjacent)
+
+    if len(result) == num_courses:
+        return result[::-1]
+    return []
+
+
+def validate_binary_tree(n: int, left_child: List[int], right_child: List[int]) -> bool:
+    def get_graph_and_degree() -> {dict, dict}:
+        graph = collections.defaultdict(list)
+        in_degree = {i: 0 for i in range(n)}
+        for i in range(n):
+            left, right = left_child[i], right_child[i]
+            if left != -1:
+                graph[i].append(left)
+                graph[left].append(i)
+                in_degree[left] += 1
+            if right != -1:
+                graph[i].append(right)
+                graph[right].append(i)
+                in_degree[right] += 1
+
+    graph, in_degree = get_graph_and_degree()
+    for value in in_degree.values():
+        if value > 2:
+            return False
+
+    visited = set()
