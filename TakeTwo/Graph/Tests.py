@@ -181,6 +181,27 @@ class SolutionsTest(unittest.TestCase):
         output = [1, 0]
         self.assertListEqual(output, graph.course_schedule_two(numCourses, prerequisites))
 
+    def test_validate_binary_tree(self):
+        n = 4
+        leftChild = [1, -1, 3, -1]
+        rightChild = [2, -1, -1, -1]
+        output = True
+        self.assertEqual(output, graph.validate_binary_tree(n, leftChild, rightChild))
+        n = 4
+        leftChild = [1, -1, 3, -1]
+        rightChild = [2, 3, -1, -1]
+        output = False
+        self.assertEqual(output, graph.validate_binary_tree(n, leftChild, rightChild))
+        n = 2
+        leftChild = [1, 0]
+        rightChild = [-1, -1]
+        self.assertEqual(output, graph.validate_binary_tree(n, leftChild, rightChild))
+        n = 6
+        leftChild = [1, -1, -1, 4, -1, -1]
+        rightChild = [2, -1, -1, 5, -1, -1]
+        self.assertEqual(output, graph.validate_binary_tree(n, leftChild, rightChild))
+
+
     def test_calc_equation(self):
         equations = [["a", "b"], ["b", "c"]]
         values = [2.0, 3.0]

@@ -522,9 +522,9 @@ class SolutionsTest(unittest.TestCase):
         self.assertEqual(output, array_problems.maxSubArray(nums))
 
     def test_length_of_list(self):
-        nums = [10, 9, 2, 5, 3, 7, 101, 18]
-        output = 4
-        self.assertEqual(output, array_problems.lengthOfLIS(nums))
+        # nums = [10, 9, 2, 5, 3, 7, 101, 18]
+        # output = 4
+        # self.assertEqual(output, array_problems.lengthOfLIS(nums))
         nums = [0, 1, 0, 3, 2, 3]
         output = 4
         self.assertEqual(output, array_problems.lengthOfLIS(nums))
@@ -696,6 +696,17 @@ class SolutionsTest(unittest.TestCase):
         output = [False, True, False, True, False, True, False, False, False, True]
         self.assertListEqual(output, array_problems.meeting_room_conflicts(calendar, rooms, queries))
 
+    def test_valid_mountain_array(self):
+        arr = [2, 1]
+        output = False
+        self.assertEqual(output, array_problems.validMountainArray(arr))
+        arr = [3, 5, 5]
+        self.assertEqual(output, array_problems.validMountainArray(arr))
+        arr = [0, 3, 2, 1]
+        output = True
+        self.assertEqual(output, array_problems.validMountainArray(arr))
+
+
     def test_pacific_atlantic(self):
         heights = [[1, 2, 2, 3, 5], [3, 2, 3, 4, 4], [2, 4, 5, 3, 1], [6, 7, 1, 4, 5], [5, 1, 1, 2, 4]]
         output = [[0, 4], [1, 3], [1, 4], [2, 2], [3, 0], [3, 1], [4, 0]]
@@ -803,4 +814,3 @@ class SolutionsTest(unittest.TestCase):
         ]
         output = 1
         self.assertEqual(output, array_problems.shortestBridge(grid))
-

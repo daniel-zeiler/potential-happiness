@@ -302,16 +302,35 @@ def validate_binary_tree(n: int, left_child: List[int], right_child: List[int]) 
             left, right = left_child[i], right_child[i]
             if left != -1:
                 graph[i].append(left)
-                graph[left].append(i)
                 in_degree[left] += 1
             if right != -1:
                 graph[i].append(right)
-                graph[right].append(i)
                 in_degree[right] += 1
+        return graph, in_degree
 
     graph, in_degree = get_graph_and_degree()
-    for value in in_degree.values():
-        if value > 2:
-            return False
-
+    to_visit = collections.deque([])
     visited = set()
+
+    for key, value in in_degree.items():
+        if value > 1:
+            return False
+        if value == 0:
+            if to_visit:
+                return False
+            to_visit.append(key)
+            visited.add(key)
+
+    while to_visit:
+        node = collections.deque.popleft(to_visit)
+        for adjacent in graph[node]:
+            if adjacent in visited:
+                return False
+            visited.add(adjacent)
+            collections.deque.append(to_visit, adjacent)
+
+    return len(visited) == n
+
+
+def calcEquation(equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]:
+    pass

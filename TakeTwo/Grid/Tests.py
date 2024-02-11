@@ -125,25 +125,32 @@ class SolutionsTest(unittest.TestCase):
         self.assertEqual(output, grid_two.getMaximumGold(grid))
 
     def test_enclaves(self):
-        grid = [
+        input = [
             [0, 0, 0, 0],
             [1, 0, 1, 0],
             [0, 1, 1, 0],
             [0, 0, 0, 0]
         ]
         output = 3
-        self.assertEqual(output, grid_two.numEnclaves(grid))
-        grid = [[0, 1, 1, 0], [0, 0, 1, 0], [0, 0, 1, 0], [0, 0, 0, 0]]
+        self.assertEqual(output, grid.numEnclaves(input))
+        input = [[0, 1, 1, 0], [0, 0, 1, 0], [0, 0, 1, 0], [0, 0, 0, 0]]
         output = 0
-        self.assertEqual(output, grid_two.numEnclaves(grid))
+        self.assertEqual(output, grid.numEnclaves(input))
 
     def test_min_path_sum(self):
-        grid = [[1, 3, 1], [1, 5, 1], [4, 2, 1]]
+        input = [
+            [1, 3, 1],
+            [1, 5, 1],
+            [4, 2, 1]
+        ]
         output = 7
-        self.assertEqual(output, grid_two.minPathSum(grid))
-        grid = [[1, 2, 3], [4, 5, 6]]
+        self.assertEqual(output, grid.minPathSum(input))
+        input = [
+            [1, 2, 3],
+            [4, 5, 6]
+        ]
         output = 12
-        self.assertEqual(output, grid_two.minPathSum(grid))
+        self.assertEqual(output, grid.minPathSum(input))
 
     def test_floodFill(self):
         image = [[1, 1, 1], [1, 1, 0], [1, 0, 1]]

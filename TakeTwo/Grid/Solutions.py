@@ -152,3 +152,46 @@ def updateBoard(board: List[List[str]], click: List[int]) -> List[List[str]]:
     update_function(click[0], click[1])
 
     return board
+
+
+def numEnclaves(grid: List[List[int]]) -> int:
+    directions = [[-1, 0], [1, 0], [0, 1], [0, -1]]
+
+    def traverse(x: int, y: int) -> int:
+        size = 1
+        on_edge = False
+        grid[x][y] = -1
+        for x_direction, y_direction in directions:
+            x_target, y_target = x + x_direction, y + y_direction
+            if 0 <= x_target < len(grid) and 0 <= y_target < len(grid[0]):
+                if grid[x_target][y_target] == 1:
+                    adjacent_size = traverse(x_target, y_target)
+                    if not adjacent_size:
+                        on_edge = True
+                    size += adjacent_size
+            else:
+                on_edge = True
+        if on_edge:
+            return 0
+        return size
+
+    result = 0
+    for x, row in enumerate(grid):
+        for y, value in enumerate(row):
+            if value == 1:
+                result += traverse(x, y)
+    return result
+
+
+def minPathSum(grid: List[List[int]]) -> int:
+    for x, row in enumerate(grid):
+        for y, value in enumerate(row):
+            if x == 0 and y == 0:
+                continue
+            elif x == 0:
+                grid[x][y] += grid[x][y-1]
+            elif y == 0:
+                grid[x][y] += grid[x-1][y]
+            else:
+                grid[x][y] += min(grid[x - 1][y], grid[x][y - 1])
+    return grid[-1][-1]

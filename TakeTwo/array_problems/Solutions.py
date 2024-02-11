@@ -331,3 +331,196 @@ def isAlienSorted(words: List[str], order: str) -> bool:
             if not check_ordering(prev_word, word):
                 return False
     return True
+
+
+def removeElement(nums: List[int], val: int) -> int:
+    read_pointer, write_pointer = 0, 0
+    while read_pointer < len(nums):
+        number = nums[read_pointer]
+        if number != val:
+            nums[write_pointer] = number
+            write_pointer += 1
+        read_pointer += 1
+    return write_pointer
+
+
+def findJudge(n: int, trust: List[List[int]]) -> int:
+    trust_origin, trust_destination = collections.defaultdict(int), collections.defaultdict(int)
+    for origin, destination in trust:
+        trust_origin[origin] += 1
+        trust_destination[destination] += 1
+    for i in range(1, n + 1):
+        if i not in trust_origin and i in trust_destination and trust_destination[i] == n - 1:
+            return i
+    return -1
+
+
+def maxSubArray(nums: List[int]) -> int:
+    temp = [0 for _ in range(len(nums))]
+    max_value = 0
+    for i, number in enumerate(nums):
+        if i == 0:
+            temp[i] = number
+        else:
+            temp[i] = max(number, temp[i - 1] + number)
+        max_value = max(temp[i], max_value)
+    return max_value
+
+
+def lengthOfLIS(nums: List[int]) -> int:
+    n = len(nums)
+    result = [1] * n
+
+    for i in range(1, len(nums)):
+        for j in range(i):
+            if nums[i] > nums[j]:
+                result[i] = max(result[i], 1 + result[j])
+    return max(result)
+
+
+def rob(nums: List[int]) -> int:
+    result = [num for num in nums]
+    for i, number in enumerate(nums):
+        if i > 1:
+            if i == 2:
+                result[i] += result[i - 2]
+            else:
+                result[i] += max(result[i - 2], result[i - 3])
+
+    return max(result)
+
+
+def merge_2(intervals: List[List[int]]) -> List[List[int]]:
+    intervals.sort(key=lambda x: x[0])
+    result = []
+    for i, interval in enumerate(intervals):
+        if result and interval[0] <= result[-1][1]:
+            result[-1][1] = max(interval[1], result[-1][1])
+        else:
+            result.append(interval)
+    return result
+
+
+def plusOne(digits: List[int]) -> List[int]:
+    digits[-1], index = digits[-1] + 1, len(digits) - 1
+    while digits[index] == 10 and index != 0:
+        digits[index], digits[index - 1], index = 0, digits[index - 1] + 1, index - 1
+    if digits[0] == 10:
+        digits[0] = 1
+        digits.append(0)
+    return digits
+
+
+def canJump(nums: List[int]) -> bool:
+    max_distance = 0
+    for i, number in enumerate(nums):
+        if i > max_distance:
+            return False
+        max_distance = max(max_distance, i + number)
+    return True
+
+
+def first_and_last_of_k(nums: List[int], k: int) -> List[int]:
+    def binary_search(left, right):
+        if left > right:
+            return -1
+        center = (left + right) // 2
+        value = nums[center]
+        if value == k:
+            return center
+        if value > k:
+            return binary_search(left, center - 1)
+        return binary_search(center + 1, right)
+
+    def binary_search_right(left, right):
+        if left > right:
+            return right
+        center = (left + right) // 2
+        value = nums[center]
+        if value != k:
+            return binary_search_right(left, center - 1)
+        return binary_search_right(center + 1, right)
+
+    def binary_search_left(left, right):
+        if left == right:
+            return right
+        center = (left + right) // 2
+        value = nums[center]
+        if value != k:
+            return binary_search_left(center + 1, right)
+        return binary_search_left(left, center - 1)
+
+    index = binary_search(0, len(nums) - 1)
+    if index == -1:
+        return [-1, -1]
+
+    index_left = binary_search_left(0, index)
+    index_right = binary_search_right(index, len(nums) - 1)
+    return [index_left, index_right]
+
+
+def canAttendMeetings(intervals: List[List[int]]) -> bool:
+    intervals.sort(key=lambda x: x[0])
+    for i, interval in enumerate(intervals):
+        if i and interval[0] < intervals[i - 1][1]:
+            return False
+    return True
+
+
+def numberMeetingRooms(intervals: List[List[int]]) -> int:
+    intervals.sort(key=lambda x: x[0])
+    meeting_rooms = []
+    for interval in intervals:
+        for meeting_room in meeting_rooms:
+            if interval[0] < meeting_room[-1][1]:
+                meeting_room.append(interval)
+                break
+        else:
+            meeting_rooms.append([interval])
+    return len(meeting_rooms)
+
+
+def meeting_room_conflicts(calendar: List[List[int]], rooms: int, queries: list[List[int]]) -> List[bool]:
+    def fill_rooms(rooms, calendar) -> List[List[List[int]]]:
+        filled_rooms = [[] for _ in range(rooms)]
+        calendar.sort(key=lambda x: x[0])
+        for meeting in calendar:
+            for room in filled_rooms:
+                if not room or meeting[0] >= room[-1][1]:
+                    room.append(meeting)
+                    break
+        return filled_rooms
+
+    def check_room(room: List[List[int]], query: List[int]) -> bool:
+        start_time, end_time = query
+        for start, end in room:
+            if not (end_time <= start or start_time >= end):
+                return False
+        return True
+
+    filled_rooms = fill_rooms(rooms, calendar)
+    result = []
+    for query in queries:
+        # Check if any room can accommodate the query
+        query_result = any(check_room(room, query) for room in filled_rooms)
+        result.append(query_result)
+
+    return result
+
+
+def validMountainArray(arr: List[int]) -> bool:
+    increasing = True
+    if len(arr) < 3:
+        return False
+    for i in range(1, len(arr)):
+        num = arr[i]
+        if i == 1 and num < arr[i - 1]:
+            return False
+        else:
+            if increasing:
+                if num < arr[i - 1]:
+                    increasing = False
+            elif num > arr[i - 1]:
+                return False
+
+    return not increasing
