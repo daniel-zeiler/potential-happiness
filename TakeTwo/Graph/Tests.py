@@ -201,7 +201,6 @@ class SolutionsTest(unittest.TestCase):
         rightChild = [2, -1, -1, 5, -1, -1]
         self.assertEqual(output, graph.validate_binary_tree(n, leftChild, rightChild))
 
-
     def test_calc_equation(self):
         equations = [["a", "b"], ["b", "c"]]
         values = [2.0, 3.0]
@@ -399,6 +398,41 @@ class SolutionsTest(unittest.TestCase):
         k = 0
         output = 500
         self.assertEqual(output, graph_six.findCheapestPrice(n, flights, src, dst, k))
+
+    def test_alien_dictionary(self):
+        words = ["wrt", "wrf", "er", "ett", "rftt"]
+        output = "wertf"
+        self.assertEqual(output, graph2.alienOrder(words))
+        words = ["z", "x"]
+        output = "zx"
+        self.assertEqual(output, graph2.alienOrder(words))
+        words = ["z", "x", "z"]
+        output = ""
+        self.assertEqual(output, graph2.alienOrder(words))
+
+    def test_numIslands2(self):
+        m = 3
+        n = 3
+        positions = [[0, 0], [0, 1], [1, 2], [2, 1]]
+        output = [1, 1, 2, 3]
+        self.assertEqual(output, graph2.numIslands2(m, n, positions))
+        m = 1
+        n = 1
+        positions = [[0, 0]]
+        output = [1]
+        self.assertEqual(output, graph2.numIslands2(m, n, positions))
+
+        m = 3
+        n = 3
+        positions = [[0, 0], [0, 1], [1, 2], [1, 2]]
+        output = [1, 1, 2, 2]
+        self.assertEqual(output, graph2.numIslands2(m, n, positions))
+
+        m = 3
+        n = 3
+        positions = [[0, 1], [1, 2], [2, 1], [1, 0], [0, 2], [0, 0], [1, 1]]
+        output = [1, 2, 3, 4, 3, 2, 1]
+        self.assertEqual(output, graph2.numIslands2(m, n, positions))
 
 
 if __name__ == '__main__':
