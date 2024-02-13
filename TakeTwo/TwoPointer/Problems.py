@@ -651,7 +651,7 @@ Explanation: "FooBarTest" can be generated like this "Fo" + "o" + "Ba" + "r" + "
 """
 
 
-def camelMatch(self, queries: List[str], pattern: str) -> List[bool]:
+def camelMatch(queries: List[str], pattern: str) -> List[bool]:
     pass
 
 
@@ -684,7 +684,7 @@ Explanation: In this case does not exist N and M, such that N = 2 * M.
 """
 
 
-def checkIfExist(self, arr: List[int]) -> bool:
+def checkIfExist(arr: List[int]) -> bool:
     pass
 
 
@@ -739,7 +739,7 @@ Output: [1,5,1]
 """
 
 
-def nextPermutation(self, nums: List[int]) -> None:
+def nextPermutation(nums: List[int]) -> None:
     """
     Do not return anything, modify nums in-place instead.
     """

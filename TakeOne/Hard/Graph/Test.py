@@ -4,7 +4,7 @@ import TakeOne.Hard.Graph.Solution_Two as graph2
 
 class SolutionsTest(unittest.TestCase):
 
-    def test_find_islands(self):
+    def test_numIslands2(self):
         m = 3
         n = 3
         positions = [[0, 0], [0, 1], [1, 2], [2, 1]]
@@ -28,7 +28,7 @@ class SolutionsTest(unittest.TestCase):
         output = [1, 2, 3, 4, 3, 2, 1]
         self.assertEqual(output, graph2.numIslands2(m, n, positions))
 
-    def test_distance_bust(self):
+    def test_numBusesToDestination(self):
         routes = [[1, 2, 7], [3, 6, 7]]
         source = 1
         target = 6

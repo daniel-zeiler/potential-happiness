@@ -125,19 +125,19 @@ class SolutionsTest(unittest.TestCase, linked_list.CustomAssertion):
         s = "abc"
         t = "ahbgdc"
         output = True
-        self.assertEqual(output, two_pointer_three.isSubsequence(s, t))
+        self.assertEqual(output, two_pointer.isSubsequence(s, t))
         s = "axc"
         t = "ahbgdc"
         output = False
-        self.assertEqual(output, two_pointer_three.isSubsequence(s, t))
+        self.assertEqual(output, two_pointer.isSubsequence(s, t))
 
     def test_reverse(self):
         s = "Let's take LeetCode contest"
         output = "s'teL ekat edoCteeL tsetnoc"
-        self.assertEqual(output, two_pointer_three.reverseWords(s))
+        self.assertEqual(output, two_pointer.reverseWords(s))
         s = "God Ding"
         output = "doG gniD"
-        self.assertEqual(output, two_pointer_three.reverseWords(s))
+        self.assertEqual(output, two_pointer.reverseWords(s))
 
     def test_valid_palindrome(self):
         s = "aba"

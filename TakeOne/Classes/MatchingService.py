@@ -40,6 +40,7 @@ class OrderBook:
         price = order.price
         quantity = order.quantity
         while self.bid > price and order.quantity > 0:
+            pass
 
         if order.quantity > 0:
             self.orderIndex[id] = order

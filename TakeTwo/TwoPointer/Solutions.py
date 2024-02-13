@@ -106,3 +106,47 @@ def reverseString(s: List[str]) -> None:
 
 def intersection(nums1: List[int], nums2: List[int]) -> List[int]:
     return list(set(nums1).intersection(set(nums2)))
+
+
+def isSubsequence(s: str, t: str) -> bool:
+    len_s = len(s)
+    len_t = len(t)
+
+    def is_subsequence(word_one, word_two) -> bool:
+        pointer_one = 0
+        for i, character in enumerate(word_two):
+            if character == word_one[pointer_one]:
+                pointer_one += 1
+                if pointer_one == len(word_one):
+                    return True
+        return False
+
+    if len_s < len_t:
+        return is_subsequence(s, t)
+    return is_subsequence(t, s)
+
+
+def reverseWords(s: str) -> str:
+    result = ""
+    for word in s.split(" "):
+        if result:
+            result += " "
+        result += word[::-1]
+    return result
+
+
+def validPalindrome(s: str) -> bool:
+    pointer_a, pointer_b = 0, len(s) - 1
+
+    def validate_palindrom_helper(index_one, index_two, skip_allowed):
+        while index_one < index_two:
+            if s[index_one] != s[index_two]:
+                if not skip_allowed:
+                    return False
+                return validate_palindrom_helper(index_one + 1, index_two, False) or validate_palindrom_helper(
+                    index_one, index_two - 1, False)
+            index_one += 1
+            index_two -= 1
+        return True
+
+    return validate_palindrom_helper(pointer_a, pointer_b, True)
