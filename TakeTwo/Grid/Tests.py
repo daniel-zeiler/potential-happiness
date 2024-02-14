@@ -230,18 +230,18 @@ class SolutionsTest(unittest.TestCase):
             ["1", "0", "0", "1", "0"]
         ]
         output = 4
-        self.assertEqual(output, array_problems_four.maximalSquare(matrix))
+        self.assertEqual(output, grid.maximalSquare(matrix))
         matrix = [
             ["0", "1"],
             ["1", "0"]
         ]
         output = 1
-        self.assertEqual(output, array_problems_four.maximalSquare(matrix))
+        self.assertEqual(output, grid.maximalSquare(matrix))
         matrix = [
             ["0"]
         ]
         output = 0
-        self.assertEqual(output, array_problems_four.maximalSquare(matrix))
+        self.assertEqual(output, grid.maximalSquare(matrix))
 
     def test_shortest_path_binary_matrix(self):
         grid = [

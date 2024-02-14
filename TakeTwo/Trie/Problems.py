@@ -250,7 +250,7 @@ occurrence being 4, 3, 2 and 1 respectively.
 """
 
 
-def topKFrequent(self, words: List[str], k: int) -> List[str]:
+def topKFrequent(words: List[str], k: int) -> List[str]:
     pass
 
 

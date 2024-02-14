@@ -258,3 +258,14 @@ def orangesRotting(grid: List[List[int]]) -> int:
                 queue.append((time + 1, x_target, y_target))
 
     return time if not num_oranges else -1
+
+
+def maximalSquare(matrix: List[List[str]]) -> int:
+    max_square = 0
+
+    for x, row in enumerate(matrix):
+        for y, value in enumerate(row):
+            if x != 0 and y != 0 and matrix[x][y] == "1":
+                matrix[x][y] = str(int(matrix[x][y]) + min(int(matrix[x - 1][y]), int(matrix[x - 1][y - 1]), int(matrix[x][y - 1])))
+            max_square = max(int(matrix[x][y]) ** 2, max_square)
+    return max_square

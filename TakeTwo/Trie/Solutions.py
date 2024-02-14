@@ -150,3 +150,115 @@ class MagicDictionary:
                     return search_word_helper(node.children[word_remaining[0]], word_remaining[1:], flipped)
 
         return search_word_helper(self.head, searchWord, False)
+
+
+class MapSumNode:
+    def __init__(self, key=None, val=0):
+        self.key = key
+        self.children = collections.defaultdict(MapSumNode)
+        self.val = val
+
+
+class MapSum:
+
+    def __init__(self):
+        self.head = MapSumNode()
+
+    def insert(self, key: str, val: int) -> None:
+        def insert_helper(node, word_remaining):
+            if not word_remaining:
+                node.key, node.val = key, val
+            else:
+                if word_remaining[0] not in node.children:
+                    node.children[word_remaining[0]] = MapSumNode()
+                insert_helper(node.children[word_remaining[0]], word_remaining[1:])
+
+        insert_helper(self.head, key)
+
+    def sum(self, prefix: str) -> int:
+        def traverse(node, prefix_remaining) -> int:
+            if not prefix_remaining:
+                return gather(node)
+            if prefix_remaining[0] not in node.children:
+                return 0
+            return traverse(node.children[prefix_remaining[0]], prefix_remaining[1:])
+
+        def gather(node) -> int:
+            return sum(gather(child) for child in node.children.values()) + node.val
+
+        return traverse(self.head, prefix)
+
+
+class LongestWordNode:
+    def __init__(self, word=None):
+        self.children = collections.defaultdict(LongestWordNode)
+
+
+class LongestWordTrie:
+    def __init__(self):
+        self.head = LongestWordNode()
+
+    def insert_word(self, word) -> bool:
+        def insert_helper(node, word_remaining):
+            if not word_remaining:
+                return True
+            if word_remaining[0] not in node.children:
+                if len(word_remaining) > 1:
+                    return False
+                node.children[word_remaining[0]] = LongestWordNode()
+            return insert_helper(node.children[word_remaining[0]], word_remaining[1:])
+
+        return insert_helper(self.head, word)
+
+
+def longestWord(words: List[str]) -> str:
+    words.sort(key=lambda x: len(x))
+    longest_word_trie = LongestWordTrie()
+    result = [word for word in words if longest_word_trie.insert_word(word)]
+    return result[-1]
+
+
+class CamelMatchNode:
+    def __init__(self, terms=None):
+        self.terms = terms
+        self.children = collections.defaultdict(CamelMatchNode)
+
+
+class CamelMatchTrie:
+    def __init__(self):
+        self.head = CamelMatchNode()
+
+    def add_terms(self, terms):
+        def add_terms_helper(node, terms_remaining):
+            if not terms_remaining:
+                node.terms = terms
+                return
+            if terms_remaining[0] not in node.children:
+                node.children[terms_remaining[0]] = CamelMatchNode()
+            add_terms_helper(node.children[terms_remaining[0]], terms_remaining[1:])
+
+        add_terms_helper(self.head, terms)
+
+    def match_terms(self, terms) -> bool:
+        def match_terms_helper(node, terms_remaining) -> bool:
+            if not terms_remaining:
+                return node.terms is not None
+            for term in node.children.keys():
+                if terms_remaining[0][:len(term)] == term:
+                    return match_terms_helper(node.children[term], terms_remaining[1:])
+            return False
+
+        return match_terms_helper(self.head, terms)
+
+
+import re
+
+
+def split_by_uppercase(s):
+    return re.findall('[A-Z][^A-Z]*', s)
+
+
+def camelMatch(queries: List[str], pattern: str) -> List[bool]:
+    camel_match_trie = CamelMatchTrie()
+    camel_match_trie.add_terms(split_by_uppercase(pattern))
+    return [camel_match_trie.match_terms(split_by_uppercase(query)) for query in queries]
