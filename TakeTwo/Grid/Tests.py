@@ -158,43 +158,119 @@ class SolutionsTest(unittest.TestCase):
         sc = 1
         newColor = 2
         output = [[2, 2, 2], [2, 2, 0], [2, 0, 1]]
-        self.assertListEqual(output, grid_two.floodFill(image, sr, sc, newColor))
+        self.assertListEqual(output, grid.floodFill(image, sr, sc, newColor))
         image = [[0, 0, 0], [0, 0, 0]]
         sr = 0
         sc = 0
         newColor = 2
         output = [[2, 2, 2], [2, 2, 2]]
-        self.assertListEqual(output, grid_two.floodFill(image, sr, sc, newColor))
+        self.assertListEqual(output, grid.floodFill(image, sr, sc, newColor))
 
     def test_num_islands(self):
-        grid = [
+        input = [
             ["1", "1", "1", "1", "0"],
             ["1", "1", "0", "1", "0"],
             ["1", "1", "0", "0", "0"],
             ["0", "0", "0", "0", "0"]
         ]
         output = 1
-        self.assertEqual(output, grid_two.numIslands(grid))
-        grid = [
+        self.assertEqual(output, grid.numIslands(input))
+        input = [
             ["1", "1", "0", "0", "0"],
             ["1", "1", "0", "0", "0"],
             ["0", "0", "1", "0", "0"],
             ["0", "0", "0", "1", "1"]
         ]
         output = 3
-        self.assertEqual(output, grid_two.numIslands(grid))
+        self.assertEqual(output, grid.numIslands(input))
 
     def test_rotten_oranges(self):
-        grid = [
+        input = [
             [2, 1, 1],
             [1, 1, 0],
             [0, 1, 1]
         ]
         output = 4
-        self.assertEqual(output, grid_two.orangesRotting(grid))
-        grid = [[2, 1, 1], [0, 1, 1], [1, 0, 1]]
+        self.assertEqual(output, grid.orangesRotting(input))
+        input = [[2, 1, 1], [0, 1, 1], [1, 0, 1]]
         output = -1
-        self.assertEqual(output, grid_two.orangesRotting(grid))
-        grid = [[0, 2]]
+        self.assertEqual(output, grid.orangesRotting(input))
+        input = [[0, 2]]
         output = 0
-        self.assertEqual(output, grid_two.orangesRotting(grid))
+        self.assertEqual(output, grid.orangesRotting(input))
+
+    def test_fall_and_crush(self):
+        input = [['#', '.', '#', '#', '*'],
+                 ['#', '.', '.', '#', '#'],
+                 ['.', '#', '.', '#', '.'],
+                 ['.', '.', '#', '.', '#'],
+                 ['#', '*', '.', '.', '.'],
+                 ['.', '.', '*', '#', '.']]
+        output = [['.', '.', '.', '.', '*'],
+                  ['.', '.', '.', '.', '.'],
+                  ['.', '.', '.', '.', '.'],
+                  ['.', '.', '.', '.', '.'],
+                  ['.', '.', '.', '#', '#'],
+                  ['#', '.', '#', '#', '#']]
+        self.assertListEqual(output, array_problems_three.fallAndCrush2(input))
+
+    def test_pacific_atlantic(self):
+        heights = [[1, 2, 2, 3, 5], [3, 2, 3, 4, 4], [2, 4, 5, 3, 1], [6, 7, 1, 4, 5], [5, 1, 1, 2, 4]]
+        output = [[0, 4], [1, 3], [1, 4], [2, 2], [3, 0], [3, 1], [4, 0]]
+        self.assertCountEqual(output, array_problems.pacificAtlantic(heights))
+        heights = [[2, 1], [1, 2]]
+        output = [[0, 0], [0, 1], [1, 0], [1, 1]]
+        self.assertCountEqual(output, array_problems.pacificAtlantic(heights))
+
+    def test_maximal_square(self):
+        matrix = [
+            ["1", "0", "1", "0", "0"],
+            ["1", "0", "1", "1", "1"],
+            ["1", "1", "1", "1", "1"],
+            ["1", "0", "0", "1", "0"]
+        ]
+        output = 4
+        self.assertEqual(output, array_problems_four.maximalSquare(matrix))
+        matrix = [
+            ["0", "1"],
+            ["1", "0"]
+        ]
+        output = 1
+        self.assertEqual(output, array_problems_four.maximalSquare(matrix))
+        matrix = [
+            ["0"]
+        ]
+        output = 0
+        self.assertEqual(output, array_problems_four.maximalSquare(matrix))
+
+    def test_shortest_path_binary_matrix(self):
+        grid = [
+            [0, 1],
+            [1, 0]
+        ]
+        output = 2
+        self.assertEqual(output, array_problems_four.shortestPathBinaryMatrix(grid))
+        grid = [
+            [0, 0, 0],
+            [1, 1, 0],
+            [1, 1, 0]
+        ]
+        output = 4
+        self.assertEqual(output, array_problems_four.shortestPathBinaryMatrix(grid))
+        grid = [[1, 0, 0], [1, 1, 0], [1, 1, 0]]
+        output = -1
+        self.assertEqual(output, array_problems_four.shortestPathBinaryMatrix(grid))
+
+    def test_exists(self):
+        board = [["A", "B", "C", "E"], ["S", "F", "C", "S"], ["A", "D", "E", "E"]]
+        word = "ABCCED"
+        output = True
+        self.assertEqual(output, array_problems.exist(board, word))
+        board = [["A", "B", "C", "E"], ["S", "F", "C", "S"], ["A", "D", "E", "E"]]
+        word = "SEE"
+        output = True
+        self.assertEqual(output, array_problems.exist(board, word))
+        board = [["A", "B", "C", "E"], ["S", "F", "C", "S"], ["A", "D", "E", "E"]]
+        word = "ABCB"
+        output = False
+        self.assertEqual(output, array_problems.exist(board, word))

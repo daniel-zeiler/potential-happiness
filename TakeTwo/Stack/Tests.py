@@ -1,6 +1,7 @@
 import unittest
 import TakeTwo.Stack.Solutions as stack
 
+
 class SolutionsTest(unittest.TestCase):
     def test_max_depth(self):
         s = "(1+(2*3)+((8)/4))+1"
@@ -218,45 +219,55 @@ class SolutionsTest(unittest.TestCase):
     def test_eval_rpn(self):
         tokens = ["2", "1", "+", "3", "*"]
         output = 9
-        self.assertEqual(output, stack_four.evalRPN(tokens))
+        self.assertEqual(output, stack.evalRPN(tokens))
         tokens = ["4", "13", "5", "/", "+"]
         output = 6
-        self.assertEqual(output, stack_four.evalRPN(tokens))
+        self.assertEqual(output, stack.evalRPN(tokens))
         tokens = ["10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"]
         output = 22
-        self.assertEqual(output, stack_four.evalRPN(tokens))
+        self.assertEqual(output, stack.evalRPN(tokens))
 
     def test_prices(self):
         prices = [8, 4, 6, 2, 3]
         output = [4, 2, 4, 2, 3]
-        self.assertListEqual(output, stack_four.finalPrices(prices))
+        self.assertListEqual(output, stack.finalPrices(prices))
         prices = [1, 2, 3, 4, 5]
         output = [1, 2, 3, 4, 5]
-        self.assertListEqual(output, stack_four.finalPrices(prices))
+        self.assertListEqual(output, stack.finalPrices(prices))
         prices = [10, 1, 1, 6]
         output = [9, 0, 1, 6]
-        self.assertListEqual(output, stack_four.finalPrices(prices))
+        self.assertListEqual(output, stack.finalPrices(prices))
 
     def test_next_greater(self):
         nums1 = [4, 1, 2]
         nums2 = [1, 3, 4, 2]
         output = [-1, 3, -1]
-        self.assertListEqual(output, stack_three.nextGreaterElement(nums1, nums2))
+        self.assertListEqual(output, stack.nextGreaterElement(nums1, nums2))
         nums1 = [2, 4]
         nums2 = [1, 2, 3, 4]
         output = [3, -1]
-        self.assertListEqual(output, stack_three.nextGreaterElement(nums1, nums2))
+        self.assertListEqual(output, stack.nextGreaterElement(nums1, nums2))
 
     def test_daily_temperature(self):
         temperatures = [73, 74, 75, 71, 69, 72, 76, 73]
         output = [1, 1, 4, 2, 1, 1, 0, 0]
-        self.assertListEqual(output, stack_three.dailyTemperatures(temperatures))
+        self.assertListEqual(output, stack.dailyTemperatures(temperatures))
         temperatures = [30, 40, 50, 60]
         output = [1, 1, 1, 0]
-        self.assertListEqual(output, stack_three.dailyTemperatures(temperatures))
+        self.assertListEqual(output, stack.dailyTemperatures(temperatures))
         temperatures = [30, 60, 90]
         output = [1, 1, 0]
-        self.assertListEqual(output, stack_three.dailyTemperatures(temperatures))
+        self.assertListEqual(output, stack.dailyTemperatures(temperatures))
+
+    def test_stock_planner(self):
+        stock_spanner = stack.StockSpanner()
+        self.assertEqual(1, stock_spanner.next(100))
+        self.assertEqual(1, stock_spanner.next(80))
+        self.assertEqual(1, stock_spanner.next(60))
+        self.assertEqual(2, stock_spanner.next(70))
+        self.assertEqual(1, stock_spanner.next(60))
+        self.assertEqual(4, stock_spanner.next(75))
+
 
     def test_next_greater_circular(self):
         nums = [1, 2, 1]

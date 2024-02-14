@@ -189,9 +189,72 @@ def minPathSum(grid: List[List[int]]) -> int:
             if x == 0 and y == 0:
                 continue
             elif x == 0:
-                grid[x][y] += grid[x][y-1]
+                grid[x][y] += grid[x][y - 1]
             elif y == 0:
-                grid[x][y] += grid[x-1][y]
+                grid[x][y] += grid[x - 1][y]
             else:
                 grid[x][y] += min(grid[x - 1][y], grid[x][y - 1])
     return grid[-1][-1]
+
+
+def floodFill(image: List[List[int]], sr: int, sc: int, newColor: int) -> List[List[int]]:
+    source_color = image[sr][sc]
+    if source_color == newColor:
+        return image
+
+    directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+
+    def traverse(x, y, source_color):
+        image[x][y] = newColor
+        for x_direction, y_direction in directions:
+            x_target, y_target = x + x_direction, y + y_direction
+            if 0 <= x_target < len(image) and 0 <= y_target < len(image[0]) and image[x_target][
+                y_target] == source_color:
+                traverse(x_target, y_target, source_color)
+
+    traverse(sr, sc, source_color)
+    return image
+
+
+def numIslands(grid: List[List[str]]) -> int:
+    directions = [(-1, 0), (1, 0), (0, 1), (0, -1)]
+
+    def traverse(x, y):
+        grid[x][y] = "0"
+        for x_direction, y_direction in directions:
+            x_target, y_target = x + x_direction, y + y_direction
+            if 0 <= x_target < len(grid) and 0 <= y_target < len(grid[0]) and grid[x_target][y_target] == '1':
+                traverse(x_target, y_target)
+
+    result = 0
+    for x, row in enumerate(grid):
+        for y, value in enumerate(row):
+            if value == '1':
+                traverse(x, y)
+                result += 1
+    return result
+
+
+from collections import deque
+
+
+def orangesRotting(grid: List[List[int]]) -> int:
+    time, num_oranges, queue, directions = 0, 0, deque([]), [(-1, 0), (1, 0), (0, 1), (0, -1)]
+
+    for x, row in enumerate(grid):
+        for y, value in enumerate(row):
+            if value == 2:
+                queue.append((time, x, y))
+            elif value == 1:
+                num_oranges += 1
+
+    while queue:
+        time, x, y = queue.popleft()
+        for x_direction, y_direction in directions:
+            x_target, y_target = x + x_direction, y + y_direction
+            if 0 <= x_target < len(grid) and 0 <= y_target < len(grid[0]) and grid[x_target][y_target] == 1:
+                num_oranges -= 1
+                grid[x_target][y_target] = 2
+                queue.append((time + 1, x_target, y_target))
+
+    return time if not num_oranges else -1
