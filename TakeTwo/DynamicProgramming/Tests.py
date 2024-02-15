@@ -1,5 +1,5 @@
 import unittest
-import TakeOne.dynamic_programming.Solutions as dynamic_programming
+import TakeTwo.DynamicProgramming.Solutions as dynamic_programming
 
 
 class SolutionsTest(unittest.TestCase):
@@ -57,6 +57,14 @@ class SolutionsTest(unittest.TestCase):
         output = 12
         self.assertEqual(output, dynamic_programming.minPathSum(grid))
 
+    def test_climb_stairs(self):
+        n = 2
+        output = 2
+        self.assertEqual(output, dynamic_programming.climbStairs(n))
+        n = 3
+        output = 3
+        self.assertEqual(output, dynamic_programming.climbStairs(n))
+
     def test_max_profit(self):
         prices = [7, 1, 5, 3, 6, 4]
         output = 5
@@ -74,6 +82,14 @@ class SolutionsTest(unittest.TestCase):
         self.assertEqual(output, dynamic_programming.rob(nums))
 
     def test_maximal_area(self):
+        matrix = [
+            ["1", "0", "1", "0", "0"],
+            ["1", "0", "1", "1", "1"],
+            ["1", "1", "1", "1", "1"],
+            ["1", "0", "1", "1", "1"]
+        ]
+        output = 9
+        self.assertEqual(output, dynamic_programming.maximalSquare(matrix))
         matrix = [
             ["1", "0", "1", "0", "0"],
             ["1", "0", "1", "1", "1"],
@@ -217,8 +233,8 @@ class SolutionsTest(unittest.TestCase):
                  [20, 10],
                  [24, 10],
                  [8, 3]]
-        t= 40
-        k= 21
+        t = 40
+        k = 21
         output = 36
         self.assertEqual(output, dynamic_programming.max_score(input, t, k))
 

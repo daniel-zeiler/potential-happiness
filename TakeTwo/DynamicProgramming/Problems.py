@@ -129,7 +129,11 @@ Note: You can only move either down or right at any point in time.
 
 Example 1:
 
-Input: grid = [[1,3,1],[1,5,1],[4,2,1]]
+Input: grid = [
+    [1,3,1],
+    [1,5,1],
+    [4,2,1]
+]
 Output: 7
 Explanation: Because the path 1 → 3 → 1 → 1 → 1 minimizes the sum.
 Example 2:
@@ -190,7 +194,7 @@ Output: [1,1]
 """
 
 
-def getRow(self, rowIndex: int) -> List[int]:
+def getRow(rowIndex: int) -> List[int]:
     pass
 
 
@@ -270,7 +274,7 @@ Output: 0
 """
 
 
-def maximalSquare(self, matrix: List[List[str]]) -> int:
+def maximalSquare(matrix: List[List[str]]) -> int:
     pass
 
 

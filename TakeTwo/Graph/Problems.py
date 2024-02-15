@@ -739,25 +739,7 @@ data = [
 
 
 def currency_exchange(currency_one, currency_two, data):
-    def get_graph():
-        graph = collections.defaultdict(dict)
-        for curr_one, curr_two, rate in data:
-            graph[curr_one][curr_two] = rate
-            graph[curr_two][curr_one] = 1 / rate
-        return graph
-
-    graph = get_graph()
-
-    def traverse(currency, visited):
-        result = 0
-        if currency == currency_two:
-            return 1
-        for adjacent in graph[currency]:
-            if adjacent not in visited:
-                result = max(result, graph[currency][adjacent] * traverse(adjacent, visited | {adjacent}))
-        return result
-
-    return traverse(currency_one, {currency_one})
+    pass
 
 
 data = [
@@ -847,33 +829,7 @@ from collections import defaultdict, deque
 
 
 def half_prereq(prerequisites):
-    def get_graph_and_in_degree():
-        in_degree = defaultdict(int)
-        graph = defaultdict(list)
-        for before, after in prerequisites:
-            if before not in in_degree:
-                in_degree[before] = 0
-            if after not in in_degree:
-                in_degree[after] = 0
-            graph[before].append(after)
-            in_degree[after] += 1
-        return graph, in_degree
-
-    graph, in_degree = get_graph_and_in_degree()
-    queue = deque(list(filter(lambda x: in_degree[x] == 0, in_degree.keys())))
-
-    result = []
-    while queue:
-        course = queue.popleft()
-        result.append(course)
-        for adjacent in graph[course]:
-            in_degree[adjacent] -= 1
-            if in_degree[adjacent] == 0:
-                queue.append(adjacent)
-
-    if len(result) != len(graph):
-        raise Exception('unable to complete')
-    return result[(len(result) // 2)]
+    pass
 
 
 prereqs_courses1 = [
@@ -911,30 +867,13 @@ she will match and buy a book for $109 (the lowest offer)
 
 class OfferMatchingLinearTime:
     def __init__(self, max_price):
-        self.prices = [deque([]) for _ in range(max_price)]
-        self.buy_pointer = -1
-        self.sell_pointer = max_price + 1
-        self.max_price = max_price
+        pass
 
     def buy(self, offer):
-        if self.sell_pointer == self.max_price + 1 or offer < self.prices[self.sell_pointer][0]:
-            self.prices[offer].append(offer)
-            self.buy_pointer = max(self.buy_pointer, offer)
-        else:
-            result = self.prices[self.sell_pointer].popleft()
-            while not self.prices[self.sell_pointer] and self.sell_pointer != self.max_price + 1:
-                self.sell_pointer += 1
-            return result
+        pass
 
     def sell(self, offer):
-        if self.buy_pointer == -1 or offer > self.prices[self.buy_pointer][0]:
-            self.prices[offer].append(offer)
-            self.sell_pointer = min(self.sell_pointer, offer)
-        else:
-            result = self.prices[self.buy_pointer].popleft()
-            while not self.prices[self.buy_pointer] and self.buy_pointer != -1:
-                self.buy_pointer -= 1
-            return result
+        pass
 
 
 from datetime import datetime, timedelta
@@ -946,25 +885,13 @@ class OfferMatcher:
         self.sell_offers = []
 
     def buy(self, offer, cancellation_time):
-        timestamp = datetime.now()
-        while self.sell_offers and timestamp > self.sell_offers[0][1]:
-            heapq.heappop(self.sell_offers)
-        if not self.sell_offers or offer < self.sell_offers[0][0]:
-            heapq.heappush(self.buy_offers, [-offer, cancellation_time])
-        else:
-            return heapq.heappop(self.sell_offers[0])
+        pass
 
     def sell(self, offer, cancellation_time):
-        timestamp = datetime.now()
-        while self.buy_offers and timestamp > self.buy_offers[0][1]:
-            heapq.heappop(self.buy_offers)
-        if not self.buy_offers or offer > -self.buy_offers[0][0]:
-            heapq.heappush(self.sell_offers, [offer, cancellation_time])
-        else:
-            return -heapq.heappop(self.buy_offers[0])
+        pass
 
     def __str__(self):
-        return str(sorted(self.buy_offers, key=lambda x: -x[0])) + '\n' + str(sorted(self.sell_offers))
+        pass
 
 
 offer_matcher = OfferMatcher()
