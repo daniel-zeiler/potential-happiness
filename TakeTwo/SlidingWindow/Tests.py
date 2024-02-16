@@ -1,22 +1,21 @@
 import unittest
-import TakeOne.Sliding_Window.solutions_two as sliding_window_two
-import TakeOne.Sliding_Window.solutions_three as sliding_window_three
+import TakeTwo.SlidingWindow.Solutions as sliding_window
 
 
 class SolutionsTest(unittest.TestCase):
     def test_length_of_longest_substring(self):
         s = "abcabcbb"
         output = 3
-        self.assertEqual(sliding_window_three.length_of_longest_substring(s), output)
+        self.assertEqual(sliding_window.length_of_longest_substring(s), output)
         s = "bbbbb"
         output = 1
-        self.assertEqual(sliding_window_three.length_of_longest_substring(s), output)
+        self.assertEqual(sliding_window.length_of_longest_substring(s), output)
         s = "pwwkew"
         output = 3
-        self.assertEqual(sliding_window_three.length_of_longest_substring(s), output)
+        self.assertEqual(sliding_window.length_of_longest_substring(s), output)
         s = ""
         output = 0
-        self.assertEqual(sliding_window_three.length_of_longest_substring(s), output)
+        self.assertEqual(sliding_window.length_of_longest_substring(s), output)
 
     def test_min_window(self):
         s = "ADOBECODEBANC"
