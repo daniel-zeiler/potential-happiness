@@ -34,3 +34,21 @@ def find_largest_sensor_distance(array1: List[int], array2: List[int]) -> int:
 array1 = [1, 2, 3, 4, 5, 99]
 array2 = [3, 6, 7, 11, 12, 144]
 print(find_largest_sensor_distance(array1, array2))
+
+
+"""
+Question
+You're building a simplified border security solution that places detection towers at various locations along a border.
+
+Different sensors are available for the towers that can detect up to a fixed range.
+
+Given the positions of the towers and know border crossing locations, return the minimum range that a sensor would need 
+to be able to detect to cover all border crossing locations.
+
+As an example, imagine that your inputs are the following:
+1 2 3 4 6 10 12 - Border Crossings
+1 4 6 - Tower
+
+Output
+6
+"""

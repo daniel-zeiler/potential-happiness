@@ -839,7 +839,7 @@ Output: 3
 """
 
 
-def rob2(self, nums: List[int]) -> int:
+def rob2(nums: List[int]) -> int:
     pass
 
 
@@ -915,7 +915,7 @@ In total, you spent $17 and covered all the days of your travel.
 """
 
 
-def mincostTickets(self, days: List[int], costs: List[int]) -> int:
+def mincostTickets(days: List[int], costs: List[int]) -> int:
     pass
 
 
@@ -949,7 +949,7 @@ Output: 5
 """
 
 
-def lastStoneWeightII(self, stones: List[int]) -> int:
+def lastStoneWeightII(stones: List[int]) -> int:
     pass
 
 
@@ -984,7 +984,7 @@ exection -> execution (insert 'u')
 """
 
 
-def minDistance(self, word1: str, word2: str) -> int:
+def minDistance(word1: str, word2: str) -> int:
     pass
 
 

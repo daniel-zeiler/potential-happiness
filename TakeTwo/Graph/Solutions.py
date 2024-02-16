@@ -333,4 +333,270 @@ def validate_binary_tree(n: int, left_child: List[int], right_child: List[int]) 
 
 
 def calcEquation(equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]:
-    pass
+    def build_graph():
+        graph = collections.defaultdict(list)
+        for [origin, destination], value in zip(equations, values):
+            graph[origin].append((destination, value))
+            graph[destination].append((origin, 1 / value))
+        return graph
+
+    graph = build_graph()
+
+    def traverse(index: str, target: str, visited: set, curr_value: float) -> float:
+        if index not in graph:
+            return -1.0
+        if index == target:
+            return curr_value
+        for adjacent, multiple in graph[index]:
+            if adjacent not in visited:
+                result = traverse(adjacent, target, visited | set(adjacent), curr_value * multiple)
+                if result != -1:
+                    return result
+        return -1.0
+
+    return [traverse(query[0], query[1], set(query[0]), 1.0) for query in queries]
+
+
+def numBusesToDestination(routes: List[List[int]], source: int, target: int) -> int:
+    def build_graph():
+        graph_stops, graph_buses = collections.defaultdict(list), collections.defaultdict(list)
+        for i, route in enumerate(routes):
+            for r in route:
+                graph_stops[r].append(i)
+                graph_buses[i].append(r)
+        return graph_stops, graph_buses
+
+    graph_stops, graph_buses = build_graph()
+
+    def traverse_distance(position: int, destination: int, visited_buses: set, visited_stops: set, at_bus: bool):
+        if position == destination and not at_bus:
+            return 1
+
+        if at_bus:
+            visited, graph = visited_stops, graph_buses
+        else:
+            visited, graph = visited_buses, graph_stops
+
+        for adjacent in graph[position]:
+            if adjacent not in visited:
+                if at_bus:
+                    visited_stops.add(adjacent)
+                else:
+                    visited_buses.add(adjacent)
+
+                distance = traverse_distance(adjacent, destination, visited_buses, visited_stops, not at_bus)
+                if distance != -1:
+                    return distance + 1
+
+                if at_bus:
+                    visited_stops.remove(adjacent)
+                else:
+                    visited_buses.remove(adjacent)
+
+        return -1
+
+    distance = traverse_distance(source, target, set(), {source}, False)
+    return int(distance / 2) if distance != -1 else distance
+
+
+class Employee:
+    def __init__(self, id: int, importance: int, subordinates: List[int]):
+        self.id = id
+        self.importance = importance
+        self.subordinates = subordinates
+
+
+def getImportance(employees: List['Employee'], id: int) -> int:
+    def traverse(employee: Employee):
+        return (employee.importance +
+                sum([traverse(employees[subordinate - 1]) for subordinate in employee.subordinates]))
+
+    for employee in employees:
+        if id == employee.id:
+            return traverse(employee)
+    return -1
+
+
+def kSimilarity(s1: str, s2: str) -> int:
+    def get_adjacent(input_string: str) -> List[str]:
+        result = []
+        for x in range(len(input_string)):
+            for y in range(x + 1, len(input_string)):
+                tmp = list(input_string)
+                tmp[x], tmp[y] = tmp[y], tmp[x]
+                result.append("".join(tmp))
+        return result
+
+    queue = collections.deque([(0, s1)])
+    visited = {s1}
+    while queue:
+        distance, string = queue.popleft()
+        if string == s2:
+            return distance
+        for adjacent in get_adjacent(string):
+            if adjacent not in visited:
+                visited.add(adjacent)
+                queue.append((distance + 1, adjacent))
+
+    return -1
+
+
+def ladderLength(beginWord: str, endWord: str, wordList: List[str]) -> int:
+    def build_graph():
+        graph = collections.defaultdict(list)
+        for word in wordList + [beginWord]:
+            for x in range(len(word)):
+                connecting_word = word[:x] + '*' + word[x + 1:]
+                graph[connecting_word].append(word)
+                graph[word].append(connecting_word)
+        return graph
+
+    if endWord not in wordList:
+        return 0
+    visited, graph, queue = {beginWord}, build_graph(), collections.deque([(1, beginWord)])
+    while queue:
+        distance, word = queue.popleft()
+        if word == endWord:
+            return int(distance / 2) + 1
+        for adjacent in graph[word]:
+            if adjacent not in visited:
+                visited.add(adjacent)
+                queue.append((distance + 1, adjacent))
+    return 0
+
+
+def canFinish(numCourses: int, prerequisites: List[List[int]]) -> bool:
+    def build_graph_and_degree() -> {dict, dict}:
+        in_degree = {i: 0 for i in range(numCourses)}
+        graph = collections.defaultdict(list)
+        for after, prereq in prerequisites:
+            in_degree[after] += 1
+            graph[prereq].append(after)
+        return in_degree, graph
+
+    in_degree, graph = build_graph_and_degree()
+    queue = collections.deque([])
+    for key, degree in in_degree.items():
+        if degree == 0:
+            queue.append(key)
+
+    while queue:
+        node = queue.popleft()
+        for adjacent in graph[node]:
+            in_degree[adjacent] -= 1
+            if in_degree[adjacent] == 0:
+                queue.append(adjacent)
+
+    return sum(in_degree.values()) == 0
+
+
+import heapq
+
+
+def minimumCost(n: int, connections: List[List[int]]) -> int:
+    def get_graph() -> dict:
+        graph = collections.defaultdict(list)
+        for origin, destination, weight in connections:
+            graph[origin].append((weight, destination))
+            graph[destination].append((weight, origin))
+        return graph
+
+    graph = get_graph()
+    queue = [(0, connections[0][0])]
+    visited = set()
+    total_weight = 0
+    while queue:
+        weight, node = heapq.heappop(queue)
+        if node not in visited:
+            visited.add(node)
+            total_weight += weight
+            if len(visited) == n:
+                return total_weight
+            for weight, adjacent in graph[node]:
+                if adjacent not in visited:
+                    heapq.heappush(queue, (weight, adjacent))
+    return -1
+
+
+def currency_exchange(currency_one, currency_two, data):
+    def build_graph() -> dict:
+        graph = collections.defaultdict(list)
+        for origin, destination, ask, bid in data:
+            graph[origin].append((bid, destination))
+            graph[destination].append((ask, origin))
+        return graph
+
+    graph = build_graph()
+    if currency_one not in graph or currency_two not in graph:
+        return -1
+
+    queue = [(1, currency_one)]
+    visited = set()
+    while queue:
+        rate, currency = heapq.heappop(queue)
+        if currency not in visited:
+            visited.add(currency)
+            if currency == currency_two:
+                return rate
+            for adjacent_rate, adjacent in graph[currency]:
+                if adjacent not in visited:
+                    heapq.heappush(queue, (rate * adjacent_rate, adjacent))
+    return -1
+
+
+def half_prereq(prerequisites):
+    def build_graph_and_degree():
+        graph, in_degree = collections.defaultdict(list), collections.defaultdict(int)
+        for prereq, course in prerequisites:
+            graph[prereq].append(course)
+            in_degree[course] += 1
+            if prereq not in in_degree:
+                in_degree[prereq] = 0
+        return graph, in_degree
+
+    graph, in_degree = build_graph_and_degree()
+    queue, order = collections.deque([]), []
+
+    for key, value in in_degree.items():
+        if value == 0:
+            queue.append(key)
+
+    while queue:
+        class_name = queue.popleft()
+        order.append(class_name)
+        for adjacent in graph[class_name]:
+            in_degree[adjacent] -= 1
+            if in_degree[adjacent] == 0:
+                queue.append(adjacent)
+
+    return order[len(order) // 2 - 1] if len(order) % 2 == 0 else order[len(order) // 2]
+
+
+def countPaths(n: int, roads: List[List[int]]) -> int:
+    min_distance = float('inf')
+    count_at_min_distance = 0
+
+    def build_graph():
+        graph = collections.defaultdict(list)
+        for origin, destination, weight in roads:
+            graph[origin].append((destination, weight))
+            graph[destination].append((origin, weight))
+        return graph
+
+    graph = build_graph()
+
+    def traverse(index, distance, visited):
+        nonlocal min_distance, count_at_min_distance
+        if index == n - 1:
+            if distance < min_distance:
+                count_at_min_distance = 1
+                min_distance = distance
+            elif distance == min_distance:
+                count_at_min_distance += 1
+        else:
+            for adjacent, weight in graph[index]:
+                if adjacent not in visited:
+                    traverse(adjacent, distance + weight, visited | {adjacent})
+
+    traverse(0, 0, set())
+    return count_at_min_distance

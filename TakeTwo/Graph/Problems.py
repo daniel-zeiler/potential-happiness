@@ -498,7 +498,7 @@ Output: -1
 """
 
 
-def numBusesToDestination(self, routes: List[List[int]], source: int, target: int) -> int:
+def numBusesToDestination(routes: List[List[int]], source: int, target: int) -> int:
     pass
 
 
@@ -541,51 +541,6 @@ class Employee:
 
 
 def getImportance(employees: List['Employee'], id: int) -> int:
-    pass
-
-
-"""Suppose you are at a party with n people (labeled from 0 to n - 1), and among them, there may exist one celebrity. 
-The definition of a celebrity is that all the other n - 1 people know him/her, but he/she does not know any of them. 
-
-Now you want to find out who the celebrity is or verify that there is not one. The only thing you are allowed to do 
-is to ask questions like: "Hi, A. Do you know B?" to get information about whether A knows B. You need to find out 
-the celebrity (or verify there is not one) by asking as few questions as possible (in the asymptotic sense). 
-
-You are given a helper function bool knows(a, b) which tells you whether A knows B. Implement a function int 
-findCelebrity(n). There will be exactly one celebrity if he/she is in the party. Return the celebrity's label if 
-there is a celebrity in the party. If there is no celebrity, return -1. 
-
- 
-
-Example 1:
-
-
-Input: graph = [[1,1,0],[0,1,0],[1,1,1]] Output: 1 Explanation: There are three persons labeled with 0, 
-1 and 2. graph[i][j] = 1 means person i knows person j, otherwise graph[i ][j] = 0 means person i does not know 
-person j. The celebrity is the person labeled as 1 because both 0 and 2 know him but 1 does not know anybody. Example 
-2: 
-
-
-Input: graph = [[1,0,1],[1,1,0],[0,1,1]]
-Output: -1
-Explanation: There is no celebrity.
- 
-
-Constraints:
-
-n == graph.length
-n == graph[i].length
-2 <= n <= 100
-graph[i][j] is 0 or 1.
-graph[i][i] == 1
-"""
-
-
-# The knows API is already defined for you.
-# return a bool, whether a knows b
-# def knows(a: int, b: int) -> bool:
-
-def findCelebrity(self, n: int) -> int:
     pass
 
 
@@ -710,7 +665,7 @@ Explanation: There is no way to connect all cities even if all edges are used.
 """
 
 
-def minimumCost(self, n: int, connections: List[List[int]]) -> int:
+def minimumCost(n: int, connections: List[List[int]]) -> int:
     pass
 
 
@@ -741,11 +696,6 @@ data = [
 def currency_exchange(currency_one, currency_two, data):
     pass
 
-
-data = [
-    ['USD', 'JPY', 110], ['USD', 'AUD', 1.45], ['JPY', 'GBP', 0.0070]
-]
-print(currency_exchange('GBP', 'AUD', data))
 
 """
 You're developing a system for scheduling advising meetings with students in a Computer Science program. Each 
@@ -800,112 +750,12 @@ prereqs_courses3 = [
 
 Sample output 3:
 	"Data Structures"
-
-Complexity analysis variables:
-
-n: number of pairs in the input
-
-prereqs_courses1 = [
-    ["Foundations of Computer Science", "Operating Systems"],
-    ["Data Structures", "Algorithms"],
-    ["Computer Networks", "Computer Architecture"],
-    ["Algorithms", "Foundations of Computer Science"],
-    ["Computer Architecture", "Data Structures"],
-    ["Software Design", "Computer Networks"]
-]
-
-prereqs_courses2 = [
-    ["Data Structures", "Algorithms"],
-    ["Algorithms", "Foundations of Computer Science"],
-    ["Foundations of Computer Science", "Logic"]
- ]
-
-prereqs_courses3 = [
-    ["Data Structures", "Algorithms"]
-]
 """
-
-from collections import defaultdict, deque
 
 
 def half_prereq(prerequisites):
     pass
 
-
-prereqs_courses1 = [
-    ["Foundations of Computer Science", "Operating Systems"],
-    ["Data Structures", "Algorithms"],
-    ["Computer Networks", "Computer Architecture"],
-    ["Algorithms", "Foundations of Computer Science"],
-    ["Computer Architecture", "Data Structures"],
-    ["Software Design", "Computer Networks"]
-]
-print(half_prereq(prereqs_courses1))
-
-"""
-You operate a marketplace for buying & selling used textbooks For a given textbook eg“TheoryofCryptography”
-there are people who want to buy this textbook and people who want to sell
-
-OfferstoBUY: [$100, $100, $99, $99, $97, $90]
-
-OfferstoSELL:[$109, $110, $110, $114, $115$, 119]
-
-A match occurs when two people agree on a price Some new offers do not match These offers should be added to the 
-active set of offers 
-
-For example, Tim offers to SELL at $150 This will not match No one is willing to buy at that price so we save the offer
-
-OfferstoSELL:: [$109, $110, $110, $114, $115, $119, $150]
-
-When matching we want to give the customer the “best price”
-
-Example matches: If Jane offers to BUY at $120
-
-she will match and buy a book for $109 (the lowest offer)
-"""
-
-
-class OfferMatchingLinearTime:
-    def __init__(self, max_price):
-        pass
-
-    def buy(self, offer):
-        pass
-
-    def sell(self, offer):
-        pass
-
-
-from datetime import datetime, timedelta
-
-
-class OfferMatcher:
-    def __init__(self):
-        self.buy_offers = []
-        self.sell_offers = []
-
-    def buy(self, offer, cancellation_time):
-        pass
-
-    def sell(self, offer, cancellation_time):
-        pass
-
-    def __str__(self):
-        pass
-
-
-offer_matcher = OfferMatcher()
-OfferstoBUY = [100, 100, 99, 99, 97, 90]
-OfferstoSELL = [109, 110, 110, 114, 115, 119]
-a_time = datetime.now()
-
-for buy, sell in zip(OfferstoBUY, OfferstoSELL):
-    print(offer_matcher.buy(buy, a_time + timedelta(minutes=30)))
-    print(offer_matcher.sell(sell, a_time + timedelta(minutes=30)))
-
-print(offer_matcher)
-print(offer_matcher.sell(150, a_time + timedelta(minutes=30)))
-print(offer_matcher.buy(120, a_time + timedelta(minutes=30)))
 
 """
 You are in a city that consists of n intersections numbered from 0 to n - 1 with bi-directional roads between some 
@@ -940,40 +790,7 @@ Explanation: There is only one way to go from intersection 0 to intersection 1, 
 """
 
 
-def countPaths(self, n: int, roads: List[List[int]]) -> int:
-    pass
-
-
-"""There is an undirected weighted connected graph. You are given a positive integer n which denotes that the graph 
-has n nodes labeled from 1 to n, and an array edges where each edges[i] = [ui, vi, weighti] denotes that there is an 
-edge between nodes ui and vi with weight equal to weighti. 
-
-A path from node start to node end is a sequence of nodes [z0, z1, z2, ..., zk] such that z0 = start and zk = end and 
-there is an edge between zi and zi+1 where 0 <= i <= k-1. 
-
-The distance of a path is the sum of the weights on the edges of the path. Let distanceToLastNode(x) denote the 
-shortest distance of a path between node n and node x. A restricted path is a path that also satisfies that 
-distanceToLastNode(zi) > distanceToLastNode(zi+1) where 0 <= i <= k-1. 
-
-Return the number of restricted paths from node 1 to node n. Since that number may be too large, return it modulo 109 
-+ 7. 
-
- 
-
-Example 1:
-
-
-Input: n = 5, edges = [[1,2,3],[1,3,3],[2,3,1],[1,4,2],[5,2,2],[3,5,1],[5,4,10]] Output: 3 Explanation: Each circle 
-contains the node number in black and its distanceToLastNode value in blue. The three restricted paths are: 1) 1 --> 
-2 --> 5 2) 1 --> 2 --> 3 --> 5 3) 1 --> 3 --> 5 Example 2: 
-
-
-Input: n = 7, edges = [[1,3,1],[4,1,2],[7,3,4],[2,5,3],[5,6,1],[6,7,2],[7,5,3],[2,6,4]] Output: 1 Explanation: Each 
-circle contains the node number in black and its distanceToLastNode value in blue. The only restricted path is 1 --> 
-3 --> 7. """
-
-
-def countRestrictedPaths(self, n: int, edges: List[List[int]]) -> int:
+def countPaths(n: int, roads: List[List[int]]) -> int:
     pass
 
 
@@ -1013,7 +830,7 @@ Output: [true,true]
 """
 
 
-def checkIfPrerequisite(self, numCourses: int, prerequisites: List[List[int]], queries: List[List[int]]) -> List[bool]:
+def checkIfPrerequisite(numCourses: int, prerequisites: List[List[int]], queries: List[List[int]]) -> List[bool]:
     pass
 
 
@@ -1250,6 +1067,7 @@ All pairs (xi, yi) are distinct.
 
 def minCostConnectPoints(self, points: List[List[int]]) -> int:
     pass
+
 
 """
 You are given an empty 2D binary grid grid of size m x n. The grid represents a map where 0's represent water and

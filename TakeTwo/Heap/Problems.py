@@ -146,3 +146,68 @@ class Interval:
 
 def employeeFreeTime(schedule: '[[Interval]]') -> '[Interval]':
     pass
+
+"""
+You operate a marketplace for buying & selling used textbooks For a given textbook eg“TheoryofCryptography”
+there are people who want to buy this textbook and people who want to sell
+
+OfferstoBUY: [$100, $100, $99, $99, $97, $90]
+
+OfferstoSELL:[$109, $110, $110, $114, $115$, 119]
+
+A match occurs when two people agree on a price Some new offers do not match These offers should be added to the 
+active set of offers 
+
+For example, Tim offers to SELL at $150 This will not match No one is willing to buy at that price so we save the offer
+
+OfferstoSELL:: [$109, $110, $110, $114, $115, $119, $150]
+
+When matching we want to give the customer the “best price”
+
+Example matches: If Jane offers to BUY at $120
+
+she will match and buy a book for $109 (the lowest offer)
+"""
+
+
+class OfferMatchingLinearTime:
+    def __init__(self, max_price):
+        pass
+
+    def buy(self, offer):
+        pass
+
+    def sell(self, offer):
+        pass
+
+
+from datetime import datetime, timedelta
+
+
+class OfferMatcher:
+    def __init__(self):
+        self.buy_offers = []
+        self.sell_offers = []
+
+    def buy(self, offer, cancellation_time):
+        pass
+
+    def sell(self, offer, cancellation_time):
+        pass
+
+    def __str__(self):
+        pass
+
+
+offer_matcher = OfferMatcher()
+OfferstoBUY = [100, 100, 99, 99, 97, 90]
+OfferstoSELL = [109, 110, 110, 114, 115, 119]
+a_time = datetime.now()
+
+for buy, sell in zip(OfferstoBUY, OfferstoSELL):
+    print(offer_matcher.buy(buy, a_time + timedelta(minutes=30)))
+    print(offer_matcher.sell(sell, a_time + timedelta(minutes=30)))
+
+print(offer_matcher)
+print(offer_matcher.sell(150, a_time + timedelta(minutes=30)))
+print(offer_matcher.buy(120, a_time + timedelta(minutes=30)))

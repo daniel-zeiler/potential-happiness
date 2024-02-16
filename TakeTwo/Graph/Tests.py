@@ -206,50 +206,54 @@ class SolutionsTest(unittest.TestCase):
         values = [2.0, 3.0]
         queries = [["a", "c"], ["b", "a"], ["a", "e"], ["a", "a"], ["x", "x"]]
         output = [6.00000, 0.50000, -1.00000, 1.00000, -1.00000]
-        self.assertListEqual(output, graph_six.calcEquation(equations, values, queries))
+        self.assertListEqual(output, graph.calcEquation(equations, values, queries))
         equations = [["a", "b"], ["b", "c"], ["bc", "cd"]]
         values = [1.5, 2.5, 5.0]
         queries = [["a", "c"], ["c", "b"], ["bc", "cd"], ["cd", "bc"]]
         output = [3.75000, 0.40000, 5.00000, 0.20000]
-        self.assertListEqual(output, graph_six.calcEquation(equations, values, queries))
+        self.assertListEqual(output, graph.calcEquation(equations, values, queries))
         equations = [["a", "b"]]
         values = [0.5]
         queries = [["a", "b"], ["b", "a"], ["a", "c"], ["x", "y"]]
         output = [0.50000, 2.00000, -1.00000, -1.00000]
-        self.assertListEqual(output, graph_six.calcEquation(equations, values, queries))
+        self.assertListEqual(output, graph.calcEquation(equations, values, queries))
 
     def test_importance(self):
         employees = [[1, 5, [2, 3]], [2, 3, []], [3, 3, []]]
         input = []
         for employee in employees:
-            input.append(graph_six.Employee(employee[0], employee[1], employee[2]))
+            input.append(graph.Employee(employee[0], employee[1], employee[2]))
         id = 1
         output = 11
-        self.assertEqual(output, graph_six.getImportance(input, id))
+        self.assertEqual(output, graph.getImportance(input, id))
         employees = [[1, 2, [5]], [5, -3, []]]
         input = []
         for employee in employees:
-            input.append(graph_six.Employee(employee[0], employee[1], employee[2]))
+            input.append(graph.Employee(employee[0], employee[1], employee[2]))
         id = 5
         output = -3
-        self.assertEqual(output, graph_six.getImportance(input, id))
+        self.assertEqual(output, graph.getImportance(input, id))
 
     def test_ladder_length(self):
 
         word = "hit"
         target = "cog"
         word_list = ["hot", "dot", "dog", "lot", "log", "cog"]
-        self.assertEqual(5, graph_six.ladderLength(word, target, word_list))
+        self.assertEqual(5, graph.ladderLength(word, target, word_list))
+        beginWord = "hit"
+        endWord = "cog"
+        wordList = ["hot", "dot", "dog", "lot", "log"]
+        self.assertEqual(0, graph.ladderLength(beginWord, endWord, wordList))
 
     def test_can_finish(self):
         numCourses = 2
         prerequisites = [[1, 0]]
         output = True
-        self.assertEqual(output, graph_six.canFinish(numCourses, prerequisites))
+        self.assertEqual(output, graph.canFinish(numCourses, prerequisites))
         numCourses = 2
         prerequisites = [[1, 0], [0, 1]]
         output = False
-        self.assertEqual(output, graph_six.canFinish(numCourses, prerequisites))
+        self.assertEqual(output, graph.canFinish(numCourses, prerequisites))
         numCourses = 100
         prerequisites = [[1, 0], [2, 0], [2, 1], [3, 1], [3, 2], [4, 2], [4, 3], [5, 3], [5, 4], [6, 4], [6, 5], [7, 5],
                          [7, 6], [8, 6],
@@ -292,7 +296,7 @@ class SolutionsTest(unittest.TestCase):
                          [99, 97]
                          ]
         output = True
-        self.assertEqual(output, graph_six.canFinish(numCourses, prerequisites))
+        self.assertEqual(output, graph.canFinish(numCourses, prerequisites))
 
     def test_maximum_distance_traveled(self):
         edges = [[1, 2, 1], [2, 3, 2], [2, 4, 3], [1, 5, 4]]
@@ -304,40 +308,93 @@ class SolutionsTest(unittest.TestCase):
         source = 1
         target = 6
         output = 2
-        self.assertEqual(output, graph_four.numBusesToDestination(routes, source, target))
+        self.assertEqual(output, graph.numBusesToDestination(routes, source, target))
         routes = [[7, 12], [4, 5, 15], [6], [15, 19], [9, 12, 13]]
         source = 15
         target = 12
         output = -1
-        self.assertEqual(output, graph_four.numBusesToDestination(routes, source, target))
+        self.assertEqual(output, graph.numBusesToDestination(routes, source, target))
         routes = [[2], [2, 8]]
         source = 8
         target = 2
         output = 1
-        self.assertEqual(output, graph_four.numBusesToDestination(routes, source, target))
+        self.assertEqual(output, graph.numBusesToDestination(routes, source, target))
 
     def test_k_similar(self):
         s1 = "ab"
         s2 = "ba"
         output = 1
-        self.assertEqual(output, graph_four.kSimilarity(s1, s2))
+        self.assertEqual(output, graph.kSimilarity(s1, s2))
         s1 = "abc"
         s2 = "bca"
         output = 2
-        self.assertEqual(output, graph_four.kSimilarity(s1, s2))
+        self.assertEqual(output, graph.kSimilarity(s1, s2))
         s1 = "the"
         s2 = "cat"
         output = -1
-        self.assertEqual(output, graph_four.kSimilarity(s1, s2))
+        self.assertEqual(output, graph.kSimilarity(s1, s2))
+
+    def test_minimum_cost(self):
+        n = 3
+        connections = [[1, 2, 5], [1, 3, 6], [2, 3, 1]]
+        output = 6
+        self.assertEqual(output, graph.minimumCost(n, connections))
+        n = 4
+        connections = [[1, 2, 3], [3, 4, 4]]
+        output = -1
+        self.assertEqual(output, graph.minimumCost(n, connections))
+        n = 7
+        roads = [[0, 6, 7], [0, 1, 2], [1, 2, 3], [1, 3, 3], [6, 3, 3], [3, 5, 1], [6, 5, 1], [2, 5, 1],
+                 [0, 4, 5], [4, 6, 2]]
+        output = 10
+        self.assertEqual(output, graph.minimumCost(n, roads))
+
+    def test_exchange_rate(self):
+        data = [
+            ("BTC", "ETH", 1 / 10, 10),
+            ("BTC", "USDC", 1 / 13000, 13000),
+            ("ETH", "USDC", 1 / 1300, 1300),
+            ("LINK", "USDC", 1 / 28, 28),
+            ("LINK", "SDE", 1 / 234, 234),
+            ("SDE", "COIN", 1 / 400, 400),
+            ("COIN", "USDC", 1 / 24, 24)
+        ]
+        currency_one = "BTC"
+        currency_two = "LINK"
+        self.assertEqual(464.2857142857143, graph.currency_exchange(currency_one, currency_two, data))
+
+    def test_half_prereq(self):
+        prereqs_courses1 = [
+            ["Foundations of Computer Science", "Operating Systems"],
+            ["Data Structures", "Algorithms"],
+            ["Computer Networks", "Computer Architecture"],
+            ["Algorithms", "Foundations of Computer Science"],
+            ["Computer Architecture", "Data Structures"],
+            ["Software Design", "Computer Networks"]
+        ]
+        output = "Data Structures"
+        self.assertEqual(output, graph.half_prereq(prereqs_courses1))
+        prereqs_courses1 = [
+            ["Data Structures", "Algorithms"],
+            ["Algorithms", "Foundations of Computer Science"],
+            ["Foundations of Computer Science", "Logic"]
+        ]
+        output = "Algorithms"
+        self.assertEqual(output, graph.half_prereq(prereqs_courses1))
+        prereqs_courses1 = [
+            ["Data Structures", "Algorithms"],
+        ]
+        output = "Data Structures"
+        self.assertEqual(output, graph.half_prereq(prereqs_courses1))
 
     def test_count_paths(self):
         n = 7
         roads = [[0, 6, 7], [0, 1, 2], [1, 2, 3], [1, 3, 3], [6, 3, 3], [3, 5, 1], [6, 5, 1], [2, 5, 1],
                  [0, 4, 5], [4, 6, 2]]
-        self.assertEqual(4, graph_six.countPaths(n, roads))
+        self.assertEqual(4, graph.countPaths(n, roads))
         n = 2
         roads = [[1, 0, 10]]
-        self.assertEqual(1, graph_six.countPaths(n, roads))
+        self.assertEqual(1, graph.countPaths(n, roads))
 
     def test_find_the_city(self):
         n = 4
