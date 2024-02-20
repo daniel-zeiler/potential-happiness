@@ -396,26 +396,48 @@ class SolutionsTest(unittest.TestCase):
         roads = [[1, 0, 10]]
         self.assertEqual(1, graph.countPaths(n, roads))
 
+    def test_check_if_prerequisites(self):
+        numCourses = 2
+        prerequisites = [[1, 0]]
+        queries = [[0, 1], [1, 0]]
+        output = [False, True]
+        self.assertListEqual(output, graph.checkIfPrerequisite(numCourses, prerequisites, queries))
+        numCourses = 2
+        prerequisites = []
+        queries = [[1, 0], [0, 1]]
+        output = [False, False]
+        self.assertListEqual(output, graph.checkIfPrerequisite(numCourses, prerequisites, queries))
+        numCourses = 3
+        prerequisites = [[1, 2], [1, 0], [2, 0]]
+        queries = [[1, 0], [1, 2]]
+        output = [True, True]
+        self.assertListEqual(output, graph.checkIfPrerequisite(numCourses, prerequisites, queries))
+
     def test_find_the_city(self):
         n = 4
         edges = [[0, 1, 3], [1, 2, 1], [1, 3, 4], [2, 3, 1]]
         distanceThreshold = 4
         output = 3
-        self.assertEqual(output, graph_six.findTheCity(n, edges, distanceThreshold))
+        self.assertEqual(output, graph.findTheCity(n, edges, distanceThreshold))
+        n = 5
+        edges = [[0, 1, 2], [0, 4, 8], [1, 2, 3], [1, 4, 2], [2, 3, 1], [3, 4, 1]]
+        distanceThreshold = 2
+        output = 0
+        self.assertEqual(output, graph.findTheCity(n, edges, distanceThreshold))
 
     def test_makeConnections(self):
         n = 4
         connections = [[0, 1], [0, 2], [1, 2]]
         output = 1
-        self.assertEqual(output, graph_six.makeConnected(n, connections))
+        self.assertEqual(output, graph.makeConnected(n, connections))
         n = 6
         connections = [[0, 1], [0, 2], [0, 3], [1, 2], [1, 3]]
         output = 2
-        self.assertEqual(output, graph_six.makeConnected(n, connections))
+        self.assertEqual(output, graph.makeConnected(n, connections))
         n = 6
         connections = [[0, 1], [0, 2], [0, 3], [1, 2]]
         output = -1
-        self.assertEqual(output, graph_six.makeConnected(n, connections))
+        self.assertEqual(output, graph.makeConnected(n, connections))
 
     def test_max_probability(self):
         n = 3
@@ -424,21 +446,28 @@ class SolutionsTest(unittest.TestCase):
         start = 0
         end = 2
         output = 0.25000
-        self.assertEqual(output, graph_six.maxProbability(n, edges, succProb, start, end))
+        self.assertEqual(output, graph.maxProbability(n, edges, succProb, start, end))
         n = 3
         edges = [[0, 1], [1, 2], [0, 2]]
         succProb = [0.5, 0.5, 0.3]
         start = 0
         end = 2
         output = 0.3000
-        self.assertEqual(output, graph_six.maxProbability(n, edges, succProb, start, end))
+        self.assertEqual(output, graph.maxProbability(n, edges, succProb, start, end))
         n = 3
         edges = [[0, 1]]
         succProb = [0.5]
         start = 0
         end = 2
         output = 0.0000
-        self.assertEqual(output, graph_six.maxProbability(n, edges, succProb, start, end))
+        self.assertEqual(output, graph.maxProbability(n, edges, succProb, start, end))
+
+    def test_alternating_paths(self):
+        n = 3
+        redEdges = [[0, 1], [1, 2]]
+        blueEdges = []
+        output = [0, 1, -1]
+        self.assertListEqual(output, graph.shortestAlternatingPaths(n, redEdges, blueEdges))
 
     def test_find_cheapest_flights(self):
         n = 3

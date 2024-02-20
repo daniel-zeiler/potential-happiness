@@ -53,3 +53,4 @@ def max_sub_array(nums: List[int]) -> int:
             temp_array[i] = temp_array[i - 1] + num
         curr_max = max(curr_max, temp_array[i])
     return curr_max
+

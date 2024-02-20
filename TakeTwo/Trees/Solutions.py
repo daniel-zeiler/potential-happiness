@@ -560,3 +560,124 @@ def rightSideView(root: Optional[Node]) -> List[int]:
         if node.right:
             queue.append((level + 1, node.right))
     return view
+
+
+def preorderTraversal(root: Optional[Node]) -> List[int]:
+    def traverse(node):
+        return [node.value] + traverse(node.left) + traverse(node.right) if node else []
+
+    return traverse(root)
+
+
+def hasPathSum(root: Optional[Node], targetSum: int) -> bool:
+    def traverse(n, sum):
+        return traverse(n.left, sum + n.value) or traverse(n.right, sum + n.value) if n else sum == targetSum
+
+    return traverse(root, 0) if root else False
+
+
+def minDepth(root: Optional[Node]) -> int:
+    def traverse(node):
+        if node:
+            return min(traverse(node.left), traverse(node.right)) + 1 if node.left or node.right else 1
+        return float('inf')
+
+    return traverse(root)
+
+
+def isBalanced(root: Optional[Node]) -> bool:
+    balanced = True
+
+    def traverse(node):
+        if node:
+            left, right = traverse(node.left), traverse(node.right)
+            if left and right and abs(left - right) > 1:
+                nonlocal balanced
+                balanced = False
+            return max(left, right) + 1
+        return 0
+
+    traverse(root)
+    return balanced
+
+
+def levelOrderBottom(root: Optional[Node]) -> List[List[int]]:
+    if not root:
+        return []
+    queue = collections.deque([(0, root)])
+    ordering = []
+    while queue:
+        level, node = queue.popleft()
+        if len(ordering) == level:
+            ordering.append([node.value])
+        else:
+            ordering[level].append(node.value)
+        if node.left:
+            queue.append((level + 1, node.left))
+        if node.right:
+            queue.append((level + 1, node.right))
+
+    return ordering[::-1]
+
+
+def maxDepth2(root: Optional[Node]) -> int:
+    if not root:
+        return 0
+
+    def traverse(node):
+        if node:
+            return max(traverse(node.left), traverse(node.right)) + 1 if node.left or node.right else 1
+        return float('-inf')
+
+    return traverse(root)
+
+
+def zigzagLevelOrder(root: Optional[Node]) -> List[List[int]]:
+    if not root:
+        return []
+    queue, ordering = collections.deque([(0, root)]), []
+
+    while queue:
+        level, node = queue.popleft()
+        if len(ordering) == level:
+            ordering.append([node.value])
+        else:
+            ordering[level].append(node.value)
+        if node.left:
+            queue.append((level + 1, node.left))
+        if node.right:
+            queue.append((level + 1, node.right))
+
+    for i in range(len(ordering)):
+        if i % 2 == 1:
+            ordering[i] = ordering[i][::-1]
+
+    return ordering
+
+
+def isSymmetric(root: Optional[Node]) -> bool:
+    def traverse(left, right):
+        if not left or not right:
+            return left == right
+        return traverse(left.left, right.right) and traverse(left.right, right.left) and left.value == right.value
+
+    return traverse(root, root)
+
+
+def isSameTree(p_node: Optional[Node], q_node: Optional[Node]) -> bool:
+    if not p_node or not q_node:
+        return p_node == q_node
+    return p_node.value == q_node.value and isSameTree(p_node.left, q_node.left) and isSameTree(p_node.right,
+                                                                                                q_node.right)
+
+
+def isValidBST(root: Optional[Node]) -> bool:
+
+    def traverse(node, minimum, maximum):
+        if node:
+            if node.val <= minimum or node.val >= maximum:
+                return False
+            return traverse(node.left, minimum, node.value) and traverse(node.right, node.value, maximum)
+        return True
+
+    return traverse(root, float('-inf'), float('inf'))

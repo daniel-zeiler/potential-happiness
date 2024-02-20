@@ -7,8 +7,6 @@ There is an intersection of two roads. First road is road A where cars travel fr
 and from South to North in direction 2. Second road is road B where cars travel from West to East in direction 3 and
 from East to West in direction 4.
 
-
-
 There is a traffic light located on each road before the intersection. A traffic light can either be green or red.
 
 Green means cars can cross the intersection in both directions of the road. Red means cars in both directions cannot
@@ -29,8 +27,6 @@ direction of the car. turnGreen is a function you can call to turn the traffic l
 crossCar is a function you can call to let the current car cross the intersection. Your answer is considered correct
 if it avoids cars deadlock in the intersection. Turning the light green on a road when it was already green is
 considered a wrong answer.
-
-
 
 Example 1:
 
@@ -239,8 +235,8 @@ class FooBar:
 """
 You have a function printNumber that can be called with an integer parameter and prints it to the console.
 
-For example, calling printNumber(7) prints 7 to the console.
-You are given an instance of the class ZeroEvenOdd that has three functions: zero, even, and odd. The same instance of ZeroEvenOdd will be passed to three different threads:
+For example, calling printNumber(7) prints 7 to the console. You are given an instance of the class ZeroEvenOdd that 
+has three functions: zero, even, and odd. The same instance of ZeroEvenOdd will be passed to three different threads:
 
 Thread A: calls zero() that should only output 0's.
 Thread B: calls even() that should only output even numbers.

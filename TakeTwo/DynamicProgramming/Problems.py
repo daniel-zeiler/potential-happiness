@@ -480,31 +480,7 @@ def countSquares(matrix: List[List[int]]) -> int:
 
 
 """
-Given an array of non-negative integers nums, you are initially positioned at the first index of the array.
-
-Each element in the array represents your maximum jump length at that position.
-
-Your goal is to reach the last index in the minimum number of jumps.
-
-You can assume that you can always reach the last index.
-
- 
-
-Example 1:
-
-Input: nums = [2,3,1,1,4] Output: 2 Explanation: The minimum number of jumps to reach the last index is 2. Jump 1 
-step from index 0 to 1, then 3 steps to the last index. Example 2: 
-
-Input: nums = [2,3,0,1,4]
-Output: 2
-"""
-
-
-def jump(nums: List[int]) -> int:
-    pass
-
-
-"""You are given an integer array nums. You want to maximize the number of points you get by performing the following 
+You are given an integer array nums. You want to maximize the number of points you get by performing the following 
 operation any number of times: 
 
 Pick any nums[i] and delete it to earn nums[i] points. Afterwards, you must delete every element equal to nums[i] - 1 
@@ -533,44 +509,12 @@ You earn a total of 9 points.
 """
 
 
-def deleteAndEarn(self, nums: List[int]) -> int:
+def deleteAndEarn(nums: List[int]) -> int:
     pass
 
 
 """
-Given a circular integer array nums of length n, return the maximum possible sum of a non-empty subarray of nums.
-
-A circular array means the end of the array connects to the beginning of the array. Formally, the next element of 
-nums[i] is nums[(i + 1) % n] and the previous element of nums[i] is nums[(i - 1 + n) % n]. 
-
-A subarray may only include each element of the fixed buffer nums at most once. Formally, for a subarray nums[i], 
-nums[i + 1], ..., nums[j], there does not exist i <= k1, k2 <= j with k1 % n == k2 % n. 
-
- 
-
-Example 1:
-
-Input: nums = [1,-2,3,-2]
-Output: 3
-Explanation: Subarray [3] has maximum sum 3.
-Example 2:
-
-Input: nums = [5,-3,5]
-Output: 10
-Explanation: Subarray [5,5] has maximum sum 5 + 5 = 10.
-Example 3:
-
-Input: nums = [-3,-2,-3]
-Output: -2
-Explanation: Subarray [-2] has maximum sum -2.
-"""
-
-
-def maxSubarraySumCircular(self, nums: List[int]) -> int:
-    pass
-
-
-"""Given an integer array nums, find a contiguous non-empty subarray within the array that has the largest product, 
+Given an integer array nums, find a contiguous non-empty subarray within the array that has the largest product, 
 and return the product. 
 
 The test cases are generated so that the answer will fit in a 32-bit integer.
@@ -650,7 +594,7 @@ Output: 2
 """
 
 
-def maxScoreSightseeingPair(self, values: List[int]) -> int:
+def maxScoreSightseeingPair(values: List[int]) -> int:
     pass
 
 

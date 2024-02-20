@@ -24,7 +24,7 @@ ValueError
 """
 
 
-def bidirectional_bfs(graph, source, target):
+def bidirectional_bfs(edges, source, target):
     pass
 
 
@@ -75,18 +75,6 @@ list: A list of edges that form the minimum spanning tree. Each edge is represen
 
 def minimum_spanning_tree(graph):
     pass
-
-
-"""
-This function implements Kruskal's algorithm to find the minimum spanning tree of a weighted undirected graph.
-
-Parameters: graph (dict): A dictionary representing a weighted undirected graph, where the keys are nodes and the 
-values are a list of tuples representing edges. Each tuple consists of two nodes and a weight.
-
-Returns:
-list: A list of edges that form the minimum spanning tree. Each edge is represented as a tuple consisting of two nodes.
-"""
-
 
 def topological_sort(number_of_vertices, edges):
     pass

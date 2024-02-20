@@ -33,22 +33,149 @@ def find_largest_sensor_distance(array1: List[int], array2: List[int]) -> int:
 
 array1 = [1, 2, 3, 4, 5, 99]
 array2 = [3, 6, 7, 11, 12, 144]
-print(find_largest_sensor_distance(array1, array2))
+# print(find_largest_sensor_distance(array1, array2))
+
+"""
+Calculator 1
+1 + 2 - 5
+"""
+
+from typing import Any
+
+
+def calculator_one(input_string: str) -> int:
+    input_string = input_string.replace(" ", "")
+    pointer = 0
+    number = 0
+    sign = "+"
+    stack = []
+
+    def update(sign, number):
+        if sign == "+":
+            stack.append(number)
+        elif sign == "-":
+            stack.append(-number)
+
+    while pointer < len(input_string):
+        character = input_string[pointer]
+        if character.isdigit():
+            number = number * 10 + int(character)
+        elif character in ["+", "-"]:
+            update(sign, number)
+            number = 0
+            sign = character
+        pointer += 1
+    update(sign, number)
+    return sum(stack)
 
 
 """
-Question
-You're building a simplified border security solution that places detection towers at various locations along a border.
-
-Different sensors are available for the towers that can detect up to a fixed range.
-
-Given the positions of the towers and know border crossing locations, return the minimum range that a sensor would need 
-to be able to detect to cover all border crossing locations.
-
-As an example, imagine that your inputs are the following:
-1 2 3 4 6 10 12 - Border Crossings
-1 4 6 - Tower
-
-Output
-6
+Calculator 2
+1 + (2 - 5) 
 """
+
+
+def calculator_two(input_string: str) -> {int, int}:
+    input_string = input_string.replace(" ", "")
+    pointer = 0
+    stack = []
+    sign = "+"
+    number = 0
+
+    def process_number(sign, number):
+        if sign == "+":
+            stack.append(number)
+        elif sign == "-":
+            stack.append(-number)
+
+    while pointer < len(input_string):
+        character = input_string[pointer]
+        if character.isdigit():
+            number = number * 10 + int(character)
+        elif character in ["+", "-"]:
+            process_number(sign, number)
+            sign = character
+            number = 0
+        elif character == "(":
+            number, end_index = calculator_two(input_string[pointer + 1:])
+            pointer += end_index
+        elif character == ")":
+            process_number(sign, number)
+            return sum(stack), pointer
+        pointer += 1
+    process_number(sign, number)
+    return sum(stack), pointer
+
+
+"""
+Calculator 3
+1 + 2 / 5
+"""
+
+
+def calculator_three(input_string: str) -> int:
+    pointer, sign, number, stack = 0, "+", 0, []
+    input_string = input_string.replace(" ", "")
+
+    def process_number(sign, number):
+        if sign == "+":
+            stack.append(number)
+        elif sign == "-":
+            stack.append(-number)
+        elif sign == "/":
+            stack.append(stack.pop() / number)
+        else:
+            stack.append(stack.pop() * number)
+
+    while pointer < len(input_string):
+        character = input_string[pointer]
+        if character.isdigit():
+            number = 10 * number + int(character)
+        elif character in ["+", "/", "-", "*"]:
+            process_number(sign, number)
+            number, sign = 0, character
+        pointer += 1
+
+    process_number(sign, number)
+    return sum(stack)
+
+
+"""
+Calculator 4
+2 + 1 / (2 / 5) + 4
+"""
+
+
+def calculator_four(input_string: str) -> {int, int}:
+    pointer, sign, number, stack = 0, "+", 0, []
+    input_string = input_string.replace(" ", "")
+
+    def process_number(sign, number):
+        if sign == "+":
+            stack.append(number)
+        elif sign == "-":
+            stack.append(-number)
+        elif sign == "*":
+            stack.append(stack.pop() * number)
+        elif sign == "/":
+            stack.append(stack.pop() / number)
+
+    while pointer < len(input_string):
+        character = input_string[pointer]
+        if character.isdigit():
+            number = 10 * number + int(character)
+        elif character in ["+", "/", "-", "*"]:
+            process_number(sign, number)
+            sign, number = character, 0
+        elif character == "(":
+            number, index = calculator_four(input_string[pointer + 1:])
+            pointer += index + 1
+        elif character == ")":
+            process_number(sign, number)
+            return sum(stack), pointer
+        pointer += 1
+    process_number(sign, number)
+    return sum(stack), pointer
+
+
+print(calculator_four("2 + 1 / (2 / 5) + 4"))

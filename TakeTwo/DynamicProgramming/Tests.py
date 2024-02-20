@@ -183,6 +183,14 @@ class SolutionsTest(unittest.TestCase):
         output = 2
         self.assertEqual(output, dynamic_programming.jump(nums))
 
+    def test_delete_and_earn(self):
+        nums = [2, 2, 3, 3, 3, 4]
+        output = 9
+        self.assertEqual(output, dynamic_programming.deleteAndEarn(nums))
+        nums = [3, 4, 2]
+        output = 6
+        self.assertEqual(output, dynamic_programming.deleteAndEarn(nums))
+
     def test_max_circular_subarray(self):
         nums = [1, -2, 3, -2]
         output = 3

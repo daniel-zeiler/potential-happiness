@@ -600,3 +600,160 @@ def countPaths(n: int, roads: List[List[int]]) -> int:
 
     traverse(0, 0, set())
     return count_at_min_distance
+
+
+def checkIfPrerequisite(numCourses: int, prerequisites: List[List[int]], queries: List[List[int]]) -> List[bool]:
+    def build_graph_and_degree() -> {dict, dict}:
+        graph, in_degree = collections.defaultdict(list), {i: 0 for i in range(numCourses)}
+        for before, after in prerequisites:
+            graph[before].append(after)
+            in_degree[after] += 1
+        return graph, in_degree
+
+    graph, in_degree = build_graph_and_degree()
+    prereq_dictionary, queue = collections.defaultdict(set), collections.deque([])
+    for node, degree in in_degree.items():
+        if degree == 0:
+            queue.append(node)
+
+    while queue:
+        node = queue.popleft()
+        for adjacent in graph[node]:
+            prereq_dictionary[adjacent].add(node)
+            prereq_dictionary[adjacent].update(prereq_dictionary[node])
+            in_degree[adjacent] -= 1
+            if in_degree[adjacent] == 0:
+                queue.append(adjacent)
+
+    return [origin in prereq_dictionary[destination] for origin, destination in queries]
+
+
+import heapq
+
+
+def findTheCity(n: int, edges: List[List[int]], distanceThreshold: int) -> int:
+    def build_graph():
+        graph = collections.defaultdict(set)
+        for u, v, distance in edges:
+            if distance <= distanceThreshold:
+                graph[u].add((v, distance))
+                graph[v].add((u, distance))
+        return graph
+
+    def traverse_bfs(node):
+        heap = []
+        # bound by distanceThreshold
+        heapq.heappush(heap, (distanceThreshold * -1, node))
+        count = 0
+        visited = set()
+        while heap:
+            neg_remaining_distance, node = heapq.heappop(heap)
+            remaining_distance = neg_remaining_distance * -1
+
+            if node not in visited:
+                visited.add(node)
+                count += 1
+
+                for neighbor, distance in graph[node]:
+                    if neighbor not in visited and remaining_distance >= distance:
+                        heapq.heappush(heap, ((remaining_distance - distance) * -1, neighbor))
+        return count - 1
+
+    graph = build_graph()
+    min_count, ans = float('inf'), -1
+
+    for source in range(n):
+        count = traverse_bfs(source)
+        if count <= min_count:
+            min_count = count
+            ans = source
+    return ans
+
+
+def makeConnected(n: int, connections: List[List[int]]) -> int:
+    parents = [i for i in range(n)]
+    rank = [1 for _ in range(n)]
+
+    def union(node_origin, node_destination):
+        parent_origin = find(node_origin)
+        parent_destination = find(node_destination)
+        if parent_origin == parent_destination:
+            return False
+        rank_origin = rank[parent_origin]
+        rank_destination = rank[parent_destination]
+        if rank_origin > rank_destination:
+            rank[parent_origin] += rank_destination
+            parents[parent_origin] = parent_destination
+        else:
+            rank[parent_destination] += rank_origin
+            parents[parent_destination] = parent_origin
+        return True
+
+    def find(node):
+        if parents[node] == node:
+            return node
+        parents[node] = find(parents[node])
+        return parents[node]
+
+    num_redundant_connections = 0
+
+    for origin, destination in connections:
+        if not union(origin, destination):
+            num_redundant_connections += 1
+
+    for i in range(n):
+        find(i)
+
+    num_groups = len(set(parents))
+    if num_groups > num_redundant_connections + 1:
+        return -1
+    return num_groups - 1
+
+
+def maxProbability(n: int, edges: List[List[int]], succProb: List[float], start: int, end: int) -> float:
+    def build_graph():
+        graph = collections.defaultdict(list)
+        for (origin, destination), probability in zip(edges, succProb):
+            graph[origin].append((probability, destination))
+            graph[destination].append((probability, origin))
+        return graph
+
+    def traverse_dfs(node, visited, weight):
+        if node == end:
+            return weight
+        prob = 0.0
+
+        for adjacent_weight, adjacent_node in graph[node]:
+            if adjacent_node not in visited:
+                prob = max(prob, traverse_dfs(adjacent_node, visited | {adjacent_node}, weight * adjacent_weight))
+
+        return prob
+
+    graph = build_graph()
+    return traverse_dfs(start, {start}, 1)
+
+
+def shortestAlternatingPaths(n: int, redEdges: List[List[int]], blueEdges: List[List[int]]) -> List[int]:
+    def build_graphs(edges):
+        graph = collections.defaultdict(list)
+        for origin, destination in edges:
+            graph[origin].append(destination)
+        return graph
+
+    red_graph, blue_graph = build_graphs(redEdges), build_graphs(blueEdges)
+
+    result = [-1 for _ in range(n)]
+
+    def traverse(node, distance, visited, blue_is_next):
+        result[node] = distance if result[node] == -1 else min(distance, result[node])
+
+        if blue_is_next:
+            for adjacent in list(filter(lambda x: x not in visited, blue_graph[node])):
+                traverse(adjacent, distance + 1, visited | {adjacent}, not blue_is_next)
+        else:
+            for adjacent in list(filter(lambda x: x not in visited, red_graph[node])):
+                traverse(adjacent, distance + 1, visited | {adjacent}, not blue_is_next)
+
+    traverse(0, 0, {0}, True)
+    traverse(0, 0, {0}, False)
+    return result
