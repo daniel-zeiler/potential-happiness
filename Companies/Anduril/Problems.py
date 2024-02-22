@@ -179,3 +179,42 @@ def calculator_four(input_string: str) -> {int, int}:
 
 
 print(calculator_four("2 + 1 / (2 / 5) + 4"))
+
+"""
+Group of sensors with time interval, sensor information comes in at random 
+process(sensor_id:str,time_start:int,time_end:int)
+total_time()
+"""
+
+
+class Sensor:
+    def __init__(self):
+        self.intervals = []
+
+    def process(self, sensor_id, time_start, time_end):
+
+        def insert_interval(intervals, start, end):
+            for i, interval in enumerate(intervals):
+                if i == 0:
+                    if end < interval[0]:
+                        return [start, end] + intervals
+                else:
+                    pass
+            return [start, end] + intervals
+
+        def is_intersecting(interval, start, end):
+            if interval[1] > start and interval[0] < end:
+                return True
+            return False
+
+        non_intersecting_intervals = []
+        for interval in self.intervals:
+            if is_intersecting(interval, time_start, time_end):
+                start = min(interval[0], time_start)
+                end = max(interval[1], time_end)
+            else:
+                non_intersecting_intervals.append(interval)
+        self.intervals = insert_interval(non_intersecting_intervals, start, end)
+
+    def total_time(self):
+        pass

@@ -44,9 +44,11 @@ System Design Interview Guide
     Services:
         SQS with DLQ for redrive
         Batching and asynchronous processing
+        Kafka
     Notification service / fanout
         This can be used alongside a queue to process events and fanout to a number of different services and notifiying
         users including registering webhoks and sending information back to the user directly
+        SNS
 
 6. Identify bottlenecks and how we're achieving non-functional requirements
     Can our system operate in a partition tolerant manner?

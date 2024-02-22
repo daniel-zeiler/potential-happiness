@@ -65,7 +65,7 @@
     Partition Service discovery
 
     Message encoding
-        Schemas, binary formats (thrift, protobuffers)
+        Schemas, binary formats (thrift, proto buffers)
 
 8. Identify bottlenecks, Monitoring, alerting, and logging.
     Monitoring:
