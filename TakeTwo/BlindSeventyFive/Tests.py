@@ -472,10 +472,16 @@ class SolutionsTest(unittest.TestCase, CustomAssertion):
         self.assertEqual(True, word_dictionary.search("b.."))
 
     def test_find_words(self):
-        board = [["o", "a", "a", "n"], ["e", "t", "a", "e"], ["i", "h", "k", "r"], ["i", "f", "l", "v"]]
+        board = [
+            ["o", "a", "a", "n"],
+            ["e", "t", "a", "e"],
+            ["i", "h", "k", "r"],
+            ["i", "f", "l", "v"]
+        ]
         words = [
             "oath", "pea",
-            "eat", "rain"]
+            "eat", "rain"
+        ]
         output = ["eat", "oath"]
         self.assertCountEqual(output, bsf.findWords(board, words))
 

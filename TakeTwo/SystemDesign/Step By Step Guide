@@ -1,0 +1,129 @@
+0. Ask clarifying questions
+    Fundamentally, how does this work?  What will this service be responsible for?
+    How many users?  How many requests per day?  Break this down into requests per second
+    This step will directly influence all downstream steps.
+
+1. Functional Requirements
+    List out the functional uses one-by-one
+    Ask about scale, how many users, how many read / write requests.
+    Find out how many per day / min / sec
+
+2. Gather Non-Functional Requirements
+    Identify if our system should be very scalable, or maybe it should be very fault tolerant.
+    Make sure our system is highly available and robust
+    Our system should be as reliable as possible
+
+3. API definitions
+    Convert each functional requirement into an API definition
+    Create / Read / Update / Delete
+    Post / Get / Put / Delete
+
+4. Data Model
+    Define the data model that's required in this system.
+        datetime 8 bytes
+        UUID 16 bytes
+        string 256 bytes / 512 bytes
+        int 8 bytes
+        boolean 1 byte
+        float 4 byte / 8 bytes
+        coordinate 8 bytes
+    Identify indices
+    Sum the total number of bytes for each entry
+
+5. Back of the envelop calculations
+    Take the data model and calculate the amount of data we're going to store in our system per day
+    We can then use the clarified requirements to determine if our system is read / write heavy
+        This will influence the database choice, sharding, service level architecture, scaling strategies
+
+6. High Level architecture
+    Entry Gateway
+        Used for routing external requests into the VPC and request authentication and user information injection
+        API gateway / Nginx
+        Sits at the edge of the application architecture
+        Rate limiting
+        Authentication
+    Load Balancers
+        Elastic Load Balancer / Application Load Balancer / Nginx
+        Failover strategy
+            Active-active failover / active-passive failover
+            health checks
+        Hash based, round robin, CPU load, load balancers are registered with DNS.
+    Services
+        Microservices vs Monolith
+        Read vs write services?
+            Usually overkill
+        Serverless?
+            Serverless compute triggers (SNS, SQS, S3 events)
+            More expensive for high throughput and less responsive
+    Streams and stream processing
+        Kafka / Kinesis
+    Queues
+        SQS / RabbitMQ
+        Dead Letter Queue + Redrive
+        A service attached to a queue will respond with pass / fail for retry purposes
+        After a number of failures, tasks will be sent to DLQ for examination and redrive post-incident
+    Asynchronous Processing
+        Batch Processing
+        Directed Acyclic Graphs like
+    Notification services and fanout
+        SNS / RabbitMQ
+    Caching
+        Redis / Memcache
+        write-through, write-back, write-around, cache-aside (used for reads and cache misses).
+    CDNs
+        Cloudfront
+    K8s
+        Rolling updates, blue-green deployments
+        self healing
+        granular resource controls and cost savings via pod-host bin-packing
+    Terraform
+        Infrastructure as code
+        Allows for clear definition and security for deployed infra
+    Storage solutions
+        Simple storage service (S3) / Google cloud storage
+        Storing large objects for later usage, robust and performant
+        Static content hosting + delivery
+            can send things directly + update cloudfront
+        Big data analytics and data warehouses / lakes
+            BigQuery (GCP), Snowflake, and Redshift (AWS), are cloud based platforms for indexing and querying.  Theyre
+            data warehouses.
+            Apache Spark allows for parallized compute and fault tolerance.  Spark is more general purpose and open source
+                can be used to query data lakes
+
+7. Database Choice
+    CAP theorem
+        Consistency
+        Availability
+        Partition Tolerant
+    Sharding
+        When to shard?
+            Sharding is used when write throughput is a constraint or total volume is a constraint
+    Replication
+        Always need replication
+        Leader / Following?
+        Master / Slave?
+    Scaling
+    MySQL vs NoSQL
+        Structured vs unstructured data
+        Needs for complex joins and relationships between datatypes
+
+8. Identify Bottlenecks, Single Points of Failure, Talk about scaling each service
+    Where is our service vulnerable?
+    How can we hedge against single points of failure?
+    What singles should we scale out / scale our service in based upon?
+        CPU?  RPS?  Queue length?
+    Load testing our services
+    Multiple datacenters
+    Failover strategies
+
+9. Zero trust architecture
+    ensure that every request is authenticated or authorized regardless of origin
+    Only authorized services can contact one another.
+    S2S auth uses certificates to identify the originator of the request.
+    JWT to identify the originator, signed and encrypted before send.
+
+10. Monitoring / Alerting
+    How should we monitor our system?
+        Response codes, task successes, task failures, time in queue.
+    What should our system alert on?
+        If any of the above monitors are not nominal we should be alerted

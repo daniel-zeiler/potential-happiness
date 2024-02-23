@@ -375,3 +375,97 @@ class Trie:
             return False
 
         return starts_with_helper(self.head, prefix)
+
+
+class WordDictionaryTrieNode:
+    def __init__(self):
+        self.word = None
+        self.children = defaultdict(WordDictionaryTrieNode)
+
+
+class WordDictionary:
+
+    def __init__(self):
+        self.head = WordDictionaryTrieNode()
+
+    def addWord(self, word: str) -> None:
+        def add_word_helper(node, word_remaining):
+            if not word_remaining:
+                node.word = word
+            else:
+                if word_remaining[0] not in node.children:
+                    node.children[word_remaining[0]] = WordDictionaryTrieNode()
+                add_word_helper(node.children[word_remaining[0]], word_remaining[1:])
+
+        add_word_helper(self.head, word)
+
+    def search(self, word: str) -> bool:
+        def search_helper(node, word_remaining):
+            if not word_remaining:
+                return node.word is not None
+            if word_remaining[0] == ".":
+                return any(search_helper(child, word_remaining[1:]) for child in node.children.values())
+            elif word_remaining[0] in node.children:
+                return search_helper(node.children[word_remaining[0]], word_remaining[1:])
+            return False
+
+        return search_helper(self.head, word)
+
+
+class FindWordsTrieNode:
+    def __init__(self):
+        self.word = None
+        self.children = defaultdict(FindWordsTrieNode)
+
+
+class FindWordsTrie:
+    def __init__(self, board: List[List[str]]):
+        self.board = board
+        self.head = FindWordsTrieNode()
+        self.directions = [(-1, 0), (0, 1), (1, 0), (0, -1)]
+
+    def add_word(self, word):
+        def add_word_helper(node, word_remaining):
+            if not word_remaining:
+                node.word = word
+            else:
+                if word_remaining[0] not in node.children:
+                    node.children[word_remaining[0]] = FindWordsTrieNode()
+                add_word_helper(node.children[word_remaining[0]], word_remaining[1:])
+
+        add_word_helper(self.head, word)
+
+    def traverse(self, x, y) -> List[str]:
+        def traverse_helper(node, x, y) -> List[str]:
+            result = []
+            temp = self.board[x][y]
+            if node.word is not None:
+                result.append(node.word)
+                node.word = None
+            for x_direction, y_direction in self.directions:
+                x_target, y_target = x + x_direction, y + y_direction
+                if 0 <= x_target < len(self.board) and 0 <= y_target < len(self.board[0]):
+                    value = self.board[x_target][y_target]
+                    if value in node.children:
+                        result.extend(traverse_helper(node.children[value], x_target, y_target))
+            self.board[x][y] = temp
+            return result
+
+        value = self.board[x][y]
+        return traverse_helper(self.head.children[value], x, y)
+
+
+def findWords(board: List[List[str]], words: List[str]) -> List[str]:
+    find_words_trie = FindWordsTrie(board)
+    for word in words:
+        find_words_trie.add_word(word)
+
+    result = []
+
+    for x, row in enumerate(board):
+        for y, value in enumerate(row):
+            if value in find_words_trie.head.children:
+                detected_words = find_words_trie.traverse(x, y)
+                result.extend(detected_words)
+
+    return result

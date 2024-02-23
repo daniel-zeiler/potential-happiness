@@ -261,6 +261,30 @@ class SolutionsTest(unittest.TestCase):
         output = -1
         self.assertEqual(output, grid.shortestPathBinaryMatrix(input))
 
+    def test_update_matrix(self):
+        mat = [
+            [0, 0, 0],
+            [0, 1, 0],
+            [0, 0, 0]
+        ]
+        output = [
+            [0, 0, 0],
+            [0, 1, 0],
+            [0, 0, 0]
+        ]
+        self.assertListEqual(output, grid.updateMatrix(mat))
+        mat = [
+            [0, 0, 0],
+            [0, 1, 0],
+            [1, 1, 1]
+        ]
+        output = [
+            [0, 0, 0],
+            [0, 1, 0],
+            [1, 2, 1]
+        ]
+        self.assertListEqual(output, grid.updateMatrix(mat))
+
     def test_exists(self):
         board = [["A", "B", "C", "E"], ["S", "F", "C", "S"], ["A", "D", "E", "E"]]
         word = "ABCCED"

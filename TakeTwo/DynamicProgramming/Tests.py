@@ -215,6 +215,16 @@ class SolutionsTest(unittest.TestCase):
         output = 4
         self.assertEqual(output, dynamic_programming.getMaxLen(nums))
 
+    def test_max_sightseeing_score(self):
+        values = [8, 1, 5, 2, 6]
+        output = 11
+        self.assertEqual(output, dynamic_programming.maxScoreSightseeingPair(values))
+        values = [1, 2]
+        output = 2
+        self.assertEqual(output, dynamic_programming.maxScoreSightseeingPair(values))
+
+
+
     def test_word_break(self):
         s = "leetcode"
         wordDict = ["leet", "code"]

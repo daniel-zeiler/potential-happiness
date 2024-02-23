@@ -51,7 +51,7 @@
 
     Batching
 
-    Batching, Timeouts, Retries (exponential backoff and jitter).
+    Batching, Timeouts, Retries (exponential backoff and jitter)
 
     Load Balancing!
         Hash based, Least response time, CPU base, Round Robin.

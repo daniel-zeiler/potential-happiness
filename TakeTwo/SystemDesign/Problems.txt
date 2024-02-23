@@ -1,0 +1,94 @@
+Coinbase Infrastructure
+    Defi Service
+    Dapp Catalog
+    Dex Service
+        Transfer Service
+            DAG
+    Async Processor Service
+
+
+
+Maxar ARD
+            At Maxar, we used AWS Glue (ETL service for indexing and makes it queryable) to allow our data to be queried
+            via spark.
+
+            s3://your-bucket-name/geospatial-data/
+            ├── region-001/
+            │   ├── grid-001_2023-01-01.json
+            │   ├── grid-002_2023-01-01.json
+            │   └── grid-001_2023-01-02.json
+            ├── region-002/
+            │   ├── grid-002_2023-02-01.json
+            │   └── grid-002_2023-02-02.json
+            ...
+            ├── region-001/
+            │   └── grid-001/
+            │       └── year=2023/
+            │           └── month=01/
+            │               └── data.parquet
+            │   └── grid-002/
+            │       └── year=2023/
+            │           └── month=01/
+            │               └── data.parquet
+            ├── region-002/
+            │   └── grid-002/
+            │       └── year=2023/
+            │           └── month=02/
+            │               └── data.parquet
+            ...
+
+        Glue will transform the data into a parquet format, create tables and metadata of this data in AWS Glue Catalog, and allow
+        spark to query this dataset
+
+        from pyspark.sql import SparkSession
+
+        # Initialize Spark Session
+        spark = SparkSession.builder.appName("GeospatialQuery").getOrCreate()
+
+        # Assuming your data is stored in Parquet format after ETL and organized by geospatial ID in S3
+        # Adjust the path to target specific regions and potentially date ranges within those regions
+        # For example, querying data for region-001 in January 2023
+        data_path = "s3://your-bucket-name/geospatial-data/region-001/*.parquet"
+
+        # Read the dataset for the specified region and date range
+        df = spark.read.parquet(data_path)
+
+        # Register the DataFrame as a SQL temporary view
+        df.createOrReplaceTempView("store_locations")
+
+        # Example query to find stores within a specified region
+        # This query could be further refined based on additional conditions, such as specific date ranges or store characteristics
+        query = """
+        SELECT store_id, name, address, latitude, longitude
+        FROM store_locations
+        WHERE region_id = 'region-001'
+        """
+
+        result = spark.sql(query)
+        result.show()
+
+Yelp
+
+Twitter
+
+Spotify
+
+Stock Exchange
+
+Messaging App / Slack
+
+Uber
+
+Slack
+
+Spotify
+
+Twitter Newsfeed
+
+Webhook Delivery
+
+Uber
+
+Map Reduce
+
+Yelp

@@ -312,3 +312,25 @@ def getMaximumGold(grid: List[List[int]]) -> int:
             if value != 0:
                 max_val = max(max_val, traverse(x, y))
     return max_val
+
+
+def updateMatrix(mat: List[List[int]]) -> List[List[int]]:
+    queue = deque([])
+    result = [[None for _ in range(len(mat[0]))] for _ in range(len(mat))]
+    directions = [[-1, 0], [1, 0], [0, 1], [0, -1]]
+    for x, row in enumerate(mat):
+        for y, value in enumerate(row):
+            if value == 0:
+                result[x][y] = 0
+                queue.append((0, x, y))
+
+    while queue:
+        distance, x, y = queue.popleft()
+        result[x][y] = distance
+        for x_direction, y_direction in directions:
+            x_target, y_target = x + x_direction, y + y_direction
+            if 0 <= x_target < len(mat) and 0 <= y_target < len(mat[0]) and result[x_target][y_target] is None:
+                result[x_target][y_target] = distance + 1
+                queue.append((distance + 1, x_target, y_target))
+
+    return result

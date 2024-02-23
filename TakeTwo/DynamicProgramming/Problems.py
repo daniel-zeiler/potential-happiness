@@ -572,7 +572,8 @@ def getMaxLen(nums: List[int]) -> int:
     pass
 
 
-"""You are given an integer array values where values[i] represents the value of the ith sightseeing spot. Two 
+"""
+You are given an integer array values where values[i] represents the value of the ith sightseeing spot. Two 
 sightseeing spots i and j have a distance j - i between them. 
 
 The score of a pair (i < j) of sightseeing spots is values[i] + values[j] + i - j: the sum of the values of the 
@@ -657,40 +658,6 @@ Output: 0
 
 
 def maxProfitThree(self, prices: List[int]) -> int:
-    pass
-
-
-"""
-Given an m x n binary matrix mat, return the distance of the nearest 0 for each cell.
-
-The distance between two adjacent cells is 1.
-
- 
-
-Example 1:
-
-
-Input: mat = [[0,0,0],[0,1,0],[0,0,0]]
-Output: [[0,0,0],[0,1,0],[0,0,0]]
-Example 2:
-
-
-Input: mat = [[0,0,0],[0,1,0],[1,1,1]]
-Output: [[0,0,0],[0,1,0],[1,2,1]]
- 
-
-Constraints:
-
-m == mat.length
-n == mat[i].length
-1 <= m, n <= 104
-1 <= m * n <= 104
-mat[i][j] is either 0 or 1.
-There is at least one 0 in mat.
-"""
-
-
-def updateMatrix(self, mat: List[List[int]]) -> List[List[int]]:
     pass
 
 

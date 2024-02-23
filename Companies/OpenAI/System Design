@@ -24,7 +24,7 @@ System Design Interview Guide
     int 8 bytes
 
 5. High level architecture
-    API gateway
+    Entry Gateway
         Used for routing external requests into the VPC and request authentication and user information injection
     Load Balancing, primary and secondary
         Hash based, round robin, CPU load, load balancers are registered with DNS.

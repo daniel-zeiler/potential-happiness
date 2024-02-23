@@ -208,3 +208,11 @@ def getMaxLen(nums: List[int]) -> int:
                 tmp[i] = abs(tmp[i - 1]) + 1
         max_len = max(max_len, tmp[i])
     return max_len
+
+
+def maxScoreSightseeingPair(values: List[int]) -> int:
+    results = [0 for _ in range(len(values))]
+    for i in range(1, len(values)):
+        for j in range(0, i):
+            results[i] = max(results[i], values[i] + values[j] + j - i)
+    return max(results)
