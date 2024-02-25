@@ -50,13 +50,20 @@
         Hash based, round robin, CPU load, load balancers are registered with DNS.
     Services
         Microservices vs Monolith
+            Microservice partitioning is by far and away the best thing to do.  It allows delineation of the system
+            into composable parts that have discrete responsibilities.  They can easily scale based upon requests and
+            things like that.
+            Monolith is easier initially.  However, it leads to a more fragile architecture over the long term
         Read vs write services?
             Usually overkill
         Serverless?
             Serverless compute triggers (SNS, SQS, S3 events)
             More expensive for high throughput and less responsive
+            However, if you have ad-hoc one off tasks that run infrequently, its really easy to set up.
     Streams and stream processing
-        Kafka / Kinesis
+        Kafka / Kinesis / Apache Pulsar
+            Kafka allows producers to write messages to kafka topics.  These topics allow consumers to subscribe to them.
+            They will read new data from these topics for consumption.
     Queues
         SQS / RabbitMQ
         Dead Letter Queue + Redrive
@@ -89,6 +96,10 @@
             data warehouses.
             Apache Spark allows for parallized compute and fault tolerance.  Spark is more general purpose and open source
                 can be used to query data lakes
+    Zookeeper
+        Apache zookeeper can manage the assignment and distribution of data to distributed and sharded systems. When new
+        shards come online, zookeeper can emit events to redistribute data to new shards.  It can also maintain a list
+        of shards for incoming requests to reach the correct shard.
 
 7. Database Choice
     CAP theorem

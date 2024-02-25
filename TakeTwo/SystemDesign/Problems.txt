@@ -6,8 +6,6 @@ Coinbase Infrastructure
             DAG
     Async Processor Service
 
-
-
 Maxar ARD
             At Maxar, we used AWS Glue (ETL service for indexing and makes it queryable) to allow our data to be queried
             via spark.

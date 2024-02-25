@@ -1,3 +1,4 @@
+import heapq
 from typing import List
 
 
@@ -181,3 +182,51 @@ class LRUCache:
             node.value = value
             self._remove_node(node)
             self._add_item_to_head(node)
+
+
+class Order:
+    def __init__(self, price: int, quantity: int, type: str):
+        self.price = price
+        self.quantity = quantity
+        self.type = type
+
+
+class StockExchange:
+    def __init__(self):
+        self.buy_orders = []
+        self.sell_orders = []
+
+    def process_order(self, order) -> int:
+        if order.type == "buy":
+            return self.process_buy_order(order)
+        elif order.type == "sell":
+            return self.process_sell_order(order)
+        raise Exception(f"invalid type {order.type}")
+
+    def process_buy_order(self, order) -> int:
+        amount_bought = 0
+        while order.quantity and self.sell_orders and self.sell_orders[0].price <= order.price:
+            sell_order = self.sell_orders[0][1]
+            buying = min(order.quantity, sell_order.quantity)
+            sell_order.quantity -= buying
+            order.quantity -= buying
+            amount_bought += buying
+            if sell_order.quantity == 0:
+                heapq.heappop(self.sell_orders)
+        if order.quantity:
+            heapq.heappush(self.buy_orders, (-order.price, order))
+        return amount_bought
+
+    def process_sell_order(self, order) -> int:
+        amount_sold = 0
+        while order.quantity and self.buy_orders and -self.buy_orders[0].price >= order.price:
+            buy_order = self.buy_orders[0][1]
+            selling = min(order.quantity, buy_order.quantity)
+            buy_order.quantity -= selling
+            order.quantity -= selling
+            amount_sold += selling
+            if buy_order.quantity == 0:
+                heapq.heappop(self.buy_orders)
+        if order.quantity:
+            heapq.heappush(self.sell_orders, (order.price, order))
+        return amount_sold

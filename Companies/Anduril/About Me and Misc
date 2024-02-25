@@ -1,7 +1,7 @@
     I'm currently a senior software engineer at Coinbase. I'm part of the Retail On-chain team.  We're sort of like a startup
 within Coinbase to hedge against future use cases.  We build services that bring the broader web3 or distributed finance
 ecosystem into the retail application. I lead one of the engineering pods that supports a few novel on-chain execution
-systems and work with other teams to achieve org wide goals.
+systems.
 
     Previously I was a software engineer at Twitter.  I was part of the Data Platform and Apps team.  There I built
 a number of data ingestion and processing services for large volumes of incoming data like clicks and impressions.
@@ -35,7 +35,12 @@ Questions I have:
 
     Can you tell me more about the Mission Engineering Team or the position in general?
         mission autonomy -> lattice customization, unmanned aircraft control integration
-        c&c team all-domain view, lattice data mesh, target, tracking
+        c&c team all-domain view, lattice data mesh, target, tracking - hardware product
+        lattice related - lattice for  c&c
+            big priority - integrated with other systems
+            menace c2 offering - hardened terminal hub prototype phase
+            application layer / ui
+            data layer / data ingestion / tracked through lattice
 
     Can you tell me more about the compensation for this position?
         cash + RSU = total compensation == L5 - 215 (375/4=93.75) = 308.75 | L6 - 245 (840/4=210) = 455
