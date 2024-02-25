@@ -541,6 +541,11 @@ class SolutionsTest(unittest.TestCase, CustomAssertion):
         prerequs = [[0, 1], [0, 2], [1, 2]]
         output = True
         self.assertEqual(output, bsf.canFinish(number, prerequs))
+        numCourses = 2
+        prerequisites = [[1, 0], [0, 1]]
+        output= False
+        self.assertEqual(output, bsf.canFinish(numCourses, prerequisites))
+
 
     def test_number_of_islands(self):
         grid = [
@@ -563,10 +568,10 @@ class SolutionsTest(unittest.TestCase, CustomAssertion):
     def test_merge_interval(self):
         intervals = [[1, 3], [2, 6], [8, 10], [15, 18]]
         output = [[1, 6], [8, 10], [15, 18]]
-        self.assertListEqual(output, bsf3.merge(intervals))
+        self.assertListEqual(output, bsf.merge(intervals))
         intervals = [[1, 4], [4, 5]]
         output = [[1, 5]]
-        self.assertListEqual(output, bsf3.merge(intervals))
+        self.assertListEqual(output, bsf.merge(intervals))
 
     def test_erase_overlap_interval(self):
         intervals = [[1, 2], [2, 3], [3, 4], [1, 3]]
@@ -576,18 +581,18 @@ class SolutionsTest(unittest.TestCase, CustomAssertion):
     def test_can_attend_meetings(self):
         intervals = [[0, 30], [5, 10], [15, 20]]
         output = False
-        self.assertEqual(output, bsf3.canAttendMeetings(intervals))
+        self.assertEqual(output, bsf.canAttendMeetings(intervals))
         intervals = [[7, 10], [2, 4]]
         output = True
-        self.assertEqual(output, bsf3.canAttendMeetings(intervals))
+        self.assertEqual(output, bsf.canAttendMeetings(intervals))
 
     def test_min_meeting_rooms(self):
         intervals = [[0, 30], [5, 10], [15, 20]]
         output = 2
-        self.assertEqual(output, bsf3.minMeetingRooms(intervals))
+        self.assertEqual(output, bsf.minMeetingRooms(intervals))
         intervals = [[7, 10], [2, 4]]
         output = 1
-        self.assertEqual(output, bsf3.minMeetingRooms(intervals))
+        self.assertEqual(output, bsf.minMeetingRooms(intervals))
 
     def test_insert_interval(self):
         intervals = [[1, 3], [6, 9]]

@@ -747,13 +747,108 @@ def shortestAlternatingPaths(n: int, redEdges: List[List[int]], blueEdges: List[
     def traverse(node, distance, visited, blue_is_next):
         result[node] = distance if result[node] == -1 else min(distance, result[node])
 
-        if blue_is_next:
-            for adjacent in list(filter(lambda x: x not in visited, blue_graph[node])):
-                traverse(adjacent, distance + 1, visited | {adjacent}, not blue_is_next)
-        else:
-            for adjacent in list(filter(lambda x: x not in visited, red_graph[node])):
-                traverse(adjacent, distance + 1, visited | {adjacent}, not blue_is_next)
+        graph = blue_graph if blue_is_next else red_graph
+
+        for adjacent in list(filter(lambda x: x not in visited, graph[node])):
+            traverse(adjacent, distance + 1, visited | {adjacent}, not blue_is_next)
 
     traverse(0, 0, {0}, True)
     traverse(0, 0, {0}, False)
+    return result
+
+
+from collections import defaultdict
+
+
+def loudAndRich(richer: List[List[int]], quiet: List[int]) -> List[int]:
+    result = [None for _ in range(len(quiet))]
+
+    def build_graph():
+        graph = defaultdict(list)
+        for origin, destination in richer:
+            graph[destination].append(origin)
+        return graph
+
+    def traverse(node) -> (int, int):
+        quietest, minimum_quiet_node = quiet[node], node
+        for adjacent in graph[node]:
+            if result[adjacent] is None:
+                quiet_node, quiet_level = traverse(adjacent)
+            else:
+                quiet_node, quiet_level = result[adjacent], quiet[result[adjacent]]
+            if quiet_level < quietest:
+                quietest, minimum_quiet_node = quiet_level, quiet_node
+
+        result[node] = minimum_quiet_node
+        return minimum_quiet_node, quietest
+
+    graph = build_graph()
+
+    for i in range(len(quiet)):
+        if result[i] is None:
+            traverse(i)
+    return result
+
+
+def findCheapestPrice(n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int:
+    def build_graph():
+        graph = defaultdict(list)
+        for origin, destination, price in flights:
+            graph[origin].append((destination, price))
+        return graph
+
+    graph = build_graph()
+    visited = set()
+    queue = [(0, src, 0)]
+
+    while queue:
+        total_cost, node, total_distance = heapq.heappop(queue)
+        if node not in visited and total_distance - 1 <= k:
+            visited.add(node)
+            if node == dst:
+                return total_cost
+            for adjacent, cost in graph[node]:
+                if adjacent not in visited:
+                    heapq.heappush(queue, (total_cost + cost, adjacent, total_distance + 1))
+    return -1
+
+
+def minCostConnectPoints(points: List[List[int]]) -> int:
+    def calcuate_distance(point_one, point_two):
+        return abs(point_one[0] - point_two[0]) + abs(point_one[1] - point_two[1])
+
+    parents = [i for i in range(len(points))]
+    rank = [0 for _ in range(len(points))]
+
+    def union(origin, destination):
+        parent_origin = find(origin)
+        parent_destination = find(destination)
+        if parent_origin == parent_destination:
+            return False
+        rank_origin = rank[parent_origin]
+        rank_destination = rank[parent_destination]
+        if rank_origin < rank_destination:
+            parents[parent_origin] = parent_destination
+            rank[parent_origin] += rank_destination
+        else:
+            parents[parent_destination] = parent_origin
+            rank[parent_destination] += rank_origin
+        return True
+
+    def find(node):
+        if parents[node] != node:
+            parents[node] = find(parents[node])
+        return parents[node]
+
+    distances = []
+    for x in range(len(points)):
+        for y in range(x + 1, len(points)):
+            distance = calcuate_distance(points[x], points[y])
+            heapq.heappush(distances, (distance, x, y))
+
+    result = 0
+    while distances:
+        distance, origin, destination = heapq.heappop(distances)
+        if union(origin, destination):
+            result += distance
     return result

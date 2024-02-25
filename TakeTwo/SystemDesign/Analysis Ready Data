@@ -166,7 +166,7 @@ Make those classifications available to the clients.
     4,000 KB
     4 MB
 
-    200 bytes per AOI
+    200 bytes per Model
     200 bytes * 100 Models
     20,000 bytes
     20 KB
@@ -297,7 +297,9 @@ Make those classifications available to the clients.
 
 8. Database Choice
 
-
+    We don't have complex datasets requiring joins across datasets.  We can use a NoSQL database with replication across
+    datacenters to allow for failover.  Our system is not very read / write heavy so we don't really need to worry about
+    things like sharding or federation.
 
 9. Identify Bottlenecks, Single Points of Failure, Talk about scaling each service
 

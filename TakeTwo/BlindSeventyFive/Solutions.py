@@ -1,3 +1,4 @@
+import heapq
 from typing import List
 
 
@@ -469,3 +470,115 @@ def findWords(board: List[List[str]], words: List[str]) -> List[str]:
                 result.extend(detected_words)
 
     return result
+
+
+class ListNode:
+    def __init__(self, value=None):
+        self.value = value
+        self.next = None
+        self.previous = None
+
+
+def reverseList(head: Optional[ListNode]) -> Optional[ListNode]:
+    if head is None:
+        return None
+
+    def traverse(node, previous):
+        node.next, tmp = previous, node.next
+        if tmp is None:
+            return node
+        return traverse(tmp, node)
+
+    return traverse(head, None)
+
+
+def mergeTwoLists(list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+    def merge(node1, node2):
+        if not node1 or not node2:
+            return node1 or node2
+        if node1.value < node2.value:
+            node1.next = merge(node1.next, node2)
+            return node1
+        else:
+            node2.next = merge(node2.next, node1)
+            return node2
+
+    return merge(list1, list2)
+
+
+def mergeKLists(lists: List[Optional[ListNode]]) -> Optional[ListNode]:
+    queue = []
+    if not lists:
+        return None
+
+    for node in lists:
+        heapq.heappush(queue, (node.value, node))
+    node_pointer = ListNode()
+    tmp_head = node_pointer
+
+    while queue:
+        _, node = heapq.heappop(queue)
+        node_pointer.next, node_pointer = node, node
+        if node.next:
+            heapq.heappush(queue, (node.next.value, node.next))
+
+    return tmp_head.next
+
+
+def canFinish(numCourses: int, prerequisites: List[List[int]]) -> bool:
+    def build_graph_and_degree():
+        in_degree = {i: 0 for i in range(numCourses)}
+        graph = defaultdict(list)
+        for after, before in prerequisites:
+            in_degree[after] += 1
+            graph[before].append(after)
+        return graph, in_degree
+
+    graph, in_degree = build_graph_and_degree()
+    queue = deque([])
+    visited = set()
+    for node, degree in in_degree.items():
+        if degree == 0:
+            queue.append(node)
+
+    while queue:
+        node = queue.popleft()
+        visited.add(node)
+        for adjacent in graph[node]:
+            in_degree[adjacent] -= 1
+            if in_degree[adjacent] == 0:
+                queue.append(adjacent)
+
+    return len(visited) == numCourses
+
+
+def merge(intervals: List[List[int]]) -> List[List[int]]:
+    intervals.sort(key=lambda x: x[0])
+    result = []
+    for interval in intervals:
+        if result and interval[0] <= result[-1][1]:
+            result[-1][1] = max(interval[1], result[-1][1])
+        else:
+            result.append(interval)
+    return result
+
+
+def canAttendMeetings(intervals: List[List[int]]) -> bool:
+    intervals.sort(key=lambda x: x[0])
+    for i in range(1, len(intervals)):
+        if intervals[1][0] <= intervals[i - 1][1]:
+            return False
+    return True
+
+
+def minMeetingRooms(intervals: List[List[int]]) -> int:
+    intervals.sort(key=lambda x: x[0])
+    meeting_rooms = []
+    for interval in intervals:
+        for meeting_room in meeting_rooms:
+            if interval[0] >= meeting_room[-1][1]:
+                meeting_room.append(interval)
+                break
+        else:
+            meeting_rooms.append([interval])
+    return len(meeting_rooms)

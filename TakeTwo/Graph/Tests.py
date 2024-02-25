@@ -469,6 +469,12 @@ class SolutionsTest(unittest.TestCase):
         output = [0, 1, -1]
         self.assertListEqual(output, graph.shortestAlternatingPaths(n, redEdges, blueEdges))
 
+    def test_rich_and_loud(self):
+        richer = [[1, 0], [2, 1], [3, 1], [3, 7], [4, 3], [5, 3], [6, 3]]
+        quiet = [3, 2, 5, 4, 6, 1, 7, 0]
+        output = [5, 5, 2, 5, 4, 5, 6, 7]
+        self.assertListEqual(output, graph.loudAndRich(richer, quiet))
+
     def test_find_cheapest_flights(self):
         n = 3
         flights = [[0, 1, 100], [1, 2, 100], [0, 2, 500]]
@@ -476,14 +482,22 @@ class SolutionsTest(unittest.TestCase):
         dst = 2
         k = 1
         output = 200
-        self.assertEqual(output, graph_six.findCheapestPrice(n, flights, src, dst, k))
+        self.assertEqual(output, graph.findCheapestPrice(n, flights, src, dst, k))
         n = 3
         flights = [[0, 1, 100], [1, 2, 100], [0, 2, 500]]
         src = 0
         dst = 2
         k = 0
         output = 500
-        self.assertEqual(output, graph_six.findCheapestPrice(n, flights, src, dst, k))
+        self.assertEqual(output, graph.findCheapestPrice(n, flights, src, dst, k))
+
+    def test_min_cost_connect_points(self):
+        points = [[0, 0], [2, 2], [3, 10], [5, 2], [7, 0]]
+        output = 20
+        self.assertEqual(output, graph.minCostConnectPoints(points))
+        points = [[3, 12], [-2, 5], [-4, 1]]
+        output = 18
+        self.assertEqual(output, graph.minCostConnectPoints(points))
 
     def test_alien_dictionary(self):
         words = ["wrt", "wrf", "er", "ett", "rftt"]

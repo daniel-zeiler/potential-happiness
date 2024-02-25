@@ -1083,7 +1083,10 @@ assume all four edges of the grid are all surrounded by water.
 Example 1:
 
 Input: m = 3, n = 3, positions = [
-    [0,0],[0,1],[1,2],[2,1]
+    [0,0],
+    [0,1],
+    [1,2],
+    [2,1]
 ]
 Output: [1,1,2,3]
 Explanation:
