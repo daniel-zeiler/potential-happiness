@@ -1,0 +1,30 @@
+1. Requirements Clarification
+    What is the purpose of this application?
+    How many user's are we going to have?  What's the scale of the reads / writes per second / per hour?
+    Optimized for performance?  Cost?
+2. Functionality Requirements
+    Understand what the functionality needs to be, define the API interface for our system.  This will allow
+    us to make better decisions when creating the data model and other high level decisions down stream.
+3. Non functional requirements
+    Here we should outline things like durability, reliability, scalability, availability, and performance
+    and how we should keep these attributes in mind when we're designing the rest of our system.  Some systems
+    are fault tolerant, others must be durable enough to never drop things.  We should strive to maximize our
+    availability and robustness.
+4. Data Model
+    We can take the functional requirements previously and determine the data model we should be using to store teh data.
+    This will allow us to quickly compute the amount of data we will be storing on a per-day basis and total of our
+    system.  This will further influence other pieces of our design downstream.
+        If our data model doesn't require large amounts of relationships we should go with noSQL, for example.  If
+        our data size is small we don't need to worry about sharding our database.
+5. High Level Architecture
+    Go from data ingress, through entry gateway, load balancers, read/write paths to our database and back out.
+6. Database choice
+    We can take a detour to talk aboout the database
+7. Services
+8. Identify bottlenecks, failover, scaling.
+9. Monitoring, Logging, alerting, maintainability
+
+5. High Level Architecture
+6 Database choice
+7. Services
+8. Identify bottlenecks, Monitoring, alerting, and logging.
