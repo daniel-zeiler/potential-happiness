@@ -183,6 +183,14 @@ class SolutionsTest(unittest.TestCase):
         output = 2
         self.assertEqual(output, dynamic_programming.jump(nums))
 
+    def test_delete_and_earn(self):
+        nums = [2, 2, 3, 3, 3, 4]
+        output = 9
+        self.assertEqual(output, dynamic_programming.deleteAndEarn(nums))
+        nums = [3, 4, 2]
+        output = 6
+        self.assertEqual(output, dynamic_programming.deleteAndEarn(nums))
+
     def test_max_circular_subarray(self):
         nums = [1, -2, 3, -2]
         output = 3
@@ -206,6 +214,16 @@ class SolutionsTest(unittest.TestCase):
         nums = [1, -2, -3, 4]
         output = 4
         self.assertEqual(output, dynamic_programming.getMaxLen(nums))
+
+    def test_max_sightseeing_score(self):
+        values = [8, 1, 5, 2, 6]
+        output = 11
+        self.assertEqual(output, dynamic_programming.maxScoreSightseeingPair(values))
+        values = [1, 2]
+        output = 2
+        self.assertEqual(output, dynamic_programming.maxScoreSightseeingPair(values))
+
+
 
     def test_word_break(self):
         s = "leetcode"

@@ -32,4 +32,4 @@ weights = [5, 5, 25, 20]
 
 randomized_set = RandomizedSetWeights(values, weights)
 for _ in range(2000000):
-    randomized_set.get()
+    print(randomized_set.get())

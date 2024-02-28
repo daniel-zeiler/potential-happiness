@@ -132,23 +132,23 @@ class SolutionsTest(unittest.TestCase, CustomAssertion):
         nums = [4, 5, 6, 7, 0, 1, 2]
         target = 0
         output = 4
-        self.assertEqual(output, bsf.search(nums, target))
+        self.assertEqual(output, bsf3.search(nums, target))
         nums = [4, 5, 6, 7, 0, 1, 2]
         target = 3
         output = -1
-        self.assertEqual(output, bsf.search(nums, target))
+        self.assertEqual(output, bsf3.search(nums, target))
         nums = [1]
         target = 0
         output = -1
-        self.assertEqual(output, bsf.search(nums, target))
+        self.assertEqual(output, bsf3.search(nums, target))
 
     def test_three_sum(self):
-        nums = [-1, 0, 1, 2, -1, -4]
-        output = [[-1, -1, 2], [-1, 0, 1]]
-        self.assertCountEqual(output, bsf5.threeSum(nums))
+        # nums = [-1, 0, 1, 2, -1, -4]
+        # output = [[-1, -1, 2], [-1, 0, 1]]
+        # self.assertCountEqual(output, bsf.threeSum(nums))
         nums = [0, 0, 0, 0]
         output = [[0, 0, 0]]
-        self.assertCountEqual(output, bsf5.threeSum(nums))
+        self.assertCountEqual(output, bsf.threeSum(nums))
 
     def test_max_area(self):
         height = [1, 8, 6, 2, 5, 4, 8, 3, 7]
@@ -158,13 +158,13 @@ class SolutionsTest(unittest.TestCase, CustomAssertion):
     def test_length_of_longest_string(self):
         s = "abcabcbb"
         output = 3
-        self.assertEqual(output, bsf5.lengthOfLongestSubstring(s))
+        self.assertEqual(output, bsf.lengthOfLongestSubstring(s))
         s = "bbbbb"
         output = 1
-        self.assertEqual(output, bsf5.lengthOfLongestSubstring(s))
+        self.assertEqual(output, bsf.lengthOfLongestSubstring(s))
         s = "pwwkew"
         output = 3
-        self.assertEqual(output, bsf5.lengthOfLongestSubstring(s))
+        self.assertEqual(output, bsf.lengthOfLongestSubstring(s))
 
     def test_character_replacement(self):
         s = "BAAAB"
@@ -198,38 +198,38 @@ class SolutionsTest(unittest.TestCase, CustomAssertion):
         s = "anagram"
         t = "nagaram"
         output = True
-        self.assertEqual(output, bsf2.isAnagram(s, t))
+        self.assertEqual(output, bsf.isAnagram(s, t))
         s = "rat"
         t = "car"
         output = False
-        self.assertEqual(output, bsf2.isAnagram(s, t))
+        self.assertEqual(output, bsf.isAnagram(s, t))
 
     def test_group_anagrams(self):
         strs = ["eat", "tea", "tan", "ate", "nat", "bat"]
         output = [["bat"], ["nat", "tan"], ["ate", "eat", "tea"]]
-        self.assertCountEqual(output, bsf2.group_anagrams(strs))
+        self.assertCountEqual(output, bsf.groupAnagrams(strs))
 
     def test_is_palindrome(self):
         s = "A man, a plan, a canal: Panama"
         output = True
-        self.assertEqual(output, bsf2.isPalindrome(s))
+        self.assertEqual(output, bsf.isPalindrome(s))
         s = "race a car"
         output = False
-        self.assertEqual(output, bsf2.isPalindrome(s))
+        self.assertEqual(output, bsf.isPalindrome(s))
         s = " "
         output = True
-        self.assertEqual(output, bsf2.isPalindrome(s))
+        self.assertEqual(output, bsf.isPalindrome(s))
 
     def test_is_valid(self):
         s = "()"
         output = True
-        self.assertEqual(output, bsf2.isValid(s))
+        self.assertEqual(output, bsf.isValid(s))
         s = "()[]{}"
         output = True
-        self.assertEqual(output, bsf2.isValid(s))
+        self.assertEqual(output, bsf.isValid(s))
         s = "(]"
         output = False
-        self.assertEqual(output, bsf2.isValid(s))
+        self.assertEqual(output, bsf.isValid(s))
 
     def test_longest_palindrome(self):
         s = "babad"
@@ -250,11 +250,11 @@ class SolutionsTest(unittest.TestCase, CustomAssertion):
     def test_set_zeros(self):
         matrix = [[1, 1, 1], [1, 0, 1], [1, 1, 1]]
         output = [[1, 0, 1], [0, 0, 0], [1, 0, 1]]
-        bsf5.setZeroes(matrix)
+        bsf.setZeroes(matrix)
         self.assertEqual(output, matrix)
         matrix = [[0, 1, 2, 0], [3, 4, 5, 2], [1, 3, 1, 5]]
         output = [[0, 0, 0, 0], [0, 4, 5, 0], [0, 3, 1, 0]]
-        bsf5.setZeroes(matrix)
+        bsf.setZeroes(matrix)
         self.assertEqual(output, matrix)
 
     def test_spiral_matrix(self):
@@ -269,52 +269,91 @@ class SolutionsTest(unittest.TestCase, CustomAssertion):
         board = [
             ["A", "B", "C", "E"],
             ["S", "F", "C", "S"],
-            ["A", "D", "E", "E"]]
+            ["A", "D", "E", "E"]
+        ]
         word = "ABCCED"
-        self.assertEqual(True, bsf2.exist(board, word))
+        self.assertEqual(True, bsf.exist(board, word))
         board = [["A", "B", "C", "E"], ["S", "F", "C", "S"], ["A", "D", "E", "E"]]
         word = "SEE"
-        self.assertEqual(True, bsf2.exist(board, word))
+        self.assertEqual(True, bsf.exist(board, word))
         board = [["A", "B", "C", "E"], ["S", "F", "C", "  S"], ["A", "D", "E", "E"]]
         word = "ABCB"
-        self.assertEqual(False, bsf2.exist(board, word))
+        self.assertEqual(False, bsf.exist(board, word))
 
     def test_climb_stairs(self):
         n = 2
         output = 2
-        self.assertEqual(output, bsf.climb_stairs_recursive(n))
-        self.assertEqual(output, bsf.climb_stairs_memoization(n))
-        self.assertEqual(output, bsf.climb_stairs_bottom_up(n))
+        self.assertEqual(output, bsf.climbStairs(n))
         n = 3
         output = 3
-        self.assertEqual(output, bsf.climb_stairs_recursive(n))
-        self.assertEqual(output, bsf.climb_stairs_memoization(n))
-        self.assertEqual(output, bsf.climb_stairs_bottom_up(n))
+        self.assertEqual(output, bsf.climbStairs(n))
 
     def test_coin_change(self):
         coins = [1, 2, 5]
         amount = 11
         output = 3
         self.assertEqual(output, bsf.coin_change(coins, amount))
-        self.assertEqual(output, bsf.coin_change_memoization(coins, amount))
-        self.assertEqual(output, bsf.coin_change_iterative(coins, amount))
         coins = [2]
         amount = 3
         output = -1
         self.assertEqual(output, bsf.coin_change(coins, amount))
-        self.assertEqual(output, bsf.coin_change_memoization(coins, amount))
-        self.assertEqual(output, bsf.coin_change_iterative(coins, amount))
         coins = [1]
         amount = 0
         output = 0
         self.assertEqual(output, bsf.coin_change(coins, amount))
-        self.assertEqual(output, bsf.coin_change_memoization(coins, amount))
-        self.assertEqual(output, bsf.coin_change_iterative(coins, amount))
+
+    def test_length_of_longest(self):
+        nums = [10, 9, 2, 5, 3, 7, 101, 18]
+        output = 4
+        self.assertEqual(output, bsf.lengthOfLIS(nums))
+        nums = [0, 1, 0, 3, 2, 3]
+        output = 4
+        self.assertEqual(output, bsf.lengthOfLIS(nums))
+        nums = [7, 7, 7, 7, 7, 7, 7]
+        output = 1
+        self.assertEqual(output, bsf.lengthOfLIS(nums))
+
+    def test_longest_commone_subsequence(self):
+        text1 = "abcde"
+        text2 = "ace"
+        output = 3
+        self.assertEqual(output, bsf.longestCommonSubsequence(text1, text2))
+        text1 = "abc"
+        text2 = "abc"
+        self.assertEqual(output, bsf.longestCommonSubsequence(text1, text2))
+        text1 = "abc"
+        text2 = "def"
+        output = 0
+        self.assertEqual(output, bsf.longestCommonSubsequence(text1, text2))
+
+    def test_combination_sum(self):
+        candidates = [2, 3, 6, 7]
+        target = 7
+        output = [[2, 2, 3], [7]]
+        self.assertListEqual(output, bsf.combinationSum(candidates, target))
+
+    def test_rob(self):
+        nums = [1, 2, 3, 1]
+        output = 4
+        self.assertEqual(output, bsf.rob(nums))
+        nums = [2, 7, 9, 3, 1]
+        output = 12
+        self.assertEqual(output, bsf.rob(nums))
+
+    def test_unique_paths(self):
+        m = 3
+        n = 7
+        output = 28
+        self.assertEqual(output, bsf.uniquePaths(m, n))
+        m = 3
+        n = 2
+        output = 3
+        self.assertEqual(output, bsf.uniquePaths(m, n))
 
     def test_max_depth(self):
         input = binarytree.build2([3, 9, 20, None, None, 15, 7])
         output = 3
-        self.assertEqual(output, bsf2.maxDepth(input))
+        self.assertEqual(output, bsf.maxDepth(input))
 
     def test_same_tree(self):
         p = binarytree.build2([1, 2, 3])
@@ -433,10 +472,16 @@ class SolutionsTest(unittest.TestCase, CustomAssertion):
         self.assertEqual(True, word_dictionary.search("b.."))
 
     def test_find_words(self):
-        board = [["o", "a", "a", "n"], ["e", "t", "a", "e"], ["i", "h", "k", "r"], ["i", "f", "l", "v"]]
+        board = [
+            ["o", "a", "a", "n"],
+            ["e", "t", "a", "e"],
+            ["i", "h", "k", "r"],
+            ["i", "f", "l", "v"]
+        ]
         words = [
             "oath", "pea",
-            "eat", "rain"]
+            "eat", "rain"
+        ]
         output = ["eat", "oath"]
         self.assertCountEqual(output, bsf.findWords(board, words))
 
@@ -496,6 +541,11 @@ class SolutionsTest(unittest.TestCase, CustomAssertion):
         prerequs = [[0, 1], [0, 2], [1, 2]]
         output = True
         self.assertEqual(output, bsf.canFinish(number, prerequs))
+        numCourses = 2
+        prerequisites = [[1, 0], [0, 1]]
+        output= False
+        self.assertEqual(output, bsf.canFinish(numCourses, prerequisites))
+
 
     def test_number_of_islands(self):
         grid = [
@@ -518,10 +568,10 @@ class SolutionsTest(unittest.TestCase, CustomAssertion):
     def test_merge_interval(self):
         intervals = [[1, 3], [2, 6], [8, 10], [15, 18]]
         output = [[1, 6], [8, 10], [15, 18]]
-        self.assertListEqual(output, bsf3.merge(intervals))
+        self.assertListEqual(output, bsf.merge(intervals))
         intervals = [[1, 4], [4, 5]]
         output = [[1, 5]]
-        self.assertListEqual(output, bsf3.merge(intervals))
+        self.assertListEqual(output, bsf.merge(intervals))
 
     def test_erase_overlap_interval(self):
         intervals = [[1, 2], [2, 3], [3, 4], [1, 3]]
@@ -531,18 +581,18 @@ class SolutionsTest(unittest.TestCase, CustomAssertion):
     def test_can_attend_meetings(self):
         intervals = [[0, 30], [5, 10], [15, 20]]
         output = False
-        self.assertEqual(output, bsf3.canAttendMeetings(intervals))
+        self.assertEqual(output, bsf.canAttendMeetings(intervals))
         intervals = [[7, 10], [2, 4]]
         output = True
-        self.assertEqual(output, bsf3.canAttendMeetings(intervals))
+        self.assertEqual(output, bsf.canAttendMeetings(intervals))
 
     def test_min_meeting_rooms(self):
         intervals = [[0, 30], [5, 10], [15, 20]]
         output = 2
-        self.assertEqual(output, bsf3.minMeetingRooms(intervals))
+        self.assertEqual(output, bsf.minMeetingRooms(intervals))
         intervals = [[7, 10], [2, 4]]
         output = 1
-        self.assertEqual(output, bsf3.minMeetingRooms(intervals))
+        self.assertEqual(output, bsf.minMeetingRooms(intervals))
 
     def test_insert_interval(self):
         intervals = [[1, 3], [6, 9]]

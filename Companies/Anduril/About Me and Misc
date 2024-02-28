@@ -1,0 +1,59 @@
+    I'm currently a senior software engineer at Coinbase. I'm part of the Retail On-chain team.  We're sort of like a startup
+within Coinbase to hedge against future use cases.  We build services that bring the broader web3 or distributed finance
+ecosystem into the retail application. I lead one of the engineering pods that supports a few novel on-chain execution
+systems.
+
+    Previously I was a software engineer at Twitter.  I was part of the Data Platform and Apps team.  There I built
+a number of data ingestion and processing services for large volumes of incoming data like clicks and impressions.
+I was also part of the data model working group enforcing standards across Twitter.
+
+    Before that, I was a Staff Software Engineer at Maxar Technologies, a geospatial imagery and analytics company.  I worked
+on a few projects including the Analysis Ready Data platform, which allowed analysts and external customers to leverage
+deployed ML models and an incoming stream of satellite imagery to build analytical results, so things like planes, roads,
+ships, etc. basically whatever our clients are interested in monitoring.  I also worked with DARPA on the Geospatial
+Cloud Analytics Hub which combined multi-source and multi-modal image processing into a single cloud based application.
+
+    Finally I was one of the first employees at an AI startup called Reality AI.  We primarily targeted the wearables,
+industrial, and IoT spaces. We trained and deployed ML models as a service. They were recently acquired which -- I'm super
+happy about.
+
+    I also joined industry before graduation
+
+-----
+
+Questions they may ask:
+
+    Why do you want to work for Anduril?
+
+    Well, I really like the work that Anduril is doing and I believe in it's primary mission.  Previously, I was in the defense
+    and intelligence space while I was at Maxar and I thought that work has been the most impactful out of anything I've done
+    previously and I really want to get back in that direction.  Impactful, technically challenging work.
+
+-----
+
+Questions I have:
+
+    Can you tell me more about the Mission Engineering Team or the position in general?
+        mission autonomy -> lattice customization, unmanned aircraft control integration
+        c&c team all-domain view, lattice data mesh, target, tracking - hardware product
+        lattice related - lattice for  c&c
+            big priority - integrated with other systems
+            menace c2 offering - hardened terminal hub prototype phase
+            application layer / ui
+            data layer / data ingestion / tracked through lattice
+
+    Can you tell me more about the compensation for this position?
+
+        cash + RSU = total compensation == L5 - 215 (375/4=93.75) = 308.75 | L6 - 245 (840/4=210) = 455
+            4 year vest, 1 year cliff
+            refreshers
+
+    What's interviewing like for a staff software engineer at Anduril?
+        tech interview, phone interview, zoom call - leetcode style
+        2 coding rounds, system, behavioral
+        clear first round, team matching
+
+
+Cleared the first round!
+
+Next steps are the in person interview.

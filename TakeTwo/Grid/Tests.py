@@ -117,12 +117,12 @@ class SolutionsTest(unittest.TestCase):
         self.assertListEqual(output, grid.updateBoard(board, click))
 
     def test_maxGold(self):
-        grid = [[0, 6, 0], [5, 8, 7], [0, 9, 0]]
+        input = [[0, 6, 0], [5, 8, 7], [0, 9, 0]]
         output = 24
-        self.assertEqual(output, grid_two.getMaximumGold(grid))
-        grid = [[1, 0, 7], [2, 0, 6], [3, 4, 5], [0, 3, 0], [9, 0, 20]]
+        self.assertEqual(output, grid.getMaximumGold(input))
+        input = [[1, 0, 7], [2, 0, 6], [3, 4, 5], [0, 3, 0], [9, 0, 20]]
         output = 28
-        self.assertEqual(output, grid_two.getMaximumGold(grid))
+        self.assertEqual(output, grid.getMaximumGold(input))
 
     def test_enclaves(self):
         input = [
@@ -244,22 +244,46 @@ class SolutionsTest(unittest.TestCase):
         self.assertEqual(output, grid.maximalSquare(matrix))
 
     def test_shortest_path_binary_matrix(self):
-        grid = [
+        input = [
             [0, 1],
             [1, 0]
         ]
         output = 2
-        self.assertEqual(output, array_problems_four.shortestPathBinaryMatrix(grid))
-        grid = [
+        self.assertEqual(output, grid.shortestPathBinaryMatrix(input))
+        input = [
             [0, 0, 0],
             [1, 1, 0],
             [1, 1, 0]
         ]
         output = 4
-        self.assertEqual(output, array_problems_four.shortestPathBinaryMatrix(grid))
-        grid = [[1, 0, 0], [1, 1, 0], [1, 1, 0]]
+        self.assertEqual(output, grid.shortestPathBinaryMatrix(input))
+        input = [[1, 0, 0], [1, 1, 0], [1, 1, 0]]
         output = -1
-        self.assertEqual(output, array_problems_four.shortestPathBinaryMatrix(grid))
+        self.assertEqual(output, grid.shortestPathBinaryMatrix(input))
+
+    def test_update_matrix(self):
+        mat = [
+            [0, 0, 0],
+            [0, 1, 0],
+            [0, 0, 0]
+        ]
+        output = [
+            [0, 0, 0],
+            [0, 1, 0],
+            [0, 0, 0]
+        ]
+        self.assertListEqual(output, grid.updateMatrix(mat))
+        mat = [
+            [0, 0, 0],
+            [0, 1, 0],
+            [1, 1, 1]
+        ]
+        output = [
+            [0, 0, 0],
+            [0, 1, 0],
+            [1, 2, 1]
+        ]
+        self.assertListEqual(output, grid.updateMatrix(mat))
 
     def test_exists(self):
         board = [["A", "B", "C", "E"], ["S", "F", "C", "S"], ["A", "D", "E", "E"]]

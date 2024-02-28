@@ -1,0 +1,343 @@
+MAXAR
+
+Analysis Ready Data Platform
+
+Build a system that ingests near real-time geospatial information and outputs classifications based upon AOI.
+Make those classifications available to the clients.
+
+1. Clarification
+    How many areas of interest (AOI) are we monitoring?
+        10000
+    How many models should we make available?
+        100s
+    How much new data is coming into our system?
+        1000 / second
+    How many new AOIs per day?
+        100
+
+2. Functional Requirements
+    Create AOI, List AOI, Update AOI.
+    List models
+    Get Result
+
+3. Non functional Requirements
+    This system should be as reliable as possible.  We should not drop classification requests for AOIs
+    This system should be durable, there should be no single points of failure
+
+4. API Design
+    POST {base_url}/api/aoi
+        Request:
+            {
+                aoi: {
+                    polygon: []Coord
+                    model_uuid: uuid
+                    name: string
+                    description: string
+                    datasource: enum
+                }
+            }
+        Response:
+            {
+                aoi:{
+                    user_uuid: uuid
+                    date: datetime
+                    polygon: []Coord
+                    model_uuid: uuid
+                    aoi_id: uuid
+                    name: string
+                    description: string
+                    datasource: enum
+                }
+            }
+    GET {base_url}/api/aoi
+        Request:
+        Response:
+            {
+                aois: [
+                    {
+                        user_uuid: uuid
+                        date: datetime
+                        polygon: []Coord
+                        model_uuid: uuid
+                        aoi_id: uuid
+                        name: string
+                        description: string
+                        datasource: enum
+                    },
+                    {...},
+                ]
+            }
+    GET {base_url}/api/aoi/{aoi_id}
+        Request: None
+        Response:
+            {
+                aoi:{
+                    user_uuid: uuid
+                    date: datetime
+                    polygon: []Coord
+                    model_uuid: uuid
+                    aoi_id: uuid
+                    name: string
+                    description: string
+                    datasource: enum
+                }
+            }
+    PUT {base_url}/api/aoi/{aoi_id}
+        Response:
+            {
+                aoi:{
+                    user_uuid: uuid
+                    date: datetime
+                    polygon: []Coord
+                    model_uuid: uuid
+                    aoi_id: uuid
+                    name: string
+                    description: string
+                    datasource: enum
+                }
+            }
+        Response:
+            {
+                aoi:{
+                    user_uuid: uuid
+                    date: datetime
+                    polygon: []Coord
+                    model_uuid: uuid
+                    aoi_id: uuid
+                    name: string
+                    description: string
+                    datasource: enum
+                }
+            }
+    DEL {base_url}/api/aoi/{aoi_id}
+        Request: None
+        Response: 200
+    GET {base_url}/api/models/
+        Request: None
+        Response:
+            {
+                model_uuid: uuid
+                name: string
+                description: string
+                datasource: enum
+            }
+    GET {base_url}/api/models/{model_uuid}
+        Request: None
+        Response:
+            {
+                model_uuid: uuid
+                name: string
+                description: string
+                datasource: enum
+            }
+
+5. Data Model
+
+    Area of Interest
+        user_uuid: UUID 16 bytes
+        date: datetime 8 bytes
+        polygon: []Coordinate 8bytes * 18 = 144 bytes
+        model_uuid: 16 bytes
+        aoi_id: 16 bytes
+        name: 100 bytes
+        description: 100 bytes
+        datasource: 4 bytes
+        ----
+        ~400 bytes per AOI
+
+    Model
+        model_uuid: 16 bytes
+        name: 100 bytes
+        description: 100 bytes
+        datasource: 4 bytes
+        ----
+        ~200 bytes per model
+
+    Incoming Data
+        geoID: uuid 16 bytes
+        datasource: 4 bytes
+        ----
+        20 bytes
+
+
+6. Back of the envelop Calculations
+    400 bytes * 10,000 AOIS
+    4,000,000 bytes
+    4,000 KB
+    4 MB
+
+    200 bytes per Model
+    200 bytes * 100 Models
+    20,000 bytes
+    20 KB
+    0.02 MB
+
+    20 bytes per incoming data
+    20 * 1000 rps
+    20,000 bytes per second
+    20 KB / second
+    1.2 MB / min
+    72 MB / hour
+    140 MB / day
+
+    I need to perform intersections with 10,000 potential AOIs at a rate of 1000 RPS
+    10,000 * 1000 = 10,000,000 intersections per second.
+
+
+7. High Level Architecture
+
+    Kafka stream broadcasting incoming data
+
+    Sharded intersection service where each shard is responsible for a subset of AOIs
+        We can have 10 shards to handle 1/10th of the AOIs and run intersections.
+
+        AOIs are assigned to a shard based upon consistent hashing algorithm.
+        each of these shards will attempt to run interaction on incoming data from the kafka stream for AOIs
+        under it's responsibility.
+
+        Each shard will have the same consumer group to broadcast messages identically across the service stack
+        Sharding based upon consistent hashing will remove the 'hotspot' problem where a single node will be required
+        to run intersections while the other nodes will not be used.
+
+        When an intersection is detected, it will aggregate these intersections to decrease redundancies.  After a period
+        of time, these aggregated intersections will be combined and sent to a queue for further processing.
+
+    Intersections will be enqueued in SQS / RabbitMQ for further processing.
+
+        This queue will have a dead letter queue with potential for redrive. The consumer of this queue, in the event of
+        failure, will retry.  After a number of retries the job will be sent to the DLQ.  This allows engineers to
+        examine the state of the system and reprocess once issues are resolved.
+
+    The image ordering service reads from this intersection queue.
+
+        The image ordering service will receive requests.  It will order imagery from our dependency and store it in a
+        networked filesystem.  These images will be consumed by ML models upstream via another SQS stream.
+
+        In the event another AOI has already ordered a subset of this imagery, it'll be skipped, it will wait for this
+        order to be completed and then proceed to send the order for processing.
+
+    Classification request enqueued into SQS for further processing.
+
+    Model Service
+
+        The model service will take messages off of the queue.  The imagery required for classification is already in
+        a networked filesystem so it's available for classification.  It will read in this imagery into memory, segment
+        this image into "chips" and feed these chips into our model for classification.  The output of this model is
+        in GEOJSON format.  This output data is sent to s3 for long-term storage.
+
+        It will retry failures and notification SNS (notification service) when classification jobs are complete.
+
+            s3_classification_result/
+                region_1/
+                    grid-001_001_2023-01-01.geojson
+                    grid-001_002_2023-01-01.geojson
+                    grid-001_003_2023-01-01.geojson
+                    grid-001_003_2023-02-01.geojson
+                    grid-002_001_2023-01-01.geojson
+                region_2/
+                    grid-001_001_2023-01-01.geojson
+                region_3/
+                    grid-001_001_2023-01-01.geojson
+
+    Glue / Spark
+
+        AWS glue is an indexer that crawls a data lake like AWS, performs indexing operations, builds a data catalogue,
+        and exposes this data catalogue to queries.  Glue will create a spacial-temporal index. We can use Spark to
+        perform distributed computing and analysis on the underlying dataset.  We can transform the geoJSON into parquet
+        for analysis.
+
+            s3_classification_data/
+                region=1/
+                    grid=001/
+                        year=2023/
+                            month=01/
+                                data.parquet
+                            month=02/
+                                data.parquet
+                    grid=002/
+                        year=2023
+                            month=01/
+                                data.parquet
+                    grid=003/
+                        year=2023/
+                            month=01/
+                                data.parquet
+                region=2/
+                    grid=001/
+                        year=2023/
+                            month=01/
+                                data.parquet
+                region=3/
+                    grid=001/
+                        year=2023/
+                            month=01/
+                                data.parquet
+
+        After glue has exposed this data we can run spark queries on it.  We can aggregate all of the results based upon
+        region, grid cell, or date to access data found in the parquet files.
+
+    ARD Service
+
+        The ARD service is the user interface for creating AOIs, running ad-hoc classifications, and interacting with
+        analytical results.  We can fetch results based upon the region the user is looking at from S3 and we can
+        store and modify AOIs when required.  This service should be robust enough to handle incoming traffic and reads
+        from s3 and service them to the user. There are relatively low number of requests compared to the high volume
+        of data incoming into our system but it should be scalable based upon CPU utilization.
+
+        A load balancer sits in front of this service to distribute load against pods in the cluster.
+
+        When new AOIs are created / updated we will write to our database and send it to our intersection service based
+        upon it's consistently hashed uuid.  We will need to track which shard to contact based upon zookeeper. The new
+        AOI will be sent to the correct shard and integrated in the processing system.
+
+    Notification Service
+
+        The notification service will handle requests from the ARD service and will notify user's when new analytical
+        results are generated.
+
+8. Database Choice
+
+    We don't have complex datasets requiring joins across datasets.  We can use a NoSQL database with replication across
+    datacenters to allow for failover.  Our system is not very read / write heavy so we don't really need to worry about
+    things like sharding or federation.
+
+9. Identify Bottlenecks, Single Points of Failure, Talk about scaling each service
+
+    The stream processor service is durable to failures.  In the event a shard goes down, zookeeper will manage the redistribution
+    of AOIs to our cluster of instances, and when we spawn new nodes, we will rebalance to maintain performance. In the event
+    of high CPU utilization of our stream processing services, we will scale up the nodes.  We should reach a pretty steady
+    state all we consistently hash AOIs across the cluster.  We would probably manually scale up this cluster if we forsee
+    new datasources.
+
+    The imagery ordering service, in the event of failure, the jobs will be re-enqueued and we will attmpt to reprocess them.
+    We can scale this cluster of services based upon the backpressure in our queue.  In the event there's lots of backpressure
+    (such as when our sensors are processing a dense region) we will scale up to handle more data ordering.  When the queue
+    has been drained we can scale back down.
+
+    The imagery classification service is also robust to failures and increased load.  If a service goes down, or classification fails,
+    these jobs will be re-enqueued.  We can likewise scale up or down based upon the backpressure in our queue.
+
+10. Authentication / Zero-trust
+
+    Entry into our system from the client should be controlled at the API Gateway level.  All requests should be authenticated
+    and a user identifier will be attached to each request.  All results should be associated with a user.
+
+    All S2S requests should be authenticated as well, no service can communicate with another without sending it's services
+    JWT (Json Web token) containing a JWS (JSON Web Signature).  For example, Zookeeper should only be able to receive
+    authenticated requests from our ARD service and our Stream Processor Service, all other requests will be rejected. Likewise
+    for our database.  Only authorized requests from Stream processor / ARD Service or the imagery ordering service will be
+    able to enqueue jobs for imagery acquisition or image classification service consumption.  Only the imagery classification
+    service can broadcast messages to SNS for status updates.  Only the Image classification service and ARD service can read /
+    write data to our S3 bucket.
+
+    These access controls will ensure that we maintain boundaries of responsibilities and we can trust the requests and
+    data flowing through our system.  No other service should be able to interact except through our clearly defined Application
+    Programming Interface (API).
+
+11. Monitoring / Alerting
+
+    CPU utilization for all of our services
+    Total time in queue for image ordering and image classification service
+    Response codes from ARD service
+
+

@@ -266,6 +266,71 @@ def maximalSquare(matrix: List[List[str]]) -> int:
     for x, row in enumerate(matrix):
         for y, value in enumerate(row):
             if x != 0 and y != 0 and matrix[x][y] == "1":
-                matrix[x][y] = str(int(matrix[x][y]) + min(int(matrix[x - 1][y]), int(matrix[x - 1][y - 1]), int(matrix[x][y - 1])))
+                matrix[x][y] = str(
+                    int(matrix[x][y]) + min(int(matrix[x - 1][y]), int(matrix[x - 1][y - 1]), int(matrix[x][y - 1])))
             max_square = max(int(matrix[x][y]) ** 2, max_square)
     return max_square
+
+
+import collections
+
+
+def shortestPathBinaryMatrix(grid: List[List[int]]) -> int:
+    directions = [[-1, -1], [-1, 0], [-1, 1], [1, 0], [0, 1], [0, -1], [1, -1], [1, 1]]
+    if grid[0][0] == 1:
+        return -1
+    grid[0][0] = 1
+    queue = collections.deque([(1, 0, 0)])
+    while queue:
+        distance, x, y = queue.popleft()
+        if x == len(grid) - 1 and y == len(grid[0]) - 1:
+            return distance
+        for x_direction, y_direction in directions:
+            x_target, y_target = x + x_direction, y + y_direction
+            if 0 <= x_target < len(grid) and 0 <= y_target < len(grid[0]):
+                if grid[x_target][y_target] == 0:
+                    grid[x][y] = 1
+                    queue.append((distance + 1, x_target, y_target))
+    return -1
+
+
+def getMaximumGold(grid: List[List[int]]) -> int:
+    directions = [[-1, 0], [1, 0], [0, 1], [0, -1]]
+
+    def traverse(x: int, y: int) -> int:
+        result, temp, grid[x][y], max_path = grid[x][y], grid[x][y], 0, 0
+        for x_direction, y_direction in directions:
+            x_target, y_target = x + x_direction, y + y_direction
+            if 0 <= x_target < len(grid) and 0 <= y_target < len(grid[0]) and grid[x_target][y_target]:
+                max_path = max(max_path, traverse(x_target, y_target))
+        grid[x][y] = temp
+        return result + max_path
+
+    max_val = 0
+    for x, row in enumerate(grid):
+        for y, value in enumerate(row):
+            if value != 0:
+                max_val = max(max_val, traverse(x, y))
+    return max_val
+
+
+def updateMatrix(mat: List[List[int]]) -> List[List[int]]:
+    queue = deque([])
+    result = [[None for _ in range(len(mat[0]))] for _ in range(len(mat))]
+    directions = [[-1, 0], [1, 0], [0, 1], [0, -1]]
+    for x, row in enumerate(mat):
+        for y, value in enumerate(row):
+            if value == 0:
+                result[x][y] = 0
+                queue.append((0, x, y))
+
+    while queue:
+        distance, x, y = queue.popleft()
+        result[x][y] = distance
+        for x_direction, y_direction in directions:
+            x_target, y_target = x + x_direction, y + y_direction
+            if 0 <= x_target < len(mat) and 0 <= y_target < len(mat[0]) and result[x_target][y_target] is None:
+                result[x_target][y_target] = distance + 1
+                queue.append((distance + 1, x_target, y_target))
+
+    return result

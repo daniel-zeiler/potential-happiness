@@ -708,7 +708,7 @@ Explanation: There are three ways to climb to the top.
 """
 
 
-def climbStairs(self, n: int) -> int:
+def climbStairs(n: int) -> int:
     pass
 
 
@@ -766,7 +766,7 @@ Output: 1
 """
 
 
-def lengthOfLIS(self, nums: List[int]) -> int:
+def lengthOfLIS(nums: List[int]) -> int:
     pass
 
 
@@ -799,7 +799,7 @@ Explanation: There is no such common subsequence, so the result is 0.
 """
 
 
-def longestCommonSubsequence(self, text1: str, text2: str) -> int:
+def longestCommonSubsequence(text1: str, text2: str) -> int:
     pass
 
 
@@ -891,7 +891,7 @@ Total amount you can rob = 2 + 9 + 1 = 12.
 """
 
 
-def rob(self, nums: List[int]) -> int:
+def rob(nums: List[int]) -> int:
     pass
 
 
@@ -993,7 +993,7 @@ Explanation: From the top-left corner, there are a total of 3 ways to reach the 
 """
 
 
-def uniquePaths(self, m: int, n: int) -> int:
+def uniquePaths(m: int, n: int) -> int:
     pass
 
 
@@ -1015,7 +1015,7 @@ Input: nums = [3,2,1,0,4] Output: false Explanation: You will always arrive at i
 jump length is 0, which makes it impossible to reach the last index. """
 
 
-def canJump(self, nums: List[int]) -> bool:
+def canJump(nums: List[int]) -> bool:
     pass
 
 
@@ -1065,7 +1065,7 @@ Output: false
 """
 
 
-def isSameTree(self, p: Optional[Node], q: Optional[Node]) -> bool:
+def isSameTree(p: Optional[Node], q: Optional[Node]) -> bool:
     pass
 
 
@@ -1091,7 +1091,7 @@ Output: []
 """
 
 
-def invertTree(self, root: Optional[Node]) -> Optional[Node]:
+def invertTree(root: Optional[Node]) -> Optional[Node]:
     pass
 
 
@@ -1120,7 +1120,7 @@ Explanation: The optimal path is 15 -> 20 -> 7 with a path sum of 15 + 20 + 7 = 
 """
 
 
-def maxPathSum(self, root: Optional[Node]) -> int:
+def maxPathSum(root: Optional[Node]) -> int:
     pass
 
 
@@ -1146,7 +1146,7 @@ Output: []
 """
 
 
-def levelOrder(self, root: Optional[Node]) -> List[List[int]]:
+def levelOrder(root: Optional[Node]) -> List[List[int]]:
     pass
 
 
@@ -1327,7 +1327,7 @@ Output: 2
 """
 
 
-def lowestCommonAncestor(self, root: 'Node', p: 'Node', q: 'Node') -> 'Node':
+def lowestCommonAncestor( root: 'Node', p: 'Node', q: 'Node') -> 'Node':
     pass
 
 

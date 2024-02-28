@@ -480,31 +480,7 @@ def countSquares(matrix: List[List[int]]) -> int:
 
 
 """
-Given an array of non-negative integers nums, you are initially positioned at the first index of the array.
-
-Each element in the array represents your maximum jump length at that position.
-
-Your goal is to reach the last index in the minimum number of jumps.
-
-You can assume that you can always reach the last index.
-
- 
-
-Example 1:
-
-Input: nums = [2,3,1,1,4] Output: 2 Explanation: The minimum number of jumps to reach the last index is 2. Jump 1 
-step from index 0 to 1, then 3 steps to the last index. Example 2: 
-
-Input: nums = [2,3,0,1,4]
-Output: 2
-"""
-
-
-def jump(nums: List[int]) -> int:
-    pass
-
-
-"""You are given an integer array nums. You want to maximize the number of points you get by performing the following 
+You are given an integer array nums. You want to maximize the number of points you get by performing the following 
 operation any number of times: 
 
 Pick any nums[i] and delete it to earn nums[i] points. Afterwards, you must delete every element equal to nums[i] - 1 
@@ -533,44 +509,12 @@ You earn a total of 9 points.
 """
 
 
-def deleteAndEarn(self, nums: List[int]) -> int:
+def deleteAndEarn(nums: List[int]) -> int:
     pass
 
 
 """
-Given a circular integer array nums of length n, return the maximum possible sum of a non-empty subarray of nums.
-
-A circular array means the end of the array connects to the beginning of the array. Formally, the next element of 
-nums[i] is nums[(i + 1) % n] and the previous element of nums[i] is nums[(i - 1 + n) % n]. 
-
-A subarray may only include each element of the fixed buffer nums at most once. Formally, for a subarray nums[i], 
-nums[i + 1], ..., nums[j], there does not exist i <= k1, k2 <= j with k1 % n == k2 % n. 
-
- 
-
-Example 1:
-
-Input: nums = [1,-2,3,-2]
-Output: 3
-Explanation: Subarray [3] has maximum sum 3.
-Example 2:
-
-Input: nums = [5,-3,5]
-Output: 10
-Explanation: Subarray [5,5] has maximum sum 5 + 5 = 10.
-Example 3:
-
-Input: nums = [-3,-2,-3]
-Output: -2
-Explanation: Subarray [-2] has maximum sum -2.
-"""
-
-
-def maxSubarraySumCircular(self, nums: List[int]) -> int:
-    pass
-
-
-"""Given an integer array nums, find a contiguous non-empty subarray within the array that has the largest product, 
+Given an integer array nums, find a contiguous non-empty subarray within the array that has the largest product, 
 and return the product. 
 
 The test cases are generated so that the answer will fit in a 32-bit integer.
@@ -628,7 +572,8 @@ def getMaxLen(nums: List[int]) -> int:
     pass
 
 
-"""You are given an integer array values where values[i] represents the value of the ith sightseeing spot. Two 
+"""
+You are given an integer array values where values[i] represents the value of the ith sightseeing spot. Two 
 sightseeing spots i and j have a distance j - i between them. 
 
 The score of a pair (i < j) of sightseeing spots is values[i] + values[j] + i - j: the sum of the values of the 
@@ -650,7 +595,7 @@ Output: 2
 """
 
 
-def maxScoreSightseeingPair(self, values: List[int]) -> int:
+def maxScoreSightseeingPair(values: List[int]) -> int:
     pass
 
 
@@ -713,40 +658,6 @@ Output: 0
 
 
 def maxProfitThree(self, prices: List[int]) -> int:
-    pass
-
-
-"""
-Given an m x n binary matrix mat, return the distance of the nearest 0 for each cell.
-
-The distance between two adjacent cells is 1.
-
- 
-
-Example 1:
-
-
-Input: mat = [[0,0,0],[0,1,0],[0,0,0]]
-Output: [[0,0,0],[0,1,0],[0,0,0]]
-Example 2:
-
-
-Input: mat = [[0,0,0],[0,1,0],[1,1,1]]
-Output: [[0,0,0],[0,1,0],[1,2,1]]
- 
-
-Constraints:
-
-m == mat.length
-n == mat[i].length
-1 <= m, n <= 104
-1 <= m * n <= 104
-mat[i][j] is either 0 or 1.
-There is at least one 0 in mat.
-"""
-
-
-def updateMatrix(self, mat: List[List[int]]) -> List[List[int]]:
     pass
 
 
@@ -839,7 +750,7 @@ Output: 3
 """
 
 
-def rob2(self, nums: List[int]) -> int:
+def rob2(nums: List[int]) -> int:
     pass
 
 
@@ -915,7 +826,7 @@ In total, you spent $17 and covered all the days of your travel.
 """
 
 
-def mincostTickets(self, days: List[int], costs: List[int]) -> int:
+def mincostTickets(days: List[int], costs: List[int]) -> int:
     pass
 
 
@@ -949,7 +860,7 @@ Output: 5
 """
 
 
-def lastStoneWeightII(self, stones: List[int]) -> int:
+def lastStoneWeightII(stones: List[int]) -> int:
     pass
 
 
@@ -984,7 +895,7 @@ exection -> execution (insert 'u')
 """
 
 
-def minDistance(self, word1: str, word2: str) -> int:
+def minDistance(word1: str, word2: str) -> int:
     pass
 
 

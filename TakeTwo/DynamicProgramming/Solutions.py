@@ -143,4 +143,76 @@ def tribonacci(n: int) -> int:
 
 
 def longestCommonSubsequence(text1: str, text2: str) -> int:
-    pass
+    memo = [[0 for _ in range(len(text2) + 1)] for _ in range(len(text1) + 1)]
+    for x in range(1, len(text1) + 1):
+        for y in range(1, len(text2) + 1):
+            memo[x][y] = memo[x - 1][y - 1] + 1 if text1[x - 1] == text2[y - 1] else max(memo[x][y - 1], memo[x - 1][y])
+    return memo[-1][-1]
+
+
+def countSquares(matrix: List[List[int]]) -> int:
+    result = 0
+    for x, row in enumerate(matrix):
+        for y, value in enumerate(row):
+            if 0 not in [x, y] and value:
+                matrix[x][y] = min(matrix[x - 1][y], matrix[x - 1][y - 1], matrix[x][y - 1]) + 1
+            result += matrix[x][y]
+    return result
+
+
+def deleteAndEarn(nums: List[int]) -> int:
+    memo = [[0 for _ in range(len(nums) + 1)] for _ in range(len(nums) + 1)]
+    result = 0
+    for x in range(1, len(nums) + 1):
+        visited_set = set()
+        for y in range(x, len(nums) + 1):
+            if nums[y - 1] not in visited_set:
+                memo[x][y] = memo[x][y - 1] + nums[y - 1]
+                visited_set = visited_set | {memo[x][y] - 1, memo[x][y] + 1}
+            else:
+                memo[x][y] = memo[x][y - 1]
+        result = max(result, memo[x][-1])
+    return result
+
+
+def maxProduct(nums: List[int]) -> int:
+    min_so_far = [num for num in nums]
+    max_so_far = [num for num in nums]
+    max_product = 0
+    for i in range(1, len(nums)):
+        num = nums[i]
+        if num != 0:
+            min_so_far[i] = min(num, num * min_so_far[i - 1])
+            max_so_far[i] = max(num, num * min_so_far[i - 1], num * max_so_far[i - 1])
+        max_product = max(max_product, max_so_far[i])
+    return max_product
+
+
+def getMaxLen(nums: List[int]) -> int:
+    tmp = [0 for _ in range(len(nums))]
+    max_len = 0
+    for i in range(len(nums)):
+        num = nums[i]
+        if i == 0:
+            if num > 0:
+                tmp[i] = 1
+            elif num < 0:
+                tmp[i] = -1
+        else:
+            if num < 0:
+                if tmp[i - 1] < 0:
+                    tmp[i] = abs(tmp[i - 1]) + 1
+                else:
+                    tmp[i] = -abs(tmp[i - 1] + 1)
+            elif num > 0:
+                tmp[i] = abs(tmp[i - 1]) + 1
+        max_len = max(max_len, tmp[i])
+    return max_len
+
+
+def maxScoreSightseeingPair(values: List[int]) -> int:
+    results = [0 for _ in range(len(values))]
+    for i in range(1, len(values)):
+        for j in range(0, i):
+            results[i] = max(results[i], values[i] + values[j] + j - i)
+    return max(results)

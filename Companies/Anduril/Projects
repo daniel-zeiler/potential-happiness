@@ -1,0 +1,147 @@
+Coinbase
+
+        Dapp Catalog
+            About:
+                Our dapp catalog serves as the interface between developer relations and our client facing application.
+                It allows for internal teams to configure and promote distributed applications that we can then
+                expose to our users.
+            Target Customers:
+                DevRel manage the list of available dapps
+                Distributed App Creators
+                End-users consume these dapps when using the retail applications.
+            Technologies:
+                Kubernetes:
+                    We have a K8s cluster of pods
+                MongoDB:
+                    We use monogDB to store dapps that are created.
+                ReTool:
+                    This is an admin interface that allows for secure access and modification of the dapp catalog.  It's
+                    accessed by the developer relations team and is used to deploy new distributed applications, rank them,
+                    offer paid placements, and configure incentive programs such as airdrops or profit sharing for customer
+                    traffic.
+        Web3 Wallet
+            About:
+                This service is the interface for on-chain activity that our userbase will leverage when using our application.
+                It provides a secure means to interact with their crypto assets and the distributed applications developed
+                by the broader web3 ecosystem outside of coinbase (as well as internally developed applications).
+            Target Customers:
+                End-users interact with our managed wallet solution to trade crypto, NFT's, interact with dapps, etc.
+            Technologies:
+                Kubernetes:
+                    This service is a cluster of K8s applications
+                MongoDB:
+                    We store things like transactions, wallets, user state in DynamoDB
+                Multi-party computation key-shared wallets:
+                    We have a proprietary multi-party computation wallet that acts as a secure customian of customer
+                    funds.
+    Retail Dex
+
+        We created a service that exposes assets that Coinbase either doesn't have or doesn't want to provide liquidity for.
+        This service acted as the pricing and execution interface for retail-to-onchain interactions.  So we would enable
+        user's to pay with credit card, cash, crypto, bank account, etc. for assets that coinbase doesn't even have.
+
+        We created a workflow / directed acyclic graph (DAG) in Cadence (a workflow orchestration tool) that integrated
+        with Coinbase's internal services and then bridged the gap with contract calls from a liquidity of wallet addresses.
+        Currently, we have the most complex workflow that exists within Coinbase and we're the only team that has bridged
+        the retail-to-onchain gap.
+
+            Our system has evolved to become a versatile payment platform, now supporting initiatives from other teams
+            within and outside the organization. I have personally led the effort to onboard two teams from different
+            organizations and am currently advising several others on how to leverage our infrastructure for their projects.
+
+            Our workflow significantly reduces the complexities and challenges associated with financial regulations
+            and compliance, making it an attractive option for teams seeking to introduce new functionalities.
+            The collaboration process begins with a consultation to identify how their use cases align with our existing systems.
+            From there, we outline the requirements and establish a framework for them to integrate with our system.
+            I provide ongoing support throughout this process, advising on pricing strategies and necessary workflow adjustments.
+
+            To facilitate smooth onboarding, I've developed comprehensive documentation that outlines what we
+            require from partnering teams, what we can offer, and our limitations. We've also clearly defined our
+            responsibilities, ensuring that we maintain ownership of all operational aspects within our service domain
+            once a project goes live, regardless of the origin of the code.
+
+    Backend Round Table
+
+        I created the backend round table for my team to facilitate information sharing and skills transfer.  We're constantly
+        leveraging more tools and building complex systems.  This meeting is a platform to expose these tools and systems
+        to the broader team.
+
+        I kicked off the round table discussions with a talk on Kubernetes.  I was the only engineer on the team with
+        Kubernetes experience, and before I could migrate our services over, I needed to up-level the rest of the teams
+        with the necessary information required to operate in this new space.  It was able an hour with slides and an
+        open discussion at the end.  I've also talked about asynchronous processing tools, when / why to use them,
+        things like that.
+
+        This round table has been going on every two weeks for about a year.  I think it's been a great success!
+
+    Interns
+
+        This summer I had an intern join our team.  I created a technical design document for a project that allowed us
+        to reward our user's for performing various actions in the application.  Our team had no bandwidth for doing this
+        and it was a project I proposed that wasn't on the roadmap.  I guided them through onboarding, and allowed them
+        to get slowly exposed to more and more of the technical stack.  They were new to basically everything from protobuffs,
+        GraphQL, etc, Golang, etc.
+
+Twitter
+
+    Looker at Twitter
+
+        We set up a kubernetes cluster to run Looker at Twitter.  This required extensive networking configuration and
+        authentication between the broader Twitter ecosystem and coinbase itself.
+
+        Interfacing with Okta. Custom ingress proxying solution.
+
+    Airflow
+
+        Airflow runs directed acyclic graphs. We deployed a cluster of instances to run airflow jobs and maintained
+        these services.
+
+    Data Modeling Working Group
+
+Maxar
+
+    Analysis Ready Data Platform
+
+        At Maxar, the process for analysts to produce their work was highly complex and inefficient. Analysts had to
+        develop Python notebooks to interact with upstream imagery services, manually parse the imagery within the code,
+        and integrate this data with machine learning models downloaded into their notebooks. They were also responsible
+        for deploying these notebooks to the cloud, scheduling them to run at intervals using a cron job scheduler,
+        and managing the output stored in S3. This workflow was not only cumbersome but also made it difficult for
+        analysts to share their findings, leading to redundant efforts and significant costs in compute and storage resources.
+        Moreover, ensuring compatibility among models, data types, and analyst expectations presented additional challenges.
+
+        To address these issues, our objective was to simplify the analysts' workload by eliminating the need for them
+        to engage in software engineering tasks, enabling them to concentrate on producing high-quality deliverables and
+        analyzing large datasets.
+
+        We developed an innovative system that allows analysts to specify geospatial areas of interest (AOIs) and associate
+        them with machine learning models. When new data arrives via a Kafka stream, our system identifies intersections
+        with these AOIs, aggregates the relevant data, downloads the geotiffs for classification, and processes them
+        using deployed models within a service cluster connected through a networked filesystem. This setup facilitates
+        the continuous generation of analytic results for later use.
+
+        The results are stored in S3, and through AWS Glue, we transform this data into Parquet files, allowing analysts
+        to perform ad-hoc queries with Apache Spark without needing to rerun analyses for data that has already been
+        processed by others.
+
+        Furthermore, we enhanced accessibility and usability by incorporating these capabilities into a web application.
+        This application makes it easier for analysts to define AOIs, interact with our system, execute queries, and
+        explore the datasets available. This approach not only streamlines the analytical process but also fosters
+        collaboration and resource efficiency.
+
+    Geospatial Cloud Analytics Hub (DARPA)
+
+        A platform to fuse multi-source and multi-model datasets as well as 100 petabytes of high resolution satellite imagery,
+        synthetic aperture radar, ship automatic identification system (AIS) data, etc.
+
+    Hackathons at Maxar
+
+        I was a judge and organizer for internal hackathons at Maxar. I loved doing this and it was really great to motivate
+        the team and see what cool things people could come up with.
+
+
+Reality AI
+
+    Infrastructure to parse datasets for supervised training
+
+    Infrastructure to train, deploy, and leverage models in the cloud
