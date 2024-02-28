@@ -132,9 +132,10 @@
     Only authorized services can contact one another.
     S2S auth uses certificates to identify the originator of the request.
     JWT to identify the originator, signed and encrypted before send.
+    Data should be encrypted when it is stored and in transit to protect against sensitive locatio ndata and unauthorized access.
 
 10. Monitoring / Alerting
     How should we monitor our system?
-        Response codes, task successes, task failures, time in queue.
+        Response codes, task successes, task failures, time in queue, cache miss rate, memory or cpu utilization
     What should our system alert on?
         If any of the above monitors are not nominal we should be alerted

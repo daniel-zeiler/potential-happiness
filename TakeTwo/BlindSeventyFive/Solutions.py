@@ -52,7 +52,7 @@ def threeSum(nums: List[int]) -> List[List[int]]:
         for i, num in enumerate(nums):
             if not result or num != result[-1][-1]:
                 if target - num in num_set:
-                    result.append([num, num - target])
+                    result.append([-target, num, num - target])
             num_set.add(num)
         return result
 

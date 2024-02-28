@@ -1,0 +1,182 @@
+Create a system for a like-like application.
+User's can view restaurants within a given radius of their location.
+They can read and write reviews for restaurants and they can create new restaurants.
+
+1. Ask clarifying Questions
+    How many users? - 10,000,000 users / day
+    How many restaurants? 10,000,000 restaurants
+    How many new restaurants are created a day? 10,000
+    How many reviews per day? 1,000,000 reviews per day.
+    How many total reviews? 10 reviews per restaurant
+        100,000,000 total reviews
+
+2. Functional Requirements
+    User can get restaurants within an area
+    User can write reviews for a restaurant
+    User can create a restaurant
+    User can read reviews for a restaurant
+
+3. Non-functional Requirements
+    This service should be as performant as possible
+    This service doesn't really care about showing real time results.
+        It's okay if our database isn't strictly consistent.
+    Our service should be robust without single points of failure
+    Our system should scale to increasing traffic
+
+4. API Definitions
+
+    GET /api/locations/{x}/{y}
+    Response:
+        restaurants: [
+            {
+              name: str
+              id: UUID
+              description: str
+              coordinates: []float
+              rating: int
+            }
+        ]
+
+    POST /api/location/
+    Request:
+        restaurant:{
+            name: str
+            description: str
+            category: ENUM
+            coordinates: []float
+        }
+
+    POST /api/location/{location_id}
+    Request:
+        review:{
+            review_text: str
+            rating: int
+        }
+
+    GET /api/location/{location_id}
+    Response:
+        restaurant:{
+            name: str
+            id: uuid
+            description: str
+            category: ENUM
+            coordinates: []float
+            rating: int
+        }
+
+5. Data Model
+    Restaurant
+        name: str 256 bytes
+        * id: UUID 16 bytes
+        description: str 512 bytes
+        rating: int 8 bytes
+        coordinates: 8 bytes
+        ---
+        ~800 bytes
+
+    Review
+        review_text: str 512 bytes
+        rating: int 8 bytes
+        * id: uuid 16 bytes
+        * restaurant_id: uuid 16 bytes
+        user_id: uuid 16 bytes
+        ---
+        568 bytes
+
+6. Back of the envelop calculations
+    100,000,000 total reviews
+    x 568 bytes
+    568,000,000,000 bytes
+    568,000,000 KB
+    568,000 MB
+    568 GB reviews
+
+    1,000,000 new reviews per day
+    568,000,000 kb
+    568 MB per day
+
+    10,000,000 locations
+    800 bytes
+    80,000,000,000 bytes
+    80,000,000 KB
+    80,000 MB
+    80 GB locations
+
+    10,000 new locations per day
+    8,000,000 bytes
+    8 MB per day
+
+7. High level architecture
+    We need to build an extremely highly performant read heavy system.
+
+    We can build an in-memory datastore based upon quadtrees for O(log(n)) geolocation.  We can traverse out from that location to aggregate
+    locations within a radius and return tha response when we acquire.  We can configure leaf-nodes within the quadtree
+    to have a maximum number of locations.  We can then partition that quadtree once we reach a maximum size.
+    Here's a rough sketch of how that would work.
+
+    class InMemoryQuadTreeNode:
+        def __init__(max_size):
+            self.max_size = max_size
+            self.current_size = 0
+            self.left = None
+            self.up = None
+            self.right = None
+            self.down = None
+            self.locations = []
+            self.children = []
+
+        def partition():
+            pass
+
+    class InMemoryQuadtreeStore:
+        def __init__(self, max_size):
+            self.head = InMemoryQuadtreeNode(max_size)
+
+        def add_location(location_uuid, x_coordinate, y_coordinate):
+            ...
+
+    I don't think the entire dataset will fit into memory so we can have a sharded architecture such that we distribute our nodes
+    into our InMemoryQuadTreeStore in a consistently hashed manner.  Consistent hashing allows us to avoid hotspots based upon
+    common geo's like cities.  All shards will have a relatively even amount of nodes.
+
+    However, all requests will have to aggregate results from all of our shards.  We can have read-replicas to increase throughput.
+    Each shard will have a number of replicas such that each request will be load balanced to a replica.  Write requests will have
+    to be replicated so we can have leaderless replication and write requests can be load balanced as well.  We can have n/2 + 1
+    consistency to maintain a balance between throughput and consistency.
+
+    We can use zookeeper to keep track of the distribution of locations to our consistently hashed data store.  In the event
+    one of our nodes + replicas fails, we will need to balance our cluster.  To hedge against this, we can geographically
+    distribute replicas across datacenters.  It's relatively unlikely that multiple datacenters with multiple replicas go down in parallel.
+    However, we will need to balance our cluster in the event that we bring new shards online.
+
+    Now that we have a highly performant, robust, and durable in-memory quad tree datastore, we can focus on the application layer.
+    We should have a cluster of stateless instances that are fronted by a load balancer and an API gateway for user authentication.
+    Load balancers and Api gateways should have active-active fail over strategies.  The location service will fetch locations from
+    our shards and serve response to the client.  This service will also interface with Zookeeper when writing new locations to
+    our datastore and it will write reviews to our database.  Rate limiting can be implemented here as well to ensure we're not
+    receiving tons of requests from a single client
+
+8. Database
+    Our review database can be a NoSQL database containing all of our reviews.  We can put a cache like Redis or memaches
+    in front of our database to decrease read latencies.  That way, super busy restaurants will already have their
+    reviews ready to go.
+
+9. Bottlenecks and single points of failure, scaling
+    Our application service will scale based upon CPU utilization.  We have no single points of failures.  We should distribute
+    our pieces across multiple datacenters to ensure durability in the event someone unplugs servers.
+    We should carefully monitor the latency and memory utilization of our in memory datastore cluster.  This should be
+    rebalanced if we approach 40% of memory utilization.  This will allow us to rebuild and swap out our consistently
+    hashed dataset.
+
+10. Zero trust architectures
+    Our services should require s2s authentication using something like JWT (JSON web tokens) which is a sign key that
+    can be encrypted and decrypted with the other half to ensure the caller is who they say they are.  No other service
+    should be able to write to our datastore other than the application service -- or read from it.
+
+    Data should be encrypted when it is stored and in transit to protect against sensitive locatio ndata and unauthorized access.
+
+11. Monitoring / Alerting
+    Monitoring the latency and response codes for our application layer.
+    Monitor the memory utilization of our in memory data store
+    monitor cache hit / miss rate
+    alert if things go out of funk.

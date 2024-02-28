@@ -66,7 +66,13 @@ Maxar ARD
         result.show()
 
 Yelp
-
+    10,000 new locations a day
+    1,000,000 reviews a day
+    10,000,000 users a day
+    search for restaraunts in an area
+    user can read reviews
+    user can write reviews
+    user can create a location
 Twitter
 
 Spotify

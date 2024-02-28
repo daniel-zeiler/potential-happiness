@@ -230,3 +230,74 @@ class StockExchange:
         if order.quantity:
             heapq.heappush(self.sell_orders, (order.price, order))
         return amount_sold
+
+
+class Node:
+    def __init__(self, is_leaf=False, val=None, top_left=None, top_right=None, bottom_left=None, bottom_right=None):
+        self.val = val
+        self.top_left = top_left
+        self.top_right = top_right
+        self.bottom_left = bottom_left
+        self.bottom_right = bottom_right
+        self.is_leaf = is_leaf
+
+
+from collections import deque
+
+
+class QuadTree:
+    def __init__(self, input):
+        self.root = self.build_tree(input)
+
+    def build_tree(self, input: List[List[int]]) -> Node:
+        initial_value = input[0][0]
+        node = Node()
+        for x, row in enumerate(input):
+            for y, value in enumerate(row):
+                if value != initial_value:
+                    mid_len = len(input) // 2
+                    node.top_left = self.build_tree([section[:mid_len] for section in input[:mid_len]])
+                    node.top_right = self.build_tree([section[mid_len:] for section in input[:mid_len:]])
+                    node.bottom_left = self.build_tree([section[:mid_len] for section in input[mid_len:]])
+                    node.bottom_right = self.build_tree([section[mid_len:] for section in input[mid_len:]])
+                    node.is_leaf = False
+                    return node
+        node.val = initial_value
+        node.is_leaf = True
+        return node
+
+    def __str__(self):
+        result = []
+        queue = deque([[self.root, 0]])
+        while queue:
+            quadtree_node, level = queue.popleft()
+            if level == len(result):
+                result.append([str(quadtree_node.val)])
+            else:
+                result[level].append(str(quadtree_node.val))
+
+            if quadtree_node.top_left:
+                queue.append([quadtree_node.top_left, level + 1])
+            if quadtree_node.top_right:
+                queue.append([quadtree_node.top_right, level + 1])
+            if quadtree_node.bottom_left:
+                queue.append([quadtree_node.bottom_left, level + 1])
+            if quadtree_node.bottom_right:
+                queue.append([quadtree_node.bottom_right, level + 1])
+
+        print(result)
+        return ' '.join(' '.join(a_result) + '\n' for a_result in result)
+
+
+grid = [
+    [1, 1, 1, 1, 0, 0, 0, 0],
+    [1, 1, 1, 1, 0, 0, 0, 0],
+    [1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 0, 0, 0, 0],
+    [1, 1, 1, 1, 0, 0, 0, 0],
+    [1, 1, 1, 1, 0, 0, 0, 0],
+    [1, 1, 1, 1, 0, 0, 0, 0]
+]
+quad = QuadTree(grid)
+print(quad)
