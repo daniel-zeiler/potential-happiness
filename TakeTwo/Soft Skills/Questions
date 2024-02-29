@@ -1,10 +1,12 @@
 Tell me about working with others in the organization
 
-    Our team builds workflows within a workflow orchestration system called cadence.  This system is maintained by one of our dependent teams.  When we started this project I met with the staff engineer on their team to understand it's capabilities and design rationales and to see how to best integrate our system with theirs.
+    Our team builds workflows within a workflow orchestration system called cadence.  This system is maintained by one of our dependent teams.  When we started this project I met with the staff engineer on their team to understand it's capabilities and design rationales and to see how to best integrate our systems with one another.
 
-    I did this not only to accelerate technical adoption but to cultivate a relationship to help both of our teams.  Since then I've engaged with their team whenever we're building out new feature spaces as a technical checkpoint.
+    I did this not only to accelerate technical adoption but to cultivate a relationship between our two teams.  Since then I've engaged with their team whenever we're building out new feature spaces as a technical checkpoint.
 
-    Over the course of a few engagements we've since been discussing a version 2.0 of their platform offerings based upon a more generic system of primitives that you can compose together.  This was in an attempt to increase developer velocity and lower the burden of adoption.  So not only have they helped us shape their technical direction, I've contributed to their technical direction as well. I also contributed directly to this initiative with a "home away model" as we were the primary drivers of this work.
+    Over the course of a few engagements we've since been discussing a version 2.0 of their platform offerings based upon a more generic system of primitives that you can compose together.  This was in an attempt to increase developer velocity and lower the burden of adoption for other teams.  So not only has this relationship helped us shape our technical direction, I've contributed to their technical direction as well.
+
+    I also contributed directly to this initiative with a "home away model" as we were the primary drivers of this work.
 
 Adapt to significant challenge at work
 
@@ -16,21 +18,31 @@ Adapt to significant challenge at work
 
 Going above and beyond job responsibilities
 
-    During the early stage of our product we discovered that one user was able to exploit our platform.  We discovered this at roughly 8am.  I immediately killswitched our service and declared an incident.  We spent the next 10-12 hours triaging the issue, replicating the behavior, and re-architecturing some of the critical flow of funds pathways.  We were able to slowly ramp our service back to exposure over two days.
+    We created a novel on-chain execution layer bridging the gap between the exchange and the broader crypto ecosystem.
 
-    I then presented to directors of our organization about the exploit.  It would've been easy for our team to deflect but I decided it would be best to take full responsibility and ownership of the exploit and allowed it to be a point of learning.
+    During the early stage of our product we discovered that one user's was able to exploit our platform.  We discovered this at roughly 8am.  Thankfully we developed robust monitoring and alerting towards anomolous activities. I immediately killswitched our service and declared an incident.  We spent the next 10-12 hours triaging the issue, replicating the behavior, and re-architecturing some of the critical fund pathways.  We were able to slowly ramp our service over the next few days.
+
+    I created a document outlining what happened and how we were planning to hedge against his behavior in the future.  I then took the lead to present to the directors of our organization and the technical staff at the company.
+
+    It would've been easy for our team to deflect blame because we've alreayd gone through design and security review but ultimately it is our responsibility as owners of the product space and it's a good lesson to learn early -- to always keep an eye on security when dealing with financial transactions.
 
 Disagreements with management
 
-    Management decided to deprecate the product we were working on.  This was a retail wallet application that allows people to interact with on-chain smart contracts via the browser or mobile application.
+    At Coinbase, we were developing a retail wallet application that allowed people to interact with smart contracts, and defi application via a browser embedded in the mobile experience.  Leadership decided to deprecate this product due to too much overlap with existing product overings and increased complexity within the mobile experience.
 
-    While I didn't disagree with this from a fundamental business perspective, it would've required significant technical resources to deprecate and migrate user funds outside of their wallet.  Instead we were able to create a more streamlined experience while removing the previously core functionality.  This ultimately unlocked a lot of latent potential to abstract away a lot of complexity from the end user.  This is the direction we've been pursuing ever since with our other service as the engine driving adoption.
+    While I didn't disagree with this from a fundamental business perspective, it would've required significant technical resources to deprecate and migrate user funds outside of their wallet.
+
+    Instead of a complete deprecation I advocated for a duel track, to more slowly move away from this browser experience and abstracting a lot of functionality behind a first party interface.  This is the direction we've been pursuing ever since.  User's no longer have to worry about the underlying protocol or what chain they're on.  This unlocked a lot of latent potential for user adoption and it's the strategy we've been pursuing ever since.
 
 New technologies to complete a project
 
-    At Coinbase, we were required to migrate all of our services to Kubernetes.  We were one of the first teams at the company to do this migration and I was the only engineer on the team with experience with this technology.  I took it upon myself to dive deep into the kubernetes and take ownership of this domain for my team.
+    At Coinbase, we were required to migrate all of our services to Kubernetes.  We were one of the first teams at the company to do this migration and I was the only engineer on the team with experience with any experience.  I took it upon myself to dive deep into the kubernetes and take ownership of this domain for my team.
 
-    I not only needed to do this migration myself, I needed to up-level my team to learn everything from the primatives, to how things are composed together, to the "why" of the migration, how the code fit's together, everything.  To do this, I set up something called the backend round table.  This is a recurrent open topic forum for sharing new technical topics and directions our team is adopting.   This round-table has been running bi-weekly ever since
+    I not only needed to do this migration myself, I needed to up-level my team to learn everything from the primatives of kubernetes, to how things are composed together, to the "why" of the migration, how the code actually fit's in the repository, everything.
+
+    To do this, I set up something called the backend round table.  This is a recurrent open topic forum for sharing new  technologies our team is adopting. I presented for about an hour about kubernetes and what it  means for our team.  Since then there's been about 20 round table discussions ranging from Asynchronous Technologies at Coinbase, to Blockchain / smart contract development.
+
+    After the success of this meeting, I've advocated to other tech leads to adopt this meeting format as well and I know of at least 5 who have done so.  I really like this format and plan to bring something like this along with me to whichever company i'm at.  It's really helped up-level team members and increase developer velocity as we adopt new technologies.
 
 Describe a situation where you had to manage conflicting priorities. How did you determine what was most important, and what was the result?
 
@@ -42,9 +54,9 @@ Describe a situation where you had to manage conflicting priorities. How did you
 
 Tehnical challenge? problem?  How did I overcome it?  What was the approach?  The results?
 
-    During my time at Maxar, we had a major problem.  Our analysts were required to wear a SWE engineering hat to develop Python Notebooks for analysis, work with s3 to order and store imagery, and interface with a wide range of containerized models, each with their own particular interfaces and outputs.  They then needed to deploy these notebooks into the cloud  for continuous delivery and hope theres new data.  It was also difficult to share model outputs across teams.
+    During my time at Maxar, we had a major problem.  Our analysts were required to wear a software engineering hat to develop Python Notebooks for analysis, work with s3 to order and store imagery, and interface with a wide range of containerized models, each with their own particular interfaces and outputs.  They then needed to deploy these notebooks into the cloud for continuous delivery and hope theres new data.
 
-    I needed to create a system that abstracted away a significant amount of complexity and allowed them to work on analysis rather than software engineering.
+    We needed to develop a system that abstracted away a significant amount of complexity and allowed them to work on analysis rather than software engineering.
 
     I developed a system to process large volumes of multi-model satellite imagery when that imagery intersected with areas of interest associated with machine learning models.  The analysts would delineate these AOIs, and associate them with models,  we would then handle incoming imagery metadata coming from upstream data provides, perform intersction, and queue up tasks for imagery ordering and processing.  The results would then be stored in s3, exposed via AWS Glue and Apache Spark, creating a spatio-temporal index on top of the results of analysis.
 
