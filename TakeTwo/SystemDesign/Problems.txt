@@ -73,9 +73,14 @@ Yelp
     user can read reviews
     user can write reviews
     user can create a location
+
 Twitter
 
 Spotify
+    10,000,000 DAU
+    10 songs per day
+    100,000,000 song plays per day
+    2 MB / song
 
 Stock Exchange
 

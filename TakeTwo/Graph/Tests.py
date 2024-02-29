@@ -1,7 +1,7 @@
 import unittest
 
 from TakeTwo import Graph as graph_two
-import TakeTwo.Graph.Solutions as graph
+import TakeTwo.Graph.Solutions2 as graph
 
 
 class SolutionsTest(unittest.TestCase):
