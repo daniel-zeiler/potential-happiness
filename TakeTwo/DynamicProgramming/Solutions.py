@@ -216,3 +216,14 @@ def maxScoreSightseeingPair(values: List[int]) -> int:
         for j in range(0, i):
             results[i] = max(results[i], values[i] + values[j] + j - i)
     return max(results)
+
+
+def maxProfitTwo(prices: List[int]) -> int:
+    max_profit = 0
+    for i in range(1, len(prices)):
+        if prices[i] > prices[i - 1]:
+            max_profit += prices[i] - prices[i - 1]
+    return max_profit
+
+def maxProfitThree(prices: List[int]) -> int:
+    pass

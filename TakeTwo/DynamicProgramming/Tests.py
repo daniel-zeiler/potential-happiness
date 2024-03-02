@@ -223,7 +223,16 @@ class SolutionsTest(unittest.TestCase):
         output = 2
         self.assertEqual(output, dynamic_programming.maxScoreSightseeingPair(values))
 
-
+    def test_max_profit_two(self):
+        prices = [7,1,5,3,6,4]
+        output = 7
+        self.assertEqual(output, dynamic_programming.maxProfitTwo(prices))
+        prices = [1, 2, 3, 4, 5]
+        output = 4
+        self.assertEqual(output, dynamic_programming.maxProfitTwo(prices))
+        prices = [7, 6, 4, 3, 1]
+        output = 0
+        self.assertEqual(output, dynamic_programming.maxProfitTwo(prices))
 
     def test_word_break(self):
         s = "leetcode"
