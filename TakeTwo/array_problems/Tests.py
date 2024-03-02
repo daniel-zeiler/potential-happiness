@@ -1,5 +1,5 @@
 import unittest
-import TakeTwo.array_problems.Solutions as array_problems
+import TakeTwo.array_problems.Solutions2 as array_problems
 
 
 class SolutionsTest(unittest.TestCase):

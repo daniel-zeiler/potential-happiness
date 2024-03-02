@@ -76,7 +76,10 @@
         SNS / RabbitMQ
     Caching
         Redis / Memcache
-        write-through, write-back, write-around, cache-aside (used for reads and cache misses).
+            write-through, write-back, write-around, cache-aside (used for reads and cache misses).
+        Other in-memory services
+            Quickly access and dynamically match things.
+            Need to discuss failover and distribution strategy
     CDNs
         Cloudfront
     K8s
