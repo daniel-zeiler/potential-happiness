@@ -20,7 +20,7 @@ Going above and beyond job responsibilities
 
     We created a novel on-chain execution layer bridging the gap between the exchange and the broader crypto ecosystem.
 
-    During the early stage of our product we discovered that one user's was able to exploit our platform.  We discovered this at roughly 8am.  Thankfully we developed robust monitoring and alerting towards anomolous activities. I immediately killswitched our service and declared an incident.  We spent the next 10-12 hours triaging the issue, replicating the behavior, and re-architecturing some of the critical fund pathways.  We were able to slowly ramp our service over the next few days.
+    During the early stage of our product we discovered that one user's was able to exploit our platform.  We discovered this at roughly 8am.  Thankfully we developed robust monitoring and alerting towards anomalous activities. I immediately kill switched our service and declared an incident.  We spent the next 10-12 hours triaging the issue, replicating the behavior, and re-architecting some of the critical fund pathways.  We were able to slowly ramp our service over the next few days.
 
     I created a document outlining what happened and how we were planning to hedge against his behavior in the future.  I then took the lead to present to the directors of our organization and the technical staff at the company.
 
@@ -58,9 +58,9 @@ Tehnical challenge? problem?  How did I overcome it?  What was the approach?  Th
 
     We needed to develop a system that abstracted away a significant amount of complexity and allowed them to work on analysis rather than software engineering.
 
-    I developed a system to process large volumes of multi-model satellite imagery when that imagery intersected with areas of interest associated with machine learning models.  The analysts would delineate these AOIs, and associate them with models,  we would then handle incoming imagery metadata coming from upstream data provides, perform intersction, and queue up tasks for imagery ordering and processing.  The results would then be stored in s3, exposed via AWS Glue and Apache Spark, creating a spatio-temporal index on top of the results of analysis.
+    I developed a system to process large volumes of multi-model satellite imagery when that imagery intersected with areas of interest associated with machine learning models.  The analysts would delineate these AOIs, and associate them with models,  we would then handle incoming imagery metadata coming from upstream data provides, perform intersection, and queue up tasks for imagery ordering and processing.  The results would then be stored in s3, exposed via AWS Glue and Apache Spark, creating a spatio-temporal index on top of the results of analysis.
 
-    The majority of the techinical challenge came from the sheer volume of data.  We created a sharded in-memory datastore to perform the intersections and provide scalability.
+    The majority of the technical challenge came from the sheer volume of data.  We created a sharded in-memory datastore to perform the intersections and provide scalability.
 
     This significantly decreased overhead and we were able to spin out an entire product based upon this system.
 
