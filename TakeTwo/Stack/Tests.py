@@ -1,5 +1,5 @@
 import unittest
-import TakeTwo.Stack.Solutions as stack
+import TakeTwo.Stack.Solutions2 as stack
 
 
 class SolutionsTest(unittest.TestCase):
