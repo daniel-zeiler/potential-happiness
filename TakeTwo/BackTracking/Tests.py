@@ -1,5 +1,5 @@
 import unittest
-import TakeTwo.BackTracking.Solutions as backtracking
+import TakeTwo.BackTracking.Solutions2 as backtracking
 
 class SolutionsTest(unittest.TestCase):
     def test_letter_combinations(self):
@@ -56,7 +56,13 @@ class SolutionsTest(unittest.TestCase):
         self.assertEqual(backtracking.exist(board, word), output)
 
     def test_get_maximum_gold(self):
-        grid = [[1, 0, 7], [2, 0, 6], [3, 4, 5], [0, 3, 0], [9, 0, 20]]
+        grid = [
+            [1, 0, 7],
+            [2, 0, 6],
+            [3, 4, 5],
+            [0, 3, 0],
+            [9, 0, 20]
+        ]
         output = 28
         self.assertEqual(backtracking.get_maximum_gold(grid), output)
         grid = [[0, 6, 0], [5, 8, 7], [0, 9, 0]]
