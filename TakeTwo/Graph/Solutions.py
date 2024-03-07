@@ -379,10 +379,7 @@ def numBusesToDestination(routes: List[List[int]], source: int, target: int) -> 
 
         for adjacent in graph[position]:
             if adjacent not in visited:
-                if at_bus:
-                    visited_stops.add(adjacent)
-                else:
-                    visited_buses.add(adjacent)
+                visited.add(adjacent)
 
                 distance = traverse_distance(adjacent, destination, visited_buses, visited_stops, not at_bus)
                 if distance != -1:
@@ -655,7 +652,7 @@ def findTheCity(n: int, edges: List[List[int]], distanceThreshold: int) -> int:
                 count += 1
 
                 for neighbor, distance in graph[node]:
-                    if neighbor not in visited and remaining_distance >= distance:
+                    if neighbor not in visited and remaining_distance >= 0:
                         heapq.heappush(heap, ((remaining_distance - distance) * -1, neighbor))
         return count - 1
 
