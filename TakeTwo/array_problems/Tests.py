@@ -188,11 +188,11 @@ class SolutionsTest(unittest.TestCase):
         points = [[1, 3], [-2, 2]]
         k = 1
         output = [[-2, 2]]
-        self.assertCountEqual(output, array_problems.kClosest(points, k))
+        self.assertCountEqual(output, array_problems.k_closest(points, k))
         points = [[3, 3], [5, -1], [-2, 4]]
         k = 2
         output = [[3, 3], [-2, 4]]
-        self.assertCountEqual(output, array_problems.kClosest(points, k))
+        self.assertCountEqual(output, array_problems.k_closest(points, k))
 
     def test_get_max_gold(self):
         input = [
@@ -522,9 +522,9 @@ class SolutionsTest(unittest.TestCase):
         self.assertEqual(output, array_problems.maxSubArray(nums))
 
     def test_length_of_list(self):
-        # nums = [10, 9, 2, 5, 3, 7, 101, 18]
-        # output = 4
-        # self.assertEqual(output, array_problems.lengthOfLIS(nums))
+        nums = [10, 9, 2, 5, 3, 7, 101, 18]
+        output = 4
+        self.assertEqual(output, array_problems.lengthOfLIS(nums))
         nums = [0, 1, 0, 3, 2, 3]
         output = 4
         self.assertEqual(output, array_problems.lengthOfLIS(nums))
@@ -635,6 +635,9 @@ class SolutionsTest(unittest.TestCase):
         nums = [1, 1, 1, 1, 1, 2, 2, 3, 4, 5, 5, 5, 5, 6]
         k = 1
         self.assertListEqual([0, 4], array_problems.first_and_last_of_k(nums, k))
+        nums = [0, 1, 1, 1, 1, 2, 2, 3, 4, 5, 5, 5, 5, 6]
+        k = 1
+        self.assertListEqual([1, 4], array_problems.first_and_last_of_k(nums, k))
         nums = [1, 1, 1, 1, 1, 2, 2, 3, 4, 5, 5, 5, 5, 6, 11]
         k = 10
         array_problems.first_and_last_of_k(nums, k)

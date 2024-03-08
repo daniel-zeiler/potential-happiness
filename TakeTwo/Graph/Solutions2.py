@@ -557,7 +557,6 @@ def findTheCity(n: int, edges: List[List[int]], distanceThreshold: int) -> int:
 
     def traverse_bfs(node):
         heap = []
-        # bound by distanceThreshold
         heapq.heappush(heap, (distanceThreshold * -1, node))
         count = 0
         visited = set()

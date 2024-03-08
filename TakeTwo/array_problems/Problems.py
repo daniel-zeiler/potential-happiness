@@ -1281,7 +1281,7 @@ def canJump(nums: List[int]) -> bool:
 
 
 """
-Find the first and last occurence of K in the sorted list nums.
+Find the first and last occurrence of K in the sorted list nums.
 
 Example 1:
 Input: nums = [1,1,1,1,1,2,2,3,4,5,5,5,5,6], k = 1

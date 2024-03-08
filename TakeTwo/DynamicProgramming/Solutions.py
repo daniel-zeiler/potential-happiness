@@ -225,5 +225,6 @@ def maxProfitTwo(prices: List[int]) -> int:
             max_profit += prices[i] - prices[i - 1]
     return max_profit
 
-def maxProfitThree(prices: List[int]) -> int:
+
+def change(amount: int, coins: List[int]) -> int:
     pass
