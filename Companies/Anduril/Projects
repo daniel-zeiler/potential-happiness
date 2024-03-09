@@ -60,6 +60,12 @@ Coinbase
             responsibilities, ensuring that we maintain ownership of all operational aspects within our service domain
             once a project goes live, regardless of the origin of the code.
 
+        Target Customers:
+            Users transacting on-chain with their retail balances and payment methods.  This can be for decentralized
+            exchanges, distributed finance, or other web3 use cases.  It's a generalized quoting and execution layer.
+
+        Technologies
+
     Backend Round Table
 
         I created the backend round table for my team to facilitate information sharing and skills transfer.  We're constantly

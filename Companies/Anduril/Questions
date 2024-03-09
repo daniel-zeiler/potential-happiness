@@ -1,88 +1,51 @@
 Tell me about working with others in the organization
 
-    When I was leading a product launch for a novel retail - to - onchain execution layer. Our team needed to build workflows within a workflow orchestration system called cadence.  This system is maintained by one of our dependent teams.  When we started this project I met with the engineering lead on their team to understand it's capabilities and design rationales and to see how to best integrate our systems with one another.
-
-    I did this not only to accelerate technical adoption but to cultivate a relationship between our two teams.  Since then I've engaged with their team whenever we're building out new feature spaces as a technical checkpoint.
-
-    Over the course of a few engagements we've since been discussing a version 2.0 of their platform offerings based upon a more generic system of primitives that you can compose together.  This was in an attempt to increase developer velocity and lower the burden of adoption for other teams.  So not only has this relationship helped us shape our technical direction, I've contributed to their technical direction as well.
-
-    I also contributed directly to this initiative with a "home away model" as we were the primary drivers of this work.
 
 Going above and beyond job responsibilities
 
-    We created a novel on-chain execution layer bridging the gap between the exchange and the broader crypto ecosystem.
-
-    During the early stage of our product we discovered that one user's was able to exploit our platform.  We discovered this at roughly 8am.  Thankfully we developed robust monitoring and alerting towards anomalous activities. I immediately kill-switched our service and declared an incident.  We spent the next 10-12 hours triaging the issue, replicating the behavior, and re-architecting some of the critical fund pathways.  We were able to slowly ramp our service over the next few days.
-
-    I created a document outlining what happened and how we were planning to hedge against his behavior in the future.  I then took the lead to present to the directors of our organization and the technical staff at the company.
-
-    It would've been easy for our team to deflect blame because we've alreayd gone through design and security review but ultimately it is our responsibility as owners of the product space and it's a good lesson to learn early -- to always keep an eye on security when dealing with financial transactions.
 
 Disagreements with management
 
-    At Coinbase, we were developing a retail wallet application that allowed people to interact with smart contracts, and defi application via a wallet and browser embedded in the mobile experience.  Leadership decided to deprecate this product due to too much product overlap and increased complexity within the mobile experience.
-
-    While I didn't disagree with this from a fundamental business perspective, it would've required significant technical resources to deprecate and I believed there was still a lot of latent potential in this product.  Instead of a complete deprecation, I advocated for a due tract approach.  To remove the browsing experience entirely and abstract away the on-chain functionality behind first party interfaces.
-
-    This is the technical direction we've been pursuing since and we now have more features in place like lending, staking, etc. built from this abstracted view.
 
 New technologies to complete a project
 
-    At Coinbase, we were required to migrate all of our services to Kubernetes.  We were one of the first teams at the company to do this migration and I was the only engineer on the team with experience with any experience.  I took it upon myself to dive deep into the kubernetes and take ownership of this domain for my team.
-
-    I not only needed to do this migration myself, I needed to up-level my team to learn everything from the primatives of kubernetes, to how things are composed together, to the "why" of the migration, how the code actually fit's in the repository, everything.
-
-    To do this, I set up something called the backend round table.  This is a recurrent open topic forum for sharing new  technologies our team is adopting. I presented for about an hour about kubernetes and what it  means for our team.  Since then there's been about 20 round table discussions ranging from Asynchronous Technologies at Coinbase, to Blockchain / smart contract development.
-
-    After the success of this meeting, I've advocated to other tech leads to adopt this meeting format as well and I know of at least 5 who have done so.  I really like this format and plan to bring something like this along with me to whichever company i'm at.  It's really helped up-level team members and increase developer velocity as we adopt new technologies.
 
 Describe a situation where you had to manage conflicting priorities. How did you determine what was most important, and what was the result?
 
-    At Coinbase, we commonly leverage the "home away" model of development when one team requires large-scale changes within a dependency.  I was dedicating some of my time with another team trying to build out an MVP for version 2.0 of the workflow orchestration system.  However, at the same time our team needed to support a large number of different payment methods and more and more use cases.
-
-    While the MVP work is important long term, it didn't move the needle in terms of our immediate quarterly goals, or drive direct revenue.  I was able to discuss my split priorities with engineers on the other team and decelerate my contributions towards this MVP and at the same time, allowed engineers on my team to take direct ownership of payment methods and use cases.
-
-    This load balancing across my team allowed other engineers on my team to step up onto the plate and provided us a clear path forward to accomplish our immediate and long term goals.
 
 Technical challenge? problem?  How did I overcome it?  What was the approach?  The results?
 
-    During my time at Maxar, we had a major problem.  Our analysts were required to wear a software engineering hat to develop Python Notebooks for analysis, work with s3 to order and store imagery, and interface with a wide range of containerized models, each with their own particular interfaces and outputs.  They then needed to deploy these notebooks into the cloud for continuous delivery and hope theres new data.
-
-    We needed to develop a system that abstracted away a significant amount of complexity and allowed them to work on analysis rather than software engineering.
-
-    I developed a system to process large volumes of multi-model satellite imagery when that imagery intersected with areas of interest associated with machine learning models.  The analysts would delineate these AOIs, and associate them with models,  we would then handle incoming imagery metadata coming from upstream data provides, perform intersection, and queue up tasks for imagery ordering and processing.  The results would then be stored in s3, exposed via AWS Glue and Apache Spark, creating a spatio-temporal index on top of the results of analysis.
-
-    The majority of the technical challenge came from the sheer volume of data.  We created a sharded in-memory datastore to perform the intersections and provide scalability.
-
-    This significantly decreased overhead and we were able to spin out an entire product based upon this system.
 
 Advocate for change or technology within a team?
 
-    At Coinbase, our team was initially building a lot of asynchronous consumers as side-processes or sub-services within our application layer.  This lead to us scaling the total number of consumers based upon a primarily API driven application and didn't compartmentalize responsibilities across services or provide least-privileged access to dependencies.
-
-    I created a technical document outlining the problem and proposed solution to decouple these services into stand-alone applications.  This change allowed us to seperate responsibilities of our services and provided a platform for accelerated development.
-
-    In discussions surrounded this technical document, it became apparently that of the new engineers on my team weren't family with asynchronous processing technologies at all.  I took this as an opportunity to up level the engineers on my team and discussed these technologies and there individual use cases during the backend round table.
 
 As a Staff Software Engineer, you'd likely be responsible for guiding the technical direction of projects and mentoring junior team members. Can you discuss a time when you had to provide technical leadership or mentorship to achieve a successful outcome on a project?
 
-    Certainly.  At Coinbase, the company was starting to towards Kubernetes based service management.  As one of the only engineers in our org with hands-on experience, I took it upon myself to author a migration guide that's been shared and broadly across the Company.
-
-    Additionally, before I could completed the migration for my team, I needed to up-level the rest of the engineer to work within this new space.  I needed to introduce them to the primitives of kubernetes, the "why" of the migration, and the benefits k8s provides.
-
-    To do this, I introduced a meeting format called the "Backend Round Table".   It provides an open forum to discuss architectural or technology changes the team is making alongside a presentation and a Q&A at the end.  It provides a baseline for all engineers to achieve when onboarding a new technology and I encourage all engineers to participate either when they're doing something new or building something cool they want to show off.
-
-    We've had about 15 of these meetings since then and I consider it a stellar success.  I authored a document outlining the benefit this has brought our team and after sharing it across the broader organization it's been adopted elsewhere.  This is something in particular I plan to bring with me at other companies.
 
 Anduril values innovation and creativity. Can you provide an example of a unique solution you implemented to solve a problem in your previous work?
 
-    At Coinbase, one of our primary services deals with quoting and execution of on-chain swaps between crypto currencies leveraging decentralized exchanges -- ie, for assets that Coinbase doesn't have the necessary liquidity for.  I identified that we could bridge the gap between the exchange and this on-chain execution layer that we've created.  I created a technical design for this product, got leadership buy-in, and launched this new system so Coinbase could indirectly offer liquidity within the exchange for assets it doesn't actually hold.
-
-    We were one of the first teams to bridge this exchange-to-onchain gap.  This service now stands at the foundation of a platform and I work with teams from a number of different organizations so they can onboard their particular use-case.
 
 How do you stay updated with the latest technologies and trends in the software engineering field?
 
-    Crypto is a very fast moving field but there are a number of conferences that I attend to try to maintain a pulse of the broader ecosystem.  There are also meetups and social events that i've been a part of.  In a more general sense, I look to identify members of the technical staff and the projects and trends they're working with to try to see if there's anything I can use within my organization.
 
 What do you consider your biggest strength as a software engineer, and how does it contribute to your effectiveness in this role?
 
+What is some feedback you have received from peers / managers that made you a better engineer?
+
+What are you most proud of?
+
+Can you discuss scaling challenges you've had with your applications?  How did you overcome them?
+
+Describe your experience with monitoring and maintaining the reliability of large-scale production systems.
+
+Can you provide an example of a challenging engineering problem you encountered and how you overcame it?
+
+What is your approach to managing deadlines and working under pressure within an engineering environment?
+
+Explain a time when you had to adapt your communication style to convey complex technical concepts to non-technical stakeholders.
+
+How do you prioritize tasks and manage competing priorities while ensuring deadlines are met?
+
+Describe a time when you faced significant obstacles on a project and how you adapted to overcome them.
+
+How have you demonstrated leadership within an engineering team, and how do you foster collaboration and innovation?
