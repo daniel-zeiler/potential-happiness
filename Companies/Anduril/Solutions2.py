@@ -99,3 +99,93 @@ input = "1 / 2 - 5"
 print(calculate_one(input))
 input = "(1 - (2 * 5))"
 print(calculate_one(input))
+
+"""
+Given a list of words and a searchWord, for each prefix of searchWord find the first three lexicographically matching
+ words with the prefix.
+"""
+
+words = ["s", "sea", "sear", "pasta", "frenchfries", "seeeee"]
+searchWord = "searchWord"
+from collections import defaultdict
+
+
+class SearchWordTrieNode:
+    def __init__(self):
+        self.children = defaultdict(SearchWordTrieNode)
+        self.word = None
+
+
+class SearchWordTrie:
+    def __init__(self, words):
+        self.head = SearchWordTrieNode()
+        for word in words:
+            self.add_word(word)
+
+    def add_word(self, word):
+        def add_word_helper(node, word_remaining):
+            if not word_remaining:
+                node.word = word
+            else:
+                if word_remaining[0] not in node.children:
+                    node.children[word_remaining[0]] = SearchWordTrieNode()
+                add_word_helper(node.children[word_remaining[0]], word_remaining[1:])
+
+        add_word_helper(self.head, word)
+
+    def find_matches(self, target_word):
+        def find_matches_helper(node, target_word_remaining):
+            result = []
+            if node.word is not None:
+                result.append(node.word)
+            if target_word_remaining and target_word_remaining[0] in node.children:
+                result.extend(find_matches_helper(node.children[target_word_remaining[0]], target_word_remaining[1:]))
+            return result
+
+        return find_matches_helper(self.head, target_word)
+
+
+search_word_trie = SearchWordTrie(words)
+print(search_word_trie.find_matches(searchWord))
+
+"""
+Given a list of connections (edges), if you remove one edge at a time would it create a disjoint graph.
+"""
+from collections import deque
+
+
+def find_weakly_connected_components(edges: List[List[int]]) -> List[bool]:
+    graph, nodes = defaultdict(set), set()
+
+    def build_graph():
+        for origin, destination in edges:
+            graph[origin].add(destination)
+            graph[destination].add(origin)
+            nodes.add(origin)
+            nodes.add(destination)
+
+    build_graph()
+    number_of_nodes = len(nodes)
+
+    def validate_removed_edge(node_a: int) -> bool:
+        visited, queue = set(), deque([node_a])
+        while queue:
+            node = queue.popleft()
+            visited.add(node)
+            for adjacent in graph[node]:
+                if adjacent not in visited:
+                    queue.append(adjacent)
+        return len(visited) != number_of_nodes
+
+    result = []
+    for origin, destination in edges:
+        graph[origin].remove(destination)
+        graph[destination].remove(origin)
+        result.append(validate_removed_edge(origin))
+        graph[origin].add(destination)
+        graph[destination].add(origin)
+    return result
+
+
+edges = [[0, 1], [1, 2], [2, 3], [3, 0], [3, 1], [4, 2]]
+print(find_weakly_connected_components(edges))
