@@ -120,3 +120,66 @@ class LRUCache:
             cache_node.remove_from_current_position()
             del self.cache[key]
             self.current_size -= 1
+
+
+def remove_elements(head: Optional[ListNode], val: int) -> Optional[ListNode]:
+    if not head:
+        return None
+
+    temp_head = ListNode()
+    temp_head.next, pointer = head, temp_head
+
+    while pointer and pointer.next:
+        if pointer.next.val == val:
+            pointer.next = pointer.next.next
+        pointer = pointer.next
+    return temp_head.next
+
+
+def reverseList(head: Optional[ListNode]) -> Optional[ListNode]:
+    previous = None
+    while head:
+        head.next, head, previous = previous, head.next, head
+    return previous
+
+
+def deleteNode(head, value):
+    temp_head = ListNode()
+    temp_head.next, pointer = head, temp_head
+    while pointer:
+        if pointer.next and pointer.next.val == value:
+            pointer.next = pointer.next.next
+        pointer = pointer.next
+    return temp_head.next
+
+
+def oddEvenList(head: Optional[ListNode]) -> Optional[ListNode]:
+    temp_head_odd, temp_head_even = ListNode(), ListNode()
+    head_pointer_odd, head_pointer_even = temp_head_odd, temp_head_even
+    while head:
+        if head.val % 2 == 0:
+            head_pointer_even.next = head
+            head_pointer_even = head_pointer_even.next
+        else:
+            head_pointer_odd.next = head
+            head_pointer_odd = head_pointer_odd.next
+        head = head.next
+    head_pointer_even.next, head_pointer_odd.next = None, temp_head_even.next
+    return temp_head_odd.next
+
+
+from typing import List
+
+
+def numComponents(head: Optional[ListNode], nums: List[int]) -> int:
+    nums = set(nums)
+
+    def traverse(prev_a_component, node):
+        result = 0
+        if node:
+            if node.val in nums and not prev_a_component:
+                result += 1
+            result += traverse(node.val in nums, node.next)
+        return result
+
+    return traverse(False, head)

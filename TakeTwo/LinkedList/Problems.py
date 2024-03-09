@@ -290,7 +290,7 @@ Output: []
 """
 
 
-def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+def reverseList(head: Optional[ListNode]) -> Optional[ListNode]:
     pass
 
 
@@ -324,7 +324,7 @@ Output: [5,-99]
 """
 
 
-def deleteNode(self, node):
+def deleteNode(head, node):
     """
     :type node: ListNode
     :rtype: void Do not return anything, modify node in-place instead.
@@ -356,7 +356,7 @@ Output: [2,3,6,7,1,5,4]
 """
 
 
-def oddEvenList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+def oddEvenList(head: Optional[ListNode]) -> Optional[ListNode]:
     pass
 
 

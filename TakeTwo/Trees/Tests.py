@@ -644,15 +644,26 @@ class SolutionsTest(unittest.TestCase, CustomAssertion):
         root = binarytree.build2([5, 4, 8, 11, None, 13, 4, 7, 2, None, None, 5, 1])
         target_sum = 22
         output = [[5, 4, 11, 2], [5, 8, 4, 5]]
-        self.assertListEqual(output, trees_four.pathSum(root, target_sum))
+        self.assertListEqual(output, trees.pathSum(root, target_sum))
         root = binarytree.build2([1])
         target_sum = 1
-        self.assertEqual([[1]], trees_four.pathSum(root, target_sum))
+        self.assertEqual([[1]], trees.pathSum(root, target_sum))
 
     def test_sum_root_to_leaf(self):
         root = binarytree.build2([1, 0, 1, 0, 1, 0, 1])
         output = 22
         self.assertEqual(output, trees.sumRootToLeaf(root))
+
+    def test_count_unival_tree(self):
+        root = binarytree.build2([5, 1, 5, 5, 5, None, 5])
+        output = 4
+        self.assertEqual(output, trees.countUnivalSubtrees(root))
+        root = binarytree.build2([])
+        output = 0
+        self.assertEqual(output, trees.countUnivalSubtrees(root))
+        root = binarytree.build2([5, 5, 5, 5, 5, None, 5])
+        output = 6
+        self.assertEqual(output, trees.countUnivalSubtrees(root))
 
 
 if __name__ == '__main__':

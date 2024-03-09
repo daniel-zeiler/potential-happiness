@@ -336,3 +336,45 @@ def first_and_last_of_k(nums: List[int], k: int) -> List[int]:
     if left > right:
         return [-1, -1]
     return [left, right]
+
+
+def canAttendMeetings(intervals: List[List[int]]) -> bool:
+    intervals.sort()
+    for i in range(1, len(intervals)):
+        if intervals[i][0] < intervals[i - 1][1]:
+            return False
+    return True
+
+
+def numberMeetingRooms(intervals: List[List[int]]) -> int:
+    intervals.sort()
+    meeting_rooms = []
+    for interval in intervals:
+        for meeting_room in meeting_rooms:
+            if meeting_room[-1][1] < interval[0]:
+                meeting_room.append(interval)
+                break
+        else:
+            meeting_rooms.append([interval])
+    return len(meeting_rooms)
+
+
+def meeting_room_conflicts(calendar: List[List[int]], num_rooms: int, queries: List[List[int]]) -> List[bool]:
+    def fill_rooms() -> List[List[List[int]]]:
+        filled_rooms = [[] for _ in range(num_rooms)]
+        for meeting in calendar:
+            for room in filled_rooms:
+                if not room or meeting[0] >= room[-1][1]:
+                    room.append(meeting)
+                    break
+        return filled_rooms
+
+    def check_rooms(query, room) -> bool:
+        for interval in room:
+            if interval[1] > query[0] and interval[0] < query[1]:
+                return False
+        return True
+
+    calendar.sort()
+    rooms = fill_rooms()
+    return [any(check_rooms(query, room) for room in rooms) for query in queries]

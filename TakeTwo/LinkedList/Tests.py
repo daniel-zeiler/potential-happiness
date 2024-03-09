@@ -53,6 +53,37 @@ class SolutionsTest(unittest.TestCase, CustomAssertion):
         output = list_builder([8, 9, 9, 9, 0, 0, 0, 1])
         self.assert_compare_lists(linked_list.add_two_numbers(l1, l2), output)
 
+    def test_remove_elements(self):
+        head = list_builder([1, 2, 6, 3, 4, 5, 6])
+        output = list_builder([1, 2, 3, 4, 5])
+        self.assert_compare_lists(output, linked_list.remove_elements(head, 6))
+
+    def test_reverse_list(self):
+        head = list_builder([1, 2, 3, 4, 5])
+        output = list_builder([5, 4, 3, 2, 1])
+        self.assert_compare_lists(output, linked_list.reverseList(head))
+
+    def test_delete_node(self):
+        input = list_builder([1, 2, 3, 4])
+        value = 3
+        output = list_builder([1, 2, 4])
+        self.assert_compare_lists(output, linked_list.deleteNode(input, value))
+        input = list_builder([1, 2, 3, 4])
+        value = 1
+        output = list_builder([2, 3, 4])
+        self.assert_compare_lists(output, linked_list.deleteNode(input, value))
+
+    def test_odd_even(self):
+        head = list_builder([1, 2, 3, 4, 5])
+        output = list_builder([1, 3, 5, 2, 4])
+        self.assert_compare_lists(output, linked_list.oddEvenList(head))
+
+    def test_components(self):
+        head = list_builder([0, 1, 2, 3])
+        nums = [0, 1, 3]
+        output = 2
+        self.assertEqual(output, linked_list.numComponents(head, nums))
+
     def test_remove_nth_from_end(self):
         head = list_builder([1, 2, 3, 4, 5])
         n = 2

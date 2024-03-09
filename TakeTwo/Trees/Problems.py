@@ -1546,7 +1546,7 @@ Output: [1,2]
 """
 
 
-def inorderTraversal(self, root: Optional[Node]) -> List[int]:
+def inorderTraversal(root: Optional[Node]) -> List[int]:
     pass
 
 

@@ -128,3 +128,20 @@ def lengthOfLongestSubstringKDistinct(s: str, k: int) -> int:
                 del distinct_letter_dict[s[pointer_a]]
             pointer_a += 1
     return max_length
+
+
+def totalFruit(fruits: List[int]) -> int:
+    pointer_a, pointer_b, baskets = 0, 0, defaultdict(int)
+    max_fruit = 0
+    while pointer_b < len(fruits):
+        fruit = fruits[pointer_b]
+        while fruit not in baskets and len(baskets) == 2:
+            baskets[fruits[pointer_a]] -= 1
+            if baskets[fruits[pointer_a]] == 0:
+                del baskets[fruits[pointer_a]]
+            pointer_a += 1
+
+        baskets[fruit] += 1
+        pointer_b += 1
+        max_fruit = max(max_fruit, pointer_b - pointer_a)
+    return max_fruit

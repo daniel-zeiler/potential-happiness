@@ -213,5 +213,5 @@ If we had started at the first tree, we would only pick from trees [1,2]
 """
 
 
-def totalFruit(self, fruits: List[int]) -> int:
+def totalFruit(fruits: List[int]) -> int:
     pass

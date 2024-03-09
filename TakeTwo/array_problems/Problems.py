@@ -1385,7 +1385,8 @@ def numberMeetingRooms(intervals: List[List[int]]) -> int:
     pass
 
 
-"""Given a list of intervals calendar and a number of available conference rooms. For each query, return true if the 
+"""
+Given a list of intervals calendar and a number of available conference rooms. For each query, return true if the 
 meeting can be added to the calendar successfully without causing a conflict, otherwise false. A conference room can 
 only hold one meeting at a time. 
 
@@ -1604,6 +1605,7 @@ def shortestToChar(s: str, c: str) -> List[int]:
 
     result = [0 for _ in range(len(s))]
     pointer_a = 0
+
     for i, character in enumerate(s):
         if pointer_a == len(target_indices) - 1:
             result[i] = (abs(i - target_indices[pointer_a]))

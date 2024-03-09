@@ -672,7 +672,6 @@ def isSameTree(p_node: Optional[Node], q_node: Optional[Node]) -> bool:
 
 
 def isValidBST(root: Optional[Node]) -> bool:
-
     def traverse(node, minimum, maximum):
         if node:
             if node.val <= minimum or node.val >= maximum:
@@ -681,3 +680,44 @@ def isValidBST(root: Optional[Node]) -> bool:
         return True
 
     return traverse(root, float('-inf'), float('inf'))
+
+
+def inorderTraversal(root: Optional[Node]) -> List[int]:
+    return inorderTraversal(root.left) + [root.value] + inorderTraversal(root.right) if root else []
+
+
+def pathSum(root: Optional[Node], targetSum: int) -> List[List[int]]:
+    result = []
+
+    def traverse(node, remaining, path):
+        if node:
+            if remaining - node.value > 0:
+                traverse(node.left, remaining - node.value, path + [node.value])
+                traverse(node.right, remaining - node.value, path + [node.value])
+            elif remaining - node.value == 0:
+                result.append(path + [node.value])
+
+    traverse(root, targetSum, [])
+    return result
+
+
+def countUnivalSubtrees(root: Optional[Node]) -> int:
+    result = 0
+
+    def traverse(node):
+        if node:
+            nonlocal result
+            left, right = True, True
+            if node.left:
+                left = traverse(node.left) and node.left.value == node.value
+            if node.right:
+                right = traverse(node.right) and node.right.value == node.value
+            if left and right:
+                result += 1
+                return True
+            else:
+                return False
+        return True
+
+    traverse(root)
+    return result

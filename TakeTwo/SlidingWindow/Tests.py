@@ -91,6 +91,17 @@ class SolutionsTest(unittest.TestCase):
         output = 2
         self.assertEqual(output, sliding_window_two.lengthOfLongestSubstringKDistinct(s, k))
 
+    def test_most_fruit(self):
+        fruits = [1, 2, 1]
+        output = 3
+        self.assertEqual(output, sliding_window.totalFruit(fruits))
+        fruits = [0, 1, 2, 2]
+        output = 3
+        self.assertEqual(output, sliding_window.totalFruit(fruits))
+        fruits = [1, 2, 3, 2, 2]
+        output = 4
+        self.assertEqual(output, sliding_window.totalFruit(fruits))
+
 
 if __name__ == '__main__':
     unittest.main()
