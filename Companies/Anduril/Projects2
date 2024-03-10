@@ -1,11 +1,115 @@
 Coinbase
-    Project Name
-    Use Case
-    Project description
-    Technologies Used
 
+    Project Name:
+        Dapp Wallet
+    Use Case:
+        Wallet embedded inside the retail application. Expose retail user's to defi, nfts, lending, staking, etc.
+    Project Description:
+        Embedded browser inside the retail mobile / desktop application.  Cryptographically secure wallet embedded
+        into the application.  User's can interact with web3 contracts via the retail application.
+    Technologies Used:
+    Impact:
+        7 million wallets
+        Creating technical design for phase 2 of this project, to abstract away the browser into first party experiences
+
+    Project Name:
+        Retail Dex
+    Use Case:
+        Quoting and Executing Service bridging the gap between retail and onchain accounts.
+    Project Description:
+        Allows user's to use their retail balances to swap for assets that coinbase doesn't have the liquidity for.
+        Lead the architecture of and the implementation for this project.
+        Built an extensible platform and led cross-organizational adoption of this service as a platform (NFTs, Commerce, Wallet)
+    Technologies Used:
+        Cadence, Kubernetes, Kafka, a lot of internal services at twitter as dependencies
+    Impact:
+        40M YoY revenue
+
+    Project Name:
+        Kubernetes Migration
+    Use Case:
+        Broad Impact, Adopting New Technologies
+    Project Description:
+        Org wide migration directly responsible individual (DRI)
+        Set up migration and monitoring guidance for our organization and identified DRIs within each team
+        Weekly syncs with DRIs to unblock and track progress
+    Technologies:
+        Pods, Helm, Chart Files, Horizontal Pod Autoscaling, Scheduling, Bin-packing
+    Impact
+        70% decreased deploy times across the organization
+        Up-leveled my team by introducing the backend round table
+
+    Project Name:
+        Backend Round Table
+    Use Case:
+        Up-leveling the team and the organization.
+    Project Description:
+        Bi-weekly meeting I designed to share technologies and learning across the team.  Folks can show off cool
+        things they're working on, technologies we're adopting.  Knowledge sharing sessions.  Open forum for discussions
+        and learning.
+    Technologies:
+        Kubernetes, Asynchronous Technologies at Coinbase (kafka, sqs, sns, cadence), On-chain debugging, Workflow orchestration.
+    Impact:
+        Bi-weekly ever since, 15 meetings.
+        Introduced this meeting format across the organization
 Twitter
+
+    Project Name:
+        Airflow + Looker at Twitter
+    Use Case:
+        Directed Acyclic Graphs for processing and ETL data
+        A Business intelligence platform
+    Project Description:
+        Deploy a cluster of instances in K8s
+        Establish networking and ingress between GCP accounts
+        Integrate with Okta
+        Reverse proxy for cross-account networking
+    Technologies Used:
+        NGINX, K8s, GCP, BigQuery
+    Impact:
+        Used by hundreds of PMs, analysts, and BI engineers at Twitter
+
+    Project Name:
+        Data Ingestion at Twitter
+    Use Case:
+        Ingest and transform incoming data for use within our data platforms
+    Project Description:
+    Technologies Used:
+        Kafka, caching, databases, BigQuery (a data warehouse)
+    Impact:
+        10k RPS of things like clicks, impressions
 
 Maxar
 
+    Project Name:
+        Analysis Ready Data Service
+    Use Case:
+        Make the lives of Analysts easier, provide near real-time imagery classification
+    Project Description:
+        This service allows analysts to delineate AOIs for continuous classification without the engineering overhead
+        of deploying complex notebooks into the cloud and managing s3 buckets.  Results were stored in s3 and exposed to
+        the client via a user interface.  They could also run spark queries against the resultant spatio-temporal dataset
+        or run ad-hoc classification jobs and view the underlying imagery.
+    Technologies Used:
+        In-memory matching service, SQS, Imagery Ordering Service, AWS Glue, Apache Spark
+    Impact:
+        $20M YoY revenue
+
+    Project Name:
+        Geospatial Cloud Analytics Hub (DARPA)
+    Use Case:
+        Single platform to order imagery, run classifications, and view results in the cloud.
+    Impact
+
 Reality Analytics
+
+    Project Name:
+        ML models SaaS
+    Use Case:
+        Service to train, verify, and deploy, and leverage to classify incoming data streams.
+    Project Description:
+        First backend engineer on the team.  Went from 0-1.
+    Technologies Used:
+        K8s, kafka, SQS, asynchronous background jobs.
+    Impact:
+        Recently acquired.

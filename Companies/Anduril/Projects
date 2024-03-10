@@ -19,6 +19,7 @@ Coinbase
                     accessed by the developer relations team and is used to deploy new distributed applications, rank them,
                     offer paid placements, and configure incentive programs such as airdrops or profit sharing for customer
                     traffic.
+
         Web3 Wallet
             About:
                 This service is the interface for on-chain activity that our userbase will leverage when using our application.
