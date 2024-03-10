@@ -1296,7 +1296,7 @@ smallest frequently, how would you optimize?
 """
 
 
-def kthSmallest(self, root: Optional[Node], k: int) -> int:
+def kthSmallest(root: Optional[Node], k: int) -> int:
     pass
 
 
@@ -1327,7 +1327,7 @@ Output: 2
 """
 
 
-def lowestCommonAncestor( root: 'Node', p: 'Node', q: 'Node') -> 'Node':
+def lowestCommonAncestor(root: 'Node', p: 'Node', q: 'Node') -> 'Node':
     pass
 
 

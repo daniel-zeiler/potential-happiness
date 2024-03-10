@@ -170,29 +170,29 @@ class SolutionsTest(unittest.TestCase, CustomAssertion):
         s = "BAAAB"
         k = 2
         output = 5
-        self.assertEqual(output, bsf23.characterReplacement(s, k))
+        self.assertEqual(output, bsf2.characterReplacement(s, k))
         s = "ABAB"
         k = 2
         output = 4
-        self.assertEqual(output, bsf23.characterReplacement(s, k))
+        self.assertEqual(output, bsf2.characterReplacement(s, k))
         s = "AABABBA"
         k = 1
         output = 4
-        self.assertEqual(output, bsf23.characterReplacement(s, k))
+        self.assertEqual(output, bsf2.characterReplacement(s, k))
 
     def test_min_window(self):
         s = "ADOBECODEBANC"
         t = "ABC"
         output = "BANC"
-        self.assertEqual(output, bsf22.minWindow(s, t))
+        self.assertEqual(output, bsf2.minWindow(s, t))
         s = "a"
         t = "a"
         output = "a"
-        self.assertEqual(output, bsf22.minWindow(s, t))
+        self.assertEqual(output, bsf2.minWindow(s, t))
         s = "a"
         t = "aa"
         output = ""
-        self.assertEqual(output, bsf22.minWindow(s, t))
+        self.assertEqual(output, bsf2.minWindow(s, t))
 
     def test_is_anagram(self):
         s = "anagram"
@@ -287,6 +287,9 @@ class SolutionsTest(unittest.TestCase, CustomAssertion):
         n = 3
         output = 3
         self.assertEqual(output, bsf2.climbStairs(n))
+        n = 5
+        output = 8
+        self.assertEqual(output, bsf2.climbStairs(n))
 
     def test_coin_change(self):
         coins = [1, 2, 5]
@@ -359,15 +362,15 @@ class SolutionsTest(unittest.TestCase, CustomAssertion):
         p = binarytree.build2([1, 2, 3])
         q = binarytree.build2([1, 2, 3])
         output = True
-        self.assertEqual(output, bsf2.same_tree(p, q))
+        self.assertEqual(output, bsf2.isSameTree(p, q))
         p = binarytree.build2([1, 2])
         q = binarytree.build2([1, None, 2])
         output = False
-        self.assertEqual(output, bsf2.same_tree(p, q))
+        self.assertEqual(output, bsf2.isSameTree(p, q))
         p = binarytree.build2([1, 2, 1])
         q = binarytree.build2([1, 1, 2])
         output = False
-        self.assertEqual(output, bsf2.same_tree(p, q))
+        self.assertEqual(output, bsf2.isSameTree(p, q))
 
     def test_invert_tree(self):
         root = binarytree.build2([4, 2, 7, 1, 3, 6, 9])
@@ -423,7 +426,7 @@ class SolutionsTest(unittest.TestCase, CustomAssertion):
         self.assertEqual(output, bsf2.isValidBST(root))
         root = binarytree.build2([2, 2, 2])
         output = False
-        self.assertEqual(output, bsf2.isValid(root))
+        self.assertEqual(output, bsf2.isValidBST(root))
 
     def test_kth_smallest(self):
         root = binarytree.build2([3, 1, 4, None, 2])
@@ -458,6 +461,7 @@ class SolutionsTest(unittest.TestCase, CustomAssertion):
         self.assertEqual(True, a_trie.search("apple"))
         self.assertEqual(False, a_trie.search("app"))
         self.assertEqual(True, a_trie.startsWith("app"))
+        self.assertEqual(False, a_trie.startsWith("appe"))
         a_trie.insert("app")
         self.assertEqual(True, a_trie.search("app"))
 
@@ -543,9 +547,8 @@ class SolutionsTest(unittest.TestCase, CustomAssertion):
         self.assertEqual(output, bsf2.canFinish(number, prerequs))
         numCourses = 2
         prerequisites = [[1, 0], [0, 1]]
-        output= False
+        output = False
         self.assertEqual(output, bsf2.canFinish(numCourses, prerequisites))
-
 
     def test_number_of_islands(self):
         grid = [

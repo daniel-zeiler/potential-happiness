@@ -584,3 +584,59 @@ def findTheCity(n: int, edges: List[List[int]], distanceThreshold: int) -> int:
             result = index
             max_num_cities = num_cities
     return result
+
+
+def makeConnected(n: int, connections: List[List[int]]) -> int:
+    parents, rank = [i for i in range(n)], [1 for _ in range(n)]
+
+    def union(node_origin, node_destination):
+        parent_origin, parent_destination = find(node_origin), find(node_destination)
+        if parent_origin == parent_destination:
+            return False
+        rank_origin, rank_destination = rank[parent_origin], rank[parent_destination]
+        if rank_origin > rank_destination:
+            parents[parent_destination] = parent_origin
+        elif rank_origin < rank_destination:
+            parents[parent_origin] = parent_destination
+        else:
+            parents[parent_destination] = parent_origin
+            rank[parent_destination] += 1
+        return True
+
+    def find(node_index):
+        if parents[node_index] != node_index:
+            parents[node_index] = find(parents[node_index])
+        return parents[node_index]
+
+    number_redundant = 0
+
+    for origin, destination in connections:
+        if not union(origin, destination):
+            number_redundant += 1
+
+    for i in range(n):
+        find(i)
+
+    number_of_required = len(set(parents)) - 1
+
+    return -1 if number_of_required > number_redundant else number_of_required
+
+
+def maxProbability(n: int, edges: List[List[int]], succProb: List[float], start: int, end: int) -> float:
+    graph = defaultdict(list)
+    for (origin, destination), weight in zip(edges, succProb):
+        graph[origin].append((weight, destination))
+        graph[destination].append((weight, origin))
+
+    queue = [(-1, start)]
+    visited = set()
+    while queue:
+        probability, node_index = heapq.heappop(queue)
+        if node_index == end:
+            return -probability
+        if node_index not in visited:
+            visited.add(node_index)
+            for weight, adjacent in graph[node_index]:
+                if adjacent not in visited:
+                    heapq.heappush(queue, (probability * weight, adjacent))
+    return 0.0
