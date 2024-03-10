@@ -22,7 +22,7 @@ Disagreements with management
 
     At Coinbase, we were developing a retail wallet application that allowed people to interact with smart contracts, and defi application via a wallet and browser embedded in the mobile experience.  Leadership decided to deprecate this product due to too much product overlap and increased complexity within the mobile experience.
 
-    While I didn't disagree with this from a fundamental business perspective, it would've required significant technical resources to deprecate and I believed there was still a lot of latent potential in this product.  Instead of a complete deprecation, I advocated for a due tract approach.  To remove the browsing experience entirely and abstract away the on-chain functionality behind first party interfaces.
+    While I didn't disagree with this from a fundamental business perspective, it would've required significant technical resources to deprecate and I believed there was still a lot of latent potential in this product.  Instead of a complete deprecation, I advocated for a duel tract approach.  To remove the browsing experience entirely and abstract away the on-chain functionality behind first party interfaces.
 
     This is the technical direction we've been pursuing since and we now have more features in place like lending, staking, etc. built from this abstracted view.
 
