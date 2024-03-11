@@ -1,23 +1,26 @@
-    I'm currently a senior software engineer at Coinbase. I'm part of the Retail On-chain team.  We're sort of like a startup
-within Coinbase to hedge against future use cases.  We build services that bring the broader web3 or distributed finance
-ecosystem into the retail application. I lead one of the engineering pods that supports a few novel on-chain execution
-systems.
-
-    Previously I was a software engineer at Twitter.  I was part of the Data Platform and Apps team.  There I built
-a number of data ingestion and processing services for large volumes of incoming data like clicks and impressions.
-I was also part of the data model working group enforcing standards across Twitter.
-
-    Before that, I was a Staff Software Engineer at Maxar Technologies, a geospatial imagery and analytics company.  I worked
-on a few projects including the Analysis Ready Data platform, which allowed analysts and external customers to leverage
-deployed ML models and an incoming stream of satellite imagery to build analytical results, so things like planes, roads,
-ships, etc. basically whatever our clients are interested in monitoring.  I also worked with DARPA on the Geospatial
-Cloud Analytics Hub which combined multi-source and multi-modal image processing into a single cloud based application.
-
-    Finally I was one of the first employees at an AI startup called Reality AI.  We primarily targeted the wearables,
-industrial, and IoT spaces. We trained and deployed ML models as a service. They were recently acquired which -- I'm super
-happy about.
-
-    I also joined industry before graduation
+About me:
+    - Coinbase
+        - Software engineer on the Retail On-chain team.
+        - Services to bring the broader web3 or distributed finance eco system int the retail application
+        - I currently support the defi wallet, which has 7 million active users and a novel retail-to-onchain
+        quoting and execution service which has driven a lot of cross organizational adoption
+    - Twitter
+        - I was part of the Data Platform team
+        - Data ingestion and processing of large volumes of clicks and impressions
+        - Stood up Looker and Airflow at Twitter
+    - Maxar Technologies
+        - Staff engineer
+        - Analysis Ready Data Platform.  Leverging deployed ML models to allow for near real-time classification of
+        satellite imagery to build analytical results.  Things like ships, roads, planes, etc.
+        - I also worked on the Geospatial Cloud Analytics Hub for DARPA which was a platform which combines multi-source
+        and multi-modal image processing into a single cloud based application
+    - Reality AI
+        - SaaS ML startup
+        - Primarily targeting the wearable, industrial, and IoT spaces
+        - Allowed our clients to train, validate, deploy, and leverage ML models in the cloud
+        - First backend engineer on the team
+        - Took it from 0 - 1
+    - Joined industry before graduation
 
 -----
 
