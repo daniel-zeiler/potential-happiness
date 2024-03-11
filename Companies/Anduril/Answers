@@ -1,111 +1,99 @@
 Tell me about working with others in the organization
 
-    When I was leading a product launch for a novel retail - to - onchain execution layer. Our team needed to build workflows within a workflow orchestration system called cadence.  This system is maintained by one of our dependent teams.  When we started this project I met with the engineering lead on their team to understand it's capabilities and design rationales and to see how to best integrate our systems with one another.
-
-    I did this not only to accelerate technical adoption but to cultivate a relationship between our two teams.  Since then I've engaged with their team whenever we're building out new feature spaces as a technical checkpoint.
-
-    Over the course of a few engagements we've since been discussing a version 2.0 of their platform offerings based upon a more generic system of primitives that you can compose together.  This was in an attempt to increase developer velocity and lower the burden of adoption for other teams.  So not only has this relationship helped us shape our technical direction, I've contributed to their technical direction as well.
-
-    I also contributed directly to this initiative with a "home away model" as we were the primary drivers of this work.
+    Project: retail-to-onchain layer - DEX
+    - Required to build workflows in Cadence, a workflow orchestration system
+    - Met with tech leads on their team to understand capabilities and design rational
+    - How to best integrate and accelerate technical adoption
+    - Cultivated a relationship between our teams
+    - Technical checkpoint for new features
+    - Discussed version 2.0 of their service with higher level primitives
+    - Contributed to their technical direction and home away model to migrate some of our workflows
 
 Going above and beyond job responsibilities
 
-    We created a novel on-chain execution layer bridging the gap between the exchange and the broader crypto ecosystem.
-
-    During the early stage of our product we discovered that one user's was able to exploit our platform.  We discovered this at roughly 8am.  Thankfully we developed robust monitoring and alerting towards anomalous activities. I immediately kill-switched our service and declared an incident.  We spent the next 10-12 hours triaging the issue, replicating the behavior, and re-architecting some of the critical fund pathways.  We were able to slowly ramp our service over the next few days.
-
-    I created a document outlining what happened and how we were planning to hedge against his behavior in the future.  I then took the lead to present to the directors of our organization and the technical staff at the company.
-
-    It would've been easy for our team to deflect blame because we've already gone through design and security review but ultimately it is our responsibility as owners of the product space and it's a good lesson to learn early -- to always keep an eye on security when dealing with financial transactions.
+    Project: retail-to-onchain layer - DEX
+    - Discovered exploit in our platform
+    - Proactive monitoring and alerting in place
+    - Immediate action to kills witch and place hold onto the user's account
+    - 10-12 hours to triage, replicate, and re-architect critical pathwards
+    - slowly ramp up afterwards
+    - Created document outlining what happened and what plans we are taking to hedge against future
+    - Presented to directors and technical leads the next week
+    - Full ownership
 
 Disagreements with management
 
-    At Coinbase, we were developing a retail wallet application that allowed people to interact with smart contracts, and defi application via a wallet and browser embedded in the mobile experience.  Leadership decided to deprecate this product due to too much product overlap and increased complexity within the mobile experience.
-
-    While I didn't disagree with this from a fundamental business perspective, it would've required significant technical resources to deprecate and I believed there was still a lot of latent potential in this product.  Instead of a complete deprecation, I advocated for a duel tract approach.  To remove the browsing experience entirely and abstract away the on-chain functionality behind first party interfaces.
-
-    This is the technical direction we've been pursuing since and we now have more features in place like lending, staking, etc. built from this abstracted view.
+    Project: dapp wallet
+    - Leadership decided to deprecate this feature of the application due to complexity and product overlap
+    - Decision to completely remove the browser aspect and require users to overboard their funds
+    - Agree with removing the browser, I believed there's a lot of latent potential
+    - Technical design to abstract away the browser features and put them behind first party integrations
+    - Offer controlled surfaces and features for lending, staking, etc
+    - Got bye-in from product folks and management and alignment with leadership
 
 New technologies to complete a project
 
-    At Coinbase, we were required to migrate all of our services to Kubernetes.  We were one of the first teams at the company to do this migration and I was the only engineer on the team with experience with any experience.  I took it upon myself to dive deep into the kubernetes and take ownership of this domain for my team.
-
-    I not only needed to do this migration myself, I needed to up-level my team to learn everything from the primatives of kubernetes, to how things are composed together, to the "why" of the migration, how the code actually fit's in the repository, everything.
-
-    To do this, I set up something called the backend round table.  This is a recurrent open topic forum for sharing new  technologies our team is adopting. I presented for about an hour about kubernetes and what it  means for our team.  Since then there's been about 20 round table discussions ranging from Asynchronous Technologies at Coinbase, to Blockchain / smart contract development.
-
-    After the success of this meeting, I've advocated to other tech leads to adopt this meeting format as well and I know of at least 5 who have done so.  I really like this format and plan to bring something like this along with me to whichever company i'm at.  It's really helped up-level team members and increase developer velocity as we adopt new technologies.
+    Project: Kubernetes Migration
+    - Few engineers in the org with K8s experience
+    - Acted as DRI for our orgs migration
+    - Set up Migration and monitoring guidance for k8s clusters
+    - Weekly syncs with DRIs from teams across the org to track progress
+    - Set up backend round table to up-level the team and suggested other teams do the same.
 
 Describe a situation where you had to manage conflicting priorities. How did you determine what was most important, and what was the result?
 
-    At Coinbase, we commonly leverage the "home away" model of development when one team requires large-scale changes within a dependency.  I was dedicating some of my time with another team trying to build out an MVP for version 2.0 of the workflow orchestration system.  However, at the same time our team needed to support a large number of different payment methods and more and more use cases.
-
-    While the MVP work is important long term, it didn't move the needle in terms of our immediate quarterly goals, or drive direct revenue.  I was able to discuss my split priorities with engineers on the other team and decelerate my contributions towards this MVP and at the same time, allowed engineers on my team to take direct ownership of payment methods and use cases.
-
-    This load balancing across my team allowed other engineers on my team to step up onto the plate and provided us a clear path forward to accomplish our immediate and long term goals.
+    Project: Home-away model with transfers team for version 2.0 of workflow orchestration
+    - MVP is important long-term but doesn't move our OKRs or drive direct revenue
+    - Able to communicate and load balance with this team to decrease rate of contribution
+    - Provided clear path forward to accomplish immediate and long term goals
 
 Technical challenge? problem?  How did I overcome it?  What was the approach?  The results?
 
-    During my time at Maxar, we had a major problem.  Our analysts were required to wear a software engineering hat to develop Python Notebooks for analysis, work with s3 to order and store imagery, and interface with a wide range of containerized models, each with their own particular interfaces and outputs.  They then needed to deploy these notebooks into the cloud for continuous delivery and hope theres new data.
-
-    We needed to develop a system that abstracted away a significant amount of complexity and allowed them to work on analysis rather than software engineering.
-
-    I developed a system to process large volumes of multi-model satellite imagery when that imagery intersected with areas of interest associated with machine learning models.  The analysts would delineate these AOIs, and associate them with models,  we would then handle incoming imagery metadata coming from upstream data provides, perform intersection, and queue up tasks for imagery ordering and processing.  The results would then be stored in s3, exposed via AWS Glue and Apache Spark, creating a spatio-temporal index on top of the results of analysis.
-
-    The majority of the technical challenge came from the sheer volume of data.  We created a sharded in-memory datastore to perform the intersections and provide scalability.
-
-    This significantly decreased overhead and we were able to spin out an entire product based upon this system.
+    Project: Analysis ready data platform
+    - I identified a lot of complexity and room for improvement in the workflow of our analysts
+    - Instead of a SWE hat we can abstract away a ton of complexity and provide much better latencies and more reliability
+    - Near-real time stream based image classification
+    - Scalable system that was flexible enough to handle different modalities (SAR, vision, etc.) while hedging against data and job loss.
+    - High throughput in-memory matching service reading from kafka with replication to hedge against failures
+    - Series of queues with retries and re-drive potential in the event of failures
 
 Advocate for change or technology within a team?
 
-    At Coinbase, our team was initially building a lot of asynchronous consumers as side-processes or sub-services within our application layer.  This lead to us scaling the total number of consumers based upon a primarily API driven application and didn't compartmentalize responsibilities across services or provide least-privileged access to dependencies.
-
-    I created a technical document outlining the problem and proposed solution to decouple these services into stand-alone applications.  This change allowed us to seperate responsibilities of our services and provided a platform for accelerated development.  It's now the standard template our team uses to reference.
-
-    In discussions surrounded this technical document, it became apparently that of the new engineers on my team weren't family with asynchronous processing technologies at all.  I took this as an opportunity to up level the engineers on my team and discussed these technologies and there individual use cases during the backend round table.
-
+    Project: Defi Wallet
+    - Building asynchronous data consumers as side processes within the application layer
+    - scaling consumers based upon API driven application, no compartmentalization or least privileged access
+    - Created a technical document to decompose these services
+    - Provided a Backend Round Table session to talk about Asynchronous Technologies
+    - Led to a more clear technical vision of our services and more dynamically scalable and better performant services
 
 What is some feedback you have received from peers / managers that made you a better engineer?
 
-    At Coinbase we have a service that enabled retail-to-onchain quoting and execution.  This was a novel architecture at Coinbase and we've discovered a lot of teams have use cases that closely align, and instead of duplicating the engineering architecture, they use us as a platform. I've met with numerous teams at Coinbase such as Commerce, NFTs, Staking, etc. and i've reviewed their technical designs, and provided clarity and support when it comes time to integrate their services with our own.
-
-    While I was more than happy to do this I received feedback from my manager about task delegation.  Driving these types of engagements provides a lot of visibility for the engineer acting as the touch-point for cross organizational projects.  This is a great project for an engineer to take on who might not yet have this type of visibility and provides an area of growth for the team.  This also frees up my capacity for new feature work.  Since then, my peers have successfully lead the integration with other teams and i've been able to focus on scoping out new feature spaces.
-
-    This feedback gave allowed me to become a better engineer because I can now identify key areas for growth amongst the engineers on my team.  This up-levels the team and provides me with a means to load balance my time more efficiently.
-
-Can you provide an example of a challenging engineering problem you encountered and how you overcame it?
-
-    At Maxar, I identified challenges in the workflow of analysts using our product.  They were required to create containerized notebooks that ordering imagery and interface directly with ML models, store and fetch results from s3, and then finally run their analysis if they wanted re-occurring jobs with new imagery every day.  I created the technical design for, and lead the implementation of a service that allowed analysts to get near-realtime classification results as soon as we had imagery available.
-
-    An analyst was able to delineate an area of interest, associate that AOI with a ML model, and we would make results available whenever new imagery would come in.  To do this, we set up a kafka stream consuming intersection service that intersected data with deployed AOIs, once a match was made, we enqueued a series of tasks for image ordering, classification, and stored those results in s3.  We also created a spatio-temporally indexed data-catalogue of those results in s3 using AWS glue.  This transformed results in geo-json into parquet and exposed a data model that can be queried via Apache Spark.  It also allowed analysts to run ad-hoc tasks using the same infrastructure.  Finally, these results were able to be displayed via a client interface.
-
-    The majority of the engineering challenge of this project was to build a scalable system that is flexible enough to support multiple and unanticipated growth in modality of data.  For example, we initially just supported imagery in the visual spectra but there are other modalities like synthetica aperture radar that we could also support.  This significantly increases the volume of data processed.  We created an in-memory matching service to read from kafka to achieve high throughput, each shard would read from a sharded kafka stream.  In the event we introduce further modalities, we would increase the subsequent shard count in the event our consumers were struggling to keep up with incoming data.
-
+    Project: Retail Dex
+    - We were one of the only teams at Coinbase to bridge the gap between retail-to-onchain workflows
+    - A lot of excitement and visibility internally for this project so a lot of teams wanted to work with us.
+    - I was the driving force behind a lot of cross organizational collaboration and integration
+    - Reviewing their technical documentation, providing clarity and support for integration, guidance, etc.
+    - Received feedback around task delegation
+    - These types of engagements provide a lot of visibility and it's a good area for growth for other members of the team
+    - It also frees me up to do more scoping work for new features
+    - Helps me become a better engineer and look for areas of growth for other engineers on the team
 
 What is your approach to managing deadlines and working under pressure within an engineering environment?
 
-    When managing deadlines and working under pressure I believe that communication is key.  Generally, there are a lot of stakeholders involved from product and throughout the management chain.  It's very import to communicate these stakeholders throughout the development cycle especially as deadlines are approaching.  If you don't communicate openly, there can be misunderstanding and it doesn't allow others to support you if needed.  It create a more cohesive engineering team if everyone is open about the pressure they're under and allows other's to lend a hand if possible.
-
-    For example, at Coinbase, we recently extended one of our services to allow for user's to interact with lending contracts on-chain with their retail balances.  This is a relatively high profile project with a lot of eyes on it. However, we encountered delays when integrating the smart contract with our workflow system and end-to-end testing had to be pushed back by about a weeks.  Once I communicated about this potential miss to our deadline, our team was able to get support from across the organization for this key component.  Had I not communicated openly, we would've been further delayed as it only would've been apparent when testing could not take place.
-
-    Additionally, there are numerous proactive strategies like setting reasonable expectations with product and load balancing work across team-mates.
-
+    Project: Lending contracts with their retail balance
+    - Communication when managing deadlines is key.  If you're reaching or missing a deadline
+    - Always best to over communicate than under and suprise people
+    - High visibility project to provide an abstracted first party view of defi lending within retail application
+    - Due to unknown unknowns we weren't going to make our deadlines ( the smart contract wasn't working correctly
+    and out team didn't have expertise in fixing it ).
+    - Openly communicating these blockers allowed others on the team and management to provide cross organizational
+    support to get this done and meet our deadlines
 
 Explain a time when you had to adapt your communication style to convey complex technical concepts to non-technical stakeholders.
 
-    During my time at Coinbase, a lot of our changes require interfacing with non-technical stakeholders.  Primarily those in finance, legal, and compliance.
-
-    When creating the architecture for a service that creates quotes for and executes on-chain transactions from the retail exchange, all of these stakeholders need to be involved and they need to understand what we're building at a high level, but more importantly I needed to transform our system architecture into something they could understand and work with.  They don't necessarily care about API design, the workflow itself, the components, but they each care deeply about their area of expertise.
-
-    With finance,they cared most about the flow of funds.  I had to transform my system architecture diagram with all of it's operations, into a flow of funds diagram labeling from which and to what account funds are moving.  For legal and compliance, I had to translate the technical design document into a format that outlined how we're monitoring and ledgering every transaction.
-
-    Overall, it's about finding what that particular cohort of stakeholders most care about, and translating the complexity into a format that they can work with.  Only then can you get buy-in from cross functional partners while minimizing the overhead for translation on their part.
-
-
-Why Anduril?
-
-    Throughout my career i've worked at a broad range of tech companies.  From an AI startup, to a social media company, now i'm in FinTech.  The most impactful company I've worked in was in the defense intelligence space.  I think it had some of the coolest possible projects and I felt like the work was the most impactful i've done so far.  Working on projects with real-world impact got me excited to get to work every day and
-
-    Anduril has a similar mission and you folks are working on some really impactful projects.  It makes me excited
-
-    They have a similar mission to that of Anduril and that makes me excited if I can get the opportunity to move my career back into that direction.
+    Project: Retail Dex
+    - at coinbase any changes touching funds requires interfacing with Finance, Legal, Compliance
+    - Architecture for our service for on chain quoting and execution from retail
+    - Transform this architecture into something digestible
+    - Dont care about APIs but care deeply about their expertise
+    - ID what they care about and deliver pertinent details.
