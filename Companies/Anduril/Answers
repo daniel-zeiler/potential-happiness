@@ -16,7 +16,7 @@ Going above and beyond job responsibilities
 
     I created a document outlining what happened and how we were planning to hedge against his behavior in the future.  I then took the lead to present to the directors of our organization and the technical staff at the company.
 
-    It would've been easy for our team to deflect blame because we've alreayd gone through design and security review but ultimately it is our responsibility as owners of the product space and it's a good lesson to learn early -- to always keep an eye on security when dealing with financial transactions.
+    It would've been easy for our team to deflect blame because we've already gone through design and security review but ultimately it is our responsibility as owners of the product space and it's a good lesson to learn early -- to always keep an eye on security when dealing with financial transactions.
 
 Disagreements with management
 
@@ -60,29 +60,52 @@ Advocate for change or technology within a team?
 
     At Coinbase, our team was initially building a lot of asynchronous consumers as side-processes or sub-services within our application layer.  This lead to us scaling the total number of consumers based upon a primarily API driven application and didn't compartmentalize responsibilities across services or provide least-privileged access to dependencies.
 
-    I created a technical document outlining the problem and proposed solution to decouple these services into stand-alone applications.  This change allowed us to seperate responsibilities of our services and provided a platform for accelerated development.
+    I created a technical document outlining the problem and proposed solution to decouple these services into stand-alone applications.  This change allowed us to seperate responsibilities of our services and provided a platform for accelerated development.  It's now the standard template our team uses to reference.
 
     In discussions surrounded this technical document, it became apparently that of the new engineers on my team weren't family with asynchronous processing technologies at all.  I took this as an opportunity to up level the engineers on my team and discussed these technologies and there individual use cases during the backend round table.
 
-As a Staff Software Engineer, you'd likely be responsible for guiding the technical direction of projects and mentoring junior team members. Can you discuss a time when you had to provide technical leadership or mentorship to achieve a successful outcome on a project?
 
-    Certainly.  At Coinbase, the company was starting to towards Kubernetes based service management.  As one of the only engineers in our org with hands-on experience, I took it upon myself to author a migration guide that's been shared and broadly across the Company.
+What is some feedback you have received from peers / managers that made you a better engineer?
 
-    Additionally, before I could completed the migration for my team, I needed to up-level the rest of the engineer to work within this new space.  I needed to introduce them to the primitives of kubernetes, the "why" of the migration, and the benefits k8s provides.
+    At Coinbase we have a service that enabled retail-to-onchain quoting and execution.  This was a novel architecture at Coinbase and we've discovered a lot of teams have use cases that closely align, and instead of duplicating the engineering architecture, they use us as a platform. I've met with numerous teams at Coinbase such as Commerce, NFTs, Staking, etc. and i've reviewed their technical designs, and provided clarity and support when it comes time to integrate their services with our own.
 
-    To do this, I introduced a meeting format called the "Backend Round Table".   It provides an open forum to discuss architectural or technology changes the team is making alongside a presentation and a Q&A at the end.  It provides a baseline for all engineers to achieve when onboarding a new technology and I encourage all engineers to participate either when they're doing something new or building something cool they want to show off.
+    While I was more than happy to do this I received feedback from my manager about task delegation.  Driving these types of engagements provides a lot of visibility for the engineer acting as the touch-point for cross organizational projects.  This is a great project for an engineer to take on who might not yet have this type of visibility and provides an area of growth for the team.  This also frees up my capacity for new feature work.  Since then, my peers have successfully lead the integration with other teams and i've been able to focus on scoping out new feature spaces.
 
-    We've had about 15 of these meetings since then and I consider it a stellar success.  I authored a document outlining the benefit this has brought our team and after sharing it across the broader organization it's been adopted elsewhere.  This is something in particular I plan to bring with me at other companies.
+    This feedback gave allowed me to become a better engineer because I can now identify key areas for growth amongst the engineers on my team.  This up-levels the team and provides me with a means to load balance my time more efficiently.
 
-Anduril values innovation and creativity. Can you provide an example of a unique solution you implemented to solve a problem in your previous work?
+Can you provide an example of a challenging engineering problem you encountered and how you overcame it?
 
-    At Coinbase, one of our primary services deals with quoting and execution of on-chain swaps between crypto currencies leveraging decentralized exchanges -- ie, for assets that Coinbase doesn't have the necessary liquidity for.  I identified that we could bridge the gap between the exchange and this on-chain execution layer that we've created.  I created a technical design for this product, got leadership buy-in, and launched this new system so Coinbase could indirectly offer liquidity within the exchange for assets it doesn't actually hold.
+    At Maxar, I identified challenges in the workflow of analysts using our product.  They were required to create containerized notebooks that ordering imagery and interface directly with ML models, store and fetch results from s3, and then finally run their analysis if they wanted re-occurring jobs with new imagery every day.  I created the technical design for, and lead the implementation of a service that allowed analysts to get near-realtime classification results as soon as we had imagery available.
 
-    We were one of the first teams to bridge this exchange-to-onchain gap.  This service now stands at the foundation of a platform and I work with teams from a number of different organizations so they can onboard their particular use-case.
+    An analyst was able to delineate an area of interest, associate that AOI with a ML model, and we would make results available whenever new imagery would come in.  To do this, we set up a kafka stream consuming intersection service that intersected data with deployed AOIs, once a match was made, we enqueued a series of tasks for image ordering, classification, and stored those results in s3.  We also created a spatio-temporally indexed data-catalogue of those results in s3 using AWS glue.  This transformed results in geo-json into parquet and exposed a data model that can be queried via Apache Spark.  It also allowed analysts to run ad-hoc tasks using the same infrastructure.  Finally, these results were able to be displayed via a client interface.
 
-How do you stay updated with the latest technologies and trends in the software engineering field?
+    The majority of the engineering challenge of this project was to build a scalable system that is flexible enough to support multiple and unanticipated growth in modality of data.  For example, we initially just supported imagery in the visual spectra but there are other modalities like synthetica aperture radar that we could also support.  This significantly increases the volume of data processed.  We created an in-memory matching service to read from kafka to achieve high throughput, each shard would read from a sharded kafka stream.  In the event we introduce further modalities, we would increase the subsequent shard count in the event our consumers were struggling to keep up with incoming data.
 
-    Crypto is a very fast moving field but there are a number of conferences that I attend to try to maintain a pulse of the broader ecosystem.  There are also meetups and social events that i've been a part of.  In a more general sense, I look to identify members of the technical staff and the projects and trends they're working with to try to see if there's anything I can use within my organization.
 
-What do you consider your biggest strength as a software engineer, and how does it contribute to your effectiveness in this role?
+What is your approach to managing deadlines and working under pressure within an engineering environment?
 
+    When managing deadlines and working under pressure I believe that communication is key.  Generally, there are a lot of stakeholders involved from product and throughout the management chain.  It's very import to communicate these stakeholders throughout the development cycle especially as deadlines are approaching.  If you don't communicate openly, there can be misunderstanding and it doesn't allow others to support you if needed.  It create a more cohesive engineering team if everyone is open about the pressure they're under and allows other's to lend a hand if possible.
+
+    For example, at Coinbase, we recently extended one of our services to allow for user's to interact with lending contracts on-chain with their retail balances.  This is a relatively high profile project with a lot of eyes on it. However, we encountered delays when integrating the smart contract with our workflow system and end-to-end testing had to be pushed back by about a weeks.  Once I communicated about this potential miss to our deadline, our team was able to get support from across the organization for this key component.  Had I not communicated openly, we would've been further delayed as it only would've been apparent when testing could not take place.
+
+    Additionally, there are numerous proactive strategies like setting reasonable expectations with product and load balancing work across team-mates.
+
+
+Explain a time when you had to adapt your communication style to convey complex technical concepts to non-technical stakeholders.
+
+    During my time at Coinbase, a lot of our changes require interfacing with non-technical stakeholders.  Primarily those in finance, legal, and compliance.
+
+    When creating the architecture for a service that creates quotes for and executes on-chain transactions from the retail exchange, all of these stakeholders need to be involved and they need to understand what we're building at a high level, but more importantly I needed to transform our system architecture into something they could understand and work with.  They don't necessarily care about API design, the workflow itself, the components, but they each care deeply about their area of expertise.
+
+    With finance,they cared most about the flow of funds.  I had to transform my system architecture diagram with all of it's operations, into a flow of funds diagram labeling from which and to what account funds are moving.  For legal and compliance, I had to translate the technical design document into a format that outlined how we're monitoring and ledgering every transaction.
+
+    Overall, it's about finding what that particular cohort of stakeholders most care about, and translating the complexity into a format that they can work with.  Only then can you get buy-in from cross functional partners while minimizing the overhead for translation on their part.
+
+
+Why Anduril?
+
+    Throughout my career i've worked at a broad range of tech companies.  From an AI startup, to a social media company, now i'm in FinTech.  The most impactful company I've worked in was in the defense intelligence space.  I think it had some of the coolest possible projects and I felt like the work was the most impactful i've done so far.  Working on projects with real-world impact got me excited to get to work every day and
+
+    Anduril has a similar mission and you folks are working on some really impactful projects.  It makes me excited
+
+    They have a similar mission to that of Anduril and that makes me excited if I can get the opportunity to move my career back into that direction.
